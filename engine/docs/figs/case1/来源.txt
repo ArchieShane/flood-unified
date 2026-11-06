@@ -1,0 +1,7 @@
+本目录四张图的每一个数字都由 tools/case1_charts.py 现场解析生成，不手打：
+  峰值流量 / 超载段数 / 节点溢流  ← D:\swbrain_work\swmm\c2d\C1_M61_*_2way.rpt
+  一维水量账                      ← 同上 Flow Routing Continuity
+  积水面积 / 峰值积水量 / 时序    ← D:\阿布扎比\排水智能体\out\交付\C1_模型版_61mm2h\*\一二维\*_积水面积时序.csv 与 *_耦合运行记录.json
+  全域与八个热点的面积            ← D:\阿布扎比\排水智能体\out\交付\C1_模型版_61mm2h\统计值\C1统计值.xlsx
+  雨型                            ← console/data/c1_hyeto.json（R61，模型版 61 mm 同一份）
+重新生成：python tools/case1_charts.py

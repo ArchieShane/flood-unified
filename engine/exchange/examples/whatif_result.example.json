@@ -1,0 +1,24 @@
+{
+  "schema": "swbrain.whatif_result/1",
+  "request_id": "wr-37d1fb3cc5ce",
+  "model": {
+    "name": "AD 1D2D",
+    "type": "1D2D",
+    "version": "0.9"
+  },
+  "results": [
+    {
+      "set_id": "p28",
+      "scenario": "常规",
+      "kpis": {
+        "flood_volume_m3": 150000,
+        "affected_inlets": 1700
+      },
+      "kpi_delta_vs_baseline": {
+        "flood_volume_m3": -32000,
+        "affected_inlets": -440
+      },
+      "prediction_run": "hydro-whatif-p28-常规"
+    }
+  ]
+}

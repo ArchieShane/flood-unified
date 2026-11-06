@@ -1,0 +1,10 @@
+{
+ "schema": "swbrain.bridges/1",
+ "as_of": "2026-09-22T18:00:00+04:00",
+ "source": "example — replace with the ADM bridge weight / clearance register (this file is illustrative, not a real register)",
+ "notes": "rows[].limit_t = posted weight limit in tonnes (omit if none); rows[].clearance_m = vertical clearance in metres (omit if none). A row blocks heavy pump trucks when limit_t < heavy_vehicle_t (≈ pump + tare, default 12 t) or clearance_m < heavy_height_m (default 3.8 m). Road links whose midpoint lies within radius_m of (lon, lat) are cut in the heavy-vehicle travel matrix. Place the real file at exchange/bridges.json, or POST it to /api/feed/bridges, or set [feeds.bridges].url to pull it.",
+ "rows": [
+  {"id": "BR-EX-001", "name": "Example canal culvert", "lon": 54.6330, "lat": 24.5170, "limit_t": 10, "clearance_m": 4.2, "owner": "example", "verified": false},
+  {"id": "BR-EX-002", "name": "Example underpass", "lon": 54.5100, "lat": 24.3470, "clearance_m": 3.5, "owner": "example", "verified": false}
+ ]
+}

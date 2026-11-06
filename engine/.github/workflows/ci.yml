@@ -1,0 +1,51 @@
+# 最小 CI：单元测试（合成夹具，不碰库）、控制台脚本语法与交互逻辑、本体自检、配置漂移、行尾。
+# 注意：这份工作流在仓库里还没有真正跑过一次（仓库私有、Actions 未开）；本地等价物是 scripts/ci.ps1。
+# 2026-09-23 改了四处：
+#   1. `cp config.example.toml config.toml` 原来写在最后一步，而有四个测试文件在模块顶层调 load_config()，
+#      config.toml 又是 gitignore 掉的——干净 checkout 上那四个文件连 collect 都过不去。现在提到测试之前。
+#   2. 装依赖原来是 `lock || requirements`：lock 里有 ortools、requirements 里没有，两条路装出来的不是一套东西。
+#   3. 合并了原来的 tests.yml（两份工作流步骤顺序互相矛盾，一份在干净 checkout 上跑不起来）。
+#   4. 补一步「可选依赖真的装上了没有」：ortools 缺了，CP-SAT 排程测试会静默变成空操作还计一个 passed。
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.lock.txt
+          pip install pytest "PyJWT[crypto]==2.10.1"   # 统一身份（可选功能）的测试要它；运行时缺省不需要
+      - name: Config (tests read config.toml at import time)
+        run: cp config.example.toml config.toml
+      - name: Optional deps are actually installed
+        run: |
+          python -c "import ortools; print('ortools ok')"
+          python -c "import docx; print('python-docx ok')"
+      - name: Unit tests
+        run: python -m pytest tests -q
+      - name: Console syntax
+        run: |
+          node --check console/i18n.js
+          node --check console/app.js
+      - name: Console interaction
+        run: node tests/console_ui.test.js
+      - name: Ontology self-check
+        run: python -m swbrain.ontology --check
+      - name: Config drift
+        run: python -m swbrain.configcheck
+      - name: Line endings are LF
+        run: python scripts/check_line_endings.py

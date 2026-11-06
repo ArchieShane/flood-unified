@@ -1,0 +1,16 @@
+# flood-new：单容器单端口（页面 + /api + /viewer/ + PostGIS）。目录相对本文件，用 .env 改。
+services:
+  flood-new:
+    image: flood-new:${TAG:-v2}
+    container_name: flood-new
+    restart: unless-stopped
+    stop_grace_period: 2m
+    ports: ["${APP_PORT:-8006}:8080"]
+    environment:
+      SIM_MOCK_PROGRESS: "0"
+      VIEWER_DATA_ROOT: /viewer-data
+    volumes:
+      - ${DATA_DIR:-/syq/flood-backend/data}:/app/data:ro
+      - ${CACHE_DIR:-/syq/flood-new/cache/sim_ponding}:/app/data/processed/sim_ponding
+      - ${PGDATA_DIR:-/syq/flood-new/pgdata}:/var/lib/postgresql/data
+      - ${VIEWER_DIR:-/syq/flood-new/result}:/viewer-data:ro      # engine 后处理产出的 flood2d_* 成果

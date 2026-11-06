@@ -1,0 +1,38 @@
+# 原始数据源登记（数据标准 v0.1 第 7 章 0 原始层）。原始文件只读，不改不挪。
+# 用户 2026-10-21 指定的两份试点原始数据。
+sources:
+  dmt_stormwater:
+    title: DMT 全市雨水资产库（shapefile 导出，11 个图层）
+    owner: DMT
+    path: 20261019/Stormwater
+    kind: shapefile_dir
+    received: 2026-10-19
+    notes: >
+      Esri 资产库导出，字段名被 shapefile 截成 10 个字符；高程是 NADD + 100 m；
+      每个图层的 .shp.xml 里有 Esri 加工历史（lineage），登记时一并解析。
+    prefix: DMT
+    default_conf: B
+  aecom_rda:
+    title: AECOM RD-A SewerGEMS 模型（9 个情景的 shapefile + 工程文件 + 18 个 SWMM 导出 + 摘要 PDF）
+    owner: DMT（AECOM 编制）
+    path: 20261019/test/RD-A/RD-A
+    kind: sewergems_project
+    received: 2026-10-19
+    notes: >
+      情景文件夹里的 shapefile 是公制（坐标 UTM 40N 米但没写坐标系，高程 m，管径 mm）；
+      SWMM 导出（.inp）是英尺和 CFS；情景名在 RD - A.stsw.sqlite 里。
+    prefix: AEC-RDA
+    default_conf: C
+    base_scenario_folder: 10+20%-1hr
+    base_run: "51263"
+  dtm_auh:
+    title: 客户 DTM，阿布扎比 5 m（GeoTIFF + 金字塔 .ovr + 元数据）
+    owner: DMT
+    path: D:/阿布扎比/DTM_z40_customer
+    kind: raster
+    received: 2026-09-19
+    notes: >
+      25 GB，UTM 40N（EPSG:32640），float32，NoData = -3.4028235e+38；高程基准文件里没声明（dataqc R2），按 NADD 用。
+      用户 2026-10-21 指定为第三份原始数据。目录里的 ._* 是 macOS 拷贝留下的元数据文件，不登记。
+    prefix: DTM
+    default_conf: B

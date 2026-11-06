@@ -1,0 +1,76 @@
+{
+ "region": "ADCG6",
+ "domain_km2": 1.3,
+ "stations": [
+  {
+   "unitid": "SW_BAD_ADG15_PSS_55",
+   "ps_id": "ADM_RD-21",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::2x65,Separate power supply is not available",
+   "n_pumps": 2,
+   "q_each_lps": 65.0,
+   "q_src": "客户备注 2×65",
+   "parsons": [
+    {
+     "model": "ADCG6",
+     "flow_lps": 180.14,
+     "dist_m": 3
+    },
+    {
+     "model": "ADCG6",
+     "flow_lps": 0.0,
+     "dist_m": 3
+    }
+   ],
+   "wetwell_node": "246674_2700588",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 6.67,
+   "on_m": 3.33,
+   "off_m": 0.67,
+   "depth_note": "",
+   "discharge_node": "246661_2700546",
+   "discharge_dist_m": 0,
+   "discharge_src": "Parsons 压力管（ADCG6）",
+   "forcemain_m": 38,
+   "forcemain_unitids": [],
+   "x": 246674.9,
+   "y": 2700588.9
+  },
+  {
+   "unitid": "SW_BAD_ADG15_PSS_57",
+   "ps_id": "ADM_RD-23",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Undefined",
+   "n_pumps": 2,
+   "q_each_lps": 182.2,
+   "q_src": "Parsons 同址泵 PUMP_FLOW（182.13 + 182.23）",
+   "parsons": [
+    {
+     "model": "ADCG6",
+     "flow_lps": 182.13,
+     "dist_m": 4
+    },
+    {
+     "model": "ADCG6",
+     "flow_lps": 182.23,
+     "dist_m": 4
+    }
+   ],
+   "wetwell_node": "247076_2700455",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 4.0,
+   "on_m": 2.0,
+   "off_m": 0.4,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 247076.4,
+   "y": 2700455.7
+  }
+ ]
+}

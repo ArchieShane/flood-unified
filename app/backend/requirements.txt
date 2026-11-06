@@ -1,0 +1,21 @@
+# 阶段一 / 二：数据清洗、Qcap 批量计算、Web API
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
+psycopg[binary]==3.3.6
+pandas==3.0.6
+numpy==2.5.3
+openpyxl==3.1.5
+python-dotenv==1.2.3
+
+# 测试
+pytest==9.1.1
+httpx2          # fastapi.testclient 依赖
+
+# 阶段三：空间关联与汇水区划分（用到时再取消注释）
+# shapely
+# pyproj
+# geopandas
+scipy==1.18.1     # sim_ponding：成果缺 terrain_grid.npz 时从 .sww（NetCDF3）读地形
+rasterio==1.5.1   # 阶段三：读 backend/data/DEM_UAE_UTM40 的 Copernicus GLO-30 DSM
+# networkx
+# pysheds

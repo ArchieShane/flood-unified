@@ -1,0 +1,18 @@
+# 系统服务镜像（docker/app/Dockerfile）只要代码：数据、运行产物、口令一律不进镜像
+config.toml
+out/
+console/data/
+exchange/*
+!exchange/examples/
+!exchange/schemas/
+.git/
+.venv/
+.agents/
+**/__pycache__/
+**/*.pyc
+.pytest_cache/
+dist/
+*.log
+docker/app/seed/
+docker/db/
+data/

@@ -1,0 +1,38 @@
+# 三台推演服务器的算力（调度和并行度的依据）。主机名、NAS 挂载路径到时补；这里只记算力。
+# 单个 RD-A 算例（约 9 万个二维三角单元、3 千个一维节点）内存占用不大（预计 2 GB 以内，待实测），CPU 是瓶颈；
+# 每个算例用 threads_per_run 个线程（F 系列是 5），并行数 = (核数 - reserve) // threads_per_run。
+
+[defaults]
+threads_per_run = 5
+reserve_cores = 4          # 留给系统、NAS 同步、shp+dat 转换
+
+[[server]]
+id = "server1"
+hostname = "AZPDW006aim01"     # ADM 推演脚本里写的服务器 1 主机名（待核对）
+cores = 48
+ram_gb = 188
+
+[[server]]
+id = "server2"
+hostname = ""                  # 待补
+cores = 32
+ram_gb = 64
+
+[[server]]
+id = "server3"
+hostname = ""                  # 待补
+cores = 32
+ram_gb = 64
+
+# NAS 目录约定（容器内统一映射成 /nas；三台服务器共用同一个 NAS 目录，成果都写在这里）
+[nas]
+result = "result"            # result/<主机名>/runtime/console_data/flood2d_*      flood-viewer 读
+deliveries = "deliveries"    # deliveries/<job_id>/                                 management 入库读（含 npz、ponding_ge.json、params.json）
+shp_dat = "shp_dat"          # shp_dat/<job_id>/<态>/{shp,dat}
+jobs = "jobs"                # jobs/{pending,running,done,failed}/<job_id>.json
+
+# 启动推演前的环境检查阈值
+[check]
+min_free_gb_work = 50        # 工作目录剩余空间（单个 RD-A 算例的 npz / sww 约几 GB）
+min_free_gb_nas = 50
+min_free_ram_gb = 8          # 每个并行算例预留的内存（估计，待实测）

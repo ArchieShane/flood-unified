@@ -1,0 +1,86 @@
+/* RD-A 面板（components/rda/RdaPanels.vue）与 /rda 页右栏的内容样式。
+   全部收在 `.rda-ui` 下：仿真详情页和 /rda 页共用，不污染别的页。颜色取 body.theme-sim 的变量。 */
+.rda-ui { color: var(--fg); font-size: 13px; }
+.rda-ui .tabs { display: flex; gap: 2px; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding: 0 4px; }
+.rda-ui .tabs button { background: transparent; border: 0; padding: 8px 12px; cursor: pointer; color: var(--muted); font-size: 13px;
+  border-bottom: 2px solid transparent; }
+.rda-ui .tabs button.on { color: var(--fg); border-bottom-color: var(--blue); }
+.rda-ui .tabs button.sugg { color: var(--amber); }
+.rda-ui .tabs button.sugg.on { border-bottom-color: var(--amber); }
+.rda-ui .pane { padding: 12px 14px 20px; }
+.rda-ui .seg { display: inline-flex; border: 1px solid var(--line-2); border-radius: 6px; overflow: hidden; }
+.rda-ui .seg button { background: transparent; border: 0; padding: 3px 9px; font-size: 12px; cursor: pointer; color: var(--muted); }
+.rda-ui .seg button.on { background: var(--blue-bg); color: var(--fg); }
+.rda-ui h3 { margin: 4px 0 4px; font-size: 16px; }
+.rda-ui h4 { margin: 14px 0 6px; font-size: 13px; color: var(--fg-2); }
+.rda-ui h5 { margin: 10px 0 4px; font-size: 12px; color: var(--muted); }
+.rda-ui .muted { color: var(--muted); }
+.rda-ui .small, .rda-ui .small-t { font-size: 12px; }
+.rda-ui .warn { color: var(--amber); }
+.rda-ui .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.rda-ui .kpis { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 8px 0; }
+.rda-ui .kpis.three { grid-template-columns: repeat(3, 1fr); }
+.rda-ui .kpis > div { background: var(--card-2); border-radius: 8px; padding: 8px 10px; display: flex; flex-direction: column; }
+.rda-ui .kpis b { font-size: 20px; }
+.rda-ui .kpis span { color: var(--muted); font-size: 11px; }
+.rda-ui .kpis small { font-size: 12px; color: var(--muted); }
+.rda-ui .kpis em, .rda-ui .tbl em { font-style: normal; font-size: 11.5px; }
+.rda-ui .tbl em { font-size: 11px; margin-left: 3px; }
+.rda-ui .ok { color: var(--green); }
+.rda-ui .bad { color: var(--red); }
+.rda-ui .tbl { width: 100%; border-collapse: collapse; font-size: 12.5px; margin: 4px 0; }
+.rda-ui .tbl th { text-align: left; color: var(--muted); font-weight: 500; padding: 4px 6px; border-bottom: 1px solid var(--line-2); }
+.rda-ui .tbl td { padding: 4px 6px; border-bottom: 1px solid var(--line); }
+.rda-ui .tbl tbody tr { cursor: pointer; }
+/* 规划设备清单（Suggested 页签）：设备上百台，限高滚动、表头固定；关键参数一句话较长，允许换行 */
+.rda-ui .dev-scroll { max-height: 460px; overflow: auto; margin: 6px 0 4px; border: 1px solid var(--line); border-radius: 6px; }
+.rda-ui .dev-scroll .tbl { margin: 0; }
+.rda-ui .dev-scroll .tbl th { position: sticky; top: 0; background: var(--card, #1c1e21); z-index: 1; }
+.rda-ui .dev-detail { min-width: 220px; line-height: 1.45; }
+.rda-ui .seg:has(+ .dev-scroll) { flex-wrap: wrap; max-width: 100%; }
+.rda-ui .hot-q { margin-left: 8px; padding: 3px 8px; font-size: 12px; border: 1px solid var(--line-2); border-radius: 6px; background: transparent; color: inherit; min-width: 140px; }
+.rda-ui .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; background: #868e96; }
+.rda-ui .dot.flooded { background: #d9434b; }
+.rda-ui .dot.shallow { background: #e0a44e; }
+.rda-ui details.logic { margin: 6px 0 8px; font-size: 12px; color: var(--fg-2); }
+.rda-ui details.logic summary { cursor: pointer; color: var(--blue-lt, #6ab0ff); }
+.rda-ui details.logic ol { margin: 6px 0 0; padding-left: 18px; line-height: 1.55; }
+.rda-ui details.logic li { margin: 3px 0; }
+.rda-ui .tbl small.tm { display: block; color: var(--muted); font-size: 11px; white-space: nowrap; }
+.rda-ui .tbl tbody tr:hover, .rda-ui .tbl tr.cur { background: var(--blue-bg); }
+.rda-ui .pill { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 11px; color: #fff; font-style: normal; margin-left: 4px; }
+.rda-ui .pill.gray { background: #6b737b; }
+.rda-ui .pill.amber { background: var(--amber-bg); color: var(--amber); }
+.rda-ui .chip { display: inline-block; border: 1px solid var(--line-2); border-radius: 10px; padding: 0 7px; margin: 2px 4px 2px 0; font-size: 11.5px; }
+.rda-ui .card { background: var(--card-2); border-radius: 8px; padding: 10px 12px; margin: 8px 0; }
+.rda-ui .card h4 { margin-top: 0; font-size: 14px; color: var(--fg); }
+.rda-ui .kv { display: grid; grid-template-columns: 110px 1fr; gap: 4px 10px; margin: 0; font-size: 12.5px; }
+.rda-ui .kv dt { color: var(--muted); }
+.rda-ui .kv dd { margin: 0; }
+.rda-ui .plain { margin: 4px 0; padding-left: 16px; font-size: 12.5px; }
+.rda-ui .checks { list-style: none; padding: 0; }
+.rda-ui .checks li { padding: 3px 0 3px 8px; border-left: 3px solid var(--green); margin: 3px 0; }
+.rda-ui .checks li.review { border-left-color: var(--amber); }
+.rda-ui .checks li.unknown { border-left-color: var(--faint); }
+.rda-ui .steps { margin: 4px 0; padding-left: 18px; font-size: 12.5px; line-height: 1.6; }
+.rda-ui .back { background: none; border: 0; color: var(--blue-lt); cursor: pointer; padding: 0; }
+.rda-ui .levels { display: flex; gap: 6px; flex-wrap: wrap; }
+.rda-ui .sw { display: inline-block; width: 12px; height: 8px; border-radius: 2px; margin-right: 4px; }
+.rda-ui .thr select, .rda-ui .thr input, .rda-ui .basepick select {
+  background: var(--field); color: var(--fg); border: 1px solid var(--line-2); border-radius: 6px; padding: 3px 6px; }
+.rda-ui .thr input { width: 74px; }
+.rda-ui .thr-row { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: 12.5px; }
+.rda-ui .thr-row label { display: flex; gap: 6px; align-items: center; }
+.rda-ui .thr .go { background: var(--blue); border: 0; color: #fff; border-radius: 6px; padding: 4px 14px; cursor: pointer; }
+.rda-ui .thr .go:disabled { opacity: 0.4; cursor: default; }
+.rda-ui .thr a { color: var(--blue-lt); margin-left: 8px; }
+.rda-ui .buf { margin: 10px 0; padding-top: 8px; border-top: 1px solid var(--line-2); }
+.rda-ui .buf h5 { margin: 0 0 6px; font-size: 13px; color: var(--fg); }
+.rda-ui .buf input[type='number'] { width: 70px; }
+.rda-ui .formula { margin: 8px 0; padding: 8px 10px; border-left: 3px solid var(--blue); background: var(--card); border-radius: 4px; font-size: 12px; line-height: 1.6; color: var(--fg-2); }
+.rda-ui .formula code { display: block; margin: 2px 0 4px; font-size: 12.5px; color: var(--fg); white-space: normal; }
+.rda-ui .formula ol { margin: 4px 0 0; padding-left: 18px; }
+.rda-ui .tbl.pairs { margin-top: 6px; }
+.rda-ui .curves { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; }
+.rda-ui .curve { background: var(--card-2); border-radius: 6px; padding: 4px 6px; }
+.rda-ui .curve b { font-size: 12px; }

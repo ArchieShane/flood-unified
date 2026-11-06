@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Urban Flood Readiness · Scenario Calculator · Front-end / Back-end interaction design</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#0b0d10;min-height:100vh;overflow-x:hidden}
+#wrap{position:relative;width:1920px;height:1080px;transform-origin:top left}
+#board{width:1920px;height:1080px;position:relative;overflow:hidden;font-family:"Helvetica Neue LT Std","Helvetica Neue",sans-serif;color:#fff;background:#0f1216}
+.ic{display:inline-block;vertical-align:middle;flex:none}.ic svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.menu{position:absolute;left:0;top:0;width:1920px;height:64px;background:rgba(28,28,28,.9);backdrop-filter:blur(40px);outline:1px solid rgba(0,0,0,.35);display:flex;align-items:center;padding:0 24px;gap:24px;z-index:50}
+.menu .logo{width:40px;height:40px;border-radius:6px;background:#4786C9;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.menu .t{font-size:20px;font-weight:700}.menu .nav{display:flex;gap:20px;font-size:14px;color:rgba(255,255,255,.55);margin-left:16px}.menu .nav b{color:#fff;font-weight:700}
+.menu .right{margin-left:auto;display:flex;gap:12px;align-items:center;font-size:12px;color:rgba(255,255,255,.55)}
+.seg{display:flex;background:rgba(255,255,255,.06);border-radius:999px;padding:3px;gap:3px}.seg span{padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700;color:rgba(255,255,255,.55);cursor:pointer}.seg span.on{background:rgba(255,255,255,.14);color:#fff}
+.crumb{position:absolute;left:24px;top:81px;background:rgba(28,28,28,.9);backdrop-filter:blur(30px);border-radius:4px;padding:6px 10px;font-size:12px;color:rgba(255,255,255,.55);z-index:5}.crumb b{color:#4786C9;font-weight:700}
+.kpi{position:absolute;left:24px;top:122px;display:flex;flex-direction:column;gap:8px;width:300px;z-index:5}
+.k{background:rgba(28,28,28,.9);backdrop-filter:blur(30px);border-radius:6px;padding:12px 14px;display:flex;justify-content:space-between;align-items:flex-start;outline:1px solid rgba(255,255,255,.06)}
+.k .l{font-size:12px;color:rgba(255,255,255,.55)}.k .h{font-size:14px;font-weight:700;margin-bottom:2px}.k .v{font-size:24px;font-weight:700;text-align:right}.k .u{font-size:12px;color:rgba(255,255,255,.55);text-align:right}
+.legend{position:absolute;left:24px;bottom:16px;background:rgba(28,28,28,.9);backdrop-filter:blur(30px);border-radius:4px;padding:8px 12px;font-size:12px;z-index:5}.legend b{display:block;font-weight:700;color:rgba(255,255,255,.92);margin-bottom:4px}.legend div{color:rgba(255,255,255,.7);display:flex;align-items:center;gap:8px;line-height:20px}.legend i{width:12px;height:4px;border-radius:2px;display:inline-block}
+.map{position:absolute;left:0;top:64px;width:1920px;height:1016px}
+.pin{position:absolute;transform:translate(-6px,-6px);cursor:pointer}.pin .dot{width:12px;height:12px;border-radius:50%;box-shadow:0 0 0 4px rgba(0,0,0,.35)}.pin .chip{position:absolute;left:16px;top:-10px;background:rgba(28,28,28,.9);backdrop-filter:blur(30px);border:1px solid;border-radius:4px;padding:6px 10px;white-space:nowrap}.pin .chip b{display:block;font-size:12px;font-weight:700}.pin .chip span{font-size:12px;color:rgba(255,255,255,.55)}
+.pin.sel .dot{box-shadow:0 0 0 4px rgba(71,134,201,.6)}
+.tools{position:absolute;bottom:16px;width:30px;background:rgba(28,28,28,.9);backdrop-filter:blur(30px);border-radius:4px;outline:1px solid rgba(0,0,0,.35);display:flex;flex-direction:column;z-index:6;transition:left .2s ease-out}
+.tools .t{width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);cursor:pointer}.tools .t:hover{color:#fff;background:rgba(255,255,255,.06)}.tools .t.on{background:#323639;outline:1px solid rgba(158,158,158,.24);color:#fff}.tools .sep{height:1px;background:rgba(255,255,255,.08)}
+.panel{position:absolute;top:57px;width:420px;height:1023px;background:rgba(28,28,28,.9);backdrop-filter:blur(40px);outline:1px solid rgba(0,0,0,.35);padding:24px;display:flex;flex-direction:column;gap:24px;overflow:hidden;z-index:10}
+.panel h2{font-size:20px;font-weight:700}.panel h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:12px}
+.pills{display:flex;background:rgba(255,255,255,.06);border-radius:999px;padding:4px;gap:4px}.pills span{flex:1;text-align:center;font-size:12px;font-weight:700;padding:6px 0;border-radius:999px;color:rgba(255,255,255,.55);cursor:pointer}.pills span:hover{color:#fff}.pills span.on{background:rgba(255,255,255,.14);color:#fff}
+.cta{width:100%;background:#4786C9;border-radius:6px;padding:10px 16px;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;border:none;color:#fff;font-family:inherit}.cta:hover{background:#3d78b8}.cta[disabled]{background:rgba(71,134,201,.35);color:rgba(255,255,255,.55);cursor:default}
+.ghost{background:rgba(255,255,255,.08);color:rgba(255,255,255,.85);border-radius:6px;padding:10px 16px;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;flex:1;cursor:pointer;border:none;font-family:inherit}.ghost:hover{background:rgba(255,255,255,.12)}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat div{background:rgba(255,255,255,.04);border-radius:6px;padding:8px 10px}.stat .v{font-size:24px;font-weight:700}.stat .l{font-size:12px;color:rgba(255,255,255,.55);margin-top:2px}
+.rows{border-radius:6px;overflow:hidden}.row{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;font-size:12px;cursor:pointer}.row:nth-child(odd){background:rgba(255,255,255,.06)}.row:nth-child(even){background:rgba(255,255,255,.02)}.row:hover{background:rgba(255,255,255,.1)}.row.sel{outline:1px solid rgba(71,134,201,.6);outline-offset:-1px}.row .l{color:rgba(255,255,255,.55)}.row b{font-size:12px;font-weight:700}
+.tag{font-size:12px;font-weight:700;padding:2px 6px;border-radius:4px;white-space:nowrap}.tag.d{background:rgba(224,87,78,.15);color:#E0574E}.tag.s{background:rgba(102,197,107,.15);color:#66C56B}.tag.w{background:rgba(224,164,78,.15);color:#E0A44E}.tag.n{background:rgba(255,255,255,.12);color:rgba(255,255,255,.95);width:26px;height:20px;display:inline-flex;align-items:center;justify-content:center}.tag.b{background:rgba(71,134,201,.15);color:#6DB5EC}
+.bar{height:8px;border-radius:100px;background:rgba(255,255,255,.1);position:relative;overflow:hidden;margin-top:6px}.bar i{position:absolute;top:0;bottom:0;border-radius:100px}
+.note{font-size:12px;color:rgba(255,255,255,.45);line-height:16px}.body{font-size:12px;color:rgba(255,255,255,.85);line-height:16px}
+.src{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);font-size:12px;padding:1px 6px;border-radius:4px;display:inline-block}
+.content{flex:1;overflow:auto;display:flex;flex-direction:column;gap:32px;scrollbar-width:thin}.bottom{display:flex;gap:8px}
+.aihead{display:flex;align-items:center;gap:10px}.aihead .orb{width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#9CC4F3,#4786C9 60%,#1c2b40)}.aihead b{font-size:20px;font-weight:700}
+.bubble{align-self:flex-end;background:rgba(71,134,201,.25);border-radius:6px;padding:10px 12px;font-size:12px;color:rgba(255,255,255,.85);max-width:320px}
+.msg{background:rgba(255,255,255,.04);border-radius:6px;padding:12px;font-size:12px;color:rgba(255,255,255,.85);line-height:16px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chipb{background:rgba(255,255,255,.08);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700;color:rgba(255,255,255,.85);cursor:pointer}.chipb:hover{background:rgba(255,255,255,.14)}
+.composer{background:rgba(255,255,255,.06);border-radius:6px;padding:12px;font-size:12px;color:rgba(255,255,255,.45);display:flex;justify-content:space-between;align-items:center}
+.empty{background:rgba(255,255,255,.04);border-radius:6px;padding:24px;text-align:center}.empty b{display:block;font-size:14px;margin:8px 0 4px}
+.skel{height:12px;border-radius:4px;background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.14),rgba(255,255,255,.06));background-size:200% 100%;animation:sk 1s linear infinite;margin:6px 0}@keyframes sk{to{background-position:-200% 0}}
+.drawer{position:absolute;left:0;top:64px;width:1920px;height:1016px;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);z-index:40}
+.sheet{position:absolute;left:520px;top:120px;width:1360px;height:880px;background:rgba(28,28,28,.97);border-radius:6px;outline:1px solid rgba(0,0,0,.35);padding:24px;display:flex;flex-direction:column;gap:24px}
+.sheet .hd{display:flex;justify-content:space-between;align-items:center}.sheet h2{font-size:20px;font-weight:700}
+.tabs2{display:flex;gap:24px;border-bottom:1px solid rgba(255,255,255,.08)}.tabs2 span{font-size:14px;color:rgba(255,255,255,.55);padding:0 0 10px;cursor:pointer}.tabs2 span.on{color:#fff;font-weight:700;box-shadow:inset 0 -2px 0 #4786C9}
+table{width:100%;border-collapse:collapse;font-size:12px}th{text-align:left;font-weight:400;color:rgba(255,255,255,.55);padding:8px 10px;background:rgba(255,255,255,.08);white-space:pre-line}td{padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.85)}.r{text-align:right}
+td input{width:76px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:4px;color:#6DB5EC;padding:4px 6px;font:inherit;font-size:12px;text-align:right}td input.key{background:rgba(232,214,15,.12)}td input.w{width:110px}
+.sheetbody{flex:1;overflow:auto}
+.ann{position:absolute;background:#4786C9;color:#fff;font-size:12px;font-weight:700;padding:4px 8px;border-radius:4px;z-index:60;max-width:360px;line-height:16px;box-shadow:0 4px 16px rgba(0,0,0,.45)}.ann small{display:block;font-weight:400;opacity:.9}
+.toast{position:absolute;left:50%;bottom:36px;transform:translateX(-50%);background:rgba(28,28,28,.96);outline:1px solid rgba(255,255,255,.12);border-left:3px solid #66C56B;padding:10px 14px;border-radius:6px;font-size:12px;z-index:70;display:none;max-width:560px}
+.hide{display:none!important}
+.status{position:absolute;right:24px;top:80px;font-size:12px;color:rgba(255,255,255,.45);z-index:5}
+</style>
+</head>
+<body>
+<div id="wrap"><div id="board"></div></div>
+<script>
+// ---------------- icons (placeholders for Icon / 20 / *) ----------------
+const I={calc:'<svg viewBox="0 0 20 20"><rect x="4" y="2.5" width="12" height="15" rx="1.5"/><line x1="6.5" y1="6" x2="13.5" y2="6"/><circle cx="7" cy="10" r=".6"/><circle cx="10" cy="10" r=".6"/><circle cx="13" cy="10" r=".6"/><circle cx="7" cy="13.5" r=".6"/><circle cx="10" cy="13.5" r=".6"/><circle cx="13" cy="13.5" r=".6"/></svg>',cube:'<svg viewBox="0 0 20 20"><path d="M10 2.5 17 6v8l-7 3.5L3 14V6z"/><path d="M3 6l7 3.5L17 6M10 9.5V17.5"/></svg>',plus:'<svg viewBox="0 0 20 20"><path d="M10 4v12M4 10h12"/></svg>',minus:'<svg viewBox="0 0 20 20"><path d="M4 10h12"/></svg>',locate:'<svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="5"/><path d="M10 2v3M10 15v3M2 10h3M15 10h3"/></svg>',layers:'<svg viewBox="0 0 20 20"><path d="M10 3 17 7l-7 4-7-4z"/><path d="M3 11l7 4 7-4M3 15l7 4 7-4"/></svg>',lock:'<svg viewBox="0 0 20 20"><rect x="4" y="9" width="12" height="8" rx="1.5"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></svg>',play:'<svg viewBox="0 0 20 20"><path d="M6 4l10 6-10 6z"/></svg>',exp:'<svg viewBox="0 0 20 20"><path d="M10 3v10M6 9l4 4 4-4M4 16h12"/></svg>',close:'<svg viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15"/></svg>',chev:'<svg viewBox="0 0 20 20"><path d="M7 4l6 6-6 6"/></svg>',info:'<svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7"/><path d="M10 9v5M10 6.5v.5"/></svg>',history:'<svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 2"/></svg>'};
+const ic=(n,s=14,o=1)=>`<i class="ic" style="width:${s}px;height:${s}px;opacity:${o}">${I[n]}</i>`;
+// ---------------- model (as in the sizing workbook) ----------------
+const DUR=[5,10,15,20,30,45,60,90,120,180,240,300,360,720,1440];
+const IDF0={5:[97.41,76.98,63.34,53.54,41.68,31.78,25.35,18.66,15.11,10.81,8.62,7.21,6.22,3.68,1.93],10:[118,97.61,80.41,68.58,54.72,42.82,34.22,25.18,20.57,14.6,11.61,9.73,8.44,5.13,2.71],25:[133.66,120.18,99.22,85.92,71.32,58.03,46.52,34.2,28.31,19.84,15.72,13.2,11.58,7.31,3.9],50:[169.22,152.15,125.61,108.78,90.3,73.47,58.89,43.29,35.85,25.12,19.91,16.71,14.65,9.25,4.94],100:[209.2,188.11,155.29,134.49,111.63,90.83,72.81,53.52,44.32,31.06,24.61,20.66,18.12,11.44,6.1]};
+const HOT0=[{id:'H1',d:'Underpass · arterial junction',A:12,C:0.75,tc:20,Qcap:1.8,pond:0,r:[3,3,1,3,3],x:520,y:275},{id:'H2',d:'Residential low point',A:35,C:0.45,tc:45,Qcap:2.6,pond:4500,r:[3,2,3,0,1],x:230,y:232},{id:'H3',d:'Downtown near coastline',A:22,C:0.85,tc:25,Qcap:3.1,pond:8000,r:[1,1,0,1,3],x:680,y:142},{id:'H4',d:'New residential district',A:60,C:0.35,tc:60,Qcap:3.4,pond:0,r:[1,0,1,0,0],x:420,y:470},{id:'H5',d:'Airport culvert catchment',A:40,C:0.6,tc:30,Qcap:4.0,pond:6000,r:[2,1,1,3,2],x:900,y:340},{id:'H6',d:'Government precinct',A:8,C:0.8,tc:15,Qcap:1.2,pond:2000,r:[2,2,2,3,2],x:700,y:292}];
+const deep=o=>JSON.parse(JSON.stringify(o));
+let INPUTS={v:'2.1',ts:'19 / 09 / 2026 09:10',IDF:deep(IDF0),CF:{5:1,10:1,25:1.1,50:1.2,100:1.25},ASM:{sed:1.05,shape:0.5,draw:2,pump:300,tank:15},HOT:deep(HOT0)};
+let DRAFT=null; const HISTORY=[{v:'2.0',ts:'12 / 09 / 2026 14:20',who:'Engineer',what:'Initial hotspot register (6 sites) · DM IDF reference · assumptions'},{v:'2.1',ts:'19 / 09 / 2026 09:10',who:'Engineer',what:'H5 pond 6,000 m³ added · drawdown set to 2 h (client SLA)'}];
+const state={role:'operator',rp:100,custom:{P:100,D:120},over:{draw:null,pump:null,tank:null},showHot:false,ran:false,computing:false,panel:true,drawer:false,tab:'hot',sel:null,ann:false,msgs:[]};
+function ASM(){ const a={...INPUTS.ASM}; for(const k of ['draw','pump','tank']) if(state.over[k]!=null) a[k]=state.over[k]; return a; }
+function overCount(){ return ['draw','pump','tank'].filter(k=>state.over[k]!=null&&state.over[k]!==INPUTS.ASM[k]).length; }
+const bucket=tc=>{let b=DUR[0];for(const d of DUR){if(d<=tc)b=d;}return b;};
+function calc(h,rp,inp=INPUTS){ const b=bucket(h.tc); let I; if(rp==='custom'){const P=state.custom.P,D=state.custom.D; I=P/Math.max(b,D)*60;} else I=inp.IDF[rp][DUR.indexOf(b)]; const cf=rp==='custom'?1:(inp.CF[rp]??1); const Cadj=Math.min(h.C*cf,1); const Q=Cadj*I*h.A/360; const ex=Math.max(0,Q-h.Qcap); const A=ASM(); const vol=ex*b*60*A.shape; const req=vol*A.sed; const short=Math.max(0,req-h.pond); const rate=A.draw>0?short/A.draw:0; const pumps=rate>0?Math.ceil(rate/A.pump):0; const loads=short>0?Math.ceil(short/A.tank):0; return {b,I,cf,Cadj,Q,ex,vol,req,short,rate,pumps,loads}; }
+function results(){ const rows=INPUTS.HOT.map(h=>({h,c:calc(h,state.rp)})); const s=rows.reduce((a,x)=>{a.Q+=x.c.Q;a.ex+=x.c.ex;a.req+=x.c.req;a.avail+=x.h.pond;a.short+=x.c.short;a.pumps+=x.c.pumps;a.loads+=x.c.loads;a.l1+=Math.min(x.c.Q,x.h.Qcap);a.l2+=x.c.ex*(x.c.req>0?Math.min(1,x.h.pond/x.c.req):0);a.l3+=x.c.ex*(x.c.req>0?1-Math.min(1,x.h.pond/x.c.req):0);return a;},{Q:0,ex:0,req:0,avail:0,short:0,pumps:0,loads:0,l1:0,l2:0,l3:0}); return {rows,s}; }
+const fmt=(n,d=0)=>n.toLocaleString('en-GB',{maximumFractionDigits:d,minimumFractionDigits:d});
+const rpLabel=rp=>rp==='custom'?`${state.custom.P} mm / ${state.custom.D} min`:`1-in-${rp}`;
+// ---------------- views ----------------
+function basemap(){ const CATCH=['120,180 300,90 400,180 280,300 160,300 100,320','300,90 560,60 600,170 400,180','560,60 820,110 760,230 600,170','400,180 600,170 640,330 430,340 280,300','600,170 760,230 820,380 640,330','820,110 1000,220 1040,360 900,520 820,380 760,230','100,320 160,300 280,300 430,340 640,330 820,380 900,520 640,580 380,560 180,470']; let s='<svg viewBox="0 0 1100 620" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%"><rect width="1100" height="620" fill="#0f1216"/><polygon points="120,180 300,90 560,60 820,110 1000,220 1040,360 900,520 640,580 380,560 180,470 100,320" fill="#22262b" stroke="#3a3f46" stroke-width="1.5"/>'; CATCH.forEach(p=>s+=`<polygon points="${p}" fill="none" stroke="#3a3f46" stroke-width="1" stroke-dasharray="3 4"/>`); [[[150,410],[215,215]],[[300,92],[465,125]],[[465,125],[685,140]],[[215,215],[500,255]],[[500,255],[705,275]],[[705,275],[900,300]],[[500,255],[500,470]],[[500,470],[760,470]],[[760,470],[900,520]],[[280,300],[430,340]],[[640,330],[820,380]]].forEach(([a,b])=>s+=`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="#4a5058" stroke-width="2" opacity=".7"/>`); return s+'<text x="16" y="600" fill="#5b6470" font-size="12">Basemap · 3D placeholder · schematic, not to scale</text></svg>'; }
+function pins(res){ return INPUTS.HOT.map(h=>{ const c=res?res.rows.find(x=>x.h.id===h.id).c:null; let col='rgba(255,255,255,.35)',txt='not computed'; if(c){ if(c.ex===0){col='#4786C9';txt='network holds · Line 1';} else if(c.short===0){col='#66C56B';txt='pond holds · Line 2';} else {col='#E0574E';txt=`${c.pumps} pumps · ${fmt(c.short)} m³ short · Line 3`;} } return `<div class="pin ${state.sel===h.id?'sel':''}" data-id="${h.id}" style="left:${h.x/1100*100}%;top:${h.y/620*100}%"><div class="dot" style="background:${col}"></div><div class="chip" style="border-color:${col}99"><b>${h.id} · ${h.d}</b><span>${txt}</span></div></div>`; }).join(''); }
+function menu(){ return `<div class="menu"><div class="logo">LX</div><div class="t">Urban Flood Readiness</div><div class="nav"><span>Master Plan Review</span><span>Liveability Profile</span><b>Command Centre</b><span>ADREC</span></div><div class="right"><span class="note">Role</span><div class="seg" id="role"><span class="${state.role==='operator'?'on':''}" data-r="operator">Operator · client</span><span class="${state.role==='engineer'?'on':''}" data-r="engineer">Engineer · back-end</span></div><div class="seg"><span class="${state.ann?'on':''}" id="annt">${ic('info',14)} Notes</span></div><span>dd / mm / yyyy · 24h</span></div></div>`; }
+function kpis(res){ const s=res?res.s:null; return `<div class="kpi"><div class="k"><div><div class="h">Storm</div><div class="l">${rpLabel(state.rp)}${state.rp==='custom'?' · Cf 1.0':' · Cf '+(INPUTS.CF[state.rp]??1)}</div></div><div><div class="v">${INPUTS.HOT.length}</div><div class="u">hotspots</div></div></div>
+<div class="k"><div><div class="h">Line 1 · Network</div><div class="l">Σ min(Q, Q<sub>cap</sub>)</div></div><div><div class="v">${s?fmt(s.l1,1):'—'}</div><div class="u">${s?'m³/s of '+fmt(s.Q,1):'run to compute'}</div></div></div>
+<div class="k"><div><div class="h">Line 3 · Fleet to Stage</div><div class="l">clear shortfall in ${ASM().draw} h</div></div><div><div class="v">${s?s.pumps:'—'}</div><div class="u">${s?'pumps · '+s.loads+' loads':'run to compute'}</div></div></div></div>`; }
+function legend(res){ return `<div class="legend"><b>${res?'Scenario Result · '+rpLabel(state.rp):'Hotspot Register'}</b><div><i style="background:#E0574E"></i>Line 3 needed · shortfall</div><div><i style="background:#66C56B"></i>Pond holds · Line 2</div><div><i style="background:#4786C9"></i>Network holds · Line 1</div>${res?'':'<div><i style="background:rgba(255,255,255,.35)"></i>Not computed</div>'}</div>`; }
+function toolbar(){ const left=state.panel?1061-16-30:1501-16-30; return `<div class="tools" style="left:${left}px"><div class="t ${state.panel?'on':''}" id="tgl" title="Scenario calculator">${ic('calc',14)}</div><div class="sep"></div><div class="t" title="2D / 3D">${ic('cube',14)}</div><div class="t" title="Zoom in">${ic('plus',14)}</div><div class="t" title="Zoom out">${ic('minus',14)}</div><div class="t" title="Locate">${ic('locate',14)}</div><div class="t" title="Layers">${ic('layers',14)}</div></div>`; }
+function inputRow(label,key,unit,step){ const A=ASM(); const ov=state.over[key]!=null&&state.over[key]!==INPUTS.ASM[key]; return `<div class="row" style="cursor:default"><span class="l">${label}<br><span style="font-size:12px;opacity:.7">${ov?`override · default v${INPUTS.v}:${INPUTS.ASM[key]}`:`default from inputs v${INPUTS.v}`}</span></span><span style="display:flex;align-items:center;gap:6px"><input type="number" step="${step}" data-ov="${key}" value="${A[key]}" style="width:72px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:4px;color:#6DB5EC;padding:4px 6px;font:inherit;font-size:12px;text-align:right"><span class="l">${unit}</span>${ov?`<span class="tag b" data-reset="${key}" style="cursor:pointer">reset</span>`:''}</span></div>`; }
+function scenarioPanel(res){ const rps=[5,10,25,50,100]; const pills=`<div class="pills">${rps.map(r=>`<span class="${state.rp===r?'on':''}" data-rp="${r}">1-in-${r}</span>`).join('')}<span class="${state.rp==='custom'?'on':''}" data-rp="custom">Custom</span></div>`;
+ const custom=state.rp==='custom'?`<div style="display:flex;gap:8px;margin-top:8px;align-items:center" class="note">Depth <input id="cP" type="number" value="${state.custom.P}" style="width:70px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:4px;color:#6DB5EC;padding:4px 6px;font:inherit"> mm in <input id="cD" type="number" value="${state.custom.D}" style="width:70px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:4px;color:#6DB5EC;padding:4px 6px;font:inherit"> min <span class="src">assumption · Cf 1.0</span></div>`:'';
+ const A=ASM(); const cf=state.rp==='custom'?1:(INPUTS.CF[state.rp]??1);
+ const inputs=`<div><h3>Inputs</h3>
+  <div class="note" style="margin-bottom:8px"><span class="tag b">adjustable</span> operator sets per scenario &nbsp; <span class="tag n" style="width:auto;padding:2px 6px">${ic('lock',12)}</span> from Model Inputs · read-only</div>
+  <div class="rows">
+   <div class="row" style="cursor:default"><span class="l">Storm · return period / custom depth</span><span class="tag b">adjustable</span></div>
+   ${inputRow('Response / drawdown time','draw','h',0.5)}
+   ${inputRow('Mobile pump unit capacity','pump','m³/h',50)}
+   ${inputRow('Tanker load','tank','m³',1)}
+   <div class="row" style="cursor:default"><span class="l">Hotspot register · area · C · tc · Q<sub>cap</sub> · pond</span><b>${INPUTS.HOT.length} sites ${ic('lock',12,.55)}</b></div>
+   <div class="row" style="cursor:default"><span class="l">IDF reference · intensity at tc</span><b>DM Table 0-2 ${ic('lock',12,.55)}</b></div>
+   <div class="row" style="cursor:default"><span class="l">Cf · sedimentation · hydrograph shape</span><b>${cf} · ${INPUTS.ASM.sed} · ${INPUTS.ASM.shape} ${ic('lock',12,.55)}</b></div>
+  </div>
+  <div class="note" style="margin-top:8px">Computed by the platform on Run: intensity I, peak flow Q, excess, flood volume, required pond, shortfall, pumps, loads. Inputs v${INPUTS.v}${overCount()?` · <span style="color:#E0A44E">${overCount()} scenario override(s) — not saved to the model</span>`:''}</div></div>`;
+ let body;
+ if(state.computing){ body=`<div><h3>Fleet Summary</h3><div class="skel"></div><div class="skel"></div><div class="skel"></div><div class="skel" style="width:70%"></div><div class="note" style="margin-top:8px">Computing ${INPUTS.HOT.length} hotspots · Rational Method · inputs v${INPUTS.v}</div></div>`; }
+ else if(!res){ body=`<div class="empty">${ic('calc',24,.55)}<b>No result yet</b><div class="note">Select a storm, adjust the scenario inputs if needed, then run. The fleet summary for that storm appears here and on the map.</div></div>`; }
+ else { const s=res.s; const tot=s.l1+s.l2+s.l3||1; const pc=v=>Math.round(100*v/tot); const ready=s.pumps===0?['Lines 1–2 hold','s']:(s.pumps<=10?['Stage fleet','w']:['Beyond typical fleet · capital case','d']); const sorted=[...res.rows].sort((a,b)=>b.c.pumps-a.c.pumps||b.c.short-a.c.short);
+  body=`<div><h3>Fleet Summary · ${rpLabel(state.rp)}</h3>
+   <div class="rows">
+    <div class="row" style="cursor:default"><span class="l">Total peak flow</span><b>${fmt(s.Q,2)} m³/s</b></div>
+    <div class="row" style="cursor:default"><span class="l">Total excess</span><b style="color:${s.ex?'#E0574E':'#66C56B'}">${fmt(s.ex,2)} m³/s</b></div>
+    <div class="row" style="cursor:default"><span class="l">Required pond</span><b>${fmt(s.req)} m³</b></div>
+    <div class="row" style="cursor:default"><span class="l">Available pond</span><b>${fmt(s.avail)} m³</b></div>
+    <div class="row" style="cursor:default"><span class="l">Pond shortfall</span><b style="color:${s.short?'#E0574E':'#66C56B'}">${fmt(s.short)} m³</b></div>
+    <div class="row" style="cursor:default"><span class="l">Mobile pumps</span><b style="font-size:14px">${s.pumps}</b></div>
+    <div class="row" style="cursor:default"><span class="l">Tanker loads</span><b>${s.loads}</b></div>
+    <div class="row" style="cursor:default"><span class="l">Readiness</span><span class="tag ${ready[1]}">${ready[0]}</span></div>
+   </div>
+   <div class="note" style="margin-top:8px">What the control room should stage for this storm, on top of what network and ponds absorb · recomputed ${new Date().toLocaleString('en-GB',{hour12:false}).replace(',','')} · inputs v${INPUTS.v}${overCount()?' + overrides':''} <span class="src">screening</span></div></div>
+  <div><h3>Three Lines of Defence</h3>
+   <div class="bar" style="margin:0 0 12px"><i style="left:0;width:${pc(s.l1)}%;background:#4786C9"></i><i style="left:${pc(s.l1)}%;width:${pc(s.l2)}%;background:#66C56B"></i><i style="left:${pc(s.l1)+pc(s.l2)}%;width:${pc(s.l3)}%;background:#E0A44E"></i></div>
+   <div class="stat" style="grid-template-columns:1fr">
+    <div style="border-left:3px solid #4786C9"><div class="l">Line 1 · Existing network · gravity Σ Q<sub>cap</sub> used · ${pc(s.l1)}%</div><div class="v">${fmt(s.l1,1)} <span class="l" style="font-size:14px">m³/s</span></div></div>
+    <div style="border-left:3px solid #66C56B"><div class="l">Line 2 · Ponds / fixed storage · required ${fmt(s.req)} · available ${fmt(s.avail)} · ${pc(s.l2)}%</div><div class="v">${fmt(Math.min(s.req,s.avail))} <span class="l" style="font-size:14px">m³ absorbed</span></div></div>
+    <div style="border-left:3px solid #E0A44E"><div class="l">Line 3 · Mobile pumps &amp; tankers · clear ${fmt(s.short)} m³ in ${A.draw} h · ${pc(s.l3)}%</div><div class="v">${s.pumps} <span class="l" style="font-size:14px">pumps · ${s.loads} loads</span></div></div>
+   </div></div>
+  <div><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h3 style="margin:0">Hotspot Detail</h3><span class="tag n" id="togHot" style="width:auto;padding:2px 8px;cursor:pointer">${state.showHot?'hide':'show'}</span></div>${state.showHot?`<div class="rows">${sorted.map((x,i)=>`<div class="row ${state.sel===x.h.id?'sel':''}" data-id="${x.h.id}"><span class="tag n">${i+1}</span><span style="flex:1;margin:0 10px"><b>${x.h.id}</b> <span class="l">· ${x.h.d}</span></span>${x.c.ex===0?'<span class="tag b">network holds</span>':x.c.short===0?'<span class="tag s">pond holds</span>':`<span class="tag d">${x.c.pumps} pumps</span>`}</div>`).join('')}</div>${state.sel?detail(res):''}`:`<div class="note">${sorted.filter(x=>x.c.pumps>0).map(x=>x.h.id+' '+x.c.pumps).join(' · ')||'no Line 3 deployment'} · click show or a map pin for the trace</div>`}</div>`; }
+  
+  // ==========================================
+  // 修改点：解除只能工程师角色查看模型输入的限制
+  // 新增独立且常驻可见的 "Model Inputs" 参数面板触发按钮
+  // ==========================================
+ return `<div class="panel" style="left:1061px"><div style="display:flex;justify-content:space-between;align-items:center"><h2>Scenario Calculator</h2><span id="closep" style="cursor:pointer">${ic('close',16,.55)}</span></div>
+ <div><h3>Storm</h3>${pills}${custom}</div>
+ <div class="content" style="gap:24px">${inputs}<button class="cta" id="run" ${state.computing?'disabled':''}>${ic('play',16)} ${state.computing?'Computing…':(res?'Run Again':'Run Scenario')}</button>${body}</div>
+ <div class="bottom">
+    <button class="ghost" id="exp" ${res?'':'disabled style="opacity:.5"'}>${ic('exp',16)} Export</button>
+    <button class="ghost" id="inputs" style="color:rgba(255,255,255,.9)">${ic('lock',16)} Model Inputs (v${INPUTS.v})</button>
+ </div></div>`; }
+
+function detail(res){ 
+  const x=res.rows.find(r=>r.h.id===state.sel); if(!x) return ''; 
+  const c=x.c,h=x.h; 
+  const verdict=c.ex===0?['Line 1 holds — network capacity exceeds peak flow','b']:c.short===0?['Line 2 holds — pond absorbs the excess','s']:[`Line 3 — ${c.pumps} pumps clear ${fmt(c.short)} m³ within ${ASM().draw} h`,'d'];
+  
+  let plan = '';
+  if(c.ex===0) {
+      plan = `<b>Line 1 Active:</b> Network capacity (${fmt(h.Qcap,2)} m³/s) is sufficient to handle the peak flow (${fmt(c.Q,2)} m³/s). Stormwater directly discharges to outfalls. No ponds or mobile units needed.`;
+  } else if(c.short===0) {
+      plan = `<b>Line 2 Active:</b> Network is at capacity. The excess flow is fully retained by the artificial pond at <b>${h.d}</b> (Required capacity: ${fmt(c.req)} m³). Water will be drained back to the network or pumped via HDPE pipes once network subsides.`;
+  } else {
+      plan = `<b>⚠️ Line 3 Triggered:</b> Lines 1 & 2 insufficient. Available pond capacity (${fmt(h.pond)} m³) cannot meet the required volume (${fmt(c.req)} m³).<br><br><b>Central Command Alert:</b> Dispatch <b>${c.pumps} mobile pumps</b> or <b>${c.loads} water tanks</b> to <b>${h.d}</b> immediately. Drain via HDPE over-ground pipes.`;
+  }
+
+  return `<div><h3>${h.id} · ${h.d}</h3><span class="tag ${verdict[1]}">${verdict[0]}</span>
+  <div style="margin-top:12px;background:rgba(255,255,255,.06);padding:10px 12px;border-radius:6px;border-left:3px solid ${c.ex===0?'#4786C9':c.short===0?'#66C56B':'#E0574E'}">
+    <div style="font-size:12px;color:rgba(255,255,255,.55);margin-bottom:6px;">📍 Location-based Action Plan</div>
+    <div style="font-size:12px;color:rgba(255,255,255,.9);line-height:1.5;">${plan}</div>
+  </div>
+  <div class="rows" style="margin-top:12px">${[['Duration used',c.b+' min'],['Intensity I',fmt(c.I,1)+' mm/h'],['Peak flow Q',fmt(c.Q,2)+' m³/s'],['Network Q<sub>cap</sub>',fmt(h.Qcap,2)+' m³/s'],['Excess',fmt(c.ex,2)+' m³/s'],['Required pond',fmt(c.req)+' m³'],['Available pond',fmt(h.pond)+' m³'],['Shortfall',fmt(c.short)+' m³'],['Mobile pumps · tanker loads',c.pumps+' · '+c.loads]].map(r=>`<div class="row" style="cursor:default"><span class="l">${r[0]}</span><b>${r[1]}</b></div>`).join('')}</div></div>`; 
+}
+function aiPanel(res){ const msgs=state.msgs.map(m=>m.kind==='user'?`<div class="bubble">${m.t}</div>`:`<div class="msg">${m.t}</div>`).join(''); return `<div class="panel" style="left:1501px"><div class="aihead"><div class="orb"></div><b>AI Assistant</b></div><div class="content" style="gap:16px">${msgs||'<div class="note">Ask for a storm scenario, or run one from the calculator. Answers cite the run they come from.</div>'}${res?`<div class="chips"><span class="chipb" data-cmp="50">Compare with 1-in-50</span><span class="chipb" data-cmp="25">Compare with 1-in-25</span><span class="chipb" id="plan">Draft readiness plan</span></div>`:''}</div><div class="composer"><span>Ask a follow-up…</span>${ic('chev',16,.55)}</div><div class="note" style="text-align:center">Answers are generated from DMT datasets. Verify before use.</div></div>`; }
+function drawer(){ if(!state.drawer) return ''; const D=DRAFT; const T=state.tab; let body='';
+ if(T==='hot'){ body=`<table><tr><th>ID</th><th>Location</th><th class="r">Area (ha)</th><th class="r">Runoff C</th><th class="r">tc (min)</th><th class="r">Q<sub>cap</sub> (m³/s)</th><th class="r">Pond (m³)</th><th class="r">Risk 0–3 ×5</th><th class="r">Score</th></tr>${D.HOT.map((h,i)=>`<tr><td><b>${h.id}</b></td><td><input class="w" type="text" data-h="${i}" data-f="d" value="${h.d}" style="text-align:left"></td><td class="r"><input type="number" data-h="${i}" data-f="A" value="${h.A}" class="${h.A>80?'key':''}"></td><td class="r"><input type="number" step="0.05" data-h="${i}" data-f="C" value="${h.C}"></td><td class="r"><input type="number" data-h="${i}" data-f="tc" value="${h.tc}"></td><td class="r"><input type="number" step="0.1" data-h="${i}" data-f="Qcap" value="${h.Qcap}"></td><td class="r"><input type="number" step="100" data-h="${i}" data-f="pond" value="${h.pond}"></td><td class="r"><span class="note">${h.r.join(' · ')}</span></td><td class="r"><b>${h.r.reduce((a,b)=>a+b,0)}</b></td></tr>`).join('')}</table><div class="note" style="margin-top:12px">Catchments above 80 ha are flagged (Rational Method limit). Edits are held in a draft until you save a new version.</div>`; }
+ if(T==='idf'){ body=`<div class="note" style="margin-bottom:12px">Reference: Dubai Municipality Stormwater Design Guidelines v2 (Jul 2024), Table 0-2 · mm/h · replace with ADM / NCM values for Abu Dhabi.</div><table><tr><th>RP \\ min</th>${DUR.map(d=>`<th class="r">${d}</th>`).join('')}</tr>${Object.keys(D.IDF).map(rp=>`<tr><td><b>${rp}</b></td>${D.IDF[rp].map((v,j)=>`<td class="r"><input type="number" step="0.1" data-rp="${rp}" data-j="${j}" value="${v}" style="width:60px"></td>`).join('')}</tr>`).join('')}</table>`; }
+ if(T==='asm'){ body=`<table><tr><th>Parameter</th><th class="r">Value</th><th>Source / basis</th></tr>${[['sed','Sedimentation allowance factor','DM Guidelines v2 §5.1',0.01],['shape','Hydrograph shape / attenuation factor','ASSUMPTION — triangular hydrograph',0.05],['draw','Target drawdown / response time (h)','Client SLA ≤ 2 h',0.5],['pump','Mobile pump unit capacity (m³/h)','ASSUMPTION — replace with fleet rating',50],['tank','Tanker capacity (m³ per load)','ASSUMPTION — replace with fleet value',1]].map(a=>`<tr><td>${a[1]}</td><td class="r"><input type="number" step="${a[3]}" data-a="${a[0]}" value="${D.ASM[a[0]]}" class="key"></td><td class="note">${a[2]}</td></tr>`).join('')}</table><h3 style="font-size:16px;font-weight:700;margin:24px 0 12px">Runoff coefficient adjustment Cf</h3><table><tr><th>Return period</th><th class="r">Cf</th></tr>${Object.keys(D.CF).map(rp=>`<tr><td>1-in-${rp}</td><td class="r"><input type="number" step="0.05" data-cf="${rp}" value="${D.CF[rp]}"></td></tr>`).join('')}</table>`; }
+ if(T==='ver'){ body=`<table><tr><th>Version</th><th>Saved</th><th>By</th><th>What changed</th><th></th></tr>${[...HISTORY].reverse().map(v=>`<tr><td><b>v${v.v}</b> ${v.v===INPUTS.v?'<span class="tag s">current</span>':''}</td><td>${v.ts}</td><td>${v.who}</td><td>${v.what}</td><td class="r">${v.v!==INPUTS.v?'<span class="tag b" style="cursor:pointer" data-restore="'+v.v+'">restore</span>':''}</td></tr>`).join('')}</table><div class="note" style="margin-top:12px">Every scenario result carries the inputs version it was computed with; restoring a version creates a new version rather than rewriting history.</div>`; }
+ return `<div class="drawer"><div class="sheet"><div class="hd"><div><h2>Model Inputs</h2><div class="note">Back-end parameters · changes re-run every scenario · current v${INPUTS.v} · ${INPUTS.ts} · <span class="tag w">Engineer role</span></div></div><div style="display:flex;gap:8px"><button class="ghost" id="cancel" style="flex:none">Cancel</button><button class="cta" id="save" style="width:auto;padding:10px 20px">Save as v${nextV()}</button></div></div>
+ <div class="tabs2">${[['hot','Hotspots'],['idf','IDF Table'],['asm','Assumptions & Cf'],['ver','Version History']].map(t=>`<span class="${T===t[0]?'on':''}" data-tab="${t[0]}">${t[1]}</span>`).join('')}</div><div class="sheetbody">${body}</div>
+ <div class="note">Blue = editable input · yellow = key assumption · Save creates a new inputs version and re-runs the open scenario; Cancel discards the draft.</div></div></div>`; }
+function nextV(){ const [a,b]=INPUTS.v.split('.').map(Number); return `${a}.${b+1}`; }
+function annotations(){ if(!state.ann) return ''; const A=[[1060,66,'Front-end · Scenario Calculator (docked, 420 px)','Inputs block shows what the operator may adjust (blue) and what comes locked from Model Inputs (lock · version). Run computes the Fleet Summary for the selected storm only; three-line cards follow.'],[1500,66,'AI Assistant narrates the run','Every answer cites the run (time · inputs version). Suggestion chips re-run or hand over to the readiness plan.'],[state.panel?880:1320,760,'Toolbar toggle (30×30)','Secondary entry only. Toolbar keeps 16 px from the nearest panel; shifts left when the calculator docks.'],[24,300,'Left KPI cards follow the run','Storm · Line 1 network · Line 3 fleet. Dash until a run exists.'],[420,700,'Map pins update on run','Blue = network holds · green = pond holds · red = Line 3 needed. Click a pin or a list row to open the trace.'],[1060,1012,'Back-end entry (Unlocked)','Model Inputs button is now available next to the Export button globally.'],[1250,10,'Role switch is a design-file control','Simulates operator vs engineer; not part of the product UI.']]; return A.map(a=>`<div class="ann" style="left:${a[0]}px;top:${a[1]}px">${a[2]}<small>${a[3]}</small></div>`).join(''); }
+// ---------------- render & bind ----------------
+function render(){ const res=state.ran&&!state.computing?results():null; const b=document.getElementById('board'); b.innerHTML=`<div class="map">${basemap()}${pins(res)}</div>${menu()}<div class="crumb">Command Centre / Urban Flood / <b>Scenario Calculator</b></div>${kpis(res)}${legend(res)}${toolbar()}${state.panel?scenarioPanel(res):''}${aiPanel(res)}${drawer()}${annotations()}<div class="toast" id="toast"></div>`; bind(); fit(); }
+function toast(t){ const e=document.getElementById('toast'); e.innerHTML=t; e.style.display='block'; clearTimeout(e._t); e._t=setTimeout(()=>e.style.display='none',3600); }
+function run(){ 
+  state.computing=true; state.ran=true; render(); 
+  setTimeout(()=>{ 
+    state.computing=false; const r=results(); const worst=[...r.rows].sort((a,b)=>b.c.pumps-a.c.pumps).filter(x=>x.c.pumps>0); 
+    state.msgs.push({kind:'user',t:`Please validate the model and generate scenarios for the required pond capacities, mobile pumps, and water tanks for each hotspot, including high-risk locations and dispatch plans.`}); 
+    
+    let aiText = `<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <b style="font-size:14px; color:#fff;">Model Validation & Scenario Reverse Engineering</b>
+        <span class="src">Inputs v${INPUTS.v}</span>
+    </div>`;
+    
+    const pctL1 = Math.round(100*r.s.l1/(r.s.Q||1));
+    const effectivePond = Math.min(r.s.req, r.s.avail);
+    
+    aiText += `<div style="font-size:12px; margin-bottom:12px; color:rgba(255,255,255,.9);"><b>3 Lines of Defense Stress Test (${rpLabel(state.rp)}):</b></div>`;
+    
+    // Graphical Summary Stats
+    aiText += `<div style="display:grid; grid-template-columns:1fr; gap:8px; margin-bottom:16px;">
+        <!-- Line 1 -->
+        <div style="background:rgba(255,255,255,.04); padding:8px 12px; border-radius:6px; border-left:3px solid #4786C9;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                <span><b>Line 1</b> · Existing Network</span>
+                <b>${fmt(r.s.l1,1)} m³/s</b>
+            </div>
+            <div class="bar" style="margin:0; background:rgba(71,134,201,.15);"><i style="width:${pctL1}%; background:#4786C9;"></i></div>
+            <div style="font-size:10px; color:rgba(255,255,255,.55); margin-top:4px;">Peak flow handled (${pctL1}% of total ${fmt(r.s.Q,1)} m³/s)</div>
+        </div>
+        <!-- Line 2 -->
+        <div style="background:rgba(255,255,255,.04); padding:8px 12px; border-radius:6px; border-left:3px solid #66C56B;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                <span><b>Line 2</b> · Artificial Ponds</span>
+                <b>${fmt(effectivePond)} / ${fmt(r.s.req)} m³</b>
+            </div>
+            <div class="bar" style="margin:0; background:rgba(102,197,107,.15);"><i style="width:${r.s.req>0 ? Math.min(100, (effectivePond/r.s.req)*100) : 100}%; background:#66C56B;"></i></div>
+            <div style="font-size:10px; color:rgba(255,255,255,.55); margin-top:4px;">Total required capacity vs. effective absorption</div>
+        </div>
+    </div>`;
+
+    if(worst.length) {
+        aiText += `<div style="margin-bottom:12px; font-size:12px; line-height: 1.5;">
+            <span style="color:#E0574E; font-weight:700;">⚠️ Line 3 (Emergency Fleet) Required:</span><br>
+            Capacity shortfall at ${worst.length} locations. Total deficit: <b>${fmt(r.s.short)} m³</b>.
+        </div>`;
+        
+        aiText += `<div style="font-size:12px; margin-bottom:10px; display:flex; align-items:center; gap:6px;">
+            <span style="font-size:14px;">📍</span> <b>High-Risk Hotspots & Dispatch Directives:</b>
+        </div>`;
+        
+        worst.forEach(x => {
+            aiText += `<div style="margin-bottom:8px; background:rgba(224,87,78,.1); border:1px solid rgba(224,87,78,.2); padding:10px 12px; border-radius:6px; border-left:3px solid #E0574E;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                    <b>${x.h.id} <span style="color:rgba(255,255,255,.6); font-weight:normal;">· ${x.h.d}</span></b>
+                    <span class="tag d" style="font-size:10px;">${fmt(x.c.short)} m³ Deficit</span>
+                </div>
+                
+                <div style="display:flex; gap:12px; margin-bottom:10px; font-size:11px;">
+                    <div style="flex:1; background:rgba(255,255,255,.05); padding:6px; border-radius:4px; text-align:center;">
+                        <div style="color:rgba(255,255,255,.55); margin-bottom:2px;">Available Pond</div>
+                        <b style="font-size:13px;">${fmt(x.h.pond)} m³</b>
+                    </div>
+                    <div style="flex:1; background:rgba(255,255,255,.05); padding:6px; border-radius:4px; text-align:center;">
+                        <div style="color:rgba(255,255,255,.55); margin-bottom:2px;">Required Volume</div>
+                        <b style="font-size:13px;">${fmt(x.c.req)} m³</b>
+                    </div>
+                </div>
+
+                <div style="color:rgba(255,255,255,.85); line-height:1.4;">
+                    <span style="color:#E0A44E;">⚡ <b>ACTION:</b></span> Dispatch <b style="color:#fff;">${x.c.pumps} mobile pumps</b> or <b style="color:#fff;">${x.c.loads} water tanks</b>. Drain excess via HDPE over-ground pipes within ${ASM().draw} hours.
+                </div>
+            </div>`;
+        });
+    } else {
+         aiText += `<div style="margin-bottom:12px; color:#66C56B;">
+            ✅ <b>Line 3 (Emergency Fleet):</b> All locations secured by Lines 1 & 2. No deployment required.
+         </div>`;
+    }
+    
+    aiText += `<div style="margin-top:16px; font-size:10px; color:rgba(255,255,255,.4); border-top:1px solid rgba(255,255,255,.1); padding-top:8px;">
+        Recommendations generated by platform model · Duty commander must verify before execution.
+    </div>`;
+    
+    state.msgs.push({kind:'ai',t:aiText}); render(); 
+  },700); 
+}
+function bind(){
+ document.querySelectorAll('#role span').forEach(e=>e.onclick=()=>{state.role=e.dataset.r; if(state.role!=='engineer') state.drawer=false; render();});
+ const an=document.getElementById('annt'); if(an) an.onclick=()=>{state.ann=!state.ann;render();};
+ document.querySelectorAll('[data-rp]').forEach(e=>e.onclick=()=>{state.rp=e.dataset.rp==='custom'?'custom':+e.dataset.rp; state.sel=null; render();});
+ const cP=document.getElementById('cP'),cD=document.getElementById('cD'); if(cP){cP.onchange=()=>{state.custom.P=+cP.value;}; cD.onchange=()=>{state.custom.D=+cD.value;};}
+ const r=document.getElementById('run'); if(r) r.onclick=run;
+ document.querySelectorAll('input[data-ov]').forEach(i=>i.onchange=()=>{state.over[i.dataset.ov]=+i.value; render();});
+ document.querySelectorAll('[data-reset]').forEach(e=>e.onclick=()=>{state.over[e.dataset.reset]=null; render();});
+ const th=document.getElementById('togHot'); if(th) th.onclick=()=>{state.showHot=!state.showHot;render();};
+ const cl=document.getElementById('closep'); if(cl) cl.onclick=()=>{state.panel=false;render();};
+ const tg=document.getElementById('tgl'); if(tg) tg.onclick=()=>{state.panel=!state.panel;render();};
+ document.querySelectorAll('.pin, .row[data-id]').forEach(e=>e.onclick=()=>{ if(!state.ran) return; state.sel=state.sel===e.dataset.id?null:e.dataset.id; state.panel=true; state.showHot=true; render(); });
+ const ex=document.getElementById('exp'); if(ex) ex.onclick=()=>{ if(!state.ran) return; const res=results(); let out='hotspot,rp,duration_min,I_mmh,Q_m3s,Qcap,excess,required_pond,available_pond,shortfall,pumps,tanker_loads,inputs_version\n'; res.rows.forEach(x=>out+=[x.h.id,rpLabel(state.rp),x.c.b,x.c.I.toFixed(1),x.c.Q.toFixed(3),x.h.Qcap,x.c.ex.toFixed(3),x.c.req.toFixed(0),x.h.pond,x.c.short.toFixed(0),x.c.pumps,x.c.loads,'v'+INPUTS.v].join(',')+'\n'); const a=document.createElement('a'); a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(out); a.download='scenario_result.csv'; a.click(); toast('Exported scenario_result.csv · inputs v'+INPUTS.v+(overCount()?' + '+overCount()+' override(s)':'')); };
+ const inp=document.getElementById('inputs'); if(inp) inp.onclick=()=>{DRAFT=deep({IDF:INPUTS.IDF,CF:INPUTS.CF,ASM:INPUTS.ASM,HOT:INPUTS.HOT}); state.drawer=true; state.tab='hot'; render();};
+ document.querySelectorAll('.tabs2 span').forEach(e=>e.onclick=()=>{state.tab=e.dataset.tab;render();});
+ document.querySelectorAll('.sheet input[data-h]').forEach(i=>i.onchange=()=>{const h=DRAFT.HOT[+i.dataset.h]; const f=i.dataset.f; h[f]=f==='d'?i.value:+i.value; render();});
+ document.querySelectorAll('.sheet input[data-rp][data-j]').forEach(i=>i.onchange=()=>{DRAFT.IDF[i.dataset.rp][+i.dataset.j]=+i.value;});
+ document.querySelectorAll('.sheet input[data-a]').forEach(i=>i.onchange=()=>{DRAFT.ASM[i.dataset.a]=+i.value;});
+ document.querySelectorAll('.sheet input[data-cf]').forEach(i=>i.onchange=()=>{DRAFT.CF[i.dataset.cf]=+i.value;});
+ const cancel=document.getElementById('cancel'); if(cancel) cancel.onclick=()=>{DRAFT=null;state.drawer=false;render();toast('Draft discarded · inputs remain v'+INPUTS.v);};
+ const save=document.getElementById('save'); if(save) save.onclick=()=>{ const changed=[]; ['sed','shape','draw','pump','tank'].forEach(k=>{if(DRAFT.ASM[k]!==INPUTS.ASM[k]) changed.push(k+' '+INPUTS.ASM[k]+' → '+DRAFT.ASM[k]);}); DRAFT.HOT.forEach((h,i)=>{const o=INPUTS.HOT[i]; ['A','C','tc','Qcap','pond','d'].forEach(f=>{if(h[f]!==o[f]) changed.push(h.id+' '+f+' '+o[f]+' → '+h[f]);});}); if(JSON.stringify(DRAFT.IDF)!==JSON.stringify(INPUTS.IDF)) changed.push('IDF table edited'); if(JSON.stringify(DRAFT.CF)!==JSON.stringify(INPUTS.CF)) changed.push('Cf edited'); const v=nextV(); INPUTS={v,ts:new Date().toLocaleString('en-GB',{hour12:false}).replace(',',''),IDF:DRAFT.IDF,CF:DRAFT.CF,ASM:DRAFT.ASM,HOT:DRAFT.HOT}; HISTORY.push({v,ts:INPUTS.ts,who:'Engineer',what:changed.length?changed.join(' · '):'No field changes (re-saved)'}); DRAFT=null; state.drawer=false; toast(`Saved inputs v${v} · ${changed.length} change(s)${state.ran?' · scenario re-run':''}`); if(state.ran) run(); else render(); };
+ document.querySelectorAll('[data-restore]').forEach(e=>e.onclick=()=>{toast('Restore creates a new version from v'+e.dataset.restore+' (demo: no snapshot stored)');});
+ document.querySelectorAll('[data-cmp]').forEach(e=>e.onclick=()=>{state.rp=+e.dataset.cmp;state.sel=null;run();});
+ const pl=document.getElementById('plan'); if(pl) pl.onclick=()=>toast('Hand-over to Readiness Plan · Level 2 · pumps per hotspot pre-filled from this run (module outside this design file)');
+}
+function fit(){ const s=Math.min(1,(window.innerWidth-0)/1920); const w=document.getElementById('wrap'); w.style.transform=`scale(${s})`; document.body.style.height=(1080*s)+'px'; }
+window.onresize=fit; render();
+</script>
+</body>
+</html>

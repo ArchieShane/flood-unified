@@ -1,0 +1,60 @@
+# 公共数据源登记：所有区域共用的大数据（太大，不进 git），推演脚本和打包脚本都从这里找位置。
+# 每个环境（开发机 / 三台推演服务器 / 内网）各写一段路径；密码不写这里，只走环境变量。
+# 区域专属的东西不放这里，放 data/regions/<区域>/region.toml。
+
+[env.dev_mac]
+gdb = "/Volumes/ArchieShane/temp/flood/标准模板结构_un_governed.gdb"        # 治理后管网（全市，UN file geodatabase；要先用 tools/gdb_fix.py 修标志位）
+dtm = "/Volumes/ArchieShane/temp/flood/DTM_z40_customer/AUH_DTM_5m_Z40.TIF"   # 全市 5 m DTM，EPSG:32640，27 GB
+mussafah_inp = "/Volumes/ArchieShane/temp/flood/Mussafah_00.inp"              # 客户 Mussafah 模型：雨量序列（9 种场景的雨型来源）
+makani_host = "10.255.254.109"
+makani_port = 5446
+
+[env.container]                  # worker 容器里（docker/docker-compose.worker.yml 的映射路径）
+gdb = "/gdb/标准模板结构_un_governed.gdb"
+dtm = "/dtm/AUH_DTM_5m_Z40.TIF"
+mussafah_inp = "/inputs/Mussafah_00.inp"
+makani_host = "MAKANI_HOST"      # 部署时改成内网里 Makani 库的地址；日常推演不读 Makani
+makani_port = 5446
+
+# [env.server]  # 推演服务器：NAS 上的路径、内网高精度 DTM 路径，到时按实际填
+# [env.intranet]
+
+[makani]
+dbname = "makani_sync_full"
+user = "postgres"
+password_env = "MAKANI_PASSWORD"                                              # 密码只从这个环境变量读
+# 下垫面表 → 坐标系（与 tools/rda_catchments.py / swbrain/landuse.py 读的一致）
+[makani.tables]
+bas_building = 4326
+bdms_bldg_landuse = 4326
+udm_bldroofsurface = 4326
+udm_building = 4326
+ud_parkingarea = 32640
+udm_parking = 4326
+ud_greenarea = 32640
+upc_greenarea = 32640
+udm_park = 4326
+udm_irrigationsurface = 4326
+udm_puttinggreen = 4326
+udm_watersurface = 4326
+udm_seasurface = 4326
+udm_fountainsurface = 4326
+udm_canalwatercoursesurface = 4326
+udm_roadsurface = 4326
+udm_roadshoulder = 4326
+udm_roadisland = 4326
+udm_roadintersection = 4326
+main_roads_carriageway_ifp2018_1 = 4326
+main_roads_shoulders_ifp2018_1 = 4326
+main_roads_median_ifp2018_1 = 4326
+udm_plot = 4326
+[makani.extra_columns]
+udm_plot = ["construction_status"]
+
+# 点图层（雨水口等资产）：表 → 坐标系；要带出来的属性见 makani.point_columns
+[makani.points]
+inlet = 32640
+catchbasin = 32640
+[makani.point_columns]
+inlet = ["unitid", "status", "condition", "unittype", "gully_type", "cover_type", "grating_type", "inlet_entry_type", "invert_level", "cover_level", "clear_opening", "cover_size", "inlet_size", "ground_level", "outfallid", "mainassetname", "subassetname", "data_source"]
+catchbasin = ["unitid", "status", "condition", "unittype", "concrete_type", "grating_type", "cover_shape", "invert_level", "cover_level", "cover_size", "outfallid", "mainassetname", "subassetname", "data_source"]

@@ -1,0 +1,32 @@
+{
+ "region": "RDB",
+ "domain_km2": 4.38,
+ "stations": [
+  {
+   "unitid": "SW_AKH_W1_01_PSS_60",
+   "ps_id": "ADM_RD-B",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Undefined",
+   "n_pumps": null,
+   "q_each_lps": null,
+   "q_src": "无数据：不建泵，列为局限",
+   "parsons": [],
+   "wetwell_node": "230847_2709770",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 9.37,
+   "on_m": 4.68,
+   "off_m": 0.94,
+   "depth_note": "",
+   "discharge_node": "230837_2709808",
+   "discharge_dist_m": 0,
+   "discharge_src": "客户 GDB 压力管",
+   "forcemain_m": 41,
+   "forcemain_unitids": [
+    "SW_AKH_W1_01_PI_125577"
+   ],
+   "x": 230847.6,
+   "y": 2709770.0
+  }
+ ]
+}

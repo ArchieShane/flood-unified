@@ -1,0 +1,30 @@
+{
+ "region": "RDJ",
+ "domain_km2": 3.37,
+ "stations": [
+  {
+   "unitid": "SW_AQU_W50_PSS_62",
+   "ps_id": "ADM_RD-J",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::350 & 85x2",
+   "n_pumps": null,
+   "q_each_lps": null,
+   "q_src": "无数据：不建泵，列为局限",
+   "parsons": [],
+   "wetwell_node": "233510_2704317",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 8.0,
+   "on_m": 4.0,
+   "off_m": 0.8,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 233510.2,
+   "y": 2704317.4
+  }
+ ]
+}

@@ -1,0 +1,109 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://swbrain.local/schemas/events.schema.json",
+ "title": "swbrain.events/1 · 降雨事件",
+ "description": "一场真实（或预报中）的雨。date 或 start 给日期；缺 start/end 时按 date 前后几天算窗口。 顶层 {schema, as_of, source, rows[]}；也接受裸数组。",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "swbrain.events/1"
+  },
+  "as_of": {
+   "type": "string"
+  },
+  "source": {
+   "type": "string"
+  },
+  "rows": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "event_id": {
+      "type": "string"
+     },
+     "kind": {
+      "type": "string",
+      "enum": [
+       "historical",
+       "forecast",
+       "live"
+      ]
+     },
+     "label": {
+      "type": "string"
+     },
+     "label_en": {
+      "type": "string"
+     },
+     "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}(-\\d{2})?"
+     },
+     "start": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}(-\\d{2})?"
+     },
+     "end": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}(-\\d{2})?"
+     },
+     "p24_mm": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "缺省片区的 24 h 雨量"
+     },
+     "p24_by_area": {
+      "type": "object",
+      "description": "分站 / 分片区的 24 h 雨量"
+     },
+     "scenario_key": {
+      "type": "string",
+      "description": "对上的设计情景；留空表示不映射"
+     },
+     "alert_level": {
+      "type": "string",
+      "enum": [
+       "蓝",
+       "黄",
+       "橙",
+       "红"
+      ]
+     },
+     "impacted_areas": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "description": "公开报道点名的积水片区（片区级证据，不是逐点记录）"
+     },
+     "source": {
+      "type": "string"
+     },
+     "note": {
+      "type": "string"
+     }
+    },
+    "additionalProperties": true,
+    "required": [
+     "event_id"
+    ],
+    "anyOf": [
+     {
+      "required": [
+       "date"
+      ]
+     },
+     {
+      "required": [
+       "start"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "required": [
+  "rows"
+ ]
+}

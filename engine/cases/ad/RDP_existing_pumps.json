@@ -1,0 +1,32 @@
+{
+ "region": "RDP",
+ "domain_km2": 3.56,
+ "stations": [
+  {
+   "unitid": "SW_AMZ_W62_PSS_71",
+   "ps_id": "71",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::350 & 85x2",
+   "n_pumps": null,
+   "q_each_lps": null,
+   "q_src": "无数据：不建泵，列为局限",
+   "parsons": [],
+   "wetwell_node": "242653_2701785",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 7.0,
+   "on_m": 3.5,
+   "off_m": 0.7,
+   "depth_note": "",
+   "discharge_node": "242640_2701745",
+   "discharge_dist_m": 0,
+   "discharge_src": "客户 GDB 压力管",
+   "forcemain_m": 43,
+   "forcemain_unitids": [
+    "SW_AMZ_W62_PI_148161"
+   ],
+   "x": 242653.6,
+   "y": 2701785.8
+  }
+ ]
+}

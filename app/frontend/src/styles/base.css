@@ -1,0 +1,18 @@
+/* 两个页面的视觉体系完全不同（指挥中心深色全屏 / 计算器浅色文档流），
+   各自的样式表都以 body.theme-* 收口，见 styles/command-centre.css 与
+   styles/calculator.css。这里只放两者共有的那一点点。 */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* 指挥中心那张样式表里的 `body{height:100%}` 要有个非 auto 的爹才生效；
+   计算器页 body 没有高度规则，这条对它无影响。 */
+html {
+  height: 100%;
+}
+
+#app {
+  min-height: 100%;
+}

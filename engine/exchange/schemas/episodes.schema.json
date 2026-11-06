@@ -1,0 +1,94 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://swbrain.local/schemas/episodes.schema.json",
+ "title": "swbrain.episodes/1 · 逐点积水记录",
+ "description": "某个热点在某场雨里的一条事实：是否积水、多深多久、派了几台、某个阶段什么时候发生。同一点同一事件的多行会合并。 顶层 {schema, as_of, source, rows[]}；也接受裸数组。",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "swbrain.episodes/1"
+  },
+  "as_of": {
+   "type": "string"
+  },
+  "source": {
+   "type": "string"
+  },
+  "rows": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "fp_id": {
+      "type": "string",
+      "pattern": "^(ADM|AAM|DRM|HS)[ \\-_]?\\d{1,4}$",
+      "description": "客户热点编号，如 ADM-62"
+     },
+     "event_id": {
+      "type": "string"
+     },
+     "flooded": {
+      "type": "boolean",
+      "description": "该点在这场雨里是否积水（对账的地面真值）"
+     },
+     "depth_m": {
+      "type": "number",
+      "minimum": 0
+     },
+     "duration_min": {
+      "type": "number",
+      "minimum": 0
+     },
+     "units": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "实际派泵台数"
+     },
+     "first_arrival_min": {
+      "type": "number"
+     },
+     "drain_min": {
+      "type": "number"
+     },
+     "stage": {
+      "type": "string",
+      "enum": [
+       "alerted",
+       "staged",
+       "reported",
+       "verified",
+       "dispatched",
+       "arrived",
+       "pumping",
+       "dry",
+       "closed",
+       "reviewed"
+      ]
+     },
+     "at": {
+      "type": "string",
+      "description": "该阶段的时间（ISO）"
+     },
+     "source": {
+      "type": "string",
+      "description": "complaint / inspection / 993 / contractor / satellite …"
+     },
+     "note": {
+      "type": "string"
+     }
+    },
+    "additionalProperties": true,
+    "required": [
+     "fp_id",
+     "event_id"
+    ]
+   }
+  }
+ },
+ "required": [
+  "rows"
+ ]
+}

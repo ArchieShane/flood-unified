@@ -1,0 +1,189 @@
+{
+ "schema": "swbrain.events/1",
+ "as_of": "2026-09-23",
+ "source": "Public sources compiled 2026-09-23 (NCM figures as quoted by The National, Gulf News, Khaleej Times, Emirates 24|7, FloodList, Wikipedia, ECMWF Newsletter 180, Sci. Rep. 2025 s41598-025-12234-w, PMC13365373, Abu Dhabi Media Office). Station totals are as reported; Abu Dhabi-city figures are missing for several events and are left null rather than guessed. p24_mm = default 24-h depth used for the Abu Dhabi city scale; p24_by_area = station / area totals as reported (some are multi-day). Rows for 2024-04 and 2026-03 only add notes / windows to the events already defined in config [scenarios.events].",
+ "rows": [
+  {
+   "event_id": "1982-02",
+   "kind": "historical",
+   "label": "1982-02 实测（阿布扎比低洼区积水数周）",
+   "label_en": "Feb 1982 observed (Abu Dhabi low-lying areas flooded for weeks)",
+   "date": "1982-02",
+   "p24_mm": null,
+   "p24_by_area": {
+    "Abu Dhabi city": 50.0,
+    "Dubai": 65.0,
+    "Fujairah": 94.0,
+    "Sharjah": 50.0
+   },
+   "scenario_key": null,
+   "source": "The National 2026-03-25 'A history of UAE storms': two-day totals; Abu Dhabi 50 mm+, low-lying areas of Abu Dhabi city flooded for weeks (Tourist Club area nicknamed 'Lake District')",
+   "note": "两天雨量下限 50 mm；市区低洼区积水数周；早于现有管网台账，只作历史背景。"
+  },
+  {
+   "event_id": "2016-03",
+   "kind": "historical",
+   "label": "2016-03-09 实测（大风暴雨，Al Shuaib 240 mm）",
+   "label_en": "9 Mar 2016 observed (storm, Al Shuaib 240 mm)",
+   "date": "2016-03-09",
+   "start": "2016-03-08",
+   "end": "2016-03-10",
+   "p24_mm": 67.0,
+   "p24_by_area": {
+    "Al Shuaib (Al Ain)": 240.0,
+    "Al Ain": 77.0,
+    "Abu Dhabi city surroundings": 67.0,
+    "since Saturday total": 295.0
+   },
+   "scenario_key": "25",
+   "source": "Emirates 24|7 2016-03-09 (NCMS: Al Shuaib 240 mm, Al Ain 77 mm, surrounding areas 65–70 mm; roads flooded across Abu Dhabi city, Madinat Zayed); CNN 2016-03-09 (winds up to 130 kph; schools shut, flights suspended); The National 2024-04-22 (Al Bateen airport gust 126 kph)",
+   "note": "阿布扎比市区周边 65–70 mm 取 67 mm 作缺省；对上 25 年一遇（69.6 mm）。市区多条主干道积水，Madinat Zayed 水位明显上升。",
+   "impacted_areas": [
+    "Abu Dhabi city",
+    "Madinat Zayed"
+   ]
+  },
+  {
+   "event_id": "2019-11",
+   "kind": "historical",
+   "label": "2019-11-20 实测（'Wet Wednesday'，阿布扎比小到中雨）",
+   "label_en": "20 Nov 2019 observed ('Wet Wednesday', light–moderate in Abu Dhabi)",
+   "date": "2019-11-20",
+   "p24_mm": null,
+   "p24_by_area": {
+    "Shoukah (RAK)": 77.5,
+    "Kalba": 65.8,
+    "Umm Al Gaf (RAK)": 60.6
+   },
+   "scenario_key": null,
+   "source": "Gulf Today 2019-11-19/20; The National 2019-11-22 'Emirates clean up after Wet Wednesday' (NCM: highest Shoukah 77.5 mm; light–moderate rain on Abu Dhabi Island, Saadiyat, Al Shawamekh)",
+   "note": "阿布扎比仅小到中雨，对市区排水系统影响有限；无阿布扎比站雨量。",
+   "impacted_areas": [
+    "Abu Dhabi Island",
+    "Saadiyat",
+    "Al Shawamekh"
+   ]
+  },
+  {
+   "event_id": "2020-01",
+   "kind": "historical",
+   "label": "2020-01-09~12 实测（24 年来最大，Al Ain 190.4 mm）",
+   "label_en": "9–12 Jan 2020 observed (heaviest in 24 years, Al Ain 190.4 mm)",
+   "date": "2020-01-11",
+   "start": "2020-01-09",
+   "end": "2020-01-12",
+   "p24_mm": null,
+   "p24_by_area": {
+    "Al Shakla (Al Ain)": 190.4,
+    "Mazyad (Al Ain)": 172.4,
+    "Damtha (Al Ain)": 172.2,
+    "Al Foah (Al Ain)": 156.8,
+    "Falaj Al Mualla": 152.0
+   },
+   "scenario_key": null,
+   "source": "The Watchers 2020-01-13 / Gulf News (NCM 9–12 Jan totals; previous record Khor Fakkan 144 mm, 1996); FloodList 2020-01 (several areas >150 mm; two rescued from floodwater in Al Ain)",
+   "note": "四天累计，非 24 h；阿布扎比市区站雨量未找到，不映射情景。艾因地区极端。"
+  },
+  {
+   "event_id": "2024-02",
+   "kind": "historical",
+   "label": "2024-02-11~13 实测（艾因 170 mm，阿布扎比红色预警）",
+   "label_en": "11–13 Feb 2024 observed (Al Ain 170 mm, red alert for parts of Abu Dhabi)",
+   "date": "2024-02-12",
+   "start": "2024-02-11",
+   "end": "2024-02-13",
+   "p24_mm": null,
+   "p24_by_area": {
+    "Al Ain (daily max)": 170.0,
+    "UAEU station 30-min": 107.0
+   },
+   "scenario_key": null,
+   "source": "Sci. Rep. 2025 (s41598-025-12234-w): 12 Feb 2024 max daily 170 mm, 107 mm in 30 min at UAE University station; The National 2024-02-12 (NCM red alert for some areas of Abu Dhabi; remote work / distance learning in Abu Dhabi on Monday 12 Feb; speed limits cut on Abu Dhabi–Al Ain and Abu Dhabi–Sweihan roads)",
+   "note": "阿布扎比市区站雨量未找到；市政范围内远程办公与网课。"
+  },
+  {
+   "event_id": "2024-03",
+   "kind": "historical",
+   "label": "2024-03-09 实测（艾因 78 mm，琥珀预警）",
+   "label_en": "9 Mar 2024 observed (Al Ain 78 mm, amber alert)",
+   "date": "2024-03-09",
+   "p24_mm": null,
+   "p24_by_area": {
+    "Khatm Al Shakla (Al Ain)": 78.0
+   },
+   "scenario_key": null,
+   "source": "Sci. Rep. 2025 (s41598-025-12234-w): 9 Mar 2024 max daily 78 mm at Khatam Al Shaklah; Gulf News 2024-03-09 (amber alert incl. Al Ain; hail in Ghayathi; continuous rain in Al Ain and other Abu Dhabi regions)",
+   "note": "以艾因为主；阿布扎比市区无雨量数字。"
+  },
+  {
+   "event_id": "2024-04",
+   "kind": "historical",
+   "start": "2024-04-15",
+   "end": "2024-04-18",
+   "note": "全国 75 年最大：Khatm Al Shakla（艾因）24 h 254.8 mm（NCM；ECMWF 记 259.5），Kalba 233.3，Al Marmoom 219.3，迪拜机场 144–164；15 日夜起、16 日峰、17 日止。阿布扎比：Khalifa City、Zayed City 洪水逼近住宅，Al Bandar 有清理作业，Zayed 国际机场全程运行并接收 21 架迪拜改降航班；市政投入约 75 辆罐车抽排低洼区，DMT 应急队通宵作业（Abu Dhabi Media Office 2024-04-20）；西部沙漠与阿布扎比酋长国部分地区 24 h 不足 50 mm（PMC13365373）。配置里 Shaliela 159.58 / RB3 96.23 / Mussafah 91.8 / ICAD 84.37 为 Parsons 的 Thiessen 加权值，其余片区 94 mm 仍是假设。全国 5 人死亡；保险损失估 6.5–8.5 亿美元（Guy Carpenter）。",
+   "impacted_areas": [
+    "Khalifa City",
+    "Zayed City",
+    "Al Bandar"
+   ]
+  },
+  {
+   "event_id": "2024-05",
+   "kind": "historical",
+   "label": "2024-05-02 实测（次于 4 月，阿布扎比市区卫星测到积水）",
+   "label_en": "2 May 2024 observed (less severe than April; flood water detected in Abu Dhabi city by satellite)",
+   "date": "2024-05-02",
+   "start": "2024-05-01",
+   "end": "2024-05-03",
+   "p24_mm": null,
+   "p24_by_area": {},
+   "scenario_key": null,
+   "source": "Sentinel Asia EO 2024-05-02 (Sentinel-1 flood water detected in Al Ain and Abu Dhabi city on 2 May and 6 May); The National 2024-05-01 / Time Out (NCM: less severe than April; nationwide distance learning and remote work 2–3 May)",
+   "note": "无雨量数字；卫星在阿布扎比市区探到积水面，可作为逐点记录的来源之一。"
+  },
+  {
+   "event_id": "2025-12",
+   "kind": "historical",
+   "label": "2025-12-13~19 实测（以 RAK 为主，阿布扎比小到中雨）",
+   "label_en": "13–19 Dec 2025 observed (RAK-centred; light–moderate in Abu Dhabi)",
+   "date": "2025-12-18",
+   "start": "2025-12-13",
+   "end": "2025-12-20",
+   "p24_mm": null,
+   "p24_by_area": {
+    "Al Ghaznah (RAK)": 127.0,
+    "Mina Saqr (RAK)": 123.0,
+    "Jebel Jais (RAK)": 115.0
+   },
+   "scenario_key": null,
+   "source": "The National 2025-12-16 and 2025-12-20 (main wave Thu–Fri 18–19 Dec; RAK more than a year's rain; nationwide response to clear waterlogged roads; private sector urged to work from home); Gulf News 2025-12-19 (wadis flowing in Al Ain, Tawiyin, RAK)",
+   "note": "阿布扎比市区仅小到中雨，艾因周五有雨；无阿布扎比站数字。"
+  },
+  {
+   "event_id": "2026-03",
+   "kind": "historical",
+   "date": "2026-03-23",
+   "start": "2026-03-22",
+   "end": "2026-03-28",
+   "p24_by_area": {
+    "Ghayathi (Al Dhafra)": 91.0,
+    "Al Wathba": 88.2,
+    "Mohammed bin Zayed City": 78.7,
+    "Al Ruwais": 75.7,
+    "Abu Dhabi Corniche (24 Mar)": 28.3,
+    "Al Hayer (Al Ain, 26–27 Mar)": 234.1,
+    "Khatm Al Shakla (Al Ain, 26–27 Mar)": 226.6,
+    "Al Manama (Ajman)": 93.3
+   },
+   "note": "一周降雨（3-23 周一峰值到 3-27 周五）：23 日 Al Wathba 88.2、MBZ City 78.7、Ghayathi 91、Al Ruwais 75.7（NCM 前五名四个在阿布扎比）；24 日 Corniche 28.3；25 日 Al Riyadh、Al Wathba、Zayed 国际机场、Khalifa City、Madinat Zayed 有雷阵雨；26–27 日夜艾因 Al Hayer 234.1、Khatm Al Shakla 226.6。Yas 岛入口改道，市中心积水，市政抽排主要道路与住宅区；阿布扎比警方三地指挥室处理 11.7 万余条报告；NCM 归因于常规低压系统（区别于 2024-04 的暖海面）。配置里缺省 72 mm（其余片区假设）偏低：峰日 Al Wathba 88.2 / MBZ City 78.7 更接近 50 年一遇（81.8 mm），建议把 [scenarios.events.2026-03] 的 p24_default_mm 改到 80 左右并重算该情景。",
+   "impacted_areas": [
+    "Abu Dhabi city centre",
+    "Yas Island",
+    "Khalifa City",
+    "Al Riyadh",
+    "Al Wathba",
+    "Madinat Zayed"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "region": "RD26A",
+ "domain_km2": 0.96,
+ "stations": [
+  {
+   "unitid": "SW_SAN_SAN_PSS_18",
+   "ps_id": "ADM_RD-20",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::2x60",
+   "n_pumps": 2,
+   "q_each_lps": 60.0,
+   "q_src": "客户备注 2×60",
+   "parsons": [
+    {
+     "model": "RD-26A",
+     "flow_lps": 79.79,
+     "dist_m": 3
+    },
+    {
+     "model": "RD-26A",
+     "flow_lps": 0.0,
+     "dist_m": 3
+    }
+   ],
+   "wetwell_node": "247481_2703005",
+   "wetwell_dist_m": 14,
+   "well_depth_m": 14.5,
+   "on_m": 7.25,
+   "off_m": 1.45,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 247492.4,
+   "y": 2702996.9
+  }
+ ]
+}

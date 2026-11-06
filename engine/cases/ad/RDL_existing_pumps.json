@@ -1,0 +1,30 @@
+{
+ "region": "RDL",
+ "domain_km2": 1.95,
+ "stations": [
+  {
+   "unitid": "SW_AMZ_W62_PSS_70",
+   "ps_id": "70",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::350 & 85x2,Pumping station running by generator",
+   "n_pumps": null,
+   "q_each_lps": null,
+   "q_src": "无数据：不建泵，列为局限",
+   "parsons": [],
+   "wetwell_node": "238736_2703174",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 7.0,
+   "on_m": 3.5,
+   "off_m": 0.7,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 238736.3,
+   "y": 2703174.2
+  }
+ ]
+}

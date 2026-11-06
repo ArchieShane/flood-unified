@@ -1,0 +1,12 @@
+{
+ "schema": "swbrain.contractors/1",
+ "as_of": "2026-09-22T18:00:00+04:00",
+ "source": "example — replace with the real stormwater O&M contractor service boundaries (illustrative only)",
+ "notes": "Either map a depot directly (depot_id → contractor) or map a municipality / area (region + area → contractor; area may be 'A/B' for several). Depots with no row keep the simulated name SW-<region>-<area>. Contractor names drive the silo-vs-pooled comparison and cross-zone work-order costs in [dispatch.contractors]. Optional boundary = GeoJSON polygon for display. Place the real file at exchange/contractors.json, POST it to /api/feed/contractors, or set [feeds.contractors].url.",
+ "rows": [
+  {"depot_id": "A01", "contractor": "Example Contractor A", "contact": "duty desk +971-2-000-0000", "boundary": null},
+  {"region": "ADM", "area": "Mussafah", "contractor": "Example Contractor B"},
+  {"region": "AAM", "contractor": "Example Contractor C"},
+  {"region": "DRM", "contractor": "Example Contractor D"}
+ ]
+}

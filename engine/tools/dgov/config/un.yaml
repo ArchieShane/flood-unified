@@ -1,0 +1,8 @@
+# 建 Utility Network 用（标准 v0.2 第 11 章；tools/dgov/un.py）。
+arcgis_python: "C:/Users/zn198/AppData/Local/ESRI/conda/envs/arcgispro-py3-clone1/python.exe"   # Pro 克隆环境，装了 Esri 官方 conda 包 untools 3.7.1（用户 2026-10-21）
+work_root: "D:/swbrain_work/esri_un/runs_ess"    # 纯英文路径：ArcGIS 部分工具不认中文路径
+# 目标结构：Esri Stormwater Utility Network Essentials，完整部署（用户 2026-10-21 定）。
+# 部署引擎：首选 untools（Esri conda 包）；没有时用 UDMS 工具箱（Pro 3.7.2 版，GitHub）内置的 udms_pt。
+method: essentials_full                          # essentials_full = un_build_ess.py（完整结构 + 属性规则）；migrate = un_build.py（旧的精简版）
+esri_asset_package: "D:/swbrain_work/esri_un/ess/Data Models/StormwaterEssentials_AssetPackage.gdb"   # 原件：arcgis/Stormwater_Utility_Network_Essentials.zip
+udms_atbx: "D:/阿布扎比/排水智能体/arcgis/UtilityDataManagementSupport.atbx"

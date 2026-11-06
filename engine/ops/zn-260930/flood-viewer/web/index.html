@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>洪水推演成果</title>
+<link rel="stylesheet" href="vendor/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>洪水推演成果</h1>
+  <label>区域<select id="selRegion" disabled></select></label>
+  <label>格网精度<select id="selGrid" disabled></select></label>
+  <label>模拟雨量<select id="selRain" disabled></select></label>
+  <span id="status" class="m"></span>
+</header>
+<main>
+  <aside id="panel"><div class="empty">正在读取成果目录…</div></aside>
+  <div id="map"></div>
+</main>
+<script src="vendor/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

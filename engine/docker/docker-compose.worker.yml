@@ -1,0 +1,22 @@
+# 推演 worker：镜像只是运行环境，脚本和数据都在宿主机目录。三台推演服务器各起一个。
+# 推演下一个区域：在宿主机 ENGINE_DIR 下建 data/regions/<新区域>/（region.toml + 数据 + 需要的脚本），用同一个镜像跑，不换镜像。
+# 路径用 .env 覆盖；NAS 在三台上的挂载路径可以不同，这里统一映射成容器内的 /nas。
+services:
+  worker:
+    image: flood-worker:${TAG:-v3}
+    container_name: flood-worker
+    restart: unless-stopped
+    command: ["python3", "-u", "/app/tools/worker.py"]      # 领任务单并执行（脚本在宿主机，待写）；调试时可改成 sleep infinity 再 docker exec
+    environment:
+      SWBRAIN_ENV: container
+      SWBRAIN_SWMM_WORK: /work
+      OMP_NUM_THREADS: ${THREADS:-5}
+      MAKANI_PASSWORD: ${MAKANI_PASSWORD:-}                  # 只在需要读 Makani 的步骤里用；日常推演读 data/regions 里已裁好的数据
+    volumes:
+      - ${ENGINE_DIR:-..}:/app:ro                            # 整个 engine/：脚本、规则、公共数据、各区域目录
+      - ${NAS_DIR:-/media/pop-fs/flood_data}:/nas            # 任务单 / 输入 / 成果（三台共用同一个 NAS 目录）
+      - ${WORK_DIR:-/data/swbrain_work}:/work                # 工作目录（路径不能有中文）
+      # 只在打新区域数据包时才要：
+      # - ${DTM_DIR}:/dtm:ro
+      # - ${GDB_DIR}:/gdb:ro
+      # - ${INPUTS_DIR}:/inputs:ro

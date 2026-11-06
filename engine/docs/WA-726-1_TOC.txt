@@ -1,0 +1,1618 @@
+WA-726-1 前 30 页内容
+================================================================================
+
+
+================================================================================
+第 1 页
+================================================================================
+STORMWATER & SUBSOIL DRAINAGE 
+SYSTEMS
+VOLUM E I: DESIG N MANUAL 
+WA-726-1
+
+
+
+================================================================================
+第 2 页
+================================================================================
+ 
+ 
+ 
+Standards Guideline  
+For 
+ 
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS  
+ 
+VOLUME 1  
+ 
+DESIGN MANUAL  
+ 
+ 
+ 
+Document No: WA-726-1 
+Third Edition  
+April - 2022  
+Department of Municipal ities and Transport  
+PO Box 20  
+Abu Dhabi, United Arab Emirates  
+ 
+ 
+© Copyright 2022, by the Department of Municipalities and Transport .  All Rights Reserved.  This manual, or parts thereof, 
+may not be reproduced in any form without written permission of the publisher  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+================================================================================
+第 3 页
+================================================================================
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+S.# Table of Contents  Pages  
+1 Amendment Page  2 
+2 About the Abu Dhabi Quality and Conformity Council  9 
+3 Acknowledgement  10 
+4 Foreword  11 
+5 Working group  5 
+6 Purpose  5 
+7 Scope  6 
+8 TABLE OF CONTENTS  of the Guideline   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+================================================================================
+第 4 页
+================================================================================
+ 
+1. Amendment Page  
+      To ensure that each copy of this technical document (Abu Dhabi Guideline) 
+contains a complete record of amendments, the Amendment Page is updated and 
+issued with each set of revised/new pages of the document. This ADG/ISGL is a live 
+document which  can be amended when necessary.  QCC operates VOLUME I, 
+DESIGN MANUAL Group which prepared this document and can review stakeholder 
+comments in order to review and amend this document and issue an updated version 
+when necessary.  
+ 
+ 
+EDITION 
+NO. REVISION 
+NO. DATE  PAGE NO.  AMENDMENTS  NOTES  
+01 00 DEC  2016     
+02 01 JULY 2020  WA-726-1: 2.3 
+(PAGE -5) Modify as below:  
+Structure (With Reinforcement) - 50 
+years.  
+Structure (Without Reinforcement) -60 
+years   
+02 01 JULY 2020  WA-726-1: 3.4.1  
+(PAGE-20) Add the following statement: 
+“Recommended type of curve to be 
+used for hydraulic modelling should be 
+SCS Type II Cumulative type curve, 
+unless otherwise specified by 
+DEPARTMENT ”.  
+02 01 JULY 2020  WA-726-1: 3.4.2  
+(PAGE-23) Modify as below:  
+The hydraulic model CIVILSTORM (for 
+ADM), SewerGEMS, INFOWORKS (for 
+AACM) or shape file exports are to be 
+submitted to DEPARTMENT  for input by 
+DEPARTMENT  into their hydraulic 
+model to verify the results and extend 
+the overall Abu Dhabi hydraulic models. 
+Section 8 details DEPARTMENT ’s 
+requirements for the submission of 
+model files.   
+02 01 JULY 2020  WA-726-1: 4.3.4  
+ (PAGE -31) To be added as follows:  
+All Materials bearing the AD QCC Trust 
+Mark are preferable and recommended.    
+02 01 JULY 2020  WA-726-1: 4.3.1  
+(PAGE-29) Modify as below:  
+HDPE Pipes (plain and corrugated)   
+02 01 JULY 2020  WA-726-1: 4.3.4  
+(PAGE-31) Modify as below:  
+Structured Wall / Corrugated HDPE 
+Pipes (SWPP)   
+02 01 JULY 2020  WA-726-1: 4.3.4  
+(PAGE-31) Modify as below:  
+As all these materials have acceptable 
+properties, subject to correct design and 
+allowable deflection and ovalization as 
+per specifications, the choice will be 
+determined by bedding and construction 
+cost and size availability. Other pipe 
+materials may be c onsidered, subject to 
+approval of DEPARTMENT   
+02 01 JULY 2020  WA-726-1: 4.3.4  
+(PAGE -31) Add this part in the comments column: 
+Any stormwater pipe under the road  
+
+
+================================================================================
+第 5 页
+================================================================================
+ 
+EDITION 
+NO. REVISION 
+NO. DATE  PAGE NO.  AMENDMENTS  NOTES  
+shall comply with DIN 8061/8062 or ISO 
+4422 (2.5)  
+02 01 JULY 2020  WA-726-1: 4.4.2  
+(PAGE-34) Replace with the following:  
+• intervals not exceeding 100m 
+for pipes ≤ 300mm diameter 
+(perforated lines)  
+• intervals not exceeding 120m 
+for pipes 300mm to 600mm diameter.   
+02 01 JULY 2020  WA-726-1: 4.12 
+(PAGE-39) Modify as below:  
+The use of soakaways and soakaway 
+trenches are not permitted in the design 
+of new storm water systems within 
+DEPARTMENT  jurisdiction. However, 
+the use of Geo -cells can be considered 
+only for selected areas after approval 
+from DEPARTMENT . Soakaways are 
+used within Al Ain City Municipality 
+region, please refer to Appendix -A4 for 
+further details.   
+02 01 JULY 2020  WA-726-1: 4.14 
+(PAGE-39) 4.13 Open Channels & Ditches  
+please refer to Appendix -A4 for further 
+details.   
+02 01 JULY 2020  WA-726-1: 5.2 
+(PAGE-41) "conditions includes"   
+02 01 JULY 2020  WA-726-1:TABLE 5.2 
+(PAGE -43) Added Note: * - for information only; to 
+be verified by the ADSSC approved 
+consultant prior to any construction 
+activities   
+02 01 JULY 2020  WA-726-1: 5.4.2  
+(PAGE-48) Replace with the following:  
+Minimum size for perforated pipes is 
+160mm OD.   
+02 01 JULY 2020  WA-726-1:  
+8.3 (3.C)  
+(PAGE-89) Modify as below:  
+Hydraulic modelling and Shape files 
+as per including input and output data 
+sheets and drawings presenting water 
+surface and HGL profile. These shall 
+be submitted with a format that is 
+stated in Section - 3.4.2.  
+ 
+ 
+  
+02 01 JULY 2020  WA-726-1:  
+8.4.1  
+(PAGE-89) Submissions can only be accepted 
+through qualified stormwater drainage 
+Consultant.  No design submittals by 
+Contractors or non -qualified stormwater 
+drainage Consultant can be acceptable.   
+02 01 JULY 2020  WA-726-1:  
+8.4.2. E 
+8.4.2.P  
+8.4.3  K 
+(PAGE-90&91  &91)  AutoC AD and Excel  
+Justification  
+Justification   
+02 01 JULY 2020  WA-726-1:  
+8.7 (#4) 
+(PAGE-94) Modify as below:  
+One soft copy of the Hydraulic 
+modelling Shape files that is compatible 
+with a format that is stated in Section - 
+3.4.2.   
+
+
+================================================================================
+第 6 页
+================================================================================
+ 
+EDITION 
+NO. REVISION 
+NO. DATE  PAGE NO.  AMENDMENTS  NOTES  
+02 01 JULY 2020  WA-726-1: 
+REFERENCE  
+(PAGE-101) 28. Abu Dhabi Sewerage Services 
+Company (ADSSC) Design Guidelines, 
+Specification & Drawings   
+03 02 April 2022  WA-726-1: 2.7  
+Page (8)  Added as follows: For further details, 
+refer to Value Engineering Manual.    
+03 02 April 2022  WA-726-1: 3.1  
+Page (10)  Added as follows: Prepare 2D model 
+and submit if requested by the 
+DEPARTMENT  to realize actual floods    
+03 02 April 2022  WA-726-1: 3.2.1  
+Page (11)  Added this part in the Area column:  
+Airports, Seaports (check for 1 in 50 
+years storm)    
+03 02 April 2022  WA-726-1: 3.2.2  
+Page (11)  Added this part in the Catchment type 
+column:  Airports; Seaports    
+03 02 April 2022  WA-726-1: 3.2.2  
+Page (11)  Added as follows:  For SCS method, 
+multiplication factors shall be applied 
+only for the initial time of concentration.    
+03 02 April 2022  WA-726-1: 3.2.4  
+Page (14)  Entire section modified.  
+  
+03 02 April 2022  WA-726-1: 3.4.2  
+Page (27)  Added as follows:  Consultant shall 
+integrate the project model within 
+existing model if requested by 
+DEPARTMENT  (Existing hydraulic 
+model shall be provided by 
+DEPARTMENT  upon submission of 
+official request).    
+03 02 April 2022  WA-726-1: 3.6  
+Page (28)  Added as follows:  rational method  
+  
+03 02 April 2022  WA-726-1: 4.1.4  
+Page (32)  To be added as follows:  In sites where 
+the clear width (B) needs to be less than 
+the value given in Figure 4 -1, a 
+geotechnical investigation must be 
+submitted and approved by the 
+concerned authority.    
+03 02 April 2022  WA-726-1: 4.2  
+Page (32)  To be added as follows:  A geo -cellular 
+storm water management system    
+03 02 April 2022  WA-726-1: 4.2 .1 
+Page (3 3) New item added  
+ 
+03 02 April 2022  WA-726-1: 4.3.1  
+Page (35)  To be added as follows:  Surcharge 
+conditions of the flow are encouraged 
+for all pipe systems, where applicable, if 
+a clearance of 0.3 m (for the 1 in 5 – 
+year storm event) is provided from 
+manhole covers .   
+03 02 April 2022  WA-726-1: 4.4  
+Page (39)  To be added as follows:  On special 
+cases (such as areas subject to minimal 
+or no sand storms), and depending on 
+the project limitations, inlets could be 
+arranged to discharge directly to the 
+storm water manhole structure without 
+catch basin considering Abu Dhabi  
+Standard dimensions for inlets and 
+Catch basins.    
+
+
+================================================================================
+第 7 页
+================================================================================
+ 
+EDITION 
+NO. REVISION 
+NO. DATE  PAGE NO.  AMENDMENTS  NOTES  
+03 02 April 2022  WA-726-1: 4.5  
+Page (41)  Added as follows: •  The oil interceptor 
+compartment shall be incorporated by a 
+Hydrocarbon layer thickness sensor to 
+detect when the maximum thickness is 
+reached.  
+• The sludge trap compartment shall be 
+incorporated with a Sludge layer sensor 
+to alarm when maintenance is 
+nece ssary. The sensor should be 
+placed such that the end of the probe is 
+2 cm under the alarming level    
+03 02 April 2022  WA-726-1: 4.8.1  
+Page (4 3) Modified this part in (Level to New Abu 
+Dhabi Datum (m) (NADD)) as below:    
+0.8 to 1.3.    
+03 02 April 2022  WA-726-1: 4.8.2  
+Page (43)  Modify as below: Number modified from 
+0.8 to 1.3.    
+03 02 April 2022  WA-726-1: 4.8.2  
+Page (43)  Added as follows:  Outfall structure may 
+also be provided with a manual or 
+automatic trash screen for removal of 
+debris. Trash bar screen shall be 
+housed in a separate chamber.    
+03 02 April 2022  WA-726-1: 4.12  
+Page (45)  Added as follows:  Generally, the use of 
+soakaways and soakaway trenches are 
+not permitted in the design of new storm 
+water systems. However, where the 
+groundwater table is deep, the soil’s 
+permeability is high, and the 
+maintenance requirements are practical, 
+infiltration systems can be considered 
+as an alternative based on a study and 
+on a case -by-case basis  
+CIRIA    
+03 02 April 2022  WA-726-1: 4.12 .1 & 
+4.12.2  
+Page (4 6) Sections  were moved from appendix A3  
+ 
+03 02 April 2022  WA-726-1: 4.12  
+Page (45)  Added as follows:  In addition, the use of 
+Geo-cellular units can be considered, 
+the total areas of the base and sides of 
+the blocks shall be designed to enable 
+the rate of infiltration of the stored water 
+through the geotextile soil interface to 
+be developed.    
+03 02 April 2022  WA-726-1: 4.12 .1 
+Page (4 6) Point 3 modified as follows: Determine 
+the catchment area and calculate 
+the volume of runoff for the design 
+return period storm using either (i) 
+the NRCS depth of runoff equation, 
+(ii) the modified rational equation, or 
+the Depth -Duration -Frequency 
+(DDF) where available ( refer to 
+Equa tion A -4.1 and Equation 4.3, for 
+additional information .  
+03 02 April 2022  WA-726-1: 4.12  
+Page (4 8) Point 9 added  
+ 
+
+
+================================================================================
+第 8 页
+================================================================================
+ 
+EDITION 
+NO. REVISION 
+NO. DATE  PAGE NO.  AMENDMENTS  NOTES  
+03 02 April 2022  WA-726-1: 4.14  
+Page (49)  Entire section added  
+  
+03 02 April 2022  WA-726-1: 5.3.2  
+Page (56)  Added as follows:  A proper network 
+shall be provided to control the ground 
+water rise if required based on the study 
+with all supporting calculations    
+03 02 April 2022  WA-726-1: 5.3.2  
+Page (57)  Modify as below: From water table at 
+the midway point must also be at least 
+15 cm to water table at the midway 
+point must also be at least 50 cm    
+03 02 April 2022  WA-726-1: 5.3.2  
+Page (57)  Added as follows:  root zone  
+  
+03 02 April 2022  WA-726-1: 5.3.2  
+Page (57)  Modify as below: From street medians 
+the water table must be at least 1.0 m to 
+street medians the water table must be 
+at least 2.0 m    
+03 02 April 2022  WA-726-1: 5.3.2  
+Page (57)  Added as follows:  Minimum depth for 
+the ground water control system shall 
+be 1.20 m from the finished road level.    
+03 02 April 2022  WA-726-1: 5.5  
+Page (65)  Added as follows:  Please note that 
+minimum diameter for field drain shall 
+be 150 mm (nominal diameter)    
+03 02 April 2022  WA-726-1: 6.2.2  
+Page (73)  Added as follows:  The minimum 
+required sump volume can be 
+calculated, and it depends on the inflow 
+to the pump station, the pump 
+capacities, their allowed cycle time and 
+their operating sequence.  
+ 
+It is Important to know the required 
+active volume. It is the volume defined 
+by the highest start level and lowest 
+stop level in the pump sump.    
+03 02 April 2022  WA-726-1: 6.2.2  
+Page (73)  Added as follows:  In general, the wet 
+well should have a storage of a 
+minimum cycle time of peak flow (6:10 
+starts per hour or as per the minimum 
+allowable cycle time ‘t’ designated by 
+the pump manufacturer)    
+03 02 April 2022  WA-726-1: 6.2.2  
+Page (74)  Added as follows:  The wet well volume 
+when multiple pumps are installed is 
+calculated as for a single pump where 
+the minimum volume is the capacity 
+between the start and stop level for 
+each pump. However, additional 
+capacity is required to allow a vertical 
+distance of 150mm between the start or 
+stop levels of consecutive pumps  
+For more details, refer to guidance 
+provided in ANSI -HI_9.8.    
+03 02 April 2022  WA-726-1: 6.3.6  
+Page (77)  Entire section added  
+  
+03 02 April 2022  WA-726-1: 7.5.8  
+Page (101)  Entire section modified  
+  
+
+
+================================================================================
+第 9 页
+================================================================================
+ 
+EDITION 
+NO. REVISION 
+NO. DATE  PAGE NO.  AMENDMENTS  NOTES  
+03 02 April 2022  WA-726-1: 8.4.1  
+Page (107)  Added as follows:2. Master Plans 
+and/or Concept Designs approval shall 
+be obtained and reviewed by 
+DEPARTMENT .   
+03 02 April 2022  WA-726-1: 8.4.1  
+Page (107)  Added as follows:  For the discharge to 
+Marine Environment. A specific 
+approval related to outfall discharging to 
+marine water (Sea/Canal) is required 
+from EAD clearing mentioning outfall 
+location during the design stage (Not to 
+be confused with Environmental Permit 
+Application).    
+03 02 April 2022  WA-726-1: 8.4.2  
+Page (108)  Added as follows:  iii.(Environmental 
+Permit for overall project and Specific 
+approval for outfall to discharge to 
+marine environment)    
+03 02 April 2022  WA-726-1: 8.4.2  
+Page (108)  Added as follows:  iv. ADM Design 
+Section and    
+03 02 April 2022  WA-726-1: 8.4.2  
+Page (108)  Added as follows:  f. infiltration rates 
+etc.).   
+03 02 April 2022  WA-726-1: 8.4.2  
+Page (108)  Added as follows:  h. for all project 
+components including pumping stations.    
+03 02 April 2022  WA-726-1: 8.4.2  
+Page (108)  Added as follows:  d. plans for gravity 
+and pressure pipelines     
+03 02 April 2022  WA-726-1: 8.4.2  
+Page (108)  Added as follows:  d. outfalls  
+  
+03 02 April 2022  WA-726-1: 8.4.2  
+Page (108)  Added as follows:  g. invert and cover  
+  
+03 02 April 2022  WA-726-1: 8.4.2  
+Page (108)  Added as follows:  g. runoff  
+  
+03 02 April 2022  WA-726-1: 8.4.2  
+Page (108)  Added as follows:  i. using the 
+mentioned software    
+03 02 April 2022  WA-726-1: 8.4.2  
+Page (108)  Added as follows:  j. Hydrology report 
+shall be prepared and submitted for the 
+for urban and rural 
+highways/expressways. A watershed 
+model shall be prepared and submitted 
+with all detailed calculations. A layout 
+shall be submitted showing the 
+delineated catchment areas, location of 
+stream, location of culverts, prel iminary 
+sizing of culverts. Culverts shall be 
+analyzed using international software 
+such as HY -8 or compatible including 
+the culver report.    
+03 02 April 2022  WA-726-1: 8.4.2  
+Page (109)  Added as follows:  k. These calculations 
+shall be based on actual soil 
+parameters obtained through 
+geotechnical investigations.    
+03 02 April 2022  WA-726-1: 8.4.3  
+Page (109)  Added as follows:  v. showing all other 
+utilities crossing the storm water    
+03 02 April 2022  WA-726-1: 8.4.3  
+Page (109)  Added as follows:  vii. Structural design 
+of manholes (where applicable),   
+
+
+================================================================================
+第 10 页
+================================================================================
+ 
+EDITION 
+NO. REVISION 
+NO. DATE  PAGE NO.  AMENDMENTS  NOTES  
+outfalls, culverts with final detailed 
+calculations,  
+03 02 April 2022  WA-726-1: 8.4.3  
+Page (1 10) Added as follows:  ix.  Surge analysis 
+report and calculations    
+03 02 April 2022  WA-726-1: 8.7  
+Page (112)  Added this part in the Description 
+column :2. Preliminary Design / 4. ADM 
+software and / 18. Hydrology Report, 
+watershed model, calculations, 
+watershed catchment area, location 
+plan showing culverts and other 
+hydraulic structures /  21. marked on the 
+layout plans.    
+03 02 April 2022  WA-726-1: 9 
+Page (1 20) 13.CIRIA Report C737 - structural and 
+geotechnical design of modular 
+geocellular drainage systems  
+ 
+03 02 April 2022  WA-726-1: A3. 4.2 
+Page (146 ) Added as follows: 22  
+ 
+03 02 April 2022  WA-726-1: A3.5.1  
+Page (15 6) Added new inlets type:  Figure A3 -5: 
+Perspective Views of Gutter and Curb -
+opening Inlets    
+03 02 April 2022  WA-726-1: A3.5.1  
+Page (15 7) Added new inlets type:  Figure A3 -6 – 
+Perspective Views of Combination and 
+Slotted Drain Inlets*    
+03 02 April 2022  WA-726-1: A3.5.2  
+Page (15 9) Added as follows: Grates come in many 
+different shapes these shapes include 
+but are not limited rectangular, 
+rhomboidal, and honey comb (refer to 
+Figures A 3 -5 and A 3 -6). Detailed 
+hydraulic design should be carried out 
+by an experienced engineer and 
+appro ved by the ADM [added text for 
+stormwater and subsoil drainage 
+systems design manual].    
+03 02 April 2022  WA-726-1: A3.5.2  
+Page (1 60) Added as follows: W net = net width of 
+gutter inlet or grate (see Figure A3 -5), in 
+m 
+ = W – W bars [modified for stormwater 
+and subsoil drainage systems design 
+manual]    
+03 02 April 2022  WA-726-1: A3.5.2  
+Page (160)  Added as follows: L net = net length of 
+grate, in m  
+ = L – L bars  
+  Where, L is the overall length of the 
+grate and L bars is the total length of 
+the bars.  
+[modified for stormwater and subsoil 
+drainage systems design manual]  
+  
+
+
+================================================================================
+第 11 页
+================================================================================
+ 
+EDITION 
+NO. REVISION 
+NO. DATE  PAGE NO.  AMENDMENTS  NOTES  
+03 02 April 2022  WA-726-1: A4.2  
+Page (16 7) Added as follows:  On special cases 
+(such as areas subject to minimal or no 
+sand storms), and depending on the 
+project limitations, inlets could be 
+arranged to discharge directly to the 
+storm water manhole structure without 
+catch basin considering Abu Dhabi 
+Standard dimensions for inlets and 
+Catch ba sins. 
+  
+03 02 April 2022  WA-726-1: A5.1.1.5  
+Page (17 6) Entire section added  
+  
+03 02 April 2022  WA-726-1: A5.2.1.3  
+Page (18 2) Added as follows: f) a. / geo -cell panels/ 
+concrete geo -synthetic cementicious 
+composite sheets    
+03 02 April 2022  WA-726-1: A5.2.1.3  
+Page (18 2) Added as follows: f) b. / geo -cell panels/ 
+concrete geo -synthetic cementicious 
+composite sheets    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+================================================================================
+第 12 页
+================================================================================
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+2.  About the Abu Dhabi Quality and Conformity 
+Council  
+ 
+Abu Dhabi Quality and Conformity Council (QCC) is an Abu Dhabi government 
+entity established in accordance with Local Law No. (3) of 2009 to raise the 
+quality of Abu Dhabi’s exports and products traded locally. QCC consists of a 
+council of regulators and i ndustry with a mandate to ensure provision of quality 
+infrastructure in line with global standards.  
+o QCC’s functions are divided into six key areas:  
+• Developing standards and specifications  
+• Capacity building of metrology systems  
+• Strengthening testin g infrastructure  
+• Launching conformity schemes  
+• Protecting consumer interests  
+• Ensuring fair trade  
+o QCC’s key stakeholders include regulatory authorities, consumers, retailers 
+and wholesalers, industry, conformity assessment bodies (CABs) and 
+importers.  
+QCC supports regulators and government organizations through offering 
+quality and conformity facilities, expertise and resources that allow them to 
+implement products safety and compliance requirements and regulations. 
+Additionally, QCC works to wards promoting a culture of quality and protecting 
+the interests of consumers. In doing this, QCC seeks to promote the Emirate’s 
+competitiveness to become one of the world's most attractive regions for 
+investments and human capital, and to support the com petitiveness of national 
+industries in world markets.  
+
+
+================================================================================
+第 13 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+ 
+PAGE i 
+TOC          THIRD  EDITION -APRIL 2022  
+ 
+ 
+ 3. Acknowledgement  
+QCC would like to thank the members of the Working Group listed below.  
+S.# Name  Entity  
+1 Eng. Hamad Muhsen Abdullah  Abu Dhabi City Municipality  
+2 Dr. Amr Adel El -Agroudy  Abu Dhabi City Municipality  
+3 Eng. Mohamed Darwish Jaddawi  Abu Dhabi City Municipality  
+4 Eng. Bakhita Mubarak Saeed Al Ketbi  Al Ain City Municipality  
+5 Eng. Aysha Saeed Ali Al Sharyani  Al Ain City Municipality  
+6 Eng. Anwar Mahmoud Sediqee  Al Ain City Municipality  
+7 Eng. Mohammed Ali Al Ghanem  Al Dhafrah Region Municipality  
+8 Eng.Wael Taher Salem Suleiman  Environment Agency -Abu Dhabi  
+9 Eng. Ehab.Nessim  Musanada  
+10 Eng.Suhail.AlNuaimi  Abu Dhabi Sewerage Services Company  
+11 Eng. Ali Al Hashmi  Abu Dhabi Sewerage Services Company  
+12 Eng. Abdulaziz Jaddawi  Abu Dhabi Transmission and Despatch Company -
+Transco  
+13 Eng. majed.almarzouqi  Abu Dhabi Waste Management Center -Tadweer  
+14 Eng. Mohamed  Abbas  Department of Energy  
+15 Dr.Ashraf Hassn  United Arab Emirates University  
+16 Eng. Mahmoud Alrais  Masdar City  
+17 Eng.Nizar Kouzar  Parsons  
+18 Eng.Hashim Majeed  Aldar  
+ 
+ 
+ 
+ 
+ 
+
+
+================================================================================
+第 14 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+ 
+PAGE ii 
+TOC          THIRD  EDITION -APRIL 2022  
+ 
+ 
+ 4. Foreword  
+This Storm water and Sub -soil Drainage Systems Design Manual covers the key technical requirements for 
+designing storm water and sub -soil drainage systems within the jurisdiction of Abu Dhabi Emirate.  
+Principal guidance is contained in the main body of the manual which includes references to established 
+and recognised documents. These documents include national and international standards. Supporting 
+detail such as formulae, information and methodologies are given in the Appendices.  
+The safety of constru ction and maintenance workers and of the general public is an important factor for 
+projects in Abu Dhabi and it is essential that safety is considered throughout the design of each project. The 
+reader’s attention is drawn to various safety considerations i dentified by red text.  
+The Manual is intended to be used by experienced, professional drainage engineers, qualified professionals 
+with specialised knowledge of geology and the application of soil mechanics and other suitably qualified 
+and experienced profe ssionals.  
+5. Working Group  
+The Professional Working Group was organized by Abu Dhabi Quality and Conformity Council and 
+established in 2022, which was requested by Department of Municipalities and Transport, to prepare Design 
+Manuals for Storm Water Network in cooperation with the related stakeholders including representatives 
+from government and private sectors in order to establish operating procedures and technical guidelines for 
+the relevant Authorities, Project Developers, Planners, Engineers etc ., a step -by-step guidance on how to 
+prepare the waste management aspect of a planning application for new development in the Emirate of Abu 
+Dhabi at the Inception, Planning & Design stages of the Project.  
+6. Purpose  
+The purpose of the Project is to review th e current design manuals (VOLUME I, DESIGN MANUAL ) for 
+storm water network and update the same to count for the Department of Municipalities and Transport 
+current requirements.  
+7. Scope  
+This Manual is one of four volumes relating to the design, construction,  operation and maintenance of storm 
+water and sub -soil drainage systems for Municipal controlled roads and developments in Emirate of Abu 
+Dhabi:  
+• Volume 1 – Design Manual  
+• Volume 2 –Standard Drawings  
+• Volume 3 – Operation and Maintenance Manual  
+• Volume  4 – Standard Specifications  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+================================================================================
+第 15 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+ 
+PAGE iii 
+TOC          THIRD  EDITION -APRIL 2022  
+ 
+ 
+ TABLE OF CONTENTS  
+GLOSSARY  ................................ ................................ ................................ ................................ ...........  xii 
+1. OBJECTIVES  ................................ ................................ ................................ ...............................  1 
+1.1. Introduction  ................................ ................................ ................................ ................................ ....... 1 
+1.2. Approvals Process  ................................ ................................ ................................ ............................  1 
+1.3. Permanent Works  ................................ ................................ ................................ .............................  2 
+1.4. Inspection, Testing and Commissioning  ................................ ................................ ...........................  3 
+1.5. Innovation  ................................ ................................ ................................ ................................ .........  3 
+1.6. Copyright  ................................ ................................ ................................ ................................ ...........  3 
+1.7. Updates  ................................ ................................ ................................ ................................ .............  3 
+2. DESIGN CONSIDERATIONS  ................................ ................................ ................................ ...... 4 
+2.1. Network Integration  ................................ ................................ ................................ ...........................  4 
+2.2. Design Philosophy  ................................ ................................ ................................ ............................  4 
+2.3. Design Life  ................................ ................................ ................................ ................................ ........  6 
+2.4. Investigations  ................................ ................................ ................................ ................................ .... 6 
+2.5. Environmental Impact  ................................ ................................ ................................ .......................  6 
+2.5.1.  Environmental Legislation  ................................ ................................ ................................ .............  6 
+2.5.2.  Cultural Heritage Permitting Requirements  ................................ ................................ ..................  6 
+2.6. Health and Safety in Design  ................................ ................................ ................................ .............  7 
+2.7. Value Management and Value Engineering  ................................ ................................ .....................  7 
+2.8. Options Appraisal  ................................ ................................ ................................ .............................  8 
+2.8.1.  Capital Cost (CAPEX)  ................................ ................................ ................................ ...................  8 
+2.8.2.  Operational and Maintenance Cost (OPEX)  ................................ ................................ .................  8 
+2.8.3.  Economic Appraisal of Options  ................................ ................................ ................................ ..... 8 
+2.9. Drawings  ................................ ................................ ................................ ................................ ...........  9 
+2.9.1.  Standard Drawings  ................................ ................................ ................................ .......................  9 
+2.9.2. Typical Drawings ................................ ................................ ................................ ...........................  9 
+2.10.  Materials Selection  ................................ ................................ ................................ ...........................  9 
+3. RAINFALL AND RUNOFF  ................................ ................................ ................................ .........  10 
+3.1. Introduction  ................................ ................................ ................................ ................................ ..... 10 
+3.2. Design Storms  ................................ ................................ ................................ ................................  10 
+3.2.1.  Design Return Period  ................................ ................................ ................................ .................  10 
+3.2.2.  Duration of Rainfall  ................................ ................................ ................................ .....................  11 
+3.2.3.  Design Storm Duration  ................................ ................................ ................................ ...............  11 
+3.2.4.  Rainfall Intensity Duration Frequency (IDF)  ................................ ................................ ...............  14 
+3.3. Rational Method  ................................ ................................ ................................ ..............................  21 
+3.3.1.  Runoff Coefficient  ................................ ................................ ................................ .......................  21 
+3.3.2.  Flow calculation  ................................ ................................ ................................ ..........................  23 
+3.4. Soil Conservation Service (SCS) Method  ................................ ................................ .......................  23 
+3.4.1.  Curve Number ................................ ................................ ................................ .............................  23 
+3.4.2.  Flow calculation  ................................ ................................ ................................ ..........................  26 
+3.5. Special considerations for mixed catchments  ................................ ................................ ................  28 
+3.6. Flood volume calculations  ................................ ................................ ................................ ..............  28 
+4. STORM WATER SYSTEM DESIGN  ................................ ................................ ..........................  30 
+4.1. System Planning  ................................ ................................ ................................ .............................  30 
+4.1.1.  Commencing Design  ................................ ................................ ................................ ..................  30 
+4.1.2.  System Performance and Recommended Design Return Period  ................................ ..............  31 
+4.1.3.  Surface Flooding  ................................ ................................ ................................ .........................  31 
+4.1.4.  Pipes Located Near to Structures and Buildings  ................................ ................................ ........  31 
+4.2. Flow Attenuation  ................................ ................................ ................................ .............................  32 
+4.2.1.  Geo-cellular stormwater management system  ................................ ................................ ...........  33 
+4.2.1.1.  Connections  ................................ ................................ ................................ ........................  33 
+4.2.1.2.  Manifold Design  ................................ ................................ ................................ ..................  33 
+4.2.1.3. Outflow positioning and head calculations  ................................ ................................ .........  33 
+4.3. Design Parameters for Gravity Pipelines  ................................ ................................ ........................  34 
+4.3.1.  Pipe Hydraulic Formulae  ................................ ................................ ................................ ............  34 
+
+
+================================================================================
+第 16 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+ 
+PAGE iv 
+TOC          THIRD  EDITION -APRIL 2022  
+ 
+ 
+ 4.3.2.  Pipe Hydraulic Design  ................................ ................................ ................................ ................  35 
+4.3.3.  Minor Friction Losses  ................................ ................................ ................................ ..................  35 
+4.3.4.  Pipe Materials  ................................ ................................ ................................ .............................  37 
+4.3.5.  Pipe Depth  ................................ ................................ ................................ ................................ .. 38 
+4.4. Inlet and Catch basins Structures  ................................ ................................ ................................ ... 38 
+4.4.1.  Surface Erosion Control  ................................ ................................ ................................ ..............  39 
+4.4.2.  Manhole Positioning and Access  ................................ ................................ ................................  39 
+4.5. Contaminated Surface Run -off ................................ ................................ ................................ ....... 41 
+4.6. Hydrodynamic Separators  ................................ ................................ ................................ ..............  41 
+4.7. Crossing Culverts  ................................ ................................ ................................ ...........................  42 
+4.8. Tidal Discharge  ................................ ................................ ................................ ...............................  42 
+4.8.1.  Tidal Range  ................................ ................................ ................................ ................................ . 42 
+4.8.2.  Outfall Structures  ................................ ................................ ................................ ........................  43 
+4.9. Trenchless Technologies  ................................ ................................ ................................ ................  43 
+4.10.  Hazardous Areas  ................................ ................................ ................................ ............................  44 
+4.11.  Concrete Structures  ................................ ................................ ................................ ........................  45 
+4.12.  Soakaways  ................................ ................................ ................................ ................................ ...... 45 
+4.12.1.  Soakaway vaults and chambers:  ................................ ................................ ................................  46 
+4.12.2.  Soakaways trenches:  ................................ ................................ ................................ ..................  48 
+4.13.  Open Channels & Ditches  ................................ ................................ ................................ ..............  49 
+4.14.  Stormwater Ponds  ................................ ................................ ................................ ..........................  49 
+4.14.1 . Sizing of stormwater ponds  ................................ ................................ ................................ ........  49 
+4.14.2.  Ponds Water quality  ................................ ................................ ................................ ....................  50 
+4.14.3.  Dissolved Oxygen Measurements  ................................ ................................ ..............................  51 
+4.14.4.  Aeration Systems  ................................ ................................ ................................ ........................  51 
+4.14.4.1.  Aeration System Design Considerations  ................................ ................................ ..........  51 
+4.14.4.2.  Aeration System Placement  ................................ ................................ .............................  51 
+4.14.4.3.  Side slope protection and bed lining  ................................ ................................ .................  52 
+5. SUB -SOIL DRAINAGE DESIGN ................................ ................................ ................................  54 
+5.1. Introduction  ................................ ................................ ................................ ................................ ..... 54 
+5.2. Context of Subsurface Drainage in Abu Dhabi  ................................ ................................ ...............  55 
+5.3. Basic Principles of Subsurface Flow and D rainage Design  ................................ ...........................  56 
+5.3.1.  Subsurface Flow  ................................ ................................ ................................ .........................  56 
+5.3.2.  Groundwater Levels  ................................ ................................ ................................ ....................  56 
+5.4. Subsurface Drainage Planning  ................................ ................................ ................................ ....... 57 
+5.4.1.  Reconnaissance Study  ................................ ................................ ................................ ...............  58 
+5.4.2.  Concept Design  ................................ ................................ ................................ ..........................  58 
+5.5. Hydraulic Design  ................................ ................................ ................................ .............................  64 
+5.6. Drainage Installation  ................................ ................................ ................................ .......................  65 
+5.7. Construction near Utilities  ................................ ................................ ................................ ...............  65 
+5.8. Maintenance  ................................ ................................ ................................ ................................ ... 65 
+5.9. Tubewell Drainage Design  ................................ ................................ ................................ ..............  65 
+5.9.1.  Patterns of Tubewell Drainage  ................................ ................................ ................................ ... 65 
+5.9.2.  Well Field in a Triangular Pattern  ................................ ................................ ...............................  65 
+5.9.3.  Well Field in a Rectangular Pattern  ................................ ................................ ............................  67 
+5.9.4.  Semi -Confined Aquifers  ................................ ................................ ................................ ..............  68 
+5.9.5.  Well Design  ................................ ................................ ................................ ................................ . 69 
+5.9.6.  Other Well Design Considerations ................................ ................................ ..............................  69 
+5.9.7.  Environmental Design Considerations  ................................ ................................ .......................  71 
+5.9.8.  Tubewell and Pump Maintenance  ................................ ................................ ..............................  71 
+6. STORM WATER PUMPING STATIONS  ................................ ................................ ...................  72 
+6.1. General  ................................ ................................ ................................ ................................ ...........  72 
+6.2. Pumping Sta tion Types  ................................ ................................ ................................ ...................  72 
+6.2.1.  Pumping Station Components  ................................ ................................ ................................ .... 72 
+6.2.2.  Pumping Station Types  ................................ ................................ ................................ ...............  73 
+6.3. Mechanical Design  ................................ ................................ ................................ .........................  74 
+6.3.1.  Pumps  ................................ ................................ ................................ ................................ .........  74 
+6.3.2.  Pump Performance Curve and Duty Point  ................................ ................................ .................  74 
+6.3.3.  Pump Selection  ................................ ................................ ................................ ...........................  75 
+6.3.4.  Design Capacity and Number of Pumps  ................................ ................................ ....................  75 
+
+
+================================================================================
+第 17 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+ 
+PAGE v 
+TOC          THIRD  EDITION -APRIL 2022  
+ 
+ 
+ 6.3.5.  Outfall Pumping Stations  ................................ ................................ ................................ ............  76 
+6.3.6.  Design Capacity of Storage Tank  ................................ ................................ ...............................  76 
+6.3.7.  Operating Conditions  ................................ ................................ ................................ ..................  79 
+6.3.8.  Net Positive Suction Head NPSH  ................................ ................................ ...............................  79 
+6.4. Pumping Station Arrangement ................................ ................................ ................................ ........  80 
+6.4.1.  Suction and Discharge Pipework  ................................ ................................ ................................  80 
+6.4.2.  Intake Design  ................................ ................................ ................................ ..............................  81 
+6.4.3.  Pump Protection Screens  ................................ ................................ ................................ ...........  82 
+6.4.4.  Surge Suppression Systems  ................................ ................................ ................................ ...... 83 
+6.5. Electric Design  ................................ ................................ ................................ ................................  83 
+6.5.1.  Electrical Room Air Conditioning  ................................ ................................ ................................  83 
+6.5.2.  Motors  ................................ ................................ ................................ ................................ .........  83 
+6.5.3.  Starters  ................................ ................................ ................................ ................................ ....... 83 
+6.5.4.  Variable Frequency Drives  ................................ ................................ ................................ .........  84 
+6.5.5.  Motor Control Centre  ................................ ................................ ................................ ..................  84 
+6.5.6.  Protection Device  ................................ ................................ ................................ ........................  85 
+6.5.7.  Power Factor Correction Capacitors ................................ ................................ ...........................  85 
+6.5.8.  Earthing  ................................ ................................ ................................ ................................ ....... 85 
+6.5.9.  Lightning Protection  ................................ ................................ ................................ ....................  86 
+6.5.10.  Lighting  ................................ ................................ ................................ ................................ ....... 86 
+6.5.11.  Uninterruptible Power Supply  ................................ ................................ ................................ ..... 86 
+6.5.12.  Cables  ................................ ................................ ................................ ................................ .........  87 
+6.5.13.  Mobile Generator Junction Box / Stand -by Generator with ATS  ................................ ................  87 
+6.6. Instrumentation  ................................ ................................ ................................ ...............................  88 
+6.6.1.  Level Measurement Sensors  ................................ ................................ ................................ ...... 88 
+6.6.2.  Methods of Flow Measurement  ................................ ................................ ................................ .. 89 
+6.6.3.  Compatibility to SCADA  ................................ ................................ ................................ ..............  90 
+6.6.4.  Control Systems ................................ ................................ ................................ ..........................  90 
+6.6.5.  Pump Control Philosophy  ................................ ................................ ................................ ...........  90 
+6.6.6.  Fieldbuses  ................................ ................................ ................................ ................................ ... 91 
+6.6.7.  SCADA System ................................ ................................ ................................ ...........................  91 
+6.7. Structural Design  ................................ ................................ ................................ ............................  92 
+7. PUMPING MAIN DESIGN  ................................ ................................ ................................ ..........  93 
+7.1. Introduction  ................................ ................................ ................................ ................................ ..... 93 
+7.2. Pipe Material Selection  ................................ ................................ ................................ ...................  94 
+7.3. Hydraulic Design of Pumping Mains  ................................ ................................ ...............................  94 
+7.3.1.  Design Considerations  ................................ ................................ ................................ ................  94 
+7.3.2.  Friction Head Losses  ................................ ................................ ................................ ..................  95 
+7.3.3.  Localised Head Loses  ................................ ................................ ................................ ................  96 
+7.4. Structural Design  ................................ ................................ ................................ ............................  97 
+7.4.1.  Internal Forces  ................................ ................................ ................................ ............................  97 
+7.4.2.  Temperature Range  ................................ ................................ ................................ ....................  97 
+7.4.3.  Unbalanced Thrust  ................................ ................................ ................................ .....................  97 
+7.5. Valves  ................................ ................................ ................................ ................................ .............  98 
+7.5.1.  Valve Selection  ................................ ................................ ................................ ...........................  98 
+7.5.2.  Valve Losses ................................ ................................ ................................ ...............................  98 
+7.5.3.  Flushing Flow  ................................ ................................ ................................ ..............................  98 
+7.5.4.  Maximum Draining Flow  ................................ ................................ ................................ .............  99 
+7.5.5.  Draining Time ................................ ................................ ................................ ..............................  99 
+7.5.6.  Actuators  ................................ ................................ ................................ ................................ ... 100 
+7.5.7.  Equipment Isolation Valves  ................................ ................................ ................................ ...... 100 
+7.5.8.  Check and Flap Valves  ................................ ................................ ................................ .............  100 
+7.5.9.  Air Release and Vacuum Valves  ................................ ................................ ..............................  101 
+7.5.10.  Washout Valves  ................................ ................................ ................................ ........................  101 
+7.6. Valve Chambers  ................................ ................................ ................................ ...........................  103 
+7.6.1.  Flow Meter Chamber  ................................ ................................ ................................ ................  104 
+7.6.2. Air Valve Chamber  ................................ ................................ ................................ ....................  104 
+7.6.3.  Washout chamber  ................................ ................................ ................................ .....................  104 
+8. DESIGN SUBMISSION REQUIREMENTS  ................................ ................................ ..............  105 
+8.1. General  ................................ ................................ ................................ ................................ .........  105 
+
+
+================================================================================
+第 18 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+ 
+PAGE vi 
+TOC          THIRD  EDITION -APRIL 2022  
+ 
+ 
+ 8.2. Required Standards  ................................ ................................ ................................ ......................  105 
+8.3. Submission Requirements  ................................ ................................ ................................ ............  106 
+8.4. Design Review Stages and Requirements  ................................ ................................ ...................  106 
+8.4.1.  General Notes  ................................ ................................ ................................ ...........................  106 
+8.4.2.  Preliminary Design  ................................ ................................ ................................ ....................  107 
+8.4.3. Detailed Design ................................ ................................ ................................ .........................  108 
+8.5. Connection to Existing Approval  ................................ ................................ ................................ ... 109 
+8.6. Compliance form  ................................ ................................ ................................ ...........................  110 
+8.7. Check list  ................................ ................................ ................................ ................................ ...... 111 
+8.8. Hydraulic Modelling Shape File Data Requirements  ................................ ................................ .... 114 
+9. REFERENCES  ................................ ................................ ................................ .........................  119 
+10. APPENDIX  ................................ ................................ ................................ ................................  120 
+A1. Prevailing Environmental Legislation  ................................ ................................ ..................  122 
+A1.1  Local Environmental Legislation  ................................ ................................ ................................ ... 122 
+A1.2  Federal Environmental Legislation and Executive Orders relevant to land and marine projects  . 123 
+A1.3  International and Regional Environmental Protocols applicable in Abu Dhabi  ............................  124 
+A1.4  Environmental Permitting Requirements  ................................ ................................ ......................  125 
+A2. Pipe Structural Design  ................................ ................................ ................................ ...........  127 
+A2.1  Introduction  ................................ ................................ ................................ ................................ ... 127 
+A2.2  Calculations for Pipe Structural Design  ................................ ................................ ........................  128 
+A2.2.1.  Flexible Pipes (MDPE, HDPE, GRP, uPVC)  ................................ ................................ ............  128 
+A2.2.2.  Semi -rigid Pipes (Ductile Iron)  ................................ ................................ ................................ .. 133 
+A2.2.3.  Rigid Pipes (Concrete)  ................................ ................................ ................................ ..............  135 
+A3. Road Drainage -Gutter & Inlet Design  ................................ ................................ ...................  139 
+A3.1  Introduction  ................................ ................................ ................................ ................................ ... 139 
+A3.2  Roadway Features  ................................ ................................ ................................ ........................  139 
+A3.2.1  Longitudinal Slope  ................................ ................................ ................................ ....................  139 
+A3.2.2  Cross Slope  ................................ ................................ ................................ ..............................  140 
+A3.2.3  Kerb and Gutter  ................................ ................................ ................................ ........................  140 
+A3.2.4  Roadside and Median Ditches  ................................ ................................ ................................ .. 140 
+A3.2.5  Bridge Decks ................................ ................................ ................................ .............................  141 
+A3.2.6  Shoulder Gutters  ................................ ................................ ................................ .......................  141 
+A3.3  Hydroplaning  ................................ ................................ ................................ ................................ . 142 
+A3.4  Spread  ................................ ................................ ................................ ................................ ..........  143 
+A3.4.1  Selection  Considerations  ................................ ................................ ................................ ..........  143 
+A3.4.2  Gutter Fundamentals  ................................ ................................ ................................ ................  144 
+A3.5  Inlet Fundamentals  ................................ ................................ ................................ .......................  152 
+A3.5.1  Kerb -Opening Inlets  ................................ ................................ ................................ ..................  153 
+A3.5.2  Grated Gutter Inlets  ................................ ................................ ................................ ..................  157 
+A3.5.3  Combination Inlets  ................................ ................................ ................................ ....................  161 
+A3.5.4  Slotted Trench Drains and Slotted  Pipe Inlets  ................................ ................................ ..........  161 
+A4. AL AIN MUNICIPALITY REQUIREMENTS  ................................ ................................ .............  163 
+A4.1  Modified rational equation  ................................ ................................ ................................ .............  163 
+A4.2  Cost effective inlet and mainline layout and connection configuration:  ................................ ........  164 
+A5. MAIN ROADS REQUIREMENTS  ................................ ................................ .............................  167 
+A5.1  Open channels and ditches  ................................ ................................ ................................ ..........  167 
+A5.1.1  Catchment Delineation  ................................ ................................ ................................ .............  167 
+A5.1.1.1  Areal -reduction factor  ................................ ................................ ................................ ...... 167 
+A5.1.1.2  Design Flow Calculation  ................................ ................................ ................................ .. 168 
+A5.1.1.3  Channel design criteria ................................ ................................ ................................ .... 168 
+A5.1.1.4  Design method  ................................ ................................ ................................ ................  172 
+A5.1.1.5  Chutes  ................................ ................................ ................................ .............................  173 
+A5.2  Cross Drainage  ................................ ................................ ................................ .............................  174 
+A5.2.1  Culverts  ................................ ................................ ................................ ................................ ..... 174 
+A5.2.1.1  Culvert type  ................................ ................................ ................................ .....................  174 
+A5.2.1 .2 Culvert Fundamentals  ................................ ................................ ................................ ..... 175 
+
+
+================================================================================
+第 19 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+ 
+PAGE vii 
+TOC          THIRD  EDITION -APRIL 2022  
+ 
+ 
+ A5.2.1.3  Culvert design procedures  ................................ ................................ ..............................  176 
+A5.2.2  Wadi bridges  ................................ ................................ ................................ .............................  180 
+A5.2.2.1  Scour  ................................ ................................ ................................ ...............................  182 
+A5.2.2.2  Deck drainage  ................................ ................................ ................................ .................  184 
+A5.2.2.3  Bridge hydraulic design documentation  ................................ ................................ ..........  185 
+ 
+
+
+================================================================================
+第 20 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+ 
+PAGE viii 
+TOC          THIRD  EDITION -APRIL 2022  
+ 
+ 
+ LIST OF TABLES  
+Table 2-1 – Design Life ................................ ................................ ................................ ................................ .........  6 
+Table 3-1 - Summary of rainfall -runoff methods  ................................ ................................ ................................ . 10 
+Table 3-2 – Design storm standard for various facilities  ................................ ................................ ....................  11 
+Table 3-3 – Priorities and time of concentration multipliers used to determine design storm durations  ............  11 
+Table 3-4 - Recommended IDF and DDF tables for use in Zone A  ................................ ................................ ... 17 
+Table 3-5 – Recommended IDF equations for use in Zone A  ................................ ................................ ............  17 
+Table 3-6 - Recommended IDF and DDF tables for use in Zone B  ................................ ................................ ... 19 
+Table 3-7 – Recommended IDF equations for use in Zone B  ................................ ................................ ............  19 
+Table 3-8 - Typical Urban Run -Off Coefficients ................................ ................................ ................................ .. 21 
+Table 3-9 - Typical Rural Run -Off Coefficients  ................................ ................................ ................................ ... 22 
+Table 3-10 - Soil characteristics and hydrological soil groups  ................................ ................................ ...........  24 
+Table 3-11 - Curve numbers for hydrological soil groups and cover complexes  ................................ ...............  26 
+Table 4-1 - Roughness Coefficients  ................................ ................................ ................................ ...................  35 
+Table 4-2 - Approved Pipe Materials for Gravity Pipelines  ................................ ................................ .................  37 
+Table 4-3 - Use of Inlets and Catchbasins  ................................ ................................ ................................ .........  39 
+Table 4-4 - Manhole Cover Levels  ................................ ................................ ................................ .....................  40 
+Table 4-5 - Tide Levels  ................................ ................................ ................................ ................................ ....... 43 
+Table 4-6 - Potential Hazards in a Storm Water Network  ................................ ................................ ..................  45 
+Table 5-1 – Typical Soil Permeability  ................................ ................................ ................................ .................  56 
+Table 5-2 - Guideline Depths of Infrastructure and Minimum Groundwater Levels  ................................ ...........  57 
+Table 5-3 – Phases of Subsurface Drainage Project Design  ................................ ................................ .............  57 
+Table 5-4 – Reconnaissance Data  ................................ ................................ ................................ .....................  58 
+Table 5-5 – Soil Properties and Pipe Spacing  ................................ ................................ ................................ .... 60 
+Table 5-6 - Approved Drainage  Pipe parameters  ................................ ................................ ...............................  62 
+Table 5-7 – Design Criteria for Gravel Envelopes  ................................ ................................ ..............................  64 
+Table 5-8 – Well Screen Materials  ................................ ................................ ................................ .....................  69 
+Table 5-9 – Other Well Design Considerations  ................................ ................................ ................................ .. 70 
+Table 5-10 – Autonomous and Design Factors Affecting Design Discharge Rates  ................................ ...........  71 
+Table 6-1 – Commonly used types of pumping stations in DEPARTMENT  jurisdiction  ................................ .... 73 
+Table 6-2 – Pump types and applications  ................................ ................................ ................................ ..........  74 
+Table 6-3 - Suction Piping Design Considerations  ................................ ................................ .............................  80 
+Table 6-4 – Discharge Line Design Considerations  ................................ ................................ ...........................  81 
+Table 6-5 – Motor Specification  ................................ ................................ ................................ ..........................  83 
+Table 6-6 – Motor Control Centre Specification  ................................ ................................ ................................ . 84 
+Table 6-7 – Lighting Design  ................................ ................................ ................................ ................................  86 
+Table 6-8 - Level Sensor Application  ................................ ................................ ................................ ..................  88 
+Table 6-9 – Methods of Flow Measurement  ................................ ................................ ................................ ....... 89 
+Table 6-10 - Pressure Sensor Application  ................................ ................................ ................................ ..........  90 
+Table 6-11 – Pump Protection Measures:  ................................ ................................ ................................ ..........  91 
+Table 6-12 – Minimum PLC and RTU Requirements  ................................ ................................ .........................  92 
+Table 7-1 - Pumping Main Design Factors  ................................ ................................ ................................ .........  93 
+Table 7-2 – Hazen Williams C Coefficients for Types of Pipe  ................................ ................................ ............  95 
+Table 7-3 –Ks Coefficients for velocity of flow  ................................ ................................ ................................ .... 96 
+Table 7-4 – K Values for Type of Fittings  ................................ ................................ ................................ ...........  97 
+Table 7-5 – Minimum Thrust Safety Factors  ................................ ................................ ................................ ...... 97 
+Table 7-6 – Manual vs Power Operated Valves  ................................ ................................ ...............................  100 
+Table 7-7 - Air Valve Nominal Sizes v Main (DN)  ................................ ................................ ............................  101 
+Table 7-8 – Washout Nominal Sizes vs Main (DN)  ................................ ................................ ..........................  102 
+Table 7-9 – Valve Chamber Design Criteria  ................................ ................................ ................................ ..... 103 
+ 
+Table A1 - 1 - Local Environmental Legislation  ................................ ................................ ................................ . 122 
+Table A1 - 2 - Federal Environmental Legislation  ................................ ................................ .............................  123 
+Table A1 - 3 - International and Regional Environmental Protocols and Conventions  ................................ ..... 124 
+ 
+Table A2- 1 - Structural Properties of Pipes of Various Materials  ................................ ................................ .... 127 
+Table A2 - 2 – Permissible Ovalisation  ................................ ................................ ................................ ..............  128 
+Table A2 - 3 – Bedding Factors for Different Bedding Types  ................................ ................................ ............  129 
+
+
+================================================================================
+第 21 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+ 
+PAGE ix 
+TOC          THIRD  EDITION -APRIL 2022  
+ 
+ 
+ Table A2 - 4 – Flexible and Semi -rigid Pipe Embedment Properties  ................................ ................................  131 
+Table A2 - 5 – Surcharge Pressure from Vehicles at Different Cover Depths  ................................ ..................  132 
+Table A2 - 6 – Young’s Moduli for Flexible Pipe Materials  ................................ ................................ ................  132 
+Table A2 - 7 – Example Pipe Diametral Stiffnesses  ................................ ................................ ..........................  133 
+Table A2 - 8 - Modulus of Soil Reaction  ................................ ................................ ................................ ............  133 
+Table A2 - 9 - Ductile Iron Pipe Diameteral Stiffness  ................................ ................................ ........................  134 
+Table A2 - 10 - Simplified Table of Bedding and Permissible Cover for DI Pipe  ................................ ..............  134 
+Table A2 - 11 - Bedding C lasses for Rigid Pipes  ................................ ................................ ..............................  135 
+Table A2 - 12 - Crushing Strength of Class 120 Concrete Pipes  ................................ ................................ ...... 136 
+Table A2 - 13 - Simplified Table of Bedding and Permissible Cover for Concrete Pipes  ................................ . 136 
+ 
+Table A3 - 1 - Manning’s “n” Values for Street and Pavement Gutters  ................................ .............................  147 
+ 
+Table A5 - 1 - Drainage features design value for maintenance consideration  ................................ ................  169 
+Table A5 - 2 - Maximum permis sible velocities in channels  ................................ ................................ ..............  169 
+Table A5 - 3 - Design recurrence interval for Ditches  ................................ ................................ .......................  170 
+Table A5 - 4 - Average values of manning’s roughness coefficient (n) for channels  ................................ ........  173 
+Table A5 - 5 - Minimum culvert sizes  ................................ ................................ ................................ ................  175 
+Table A5 - 6 - Mann ing’s equation roughness coefficient (n) for culverts  ................................ .........................  178 
+Table A5 - 7 - Culvert entrance loss coefficients  ................................ ................................ ...............................  179 
+ 
+ 
+
+
+================================================================================
+第 22 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+PAGE x 
+FORWARD         THIRD  EDITION -APRIL 2022  
+ LIST OF FIGURES  
+Figure 1-1 - DEPARTMENT  and Developer -Led Drainage Project Stages  ................................ .........................  2 
+Figure 3-1 - Overland flow velocities for various land types  ................................ ................................ ...............  13 
+Figure 3-3 - Recommended IDF Curves for Zone A – 24 Hours  ................................ ................................ ........  16 
+Figure 3-4 - Recommended IDF Curves for Zone A  – 1 Hour ................................ ................................ ...........  16 
+Figure 3-5 - Recommended IDF Curves for Zone B – 24 Hours  ................................ ................................ ........  18 
+Figure 3-6 - Recommended IDF Curves for Zone B  – 1 Hour ................................ ................................ ...........  18 
+Figure 3-7 – The 24 hours rainfall distribution curve for Zone A  ................................ ................................ ........  20 
+Figure 3-8 - The 24 hours rainfall distribution curve for Zone B  ................................ ................................ .........  20 
+Figure 3-9 - Runoff curves for different SCS curve numbers  ................................ ................................ .............  24 
+Figure 3-10: Rainfall and runoff with assumptions for the Soil Conservation Service triangular hydrograph 
+method of rainfall estimation  ................................ ................................ ................................ .......................  26 
+Figure 3-11 - Use of rational method for flood volumes for sizing of retention basins etc  ................................ . 29 
+Figure 3-12 - Use of SCS method for sizing of retention basins  ................................ ................................ ........  29 
+Figure 4-1 - Pipe Position Relative  to Buildings  ................................ ................................ ................................ . 31 
+Figure 4-2 - Relative velocity and discharge in a circular pipe for any depth of flow Alternatively the Consultant 
+may use the Manning formula  ................................ ................................ ................................ ....................  34 
+Figure 4-3 - Typical Inlet and Catch basin Layout  ................................ ................................ ..............................  38 
+Figure 5-1 – Example Drainage System Layout Alternatives  ................................ ................................ .............  59 
+Figure 5-2 – Alignment of Field Laterals with Contours  ................................ ................................ .....................  59 
+Figure 5-3 – Placement of Field Drains with Respect to the Impermeable Layer  ................................ ..............  61 
+Figure 5-4 – Placement of Single Field Drain with Respect to the Impermeable Layer  ................................ ..... 61 
+Figure 5-5 – Wells Located in a Pattern of Equilateral Triangles (Well Spacing L=r e√3) ................................ ... 66 
+Figure 5-6 – Wells in Parallel Series with L<<B.  ................................ ................................ ................................  67 
+Figure 6-1 – Wet Well – Active Volume.  ................................ ................................ ................................ .............  73 
+Figure 6-2 - Pumping System Characteristics  ................................ ................................ ................................ .... 75 
+Figure 6-3 - Estimated required storage from inflow hydrograph  ................................ ................................ ....... 77 
+Figure 6-4 - volume in storage at any stage  ................................ ................................ ................................ ....... 78 
+Figure 6-5 – Estimate of storage required  ................................ ................................ ................................ ..........  78 
+Figure 6-6 – Pump Operating Regions  ................................ ................................ ................................ ...............  79 
+Figure 6-7 – Typical Pump station intake configurations  ................................ ................................ ....................  82 
+ 
+Figure A2 - 1 - Pipe Bedding Classes S and B for Flexible and Semi -Rigid Pipe Bedding  ..............................  130 
+Figure A2 - 2 - Pipe Bedding Classes F, B, S and A for Rigid Pipes  ................................ ................................  137 
+ 
+Figure A3 - 1 - Typical Gutter Section  ................................ ................................ ................................ ...............  146 
+Figure A3 - 2 - Relative Effects of Spread, Cross Slope and Longitudinal Slope on Gutter Flow Capacity  ..... 149 
+Figure A3 - 3 - Flow in Triangular Gutter Sections  ................................ ................................ ............................  150 
+Figure A3 - 4 - Ratio of Frontal Flow to Total Gutter Flow  ................................ ................................ .................  151 
+Figure A3 - 5 - Perspective Views of Gutter and Curb -opening Inlets*  ................................ .............................  154 
+Figure A3 - 6 – Perspective Views of Combination and Slotted Drain Inlets*  ................................ ...................  155 
+ 
+Figure A4 - 1 - Inlet to Main Drain Connection Configuration – Preferred Method  ................................ ...........  165 
+ 
+Figure A5 - 1 - Schematic of backwater effect cause by bridge pier  ................................ ................................ . 181 
+Figure A5 - 2 - Wadi bridge crossin g with floodplain relief spans ................................ ................................ ...... 182 
+Figure A 5- 3 - Schematic of typical bridge scour  ................................ ................................ ..............................  183 
+Figure A5 - 4 - Schematic of local scour at circular pier  ................................ ................................ ....................  184 
+
+
+================================================================================
+第 23 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+PAGE xi 
+FORWARD         THIRD  EDITION -APRIL 2022  
+ 
+
+
+================================================================================
+第 24 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+PAGE xii 
+GLOSSARY                                                   THIRD EDITION - APRIL 2022  
+ GLOSSARY  
+AACM  Al Ain City Municipality  
+ADM  Abu Dhabi  City Municipality  
+ADEHSMS  Abu Dhabi Environment, Health and Safety Management System  
+ASTM   American Society for Testing Materials  
+AWWA  American Water Works Association  
+BS EN  British Standard European Norm  
+CAPEX  Capital Expenditure  
+CIRIA  Construction Industry Research and Information Association (CIRIA) (UK)  
+CoP Code of Practice  
+Consultant  An engineering or other professional person or company who translates the 
+Developer’s proposals into reports, calculations, drawings and other documen ts 
+to allow the project to proceed  
+DEPARTMENT  Department of Municipal ities and Transport  Abu Dhabi City/ Al Ain Region/ Dhafra 
+Region  
+Developer  Generally,  a property developer who creates new built environment which may 
+include storm water and sub -soil drainage systems  
+DDP  Design Documentation Package  
+FHWA  Federal Highway Administration  
+GPS  Global Positioning System  
+H&S Health & Safety  
+ha Hectare  
+HAT Highest Astronomical Tide  
+HAZOP  Hazard and Operability Study  
+HEC  Hydraulic Engineering Circular  
+HGL Hydraulic Gradient Line  
+IDF Intensity -Duration -Frequency  
+ISD Infrastructure Support Division  
+ITC Integrated Transportation Centre  
+MEICA  Mechanical, electrical, instrumentation, control and automation  
+MHWS  Mean High Water Spring Tide  
+NADD  New Abu Dhabi Datum  
+NCMS  National Centre of Meteorology and Seismology  
+NPC  Net Present Cost  
+NPV Net Present Value  
+NRCS  Natural Resources Conservation Service  
+O&M  Operation and Maintenance  
+OSHAD  Abu Dhabi Environment, Health a nd Safety Centre  
+OPEX  Operational Expenditure  
+PLC Programmable Logic Controller  
+PIMP  Percentage Impermeability  
+RTU Remote Terminal Unit  
+SSDDM   Storm water and Sub -soil Drainage Design Manual  
+SCS  Soil Conservation Service, (now US Department of Agriculture  Natural  Resources 
+Conservation Service ) 
+SuDS  Sustainable Drainage Systems  
+UPS Uninterruptible Power Supply  
+
+
+================================================================================
+第 25 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+PAGE xiii 
+GLOSSARY                                                   THIRD EDITION - APRIL 2022  
+ USBR  United States Bureau of Reclamation  
+VE Value Engineering  
+VFD Variable Frequency Drives  
+VM Value Management  
+WIS Water Industry Standards (UK)  
+WRC  Water Research Centre (UK)  
+
+
+================================================================================
+第 26 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+PAGE 1 
+01-OBJECTIVE       THIRD  EDITION -APRIL 2022  
+ 1. OBJECTIVES  
+1.1. Introduction  
+The purpose of this Design Manual is to identify the requirements for the design of storm 
+water and sub -soil drainage projects arising from municipal development in Emirate of Abu 
+Dhabi.  
+The Manual limits the use of detailed design theories and methods of calculation and requires 
+that users refer to other documents as necessary. A list of principle reference documents is 
+shown at the end of the Manual.  
+In addition to rain water run -off from de veloped areas, including side roads and paved areas  
+and overland flow from open areas , the municipal storm water network may also receive run -
+off from main highways . 
+This Manual is one of four volumes relating to the design, construction, operation and 
+maintenance of storm water and sub -soil drainage systems  for Municipal controlled roads 
+and developments in Emirate of Abu Dhabi:  
+• Volume 1 – Design Manual  
+• Volume 2 –Standard Drawings  
+• Volume 3 – Operation and Maintenance Manual  
+• Volume 4 – Standard Specificatio ns 
+These documents are interdependent and shall be read and applied as a single entity.  
+Engineers and other disciplines using this Manual must be experienced and appropriately 
+qualified professionals who are familiar with the planning, design, construction , operation and 
+maintenance of storm water drainage networks.  
+Compliance with the Manual does not absolve users of their professional and contractual 
+responsibilities . 
+Where a Developer or other party believes that a change to the Manual may be 
+advantageo us for a particular project, the written approval of DEPARTMENT  shall be sought. 
+Supporting documentation shall be submitted to DEPARTMENT  in sufficient detail to allow 
+the proposal to be appraised.  A copy of DEPARTMENT ’s approval letter to be part of any 
+submittal .  
+Where reference is made to the ‘Developer’ this also includes all his professional advisers.  
+It should be noted that the design of foul sewer systems is not covered by this Manual. 
+1.2. Approvals Process  
+Any design submittal shall be by a qualified Consultant . The Consultant shall submit his 
+proposals for the site layout and associated surface water an d sub -soil drainage to 
+DEPARTMENT  in the stages and level of detail set out in Section 8. This section also 
+describes the requirements for the submission of reports, calculations, drawings and other 
+documents for approval.  
+The Developer shall note that fol lowing completion of construction there are further stages 
+to be completed to the satisfaction of DEPARTMENT  before the new works can be accepted 
+by DEPARTMENT  and ultimately taken over .  It should be noted that DEPARTMENT  design  
+approval does not guarante e taking over  of assets  
+ 
+
+
+================================================================================
+第 27 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+PAGE 2 
+01-OBJECTIVE       THIRD  EDITION -APRIL 2022  
+  
+The following diagram illustrates the general progression of a storm water and sub -soil 
+drainage project, for which the detail is given in Section 8. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 1-1 - DEPARTMENT  and Developer -Led Drainage Project Stages  
+1.3. Permanent Works  
+This Manual applies only to the design of the ‘permanent works.  This also includes the 
+design of any interim measures, such as temporary storage, which may be required until a 
+long-term solution i s available.  The design of all temporary works required for the 
+construction of the permanent and interim works shall be the responsibility of the Consultant 
+who shall ensure that any such works do not adversely impact on the permanent works.  Developer prepares 
+Master Plan & 
+concept drainage 
+proposals  Consultant prepares 
+outline & preliminary 
+drainage design  
+Consultant 
+prepares 
+detailed drainage 
+design  Storm water and sub -soil drainage 
+construction followed by testing and 
+commissioning. Inspection and staged 
+acceptance by DEPARTMENT as work 
+proceeds. Developer corrects any 
+defects.  
+Operation and maintenance of 
+drainage system by Developer 
+as site development proceeds  Completion of site 
+development  
+Developer hands over as -
+built drawings, O&M 
+manual, H&S information, 
+environmental, permitting 
+and other documents to 
+DEPARTMENT  
+= Approval/consent stage by DEPARTMENT -
+ADM  = Approval by DEPARTMENT  
+
+
+================================================================================
+第 28 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+PAGE 3 
+01-OBJECTIVE       THIRD  EDITION -APRIL 2022  
+ 1.4. Inspection, Testing and Commissioning  
+The requirements for inspection, testing and commissioning of the works are given in Volume 
+4: Standard Specifications.  
+1.5. Innovation  
+The Developer shall encourage the parties involved in the planning, design and construction 
+of a storm water and sub -soil drainage system to devise in novative , resilient, and  sustainable  
+drainage systems(SuDS) solutions and challenge conventional thinking where this could be 
+beneficial to the project and DEPARTMENT . 
+Documentation in support of this shall be submitted to DEPARTMENT  in sufficient detail to 
+allow the proposal to be appraised.  
+1.6. Copyright  
+Copyright of the Design Manual, Specification, Standard Drawings and Operation and 
+Maintenance Manual is the property of DEPARTMENT .  
+1.7. Updates  
+This manual will be revised by DEPARTMENT  from time to time to keep up to date with 
+technical developments and improved practices. It is the responsibility of the user to ensure 
+that they are working to the latest issue.  
+Any errors that are found or recommendations for improvement should be notified to 
+DEPARTMENT . 
+ 
+
+
+================================================================================
+第 29 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+PAGE 4 
+02-DESIGN CONSIDERATION       THIRD  EDITION -APRIL 2022  
+ 2. DESIGN CONSIDERATIONS  
+2.1. Network Integration  
+DEPARTMENT ’s Planning Department development plans will show the existing and future 
+land use within which the Developer shall identify his proposals.  
+At any point in time the storm water and sub -soil drainage systems in Abu Dhabi will need to 
+accommodate flows from the following contributing sources:  
+• The existing networks being operated by DEPARTMENT  
+• Proposed futu re planning:  
+o Extensions to the trunk main network being planned and/or constructed by 
+DEPARTMENT  to accommodate surface water from new developments and 
+changes in sub -soil flows in accordance with the overall Municipal 
+Development Plan. Manholes are to be located at strategic points to allow 
+connections from new developments to be made in the future,  
+o New developments with their associated sub -catchment drainage, and  
+• Stormwater drainage from new highways being planned and/or constructed by the 
+Department of Transport  Over land run -off from open areas.  
+• Excess irrigation water collected from the soft landscaped areas  
+• Discharge from Dewatering system arising from construction sites  
+• Flow from ground water control system  
+The Consultant  shall take account of all the above when preparing his drainage proposals.  
+DEPARTMENT  has long -term responsibility for the storm water  and sub -soil networks and 
+in order to optim ise the ownership and maintenance costs , it requires the design proposals 
+to: 
+• Optimise for gravity solutions, utilizing non-disruptive and trenchless pipeline 
+installation technologies when large depths are encountered. No electromechanical 
+solutions shall be utilized unless a gravity solution does not connect at the required 
+elevations.  
+• Optimise the size of pipes versus additional storage provided for flow attenuation. 
+Attenuation reduces the peak flow rate and may allow the use of smaller pipes 
+downstream. A detailed appraisal, including NPV calculations, shall be ca rried out 
+to justify the solution adopted.  
+• Optim ise the number of pumping stations  when pumping is absolutely necessary . 
+The number and location of pumping stations shall be balanced against other 
+considerations . A detailed appraisal including Net Present Value (NPV ) calculations 
+shall be carried out to justify the number, size and location of pumping stations.  
+2.2. Design Philosophy  
+DEPARTMENT requires storm water and sub -soil drainage systems to be provided which:  
+• Fulfil its requirements for minimizing the ris k of flooding  
+• Drain water -logged areas  
+• Are of reasonable cost to construct, operate and maintain  
+• Do not involve undue health and safety risks during construction, operation and 
+maintenance  
+• Comply with environmental legislation and protocols  
+
+
+================================================================================
+第 30 页
+================================================================================
+ 
+STORMWATER & SUBSOIL DRAINAGE SYSTEMS VOLUME I- DESIGN MANUAL  
+ 
+ 
+PAGE 5 
+02-DESIGN CONSIDERATION       THIRD  EDITION -APRIL 2022  
+ The Consultant  shall use this Manual together with their professional experience and 
+expertise to achieve a sensible balance of the above. Achieving the right balance will be 
+assisted by the Consultant  having regular interaction with DEPARTMENT  as the design 
+proceeds.   
+

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><title>我是谁 · 职能核对</title>
+<style>
+ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#f4f6f8;color:#1f2933;margin:0;padding:24px}
+ .card{background:#fff;border-radius:12px;box-shadow:0 8px 24px -16px rgba(0,0,0,.3);padding:18px 22px;margin:0 auto 16px;max-width:760px}
+ h1{font-size:18px;margin:0 0 4px} h2{font-size:15px;margin:0 0 10px} .muted{color:#66717f;font-size:13px}
+ table{border-collapse:collapse;width:100%;font-size:14px} td,th{padding:6px 8px;border-bottom:1px solid #e6eaee;text-align:left}
+ .ok{color:#166534;font-weight:600} .no{color:#9a3412;font-weight:600}
+ button{background:#0b5fd7;color:#fff;border:0;border-radius:8px;padding:7px 14px;font-size:14px;cursor:pointer;margin-right:8px}
+ button.sec{background:#e6eaee;color:#1f2933} button:focus-visible{outline:3px solid #f59e0b;outline-offset:2px}
+ #saved{margin-top:10px}
+</style></head>
+<body>
+<main>
+<div class="card"><h1>我是谁 · 职能核对</h1><div class="muted">统一身份联调用：看当前账号是谁、平台授予了哪些职能、每个会写数据的动作在本系统里能不能做。这里只做判定，不执行动作、不写业务数据。</div></div>
+<div class="card" id="who" aria-live="polite">读取中…</div>
+<div class="card"><h2>会写数据的动作</h2><table id="acts" aria-label="动作与判定"><thead><tr><th scope="col">动作</th><th scope="col">要的职能</th><th scope="col">本账号</th></tr></thead><tbody></tbody></table></div>
+<div class="card"><h2>管理端与计算申请</h2><div id="adm">…</div></div>
+<div class="card"><button id="save">把结果交给联调记录</button><button class="sec" id="out">注销，换下一个账号</button><div id="saved" class="muted" aria-live="polite"></div></div>
+</main>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function api(path, body){
+  const r = await fetch(path, body === undefined ? {} : {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
+  let j = null; try { j = await r.json(); } catch(e) {}
+  return {status: r.status, body: j};
+}
+const result = {checked_at: new Date().toISOString(), actions: [], admin: null, self_approval: null};
+async function boot(){
+  const w = await api('/api/whoami');
+  if (w.status === 401) { location.href = '/auth/login?next=/whoami.html'; return; }
+  if (!w.body || !w.body.who) { $('#who').textContent = '没有拿到身份：' + w.status; return; }
+  const who = w.body.who; result.who = who; result.mode = w.body.mode;
+  $('#who').innerHTML = `<h2>${esc(who.name || who.username)}（${esc(who.username)}）</h2>
+    <div>主体号 <b>${esc(who.principal_id)}</b> · 租户 ${esc(who.tenant_id)} · 模式 ${esc(w.body.mode)} · 记作 <code>${esc(who.actor)}</code></div>
+    <div style="margin-top:6px">职能：${who.functions.map(f => '<code>' + esc(f) + '</code>').join('、') || '（无）'}</div>`;
+  const tb = $('#acts tbody');
+  for (const a of Object.keys(w.body.can)) {
+    const name = a.replace('(refresh)', '');
+    const params = a.endsWith('(refresh)') ? {refresh: true} : {};
+    const c = await api('/api/action_check', {action: name, params});
+    const row = {action: a, need: c.body && c.body.need, allowed: !!(c.body && c.body.allowed)}; result.actions.push(row);
+    tb.insertAdjacentHTML('beforeend', `<tr><td>${esc(a)}</td><td><code>${esc(row.need)}</code> ${esc(c.body && c.body.need_zh)}</td><td class="${row.allowed ? 'ok' : 'no'}">${row.allowed ? '能做' : '不能做'}</td></tr>`);
+  }
+  const ad = await api('/api/admin/whoami'); const jobs = await api('/api/admin/jobs');
+  result.admin = {whoami_admin: !!(ad.body && ad.body.admin), jobs_status: jobs.status};
+  let html = `<div>进管理端：<span class="${jobs.status === 200 ? 'ok' : 'no'}">${jobs.status === 200 ? '能' : '不能（' + jobs.status + '）'}</span></div>`;
+  if (jobs.status === 200) {
+    html += `<div style="margin-top:8px" class="muted">管理员能批准计算申请，含自己提交的（只看角色）；谁提交、谁批准都记主体号，在管理端「操作记录」与任务历史里可查。</div>`;
+  }
+  $('#adm').innerHTML = html;
+}
+$('#save').onclick = async () => { const r = await api('/api/identity_uat', result); $('#saved').textContent = r.status === 200 ? '已交给联调记录：' + r.body.file : '没交上：' + r.status; };
+$('#out').onclick = async () => { const r = await api('/auth/logout', {}); if (r.body && r.body.redirect) location.href = r.body.redirect; };
+boot();
+</script>
+</body></html>

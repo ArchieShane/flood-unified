@@ -1,0 +1,514 @@
+# model_rules.toml 每个取值的中英文名称和单位（页面「推演参数」展示用）。新增规则时必须在这里补一条，tools/run_params.py 会检查缺失。
+[labels."states.confirm_required"]
+zh = "写脚本前须确认三态数据"
+en = "Confirm L1/L2/L2planned data before scripting"
+
+[labels."states.default_state"]
+zh = "默认态"
+en = "Default state"
+
+[labels."states.L1"]
+zh = "L1"
+en = "L1"
+
+[labels."states.L2"]
+zh = "L2"
+en = "L2"
+
+[labels."states.L2planned"]
+zh = "L2planned"
+en = "L2planned"
+
+[labels."swmm.options.FLOW_UNITS"]
+zh = "流量单位"
+en = "Flow units"
+
+[labels."swmm.options.INFILTRATION"]
+zh = "下渗模型（不起作用）"
+en = "Infiltration model (inactive)"
+
+[labels."swmm.options.FLOW_ROUTING"]
+zh = "演算方法"
+en = "Flow routing"
+
+[labels."swmm.options.LINK_OFFSETS"]
+zh = "管道偏移基准"
+en = "Link offsets"
+
+[labels."swmm.options.FORCE_MAIN_EQUATION"]
+zh = "压力管公式"
+en = "Force main equation"
+
+[labels."swmm.options.MIN_SLOPE"]
+zh = "最小坡度"
+en = "Minimum slope"
+unit = "%"
+
+[labels."swmm.options.ALLOW_PONDING"]
+zh = "允许井口积水"
+en = "Allow ponding"
+
+[labels."swmm.options.SKIP_STEADY_STATE"]
+zh = "跳过稳态"
+en = "Skip steady state"
+
+[labels."swmm.options.DRY_DAYS"]
+zh = "前期干旱天数"
+en = "Antecedent dry days"
+unit = "d"
+
+[labels."swmm.options.REPORT_STEP"]
+zh = "报告步长"
+en = "Report step"
+
+[labels."swmm.options.WET_STEP"]
+zh = "有雨步长"
+en = "Wet step"
+
+[labels."swmm.options.DRY_STEP"]
+zh = "无雨步长"
+en = "Dry step"
+
+[labels."swmm.options.ROUTING_STEP"]
+zh = "演算步长"
+en = "Routing step"
+unit = "s"
+
+[labels."swmm.options.VARIABLE_STEP"]
+zh = "可变步长系数"
+en = "Variable step"
+
+[labels."swmm.options.MINIMUM_STEP"]
+zh = "最小步长"
+en = "Minimum step"
+unit = "s"
+
+[labels."swmm.options.LENGTHENING_STEP"]
+zh = "管道加长步长"
+en = "Lengthening step"
+unit = "s"
+
+[labels."swmm.options.NORMAL_FLOW_LIMITED"]
+zh = "正常流限制"
+en = "Normal flow limited"
+
+[labels."swmm.options.SURCHARGE_METHOD"]
+zh = "超载算法"
+en = "Surcharge method"
+
+[labels."swmm.options.MAX_TRIALS"]
+zh = "最大迭代次数"
+en = "Max trials"
+
+[labels."swmm.options.HEAD_TOLERANCE"]
+zh = "水头容差"
+en = "Head tolerance"
+unit = "m"
+
+[labels."swmm.options.EVAPORATION_CONSTANT"]
+zh = "蒸发"
+en = "Evaporation"
+unit = "mm/d"
+
+[labels."pipes.default_manning_n"]
+zh = "默认管道糙率 n"
+en = "Default pipe Manning n"
+
+[labels."pipes.force_main_hazen_williams_c"]
+zh = "压力管 Hazen-Williams C"
+en = "Force main Hazen-Williams C"
+
+[labels."pipes.manning_by_material.Reinforced Concrete - RCP"]
+zh = "钢筋混凝土管 n"
+en = "Reinforced concrete (RCP) n"
+
+[labels."pipes.manning_by_material.Glass Reinforced Plastic - GRP"]
+zh = "玻璃钢管 n"
+en = "GRP n"
+
+[labels."pipes.manning_by_material.Polyvinyl Chloride - PVC"]
+zh = "PVC 管 n"
+en = "PVC n"
+
+[labels."pipes.manning_by_material.High Density Polyethylene - HDPE"]
+zh = "HDPE 管 n"
+en = "HDPE n"
+
+[labels."pipes.manning_by_material.Other - OTH"]
+zh = "其他管材 n"
+en = "Other material n"
+
+[labels."pipes.manning_by_material.Unknown"]
+zh = "未知管材 n"
+en = "Unknown material n"
+
+[labels."init_state.pipe_fill_fraction_of_area"]
+zh = "管道初始填充率（按断面面积）"
+en = "Initial pipe fill (of cross-section area)"
+
+[labels."init_state.manhole_initial_depth_m"]
+zh = "检查井初始水深"
+en = "Initial manhole depth"
+unit = "m"
+
+[labels."outfalls.sea_boundary"]
+zh = "海洋出水口边界类型"
+en = "Sea outfall boundary type"
+
+[labels."outfalls.sea_level_m"]
+zh = "海洋出水口固定水位（设计高潮位）"
+en = "Sea outfall fixed level (design high tide)"
+unit = "m"
+
+[labels."outfalls.sensitivity_sea_level_m"]
+zh = "潮位敏感性复核水位"
+en = "Tide sensitivity level"
+unit = "m"
+
+[labels."outfalls.apply_to"]
+zh = "适用出水口"
+en = "Applies to"
+
+[labels."outfalls.gravity_outfall_flap_gate"]
+zh = "重力出水口设拍门"
+en = "Flap gate on gravity outfalls"
+
+[labels."outfalls.pump_outlet_flap_gate"]
+zh = "泵出水口设拍门"
+en = "Flap gate on pump outlets"
+
+[labels."outfalls.flap_gate_well_closed"]
+zh = "拍门井按封闭构筑物（不溢流）"
+en = "Flap-gate chamber modelled as closed (no overflow)"
+
+[labels."outfalls.dedup_duplicate_pipes"]
+zh = "去掉重复管（起止点、管径、长度相同）"
+en = "Duplicate pipes removed (same ends, diameter, length)"
+
+[labels."outfalls.tide_process"]
+zh = "是否考虑潮汐涨落过程"
+en = "Tide process included"
+
+[labels."runoff.method"]
+zh = "产流方法"
+en = "Runoff method"
+
+[labels."runoff.initial_abstraction_ratio"]
+zh = "初损系数 Ia/S"
+en = "Initial abstraction ratio Ia/S"
+
+[labels."runoff.impervious_cn"]
+zh = "不透水面 CN"
+en = "Impervious CN"
+
+[labels."runoff.unit_hydrograph"]
+zh = "汇流单位线"
+en = "Unit hydrograph"
+
+[labels."runoff.lag_ratio_to_tc"]
+zh = "滞时 / 汇流时间"
+en = "Lag / Tc"
+
+[labels."runoff.min_tc_min"]
+zh = "汇流时间下限"
+en = "Minimum Tc"
+unit = "min"
+
+[labels."runoff.timestep_min"]
+zh = "产流计算步长"
+en = "Runoff time step"
+unit = "min"
+
+[labels."runoff.inflow_location"]
+zh = "径流入流位置"
+en = "Runoff inflow location"
+
+[labels."runoff.split_pervious_impervious"]
+zh = "按不透水比例拆分透水 / 不透水"
+en = "Split pervious / impervious"
+
+[labels."runoff.surface_infiltration_in_2d"]
+zh = "二维地面下渗"
+en = "Surface infiltration in 2D"
+
+[labels."runoff.impervious_fraction.raster_cell_m"]
+zh = "不透水比例统计栅格"
+en = "Impervious-fraction raster cell"
+unit = "m"
+
+[labels."runoff.impervious_fraction.impervious"]
+zh = "计为不透水的下垫面"
+en = "Counted as impervious"
+
+[labels."runoff.impervious_fraction.pervious"]
+zh = "计为透水的下垫面"
+en = "Counted as pervious"
+
+[labels."runoff.impervious_fraction.unclassified"]
+zh = "未分类下垫面"
+en = "Unclassified surface"
+
+[labels."exchange.couple_dt_s"]
+zh = "一二维交换步长"
+en = "1D-2D coupling step"
+unit = "s"
+
+[labels."exchange.ground_basis"]
+zh = "交换地面高程取法"
+en = "Exchange ground basis"
+
+[labels."exchange.exchange_at"]
+zh = "发生交换的位置"
+en = "Exchange locations"
+
+[labels."exchange.no_exchange"]
+zh = "不交换的节点"
+en = "Nodes without exchange"
+
+[labels."exchange.wet_threshold_m"]
+zh = "回流水深阈值"
+en = "Re-entry depth threshold"
+unit = "m"
+
+[labels."exchange.overflow_distribution"]
+zh = "溢流水量分配"
+en = "Overflow distribution"
+
+[labels."exchange.no_suction_while_overflowing"]
+zh = "溢流期间井不吸水"
+en = "No suction while overflowing"
+
+[labels."exchange.cap_by_cell_water"]
+zh = "按单元现存水量截断"
+en = "Cap by cell water"
+
+[labels."exchange.elevated_node_rule"]
+zh = "高架井规则"
+en = "Elevated node rule"
+
+[labels."exchange.manhole_cover.discharge_coefficient"]
+zh = "井盖孔口流量系数 Cd"
+en = "Manhole cover Cd"
+
+[labels."exchange.manhole_cover.diameter_m"]
+zh = "井盖直径"
+en = "Manhole cover diameter"
+unit = "m"
+
+[labels."exchange.inlet.formula"]
+zh = "雨水口进水公式"
+en = "Inlet formula"
+
+[labels."exchange.inlet.weir_coefficient_si"]
+zh = "堰流系数 Cw"
+en = "Weir coefficient Cw"
+
+[labels."exchange.inlet.orifice_coefficient"]
+zh = "孔流系数 Co"
+en = "Orifice coefficient Co"
+
+[labels."exchange.inlet.open_area_ratio"]
+zh = "格栅开孔率"
+en = "Grate open-area ratio"
+
+[labels."exchange.inlet.clog_factor"]
+zh = "防堵折减系数"
+en = "Clogging factor"
+
+[labels."exchange.inlet.min_depth_m"]
+zh = "最小进水水深"
+en = "Minimum inflow depth"
+unit = "m"
+
+[labels."exchange.inlet.stop_when_node_full"]
+zh = "节点满管后停止进水"
+en = "Stop when node full"
+
+[labels."exchange.inlet.grate_size_m"]
+zh = "格栅边长"
+en = "Grate size"
+unit = "m"
+
+[labels."exchange.inlet.grate_weir_sides"]
+zh = "堰流边数"
+en = "Weir sides"
+
+[labels."exchange.inlet.grate_open_area_m2"]
+zh = "格栅开孔面积"
+en = "Grate open area"
+unit = "m²"
+
+[labels."twod.solver"]
+zh = "二维求解器"
+en = "2D solver"
+
+[labels."twod.cfl"]
+zh = "CFL 数"
+en = "CFL"
+
+[labels."twod.max_triangle_area_m2"]
+zh = "三角单元最大面积"
+en = "Max triangle area"
+unit = "m²"
+
+[labels."twod.frame_interval_s"]
+zh = "结果帧间隔"
+en = "Frame interval"
+unit = "s"
+
+[labels."twod.dry_threshold_m"]
+zh = "干湿阈值"
+en = "Dry threshold"
+unit = "m"
+
+[labels."twod.dem_clip_margin_m"]
+zh = "DTM 裁剪外扩"
+en = "DEM clip margin"
+unit = "m"
+
+[labels."twod.dem_cell_elevation"]
+zh = "单元高程取法"
+en = "Cell elevation method"
+
+[labels."twod.dem_nodata_rule"]
+zh = "DTM 无数据处理"
+en = "DEM no-data rule"
+
+[labels."twod.domain_boundary"]
+zh = "计算域外边界"
+en = "Domain boundary"
+
+[labels."twod.initial_condition"]
+zh = "初始条件"
+en = "Initial condition"
+
+[labels."twod.infiltration"]
+zh = "二维下渗"
+en = "2D infiltration"
+
+[labels."twod.direct_rainfall"]
+zh = "二维直接降雨"
+en = "Direct rainfall on 2D"
+
+[labels."twod.surface_roughness.other_hard"]
+zh = "其他硬地糙率 n"
+en = "Other hardstand n"
+
+[labels."twod.surface_roughness.road_pavement_parking"]
+zh = "路面 / 铺装 / 停车糙率 n"
+en = "Road / pavement / parking n"
+
+[labels."twod.surface_roughness.building"]
+zh = "建筑糙率 n（挖洞法）"
+en = "Building n (hole method)"
+
+[labels."twod.surface_roughness.building_without_holes"]
+zh = "建筑糙率 n（不挖洞）"
+en = "Building n (no holes)"
+
+[labels."twod.surface_roughness.green_vacant"]
+zh = "绿地 / 未建地块糙率 n"
+en = "Green / vacant n"
+
+[labels."twod.surface_roughness.water"]
+zh = "水面糙率 n"
+en = "Water n"
+
+[labels."twod.surface_roughness.default"]
+zh = "默认糙率 n"
+en = "Default n"
+
+[labels."twod.buildings.treatment"]
+zh = "建筑处理"
+en = "Building treatment"
+
+[labels."twod.buildings.raster_cell_m"]
+zh = "建筑栅格化尺寸"
+en = "Building raster cell"
+unit = "m"
+
+[labels."twod.buildings.source_layers"]
+zh = "建筑数据来源"
+en = "Building source"
+
+[labels."twod.buildings.narrow_gap_closing"]
+zh = "窄缝处理"
+en = "Narrow-gap closing"
+
+[labels."twod.buildings.min_area_m2"]
+zh = "最小挖洞面积"
+en = "Minimum hole area"
+unit = "m²"
+
+[labels."twod.buildings.edge_buffer_m"]
+zh = "离边界距离"
+en = "Edge buffer"
+unit = "m"
+
+[labels."twod.buildings.method_note"]
+zh = "方法说明"
+en = "Method note"
+
+[labels."twod.dem_edits.deep_pit_rule"]
+zh = "深坑处理规则"
+en = "Deep pit rule"
+
+[labels."rain.A61D1.depth_mm"]
+zh = "A61D1 雨量"
+en = "A61D1 depth"
+unit = "mm"
+
+[labels."rain.A61D1.duration_h"]
+zh = "A61D1 历时"
+en = "A61D1 duration"
+unit = "h"
+
+[labels."rain.A61D1.shape"]
+zh = "A61D1 雨型"
+en = "A61D1 shape"
+
+[labels."rain.A61D1.series_file"]
+zh = "A61D1 雨量序列来源"
+en = "A61D1 series source"
+
+[labels."rain.A61D1.sim_hours"]
+zh = "A61D1 模拟时长"
+en = "A61D1 simulation length"
+unit = "h"
+
+[labels."rain.S_series.rule"]
+zh = "S 系列雨型规则"
+en = "S-series pattern rule"
+
+[labels."rain.S_series.depths_mm"]
+zh = "S 系列雨量"
+en = "S-series depths"
+unit = "mm"
+
+[labels."rain.S_series.durations_h"]
+zh = "S 系列历时"
+en = "S-series durations"
+unit = "h"
+
+[labels."rain.standard.S25D1"]
+zh = "设计标准雨 S25D1"
+en = "Standard storm S25D1"
+
+[labels."rain.standard.S31D2"]
+zh = "设计标准雨 S31D2"
+en = "Standard storm S31D2"
+
+[labels."known_gaps.items"]
+zh = "已知缺项"
+en = "Known gaps"
+
+
+[labels."twod.domain_closing_m"]
+zh = "计算域闭运算距离"
+en = "Domain closing distance"
+unit = "m"
+
+[labels."twod.domain_simplify_m"]
+zh = "计算域边界简化容差"
+en = "Domain simplification tolerance"
+unit = "m"

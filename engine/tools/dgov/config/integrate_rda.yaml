@@ -1,0 +1,14 @@
+# RD-A 融合规则（用户 2026-10-21 认可：以 DMT 为底、从 AECOM 取模型参数；管网要严格治理）。
+extent: rda
+base: dmt_stormwater          # 管网的存在、位置、管径、管底、井盖、井底：DMT 资产库（置信度 B）
+params: aecom_rda             # 糙率、泵和泵曲线、湿井、压力管、出水口边界、子汇水区：AECOM 模型（置信度 C）
+match_tol_m: [0.5, 2.0]       # 管段两端都在这个距离内算同一根（先 0.5 m，再 2 m）
+node_tol_m: 0.5               # 节点认同一个
+catchment_layer: 10+20%-1hr/Catchment.shp
+rules:
+  outside_catchments: exclude                 # DMT 管段不碰 AECOM 子汇水区并集：不属于 RD-A
+  lateral: optional                           # 一端接雨水口 / 雨水井的连接管：留在 link_optional，不进一维
+  trunk_candidate: include_if_connected       # 范围内、不是连接管、AECOM 没收的：至少一端接上融合后的管网就补进来（标待核），否则只列清单
+  aecom_only: include                         # AECOM 有、DMT 没有的管：从 AECOM 取（置信度 C），标「DMT 无对应」
+  pressure_network: params                    # 压力管和泵：从 AECOM 取
+  value_conflict_tol: {elev_m: 0.01, diameter_mm: 1}

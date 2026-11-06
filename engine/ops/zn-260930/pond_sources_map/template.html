@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ADM 30 m L2 塘来源地图</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<style>
+html,body{height:100%;margin:0;font:13px/1.5 "Microsoft YaHei",system-ui,sans-serif;color:#1f2937}
+#map{height:100%}
+#panel{position:absolute;z-index:1000;top:10px;right:10px;width:300px;max-height:calc(100% - 20px);overflow:auto;background:#fff;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.25);padding:10px 12px}
+#panel h3{margin:0 0 4px;font-size:14px}
+#panel h4{margin:10px 0 3px;font-size:12px;color:#6b7280;border-top:1px solid #e5e7eb;padding-top:8px}
+.row{display:flex;align-items:center;gap:6px;padding:2px 0;cursor:pointer}
+.row input{margin:0}
+.sw{width:16px;height:12px;border:2px solid;border-radius:2px;flex:none}
+.row .n{margin-left:auto;color:#6b7280}
+.btns{display:flex;gap:6px;margin:4px 0}
+.btns button{flex:1;padding:2px 0;border:1px solid #d1d5db;background:#f9fafb;border-radius:4px;cursor:pointer}
+.pop td{padding:1px 6px 1px 0;vertical-align:top}.pop td:first-child{color:#6b7280;white-space:nowrap}
+.pop{max-width:360px;word-break:break-all}
+.tag{display:inline-block;padding:0 6px;border-radius:8px;background:#e0f2fe;margin:1px 2px 1px 0}
+.tag.no{background:#fee2e2}
+.note{font-size:11px;color:#6b7280;margin-top:6px}
+</style></head><body>
+<div id="map"></div>
+<div id="panel">
+  <h3>L2 塘来源图例</h3>
+  <div class="note">按来源文件类别着色；勾选显示 / 取消隐藏。点击塘看来源文件与进入的 L2 run。</div>
+  <h4>塘（按来源类别）</h4><div class="btns"><button id="all">全显</button><button id="none">全隐</button></div>
+  <div id="cats"></div>
+  <h4>按是否进入 30 m L2 run</h4><div id="used"></div>
+  <h4>现状泵站（进入 L1 / L2）</h4><div id="pump"></div>
+  <h4>计算域</h4><div id="dom"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>
+const DATA=__DATA__;
+const CATS=[
+ ['已建成塘（L2 用）','#2563eb','261014/data/ponds_l2.geojson（全市 L2 的 23 座）'],
+ ['L1 蓄水设施','#0d9488','261014/data/reservoirs_l1.geojson'],
+ ['Parsons 现状塘','#d97706','Parsons_Model Data Export/Existing Storage'],
+ ['Parsons 子模型塘','#dc2626','Parsons_Model Data Export/26092026/*/pond*.shp'],
+ ['Parsons 子模型塘（261015 版）','#9333ea','261015/汇水区报告-Parsons/*/pond*.shp'],
+ ['客户模型导出塘','#475569','Hydraulic Model Data Export/*/pond*.shp']];
+const map=L.map('map',{preferCanvas:false}).setView([24.4,54.5],10);
+const base={
+ '电子地图（Esri 街道）':L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Esri'}),
+ '电子地图（Carto 浅色）':L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap © CARTO'}),
+ '卫星影像（Esri）':L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Esri'})};
+base['电子地图（Esri 街道）'].addTo(map);
+L.control.layers(base,null,{position:'topleft'}).addTo(map);
+const esc=s=>String(s??'—').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+function popup(p){
+ const runs=p.runs.length?p.runs.map(r=>`<span class="tag${String(r.note).startsWith('not')?' no':''}">${esc(r.reg)}${r.vol?' · 模型库容 '+r.vol.toLocaleString()+' m³':''} · ${esc(String(r.note).startsWith('not')?'未建：'+r.note.slice(4):r.note)}</span>`).join(''):'<span class="tag no">未进任何 30 m L2 run</span>';
+ return `<table class="pop"><tr><td>序号</td><td>PD${String(p.seq).padStart(3,'0')} / ${esc(p.pid)}</td></tr>
+ <tr><td>来源类别</td><td>${esc(p.cat)}</td></tr><tr><td>几何来源</td><td>${esc(p.sources)}</td></tr>
+ <tr><td>属性来源</td><td>${esc(p.attr)}</td></tr>
+ <tr><td>来源库容</td><td>${p.vol==null?'—':p.vol.toLocaleString()+' m³'}</td></tr><tr><td>来源深度</td><td>${p.depth==null?'—':p.depth+' m'}</td></tr>
+ <tr><td>占地</td><td>${p.area==null?'—':p.area.toLocaleString()+' m²'}</td></tr><tr><td>所在区域</td><td>${esc(p.adm)}</td></tr>
+ <tr><td>L2 run</td><td>${runs}</td></tr></table>`;}
+const groups={},counts={};
+CATS.forEach(c=>{groups[c[0]]=L.layerGroup().addTo(map);counts[c[0]]=0});
+const usedG={yes:L.layerGroup(),no:L.layerGroup()};
+const ponds=[];
+DATA.ponds.features.forEach(f=>{
+ const p=f.properties,c=CATS.find(x=>x[0]===p.cat)||CATS[5];
+ const ly=L.geoJSON(f,{style:{color:c[1],weight:2,fillColor:c[1],fillOpacity:.35}}).bindPopup(popup(p),{maxWidth:380}).bindTooltip(`PD${String(p.seq).padStart(3,'0')} ${p.pid}`);
+ ly.addTo(groups[c[0]]);counts[c[0]]++;ponds.push({ly,p,cat:c[0]});
+});
+// 计算域
+const domG=L.layerGroup().addTo(map);
+const domLy=L.geoJSON(DATA.domains,{style:{color:'#111827',weight:1.5,dashArray:'5 4',fill:false},
+ onEachFeature:(f,l)=>l.bindTooltip(f.properties.reg+(f.properties.km2?` · ${f.properties.km2} km²`:''),{sticky:true})}).addTo(domG);
+map.fitBounds(domLy.getBounds());
+// 泵站
+const PK={built:['#f59e0b','已建泵（有台数 × 流量）'],nodata:['#7c3aed','无流量数据，没建泵'],off:['#6b7280','停用（Out of Service），没建泵']};
+const pg={},pc={};Object.keys(PK).forEach(k=>{pg[k]=L.layerGroup().addTo(map);pc[k]=0});
+DATA.pumps.forEach(p=>{
+ const c=PK[p.kind][0];
+ const m=L.marker([p.lat,p.lon],{icon:L.divIcon({className:'',html:`<div style="width:16px;height:16px;transform:rotate(45deg);background:${c};border:2px solid #fff;box-shadow:0 0 3px #000;margin:-8px 0 0 -8px"></div>`,iconSize:[0,0]})});
+ m.bindTooltip(`${p.ps} · ${p.reg}`).bindPopup(`<table class="pop"><tr><td>泵站</td><td>${esc(p.ps)}（${esc(p.unitid)}）</td></tr><tr><td>区域</td><td>${esc(p.reg)}</td></tr>
+ <tr><td>状态</td><td>${esc(p.status)}</td></tr><tr><td>模型</td><td><span class="tag${p.kind==='built'?'':' no'}">${PK[p.kind][1]}</span></td></tr>
+ <tr><td>台数 × 单台</td><td>${p.n==null?'—':p.n+' × '+(p.q==null?'—':p.q+' L/s')}</td></tr><tr><td>流量来源</td><td>${esc(p.q_src)}</td></tr>
+ <tr><td>客户备注</td><td>${esc(p.comment)}</td></tr><tr><td>井深</td><td>${p.well_depth==null?'—':p.well_depth+' m'}</td></tr>
+ <tr><td>排出点</td><td>${esc(p.discharge)}${p.forcemain?'；压力管 '+p.forcemain+' m':''}</td></tr></table>`,{maxWidth:380}).addTo(pg[p.kind]);pc[p.kind]++;
+});
+// 图例
+const catsEl=document.getElementById('cats');
+function row(color,label,n,checked,onchg,dash){
+ const d=document.createElement('label');d.className='row';
+ d.innerHTML=`<input type="checkbox" ${checked?'checked':''}><span class="sw" style="border-color:${color};background:${dash?'transparent':color+'59'};${dash?'border-style:dashed':''}"></span><span>${label}</span>${n==null?'':`<span class="n">${n}</span>`}`;
+ d.querySelector('input').onchange=e=>onchg(e.target.checked);return d;}
+const boxes=[];
+CATS.forEach(c=>{const r=row(c[1],c[0],counts[c[0]],true,on=>{on?groups[c[0]].addTo(map):map.removeLayer(groups[c[0]]);applyUsed()});r.title=c[2];catsEl.appendChild(r);boxes.push(r.querySelector('input'))});
+document.getElementById('all').onclick=()=>boxes.forEach(b=>{if(!b.checked)b.click()});
+document.getElementById('none').onclick=()=>boxes.forEach(b=>{if(b.checked)b.click()});
+// 按是否进 L2 run 过滤
+const st={yes:true,no:true};
+const nYes=ponds.filter(x=>x.p.runs.some(r=>!String(r.note).startsWith('not'))).length;
+function applyUsed(){ponds.forEach(x=>{const u=x.p.runs.some(r=>!String(r.note).startsWith('not'));const ok=u?st.yes:st.no;const g=groups[x.cat];
+ if(ok){if(!g.hasLayer(x.ly))g.addLayer(x.ly)}else g.removeLayer(x.ly)})}
+const usedEl=document.getElementById('used');
+usedEl.appendChild(row('#16a34a','进入 L2 run（共建成）',nYes,true,on=>{st.yes=on;applyUsed()}));
+usedEl.appendChild(row('#9ca3af','未进 L2 run（其它汇水区 / 未建）',ponds.length-nYes,true,on=>{st.no=on;applyUsed()}));
+Object.keys(PK).forEach(k=>document.getElementById('pump').appendChild(row(PK[k][0],PK[k][1],pc[k],true,on=>{on?pg[k].addTo(map):map.removeLayer(pg[k])})));
+document.getElementById('dom').appendChild(row('#111827','ADM 15 个计算域边界',DATA.domains.features.length,true,on=>{on?domG.addTo(map):map.removeLayer(domG)},true));
+</script></body></html>

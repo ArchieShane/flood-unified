@@ -1,0 +1,11 @@
+# 仓库统一 LF；Windows 上 git 也按 LF 检出，补丁脚本不用再猜行尾
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.gif binary
+*.xlsx binary
+*.docx binary
+*.pdf binary
+*.parquet binary
+*.zip binary
+*.tif binary

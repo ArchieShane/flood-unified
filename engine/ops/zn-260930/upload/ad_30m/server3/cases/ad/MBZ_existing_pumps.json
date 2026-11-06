@@ -1,0 +1,81 @@
+{
+ "region": "MBZ",
+ "domain_km2": 18.08,
+ "stations": [
+  {
+   "unitid": "SW_MBZ_ME2_PSS_38",
+   "ps_id": "ADM_RD-26",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::2x60,Separate power supply is not available",
+   "n_pumps": 2,
+   "q_each_lps": 60.0,
+   "q_src": "客户备注 2×60",
+   "parsons": [
+    {
+     "model": "Musaffah_RD09",
+     "flow_lps": 0.0,
+     "dist_m": 2
+    },
+    {
+     "model": "Musaffah_RD09",
+     "flow_lps": 96.59,
+     "dist_m": 3
+    }
+   ],
+   "wetwell_node": "249194_2697976",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 9.0,
+   "on_m": 4.5,
+   "off_m": 0.9,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 249194.3,
+   "y": 2697976.2
+  },
+  {
+   "unitid": "SW_MUS_MN1_PSS_54",
+   "ps_id": "ADM_RD-09",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::2x123,Station has only two pump the third pump unavailable",
+   "n_pumps": 2,
+   "q_each_lps": 123.0,
+   "q_src": "客户备注 2×123",
+   "parsons": [
+    {
+     "model": "Musaffah_RD09",
+     "flow_lps": 0.0,
+     "dist_m": 8
+    },
+    {
+     "model": "Musaffah_RD09",
+     "flow_lps": 154.31,
+     "dist_m": 6
+    },
+    {
+     "model": "Musaffah_RD09",
+     "flow_lps": 153.68,
+     "dist_m": 3
+    }
+   ],
+   "wetwell_node": "248659_2699157",
+   "wetwell_dist_m": 1,
+   "well_depth_m": 6.5,
+   "on_m": 3.25,
+   "off_m": 0.65,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 248660.5,
+   "y": 2699157.4
+  }
+ ]
+}

@@ -1,0 +1,117 @@
+{
+ "region": "RBE1",
+ "ponds": [
+  {
+   "unitid": "PD082",
+   "node": "PND_PD082",
+   "name": "PO-1",
+   "cat": "Parsons 子模型塘",
+   "sources": "261015/Airport-A-Interchange; Parsons 26092026/Airport-A-Interchange",
+   "pipes_5m": 0,
+   "vol_ledger_m3": 1089.1,
+   "vol_model_m3": 1089,
+   "depth_how": "来源库容 / 占地",
+   "xy": [
+    260686.27,
+    2709716.31
+   ],
+   "wiring": {
+    "auto": true,
+    "xy": [
+     260686.27,
+     2709716.31
+    ],
+    "z_bot": null,
+    "depth_m": 0.25,
+    "area_m2": 4361.7,
+    "pipes": [],
+    "dia_m": 0.6
+   },
+   "footprint": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       260688.022757948,
+       2709758.7447072132
+      ],
+      [
+       260734.4441323157,
+       2709720.6074642558
+      ],
+      [
+       260693.5972804831,
+       2709669.8508608313
+      ],
+      [
+       260636.84958935375,
+       2709712.012239458
+      ],
+      [
+       260688.022757948,
+       2709758.7447072132
+      ]
+     ]
+    ]
+   },
+   "footprint_area_ha": 0.4
+  },
+  {
+   "unitid": "PD083",
+   "node": "PND_PD083",
+   "name": "PO-2",
+   "cat": "Parsons 子模型塘",
+   "sources": "261015/Airport-A-Interchange; Parsons 26092026/Airport-A-Interchange",
+   "pipes_5m": 0,
+   "vol_ledger_m3": 2874.1,
+   "vol_model_m3": 2874,
+   "depth_how": "来源库容 / 占地",
+   "xy": [
+    259652.41,
+    2708133.03
+   ],
+   "wiring": {
+    "auto": true,
+    "xy": [
+     259652.41,
+     2708133.03
+    ],
+    "z_bot": null,
+    "depth_m": 0.276,
+    "area_m2": 10414.8,
+    "pipes": [],
+    "dia_m": 0.6
+   },
+   "footprint": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       259656.54521615244,
+       2708207.6007153913
+      ],
+      [
+       259722.1867180757,
+       2708164.3933332576
+      ],
+      [
+       259648.80291088735,
+       2708055.8856525426
+      ],
+      [
+       259581.6912239721,
+       2708101.672130531
+      ],
+      [
+       259656.54521615244,
+       2708207.6007153913
+      ]
+     ]
+    ]
+   },
+   "footprint_area_ha": 1.0
+  }
+ ],
+ "not_modelled": [],
+ "note": "已建成塘（含分不清规划的 Parsons 塘）；L2 = L1 + 这些塘。空 = 计算域内没有塘，L2 同 L1"
+}

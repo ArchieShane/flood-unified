@@ -1,0 +1,30 @@
+{
+ "region": "RDH",
+ "domain_km2": 5.75,
+ "stations": [
+  {
+   "unitid": "SW_ABT_W28_01_PSS_61",
+   "ps_id": "ADM_RD-H",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::350 & 80x2",
+   "n_pumps": null,
+   "q_each_lps": null,
+   "q_src": "无数据：不建泵，列为局限",
+   "parsons": [],
+   "wetwell_node": "232089_2705312",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 10.0,
+   "on_m": 5.0,
+   "off_m": 1.0,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 232089.8,
+   "y": 2705312.2
+  }
+ ]
+}

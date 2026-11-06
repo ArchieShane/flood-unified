@@ -1,0 +1,446 @@
+{
+  "schema": "swbrain.fleet/1",
+  "simulated": true,
+  "as_of": "2026-10-01",
+  "models": [
+    {
+      "model": "trailer-500",
+      "rate_m3h": 500,
+      "head_m": 12,
+      "hose_m": 100,
+      "setup_min": 20,
+      "crew": 2,
+      "weight_t": 3.5,
+      "vehicle_class": "light"
+    },
+    {
+      "model": "truck-1500",
+      "rate_m3h": 1500,
+      "head_m": 15,
+      "hose_m": 150,
+      "setup_min": 30,
+      "crew": 3,
+      "weight_t": 12,
+      "vehicle_class": "heavy"
+    },
+    {
+      "model": "heavy-3000",
+      "rate_m3h": 3000,
+      "head_m": 20,
+      "hose_m": 300,
+      "setup_min": 40,
+      "crew": 4,
+      "weight_t": 22,
+      "vehicle_class": "heavy"
+    }
+  ],
+  "depots": [
+    {
+      "depot_id": "D01",
+      "name": "البحث والانقاذ -شاطئ الراحة",
+      "lon": 54.53428900000006,
+      "lat": 24.427684000000056,
+      "capacity_units": 8
+    },
+    {
+      "depot_id": "D02",
+      "name": "مركز الدفاع المدني السمحة [C]",
+      "lon": 54.76754664100008,
+      "lat": 24.681179523000026,
+      "capacity_units": 8
+    },
+    {
+      "depot_id": "D03",
+      "name": "نقطة الفاية",
+      "lon": 54.82964110300003,
+      "lat": 24.283658179000042,
+      "capacity_units": 8
+    },
+    {
+      "depot_id": "D04",
+      "name": "مركز الدفاع المدني الفلاح الجديد [A]",
+      "lon": 54.72640961700006,
+      "lat": 24.43705119200007,
+      "capacity_units": 8
+    },
+    {
+      "depot_id": "D05",
+      "name": "مركز الدفاع المدني البطين [C]",
+      "lon": 54.348483513000076,
+      "lat": 24.45861620000005,
+      "capacity_units": 8
+    },
+    {
+      "depot_id": "D06",
+      "name": "مركز الدفاع المدني الوثبة [C]",
+      "lon": 54.647646000000066,
+      "lat": 24.269800000000032,
+      "capacity_units": 8
+    },
+    {
+      "depot_id": "D07",
+      "name": "مركز الدفاع المدني ايكاد2 [C]",
+      "lon": 54.47727500000008,
+      "lat": 24.293003000000056,
+      "capacity_units": 8
+    },
+    {
+      "depot_id": "D08",
+      "name": "مركز الدفاع المدني الشهامة [C]",
+      "lon": 54.68229418300007,
+      "lat": 24.540711526000052,
+      "capacity_units": 8
+    },
+    {
+      "depot_id": "D09",
+      "name": "مركز الدفاع المدني السعديات [A]",
+      "lon": 54.41305600000004,
+      "lat": 24.530796000000066,
+      "capacity_units": 8
+    },
+    {
+      "depot_id": "D10",
+      "name": "مركز الدفاع المدني الشليلة [C]",
+      "lon": 54.66445870600006,
+      "lat": 24.631542442000068,
+      "capacity_units": 8
+    },
+    {
+      "depot_id": "D11",
+      "name": "مركز الدفاع المدني شخبوط [C]",
+      "lon": 54.63733427000005,
+      "lat": 24.360544572000038,
+      "capacity_units": 8
+    },
+    {
+      "depot_id": "D12",
+      "name": "مركز الدفاع المدني جزيرة ياس [B]",
+      "lon": 54.60282783000008,
+      "lat": 24.493509654000036,
+      "capacity_units": 8
+    }
+  ],
+  "units": [
+    {
+      "unit_id": "P-001",
+      "model": "trailer-500",
+      "depot_id": "D01",
+      "status": "available",
+      "lon": 54.53428900000006,
+      "lat": 24.427684000000056
+    },
+    {
+      "unit_id": "P-002",
+      "model": "trailer-500",
+      "depot_id": "D02",
+      "status": "available",
+      "lon": 54.76754664100008,
+      "lat": 24.681179523000026
+    },
+    {
+      "unit_id": "P-003",
+      "model": "trailer-500",
+      "depot_id": "D03",
+      "status": "available",
+      "lon": 54.82964110300003,
+      "lat": 24.283658179000042
+    },
+    {
+      "unit_id": "P-004",
+      "model": "trailer-500",
+      "depot_id": "D04",
+      "status": "available",
+      "lon": 54.72640961700006,
+      "lat": 24.43705119200007
+    },
+    {
+      "unit_id": "P-005",
+      "model": "trailer-500",
+      "depot_id": "D05",
+      "status": "available",
+      "lon": 54.348483513000076,
+      "lat": 24.45861620000005
+    },
+    {
+      "unit_id": "P-006",
+      "model": "trailer-500",
+      "depot_id": "D06",
+      "status": "available",
+      "lon": 54.647646000000066,
+      "lat": 24.269800000000032
+    },
+    {
+      "unit_id": "P-007",
+      "model": "trailer-500",
+      "depot_id": "D07",
+      "status": "available",
+      "lon": 54.47727500000008,
+      "lat": 24.293003000000056
+    },
+    {
+      "unit_id": "P-008",
+      "model": "trailer-500",
+      "depot_id": "D08",
+      "status": "available",
+      "lon": 54.68229418300007,
+      "lat": 24.540711526000052
+    },
+    {
+      "unit_id": "P-009",
+      "model": "trailer-500",
+      "depot_id": "D09",
+      "status": "available",
+      "lon": 54.41305600000004,
+      "lat": 24.530796000000066
+    },
+    {
+      "unit_id": "P-010",
+      "model": "trailer-500",
+      "depot_id": "D10",
+      "status": "available",
+      "lon": 54.66445870600006,
+      "lat": 24.631542442000068
+    },
+    {
+      "unit_id": "P-011",
+      "model": "trailer-500",
+      "depot_id": "D11",
+      "status": "available",
+      "lon": 54.63733427000005,
+      "lat": 24.360544572000038
+    },
+    {
+      "unit_id": "P-012",
+      "model": "trailer-500",
+      "depot_id": "D12",
+      "status": "available",
+      "lon": 54.60282783000008,
+      "lat": 24.493509654000036
+    },
+    {
+      "unit_id": "P-013",
+      "model": "trailer-500",
+      "depot_id": "D01",
+      "status": "available",
+      "lon": 54.53428900000006,
+      "lat": 24.427684000000056
+    },
+    {
+      "unit_id": "P-014",
+      "model": "trailer-500",
+      "depot_id": "D02",
+      "status": "available",
+      "lon": 54.76754664100008,
+      "lat": 24.681179523000026
+    },
+    {
+      "unit_id": "P-015",
+      "model": "trailer-500",
+      "depot_id": "D03",
+      "status": "available",
+      "lon": 54.82964110300003,
+      "lat": 24.283658179000042
+    },
+    {
+      "unit_id": "P-016",
+      "model": "trailer-500",
+      "depot_id": "D04",
+      "status": "available",
+      "lon": 54.72640961700006,
+      "lat": 24.43705119200007
+    },
+    {
+      "unit_id": "P-017",
+      "model": "trailer-500",
+      "depot_id": "D05",
+      "status": "available",
+      "lon": 54.348483513000076,
+      "lat": 24.45861620000005
+    },
+    {
+      "unit_id": "P-018",
+      "model": "trailer-500",
+      "depot_id": "D06",
+      "status": "available",
+      "lon": 54.647646000000066,
+      "lat": 24.269800000000032
+    },
+    {
+      "unit_id": "P-019",
+      "model": "truck-1500",
+      "depot_id": "D07",
+      "status": "available",
+      "lon": 54.47727500000008,
+      "lat": 24.293003000000056
+    },
+    {
+      "unit_id": "P-020",
+      "model": "truck-1500",
+      "depot_id": "D08",
+      "status": "available",
+      "lon": 54.68229418300007,
+      "lat": 24.540711526000052
+    },
+    {
+      "unit_id": "P-021",
+      "model": "truck-1500",
+      "depot_id": "D09",
+      "status": "available",
+      "lon": 54.41305600000004,
+      "lat": 24.530796000000066
+    },
+    {
+      "unit_id": "P-022",
+      "model": "truck-1500",
+      "depot_id": "D10",
+      "status": "available",
+      "lon": 54.66445870600006,
+      "lat": 24.631542442000068
+    },
+    {
+      "unit_id": "P-023",
+      "model": "truck-1500",
+      "depot_id": "D11",
+      "status": "available",
+      "lon": 54.63733427000005,
+      "lat": 24.360544572000038
+    },
+    {
+      "unit_id": "P-024",
+      "model": "truck-1500",
+      "depot_id": "D12",
+      "status": "available",
+      "lon": 54.60282783000008,
+      "lat": 24.493509654000036
+    },
+    {
+      "unit_id": "P-025",
+      "model": "truck-1500",
+      "depot_id": "D01",
+      "status": "available",
+      "lon": 54.53428900000006,
+      "lat": 24.427684000000056
+    },
+    {
+      "unit_id": "P-026",
+      "model": "truck-1500",
+      "depot_id": "D02",
+      "status": "available",
+      "lon": 54.76754664100008,
+      "lat": 24.681179523000026
+    },
+    {
+      "unit_id": "P-027",
+      "model": "truck-1500",
+      "depot_id": "D03",
+      "status": "available",
+      "lon": 54.82964110300003,
+      "lat": 24.283658179000042
+    },
+    {
+      "unit_id": "P-028",
+      "model": "truck-1500",
+      "depot_id": "D04",
+      "status": "available",
+      "lon": 54.72640961700006,
+      "lat": 24.43705119200007
+    },
+    {
+      "unit_id": "P-029",
+      "model": "truck-1500",
+      "depot_id": "D05",
+      "status": "available",
+      "lon": 54.348483513000076,
+      "lat": 24.45861620000005
+    },
+    {
+      "unit_id": "P-030",
+      "model": "truck-1500",
+      "depot_id": "D06",
+      "status": "available",
+      "lon": 54.647646000000066,
+      "lat": 24.269800000000032
+    },
+    {
+      "unit_id": "P-031",
+      "model": "truck-1500",
+      "depot_id": "D07",
+      "status": "available",
+      "lon": 54.47727500000008,
+      "lat": 24.293003000000056
+    },
+    {
+      "unit_id": "P-032",
+      "model": "truck-1500",
+      "depot_id": "D08",
+      "status": "available",
+      "lon": 54.68229418300007,
+      "lat": 24.540711526000052
+    },
+    {
+      "unit_id": "P-033",
+      "model": "truck-1500",
+      "depot_id": "D09",
+      "status": "available",
+      "lon": 54.41305600000004,
+      "lat": 24.530796000000066
+    },
+    {
+      "unit_id": "P-034",
+      "model": "truck-1500",
+      "depot_id": "D10",
+      "status": "available",
+      "lon": 54.66445870600006,
+      "lat": 24.631542442000068
+    },
+    {
+      "unit_id": "P-035",
+      "model": "heavy-3000",
+      "depot_id": "D11",
+      "status": "available",
+      "lon": 54.63733427000005,
+      "lat": 24.360544572000038
+    },
+    {
+      "unit_id": "P-036",
+      "model": "heavy-3000",
+      "depot_id": "D12",
+      "status": "available",
+      "lon": 54.60282783000008,
+      "lat": 24.493509654000036
+    },
+    {
+      "unit_id": "P-037",
+      "model": "heavy-3000",
+      "depot_id": "D01",
+      "status": "available",
+      "lon": 54.53428900000006,
+      "lat": 24.427684000000056
+    },
+    {
+      "unit_id": "P-038",
+      "model": "heavy-3000",
+      "depot_id": "D02",
+      "status": "available",
+      "lon": 54.76754664100008,
+      "lat": 24.681179523000026
+    },
+    {
+      "unit_id": "P-039",
+      "model": "heavy-3000",
+      "depot_id": "D03",
+      "status": "available",
+      "lon": 54.82964110300003,
+      "lat": 24.283658179000042
+    },
+    {
+      "unit_id": "P-040",
+      "model": "heavy-3000",
+      "depot_id": "D04",
+      "status": "available",
+      "lon": 54.72640961700006,
+      "lat": 24.43705119200007
+    }
+  ],
+  "note": "驻地为真实民防站位置，型号与数量为模拟；客户提供台账后替换 exchange/fleet.json"
+}

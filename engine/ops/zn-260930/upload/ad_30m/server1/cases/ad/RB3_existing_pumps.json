@@ -1,0 +1,91 @@
+{
+ "region": "RB3",
+ "domain_km2": 8.0,
+ "stations": [
+  {
+   "unitid": "SW_KCI_SW17_01_PSS_45",
+   "ps_id": "ADM_RD-02",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Out of Service - Pumps Unavailable",
+   "n_pumps": 0,
+   "q_each_lps": 0.0,
+   "q_src": "停用（客户备注 Out of Service）",
+   "parsons": [],
+   "wetwell_node": "252033_2700126",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 8.0,
+   "on_m": 4.0,
+   "off_m": 0.8,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 252033.3,
+   "y": 2700126.9
+  },
+  {
+   "unitid": "SW_KCI_SW17_PSS_46",
+   "ps_id": "ADM_RD-05",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::350& 85x2,Long distance between station & outfall",
+   "n_pumps": null,
+   "q_each_lps": null,
+   "q_src": "无数据：不建泵，列为局限",
+   "parsons": [],
+   "wetwell_node": "250906_2703816",
+   "wetwell_dist_m": 43,
+   "well_depth_m": 8.0,
+   "on_m": 4.0,
+   "off_m": 0.8,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 250918.0,
+   "y": 2703775.2
+  },
+  {
+   "unitid": "SW_ZCI_MZ35_PSS_47",
+   "ps_id": "ADM_RD-01",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Undefined",
+   "n_pumps": 2,
+   "q_each_lps": 99.1,
+   "q_src": "Parsons 同址泵 PUMP_FLOW（98.86 + 99.33）",
+   "parsons": [
+    {
+     "model": "RB3",
+     "flow_lps": 98.86,
+     "dist_m": 10
+    },
+    {
+     "model": "RB3",
+     "flow_lps": 99.33,
+     "dist_m": 9
+    }
+   ],
+   "wetwell_node": "250576_2699496",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 5.55,
+   "on_m": 2.77,
+   "off_m": 0.56,
+   "depth_note": "",
+   "discharge_node": "251955_2700196",
+   "discharge_dist_m": 0,
+   "discharge_src": "客户 GDB 压力管",
+   "forcemain_m": 2132,
+   "forcemain_unitids": [
+    "SW_KCI_SW17_01_PI_50313"
+   ],
+   "x": 250576.4,
+   "y": 2699496.9
+  }
+ ]
+}

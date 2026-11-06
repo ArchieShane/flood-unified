@@ -1,0 +1,27 @@
+# 洪水推演成果展示：docker compose up -d --build  →  http://<服务器IP>:${PORT}/
+# 只读挂载 NAS 成果目录，容器里不留任何数据；新同步来的成果最迟 SCAN_TTL 秒后出现在下拉框里（或访问 /api/rescan 立即刷新）。
+services:
+  flood-viewer:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ${BASE_IMAGE:-python:3.12-slim}   # 离线服务器改成本机已有的带 python 的镜像
+    image: flood-viewer:1.0
+    container_name: flood-viewer
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8002}:8080"
+    volumes:
+      - ${RESULT_DIR:-/media/pop-fs/flood_data/result}:/data:ro
+      # 离线底图（可选）：目录里放 {z}/{x}/{y}.png；没有就是纯色背景
+      # - ${TILES_DIR}:/tiles:ro
+    environment:
+      SCAN_TTL: "${SCAN_TTL:-120}"
+      # 下架的雨量（mm）：客户把 32 mm 更正为 33 mm，NAS 上 32 mm 旧结果不删但不展示；要放开就设成空串
+      EXCLUDE_MM: "${EXCLUDE_MM:-32}"
+      EXCLUDE_GRID: "${EXCLUDE_GRID:-15}"      # 只下架 15 m 网格的，5 m（…G5）的 32 mm 保留
+      # 区域显示名（目录名里的区域代码 → 名称），新区域不配也能显示（用大写代码）：
+      REGION_LABELS: '{"c1":"C1 热点群","ms":"Mussafah_00","rg_yas":"Yas bridges interchange","rg_bat":"Al Bateen","rg_bny":"Bani Yas"}'
+    logging:
+      driver: json-file
+      options: {max-size: "20m", max-file: "3"}

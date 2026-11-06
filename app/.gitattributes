@@ -1,0 +1,6 @@
+
+# 要拷到 Linux 上用的脚本与容器文件：一律 LF（CRLF 会让 `#!/bin/bash` 失效，容器起不来）
+*.sh text eol=lf
+Dockerfile text eol=lf
+backend/docker-aio/nginx.conf text eol=lf
+backend/docker-aio/docker-compose.yml text eol=lf

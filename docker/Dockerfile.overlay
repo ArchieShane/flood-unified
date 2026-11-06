@@ -1,0 +1,11 @@
+# 离线服务器用：在已有 flood-aio 镜像上叠加本仓库的后端 / 前端 / 成果展示页，不需要联网装依赖。
+#   上下文（由 docker/build-overlay.sh 拼出）：src/ sql/ web/(前端 dist) viewer-web/ nginx.conf
+ARG BASE_IMAGE=flood-aio:v8-sim
+FROM ${BASE_IMAGE}
+COPY src/ /app/src/
+COPY sql/ /app/sql/
+COPY web/ /usr/share/flood-web/
+COPY viewer-web/ /usr/share/flood-web-viewer/
+COPY nginx.conf /etc/nginx/conf.d/flood.conf
+RUN mkdir -p /viewer-data
+EXPOSE 8080

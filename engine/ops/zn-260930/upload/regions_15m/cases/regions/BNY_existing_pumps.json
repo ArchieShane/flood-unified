@@ -1,0 +1,166 @@
+{
+ "region": "BNY",
+ "domain_km2": 15.45,
+ "stations": [
+  {
+   "unitid": "SW_ANH_NA3_PSS_32",
+   "ps_id": "ADM_RD-13",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::2x58",
+   "n_pumps": 2,
+   "q_each_lps": 58.0,
+   "q_src": "客户备注 2×58",
+   "parsons": [
+    {
+     "model": "RB_02",
+     "flow_lps": 43.69,
+     "dist_m": 4
+    },
+    {
+     "model": "RB_02",
+     "flow_lps": 43.73,
+     "dist_m": 6
+    }
+   ],
+   "wetwell_node": "261501_2687189",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 5.9,
+   "on_m": 2.95,
+   "off_m": 0.59,
+   "depth_note": "",
+   "discharge_node": "261826_2687956",
+   "discharge_dist_m": 0,
+   "discharge_src": "Parsons 压力管（RB_02）",
+   "forcemain_m": 1030,
+   "forcemain_unitids": [],
+   "x": 261501.4,
+   "y": 2687189.7
+  },
+  {
+   "unitid": "SW_BYA_EB5_PSS_34",
+   "ps_id": "ADM_RD-15",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "One pump installed within wet well",
+   "n_pumps": 1,
+   "q_each_lps": 179.6,
+   "q_src": "Parsons 同址泵 PUMP_FLOW（179.58）",
+   "parsons": [
+    {
+     "model": "RB_02",
+     "flow_lps": 179.58,
+     "dist_m": 4
+    }
+   ],
+   "wetwell_node": "259317_2689928",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 6.53,
+   "on_m": 3.27,
+   "off_m": 0.65,
+   "depth_note": "",
+   "discharge_node": "259172_2689765",
+   "discharge_dist_m": 0,
+   "discharge_src": "客户 GDB 压力管",
+   "forcemain_m": 219,
+   "forcemain_unitids": [
+    "SW_BYA_EB5_PI_20953"
+   ],
+   "x": 259317.6,
+   "y": 2689929.0
+  },
+  {
+   "unitid": "SW_BYA_EB2_06_PSS_42",
+   "ps_id": "ADM_RD-14",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::3x167",
+   "n_pumps": 3,
+   "q_each_lps": 167.0,
+   "q_src": "客户备注 3×167",
+   "parsons": [
+    {
+     "model": "RB_02",
+     "flow_lps": 189.79,
+     "dist_m": 4
+    },
+    {
+     "model": "RB_02",
+     "flow_lps": 190.08,
+     "dist_m": 4
+    }
+   ],
+   "wetwell_node": "259863_2690039",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 4.9,
+   "on_m": 2.45,
+   "off_m": 0.49,
+   "depth_note": "",
+   "discharge_node": "261294_2691181",
+   "discharge_dist_m": 0,
+   "discharge_src": "客户 GDB 压力管",
+   "forcemain_m": 2134,
+   "forcemain_unitids": [
+    "SW_BYA_EB2_06_PI_195975",
+    "SW_BYA_EB2_05_PI_195976",
+    "SW_BYA_EB2_05_PI_196138",
+    "SW_BYA_EB2_04_PI_196139",
+    "SW_BYA_EB2_04_PI_196140",
+    "SW_BYA_EB2_04_PI_196141",
+    "SW_BYA_EB11_01_PI_196142",
+    "SW_BYA_EB11_01_PI_24039"
+   ],
+   "x": 259863.0,
+   "y": 2690039.2
+  },
+  {
+   "unitid": "SW_JYA_JY10_PSS_43",
+   "ps_id": "ADM_RD-11",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::2X16.7",
+   "n_pumps": 2,
+   "q_each_lps": 16.7,
+   "q_src": "客户备注 2×16.7",
+   "parsons": [
+    {
+     "model": "RB_02",
+     "flow_lps": 0.0,
+     "dist_m": 3
+    },
+    {
+     "model": "RB_02",
+     "flow_lps": 0.0,
+     "dist_m": 1
+    }
+   ],
+   "wetwell_node": "260368_2688056",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 2.4,
+   "on_m": 1.2,
+   "off_m": 0.24,
+   "depth_note": "",
+   "discharge_node": "261429_2687107",
+   "discharge_dist_m": 0,
+   "discharge_src": "客户 GDB 压力管",
+   "forcemain_m": 1471,
+   "forcemain_unitids": [
+    "SW_JYA_JY10_PI_50140",
+    "SW_JYA_JY10_PI_50185",
+    "SW_JYA_JY10_PI_50186",
+    "SW_JYA_JY10_PI_50187",
+    "SW_JYA_JY10_PI_50188",
+    "SW_JYA_JY10_PI_50189",
+    "SW_JYA_JY10_PI_50190",
+    "SW_AWA_AWS_PI_50191",
+    "SW_AWA_AWS_PI_50192",
+    "SW_AWA_AWS_PI_50193",
+    "SW_AWA_AWS_PI_50194",
+    "SW_JYA_JY10_PI_50195",
+    "SW_JYA_JY10_PI_50196"
+   ],
+   "x": 260368.2,
+   "y": 2688056.8
+  }
+ ]
+}

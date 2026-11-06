@@ -1,0 +1,80 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://swbrain.local/schemas/bridges.schema.json",
+ "title": "swbrain.bridges/1 · 桥梁限重 / 净高台账",
+ "description": "重型泵车过不去的桥或下穿道。限重与净高至少给一个。 顶层 {schema, as_of, source, rows[]}；也接受裸数组。",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "swbrain.bridges/1"
+  },
+  "as_of": {
+   "type": "string"
+  },
+  "source": {
+   "type": "string"
+  },
+  "rows": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string"
+     },
+     "lon": {
+      "type": "number",
+      "minimum": 51.0,
+      "maximum": 57.0,
+      "description": "经度（WGS84）"
+     },
+     "lat": {
+      "type": "number",
+      "minimum": 22.3,
+      "maximum": 26.6,
+      "description": "纬度（WGS84）"
+     },
+     "limit_t": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "限重（吨）"
+     },
+     "clearance_m": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "净高（米）"
+     },
+     "owner": {
+      "type": "string"
+     },
+     "verified": {
+      "type": "boolean"
+     }
+    },
+    "additionalProperties": true,
+    "required": [
+     "lon",
+     "lat"
+    ],
+    "anyOf": [
+     {
+      "required": [
+       "limit_t"
+      ]
+     },
+     {
+      "required": [
+       "clearance_m"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "required": [
+  "rows"
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "region": "RDF",
+ "domain_km2": 5.44,
+ "stations": [
+  {
+   "unitid": "SW_ABT_W30_PSS_68",
+   "ps_id": "ADM_RD-F",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::350 & 80x2",
+   "n_pumps": null,
+   "q_each_lps": null,
+   "q_src": "无数据：不建泵，列为局限",
+   "parsons": [],
+   "wetwell_node": "231046_2706189",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 10.0,
+   "on_m": 5.0,
+   "off_m": 1.0,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 231046.8,
+   "y": 2706189.3
+  }
+ ]
+}

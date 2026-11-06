@@ -1,0 +1,32 @@
+{
+ "region": "RDA",
+ "domain_km2": 3.21,
+ "stations": [
+  {
+   "unitid": "SW_ABT_W33_PSS_69",
+   "ps_id": "ADM_RD-A",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::350&80x2",
+   "n_pumps": null,
+   "q_each_lps": null,
+   "q_src": "无数据：不建泵，列为局限",
+   "parsons": [],
+   "wetwell_node": "229756_2707043",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 10.0,
+   "on_m": 5.0,
+   "off_m": 1.0,
+   "depth_note": "",
+   "discharge_node": "229745_2707006",
+   "discharge_dist_m": 0,
+   "discharge_src": "客户 GDB 压力管",
+   "forcemain_m": 39,
+   "forcemain_unitids": [
+    "SW_ABT_W33_PI_147975"
+   ],
+   "x": 229756.3,
+   "y": 2707043.5
+  }
+ ]
+}

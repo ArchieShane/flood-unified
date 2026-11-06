@@ -1,0 +1,6 @@
+# anuga-swmm:1.0 已有 numpy / scipy / pandas / rasterio / pyproj / anuga / PIL；缺下面这些（读 gpkg、几何运算、读 Makani）
+geopandas
+pyogrio
+shapely
+psycopg[binary]
+pyshp    # npz → sww → shp + dat（tools/h2d/hydro2d_convert.py）

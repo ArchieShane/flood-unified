@@ -1,0 +1,28 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.DS_Store
+backend/data/processed/
+*.log
+node_modules/
+frontend/dist/
+
+# 大数据 / 交付物 / 缓存（不进代码库）
+backend/data/*
+!backend/data/FW__Hot_Spots_506/
+backend/logs/
+frontend_*/
+frontend_*.zip
+.claude/settings.local.json
+
+# 生产部署包（镜像 tar、数据，体积大，不进代码库）
+deploy/
+
+deploy-*/
+deploy-*.tar.gz
+deploy-*.zip
+data_bak/
+._*
+*.zip

@@ -1,0 +1,1478 @@
+{
+ "region": "ALAIN",
+ "source": "AAM_stormwater_vector.gpkg / aam_stormwater_hotspots（20260909_AAM_Stormwater_Hotspot_Analysis_v4.2.xlsx）",
+ "hotspots": [
+  {
+   "hotspot_id": "AAM-001",
+   "x": 355256.9,
+   "y": 2682164.3,
+   "area": "Al Aamerah & Al Sad  & Al Salamat",
+   "location": "Al Rifaa, Al Aamerah",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-002",
+   "x": 352983.9,
+   "y": 2681375.9,
+   "area": "Al Aamerah & Al Sad  & Al Salamat",
+   "location": "34 Ramlat Al Khadar St, Al Aamerah - Al Samar",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-003",
+   "x": 352832.1,
+   "y": 2680980.7,
+   "area": "Al Aamerah & Al Sad  & Al Salamat",
+   "location": "Al Samar, Al Aamerah",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-004",
+   "x": 347825.8,
+   "y": 2679372.0,
+   "area": "Al Aamerah & Al Sad  & Al Salamat",
+   "location": "Wadi Al Fayah St, Al Sad - Ramlat Al Saad",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-005",
+   "x": 356880.3,
+   "y": 2678575.9,
+   "area": "Al Aamerah & Al Sad  & Al Salamat",
+   "location": "28 An Nasr St, Al Salamat - Al Salamat 1",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-006",
+   "x": 350235.8,
+   "y": 2638061.4,
+   "area": "Al Arad",
+   "location": "Sayh Al ʹArad St, Al 'Arad - Al Arad 1",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-007",
+   "x": 361470.2,
+   "y": 2678204.5,
+   "area": "Al Bateen",
+   "location": "Ghafat Al Shwaihi, Al Bateen",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-008",
+   "x": 360564.7,
+   "y": 2678143.0,
+   "area": "Al Bateen",
+   "location": "Yaw Sablah St, Al Bateen - Ghafat Al Shwaihi",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-009",
+   "x": 360681.0,
+   "y": 2676975.3,
+   "area": "Al Bateen",
+   "location": "Ghiyout Al Hidayri St, Al Bateen - Ghafat Al Shwaihi",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-010",
+   "x": 381803.7,
+   "y": 2661841.6,
+   "area": "Al Dhahir & Mezyad & Um Ghafah",
+   "location": "Zayed Bin Sultan St, Al Dhahir - Dhaher 1",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-011",
+   "x": 381273.4,
+   "y": 2664206.2,
+   "area": "Al Dhahir & Mezyad & Um Ghafah",
+   "location": "Al Barari Mall R/A, Dhaher 3, Al Dhahir",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-012",
+   "x": 382498.8,
+   "y": 2658343.2,
+   "area": "Al Dhahir & Mezyad & Um Ghafah",
+   "location": "Al Ain City Municipality – Customer Service Center, Mezyad",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-013",
+   "x": 382460.0,
+   "y": 2658779.7,
+   "area": "Al Dhahir & Mezyad & Um Ghafah",
+   "location": "Zayed Bin Sultan St, Mazyad - Mazyad 2",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-014",
+   "x": 389019.3,
+   "y": 2664744.1,
+   "area": "Al Dhahir & Mezyad & Um Ghafah",
+   "location": "Al Muraikhat, Um Ghafah",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-015",
+   "x": 362593.6,
+   "y": 2730921.4,
+   "area": "Al Faqaa",
+   "location": "Al Ain - Dubai Rd, Al Faqaa",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-016",
+   "x": 359639.5,
+   "y": 2731728.9,
+   "area": "Al Faqaa",
+   "location": "Dulaymah 1, Al Fagaa",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-017",
+   "x": 363660.3,
+   "y": 2672054.9,
+   "area": "Al Rawdah Al Sharqiyah - Al Ifaz & Al Ghireebah",
+   "location": "19-7 Al Sofouh St, Al Rawdah Al Sharqiyah - Al Ifaz",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-018",
+   "x": 363358.0,
+   "y": 2672928.2,
+   "area": "Al Rawdah Al Sharqiyah - Al Ifaz & Al Ghireebah",
+   "location": "Al Ifaz, Al Rawdah Al Sharqiyah",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-019",
+   "x": 376015.1,
+   "y": 2693175.1,
+   "area": "Al Fou'ah",
+   "location": "Al Ain - Dubai Rd, Al Nabbagh – Sibeitah Tahnoun Bin Mohammed Al Nhayan Rd.",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-020",
+   "x": 377011.4,
+   "y": 2694610.9,
+   "area": "Al Fou'ah",
+   "location": "Al Fou'ah - Al Sajaa",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-021",
+   "x": 377763.5,
+   "y": 2692691.4,
+   "area": "Al Fou'ah",
+   "location": "Abu 'Ubaidah Bin Al Jarrah St. Al Sajaa, Al Fou'ah",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-022",
+   "x": 377476.9,
+   "y": 2691760.7,
+   "area": "Al Fou'ah",
+   "location": "Al Fouʹah St, Al Fou'ah - Al Raqiyah",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-023",
+   "x": 374095.7,
+   "y": 2722411.4,
+   "area": "Al Hiyar",
+   "location": "Wadi Maad, Al Hiyar",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-024",
+   "x": 374462.0,
+   "y": 2721611.5,
+   "area": "Al Hiyar",
+   "location": "Ramlat Al Hayer, Al Hiyar",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-025",
+   "x": 372146.8,
+   "y": 2719360.7,
+   "area": "Al Hiyar",
+   "location": "E20, Al Hiyar - Al Hayer 6",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-026",
+   "x": 353411.6,
+   "y": 2713077.1,
+   "area": "Al Hiyar",
+   "location": "Um Al Dakhan, Al Hiyar",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-027",
+   "x": 373949.8,
+   "y": 2715558.0,
+   "area": "Al Hiyar",
+   "location": "Al Shansoobah, Al Hiyar",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-028",
+   "x": 373191.9,
+   "y": 2718188.1,
+   "area": "Al Hiyar",
+   "location": "Al Shansoobah, Al Hiyar",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-029",
+   "x": 372856.9,
+   "y": 2720010.3,
+   "area": "Al Hiyar",
+   "location": "36 Wadi At Tabnah St, Al Hiyar - Ramlat Al Hayer",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-030",
+   "x": 369496.2,
+   "y": 2725827.0,
+   "area": "Al Hiyar",
+   "location": "Shaʹbiyat Al Hiyar St, Al Hiyar - Al Jabib - East",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-031",
+   "x": 365519.3,
+   "y": 2715649.0,
+   "area": "Al Hiyar",
+   "location": "Sweihan Rd, Al Hiyar - Al Ghashbah",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-032",
+   "x": 370586.6,
+   "y": 2683618.6,
+   "area": "Al Jimi",
+   "location": "35 Al Jamal St, Al Jimi - Al Mraijeb",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-033",
+   "x": 372735.9,
+   "y": 2681571.1,
+   "area": "Al Jimi",
+   "location": "4-8 Al Tajer St. Al Jimi - Slemi",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-034",
+   "x": 372868.4,
+   "y": 2682178.5,
+   "area": "Al Jimi",
+   "location": "5-1 Al Snono, Al Jimi - Slemi",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-035",
+   "x": 370896.9,
+   "y": 2683915.8,
+   "area": "Al Jimi",
+   "location": "47-7 Al Bahaa St, Al Jimi - Al Mraijeb",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-036",
+   "x": 369990.5,
+   "y": 2681656.0,
+   "area": "Al Jimi",
+   "location": "Hazza Bin Sultan Staduim Tunnel, Zayed The First St",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-037",
+   "x": 373426.4,
+   "y": 2682461.5,
+   "area": "Al Jimi",
+   "location": "Mohammed Bin Khalifa St, Al Jimi",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-038",
+   "x": 371110.3,
+   "y": 2681393.4,
+   "area": "Al Jimi",
+   "location": "Al Muwaijʹi St, Al Jimi - Civic Center",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-039",
+   "x": 371839.1,
+   "y": 2681083.1,
+   "area": "Al Jimi",
+   "location": "Civic Center, Al Jimi",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-040",
+   "x": 370319.1,
+   "y": 2682012.4,
+   "area": "Al Jimi",
+   "location": "Ugdat Al Ameriya, Al Jimi",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-041",
+   "x": 366174.1,
+   "y": 2680224.3,
+   "area": "Al Khibeesi",
+   "location": "28-56 AI Lammah St, Al Khibeesi - Al Naseriyya",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-042",
+   "x": 368834.6,
+   "y": 2681290.6,
+   "area": "Al Khibeesi",
+   "location": "Al Zaafaran, Al Khibeesi",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-043",
+   "x": 367835.9,
+   "y": 2680886.4,
+   "area": "Al Khibeesi (Emergency plan with Al Dar)",
+   "location": "Al Meryal, Al Khibeesi Area",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-044",
+   "x": 357697.5,
+   "y": 2675026.0,
+   "area": "Al Maqam & Asharej (to be rais to injazz)",
+   "location": "Shabiyat Al Maqam, Al Maqam",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-045",
+   "x": 358314.3,
+   "y": 2674852.5,
+   "area": "Al Maqam & Asharej",
+   "location": "Al Maqam - Shabiyat Al Maqam",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-046",
+   "x": 359209.4,
+   "y": 2674978.2,
+   "area": "Al Maqam & Asharej",
+   "location": "Al Urjuwan St, Al Maqam - Shabiyat Al Maqam",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-047",
+   "x": 361030.7,
+   "y": 2675841.5,
+   "area": "Al Maqam & Asharej (to be check or to removed)",
+   "location": "Al Yasat St. Shabiyat Al Maqam, Al Maqam",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-048",
+   "x": 365590.9,
+   "y": 2678584.5,
+   "area": "Al Maqam & Asharej",
+   "location": "151-149 Al Jawharah St, 'Asharij - Al Dafeinah",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-049",
+   "x": 363397.8,
+   "y": 2676447.1,
+   "area": "Al Maqam & Asharej",
+   "location": "Tawam Tunnel, Shabhanat Asharej, Al Muwaij'i",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-050",
+   "x": 366646.1,
+   "y": 2677852.6,
+   "area": "Al Maqam & Asharej (to be added the tankers)",
+   "location": "Asharej Tunnel, Khalifa Bin Zayed St,",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-051",
+   "x": 363047.1,
+   "y": 2677508.4,
+   "area": "Al Maqam & Asharej (confirmed to be add 1 no of Pump)",
+   "location": "Bida Bin Ammar, Al Muwaij'i Area",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-052",
+   "x": 365589.9,
+   "y": 2676121.2,
+   "area": "Al Maqam & Asharej",
+   "location": "Maitha Bint Mohammed St\n'Asharij - Shiebat Al Oud - Abu",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-053",
+   "x": 371781.4,
+   "y": 2680794.3,
+   "area": "Al Mu'tarid",
+   "location": "75-45 AI Siray St, Al Mu'tarid - Hai Al Wadi",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-054",
+   "x": 371794.8,
+   "y": 2678398.0,
+   "area": "Al Mu'tarid",
+   "location": "Al Baladiyah St, Al Mu'tarid - Al Gellah",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-055",
+   "x": 371859.8,
+   "y": 2679679.9,
+   "area": "Al Mu'tarid",
+   "location": "Al Jabal R/A Khalifa Bin Zayed St, Al Mu'tarid",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-056",
+   "x": 373237.3,
+   "y": 2680675.7,
+   "area": "Al Mu'tarid",
+   "location": "Mohammed Bin Khalifa St, Al Mu'tarid - Ramlat Aawad Shaheen",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-057",
+   "x": 372473.9,
+   "y": 2680421.6,
+   "area": "Al Mu'tarid (to be removed)",
+   "location": "Shakhboot Bin Sultan St, Al Mu'tarid",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-058",
+   "x": 371463.7,
+   "y": 2679608.5,
+   "area": "Al Mu'tarid (to be added the tanker)",
+   "location": "Al Radi St, Al Mu'tarid - Hai Al Jabal",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-059",
+   "x": 371450.6,
+   "y": 2679015.0,
+   "area": "Al Mu'tarid",
+   "location": "Teebi St, Al Mu'tarid Area",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-060",
+   "x": 371706.0,
+   "y": 2679827.7,
+   "area": "Al Mu'tarid",
+   "location": "Al Husoun St, Al Mu'tarid - Ugdat Al Muwaiji",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-061",
+   "x": 372627.3,
+   "y": 2678912.8,
+   "area": "Al Mu'tarid",
+   "location": "Khalifa Bin Zayed The First St, Al Mu'tarid - Al Jizza",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-062",
+   "x": 372877.0,
+   "y": 2677709.5,
+   "area": "Al Jahili",
+   "location": "Al Marayegh, Al Jahili Area",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-063",
+   "x": 369035.8,
+   "y": 2678165.8,
+   "area": "Al Muwaiji",
+   "location": "Saeed Bin Shakhbout The First St, Al Muwaij'i - Majlood",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-064",
+   "x": 369287.7,
+   "y": 2677609.7,
+   "area": "Al Muwaiji",
+   "location": "Saeed Bin Shakhbout The First St, Al Muwaij'i - Al Ruwaikah",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-065",
+   "x": 368493.2,
+   "y": 2677587.2,
+   "area": "Al Muwaiji",
+   "location": "Maitha Bint Mohammed St, Al Muwaij'i - Deer Park",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-066",
+   "x": 373522.8,
+   "y": 2690157.2,
+   "area": "Al Nabbagh",
+   "location": "Sibeitah, Al Nabbagh 66!",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-067",
+   "x": 372380.3,
+   "y": 2692644.6,
+   "area": "Al Nabbagh",
+   "location": "Lane 821, Al Nabbagh - Sibeitah",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-068",
+   "x": 372188.7,
+   "y": 2684150.8,
+   "area": "Al Qattarah",
+   "location": "96-124 Al Dameed St, Al Qattarah - Al Mragha",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-069",
+   "x": 373687.7,
+   "y": 2683685.7,
+   "area": "Al Qattarah",
+   "location": "96-124 Al Dameed St, Al Qattarah - Al Mragha",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-070",
+   "x": 373598.7,
+   "y": 2683729.4,
+   "area": "Al Qattarah",
+   "location": "96-124 Al Dameed St, Al Qattarah - Al Mragha",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-071",
+   "x": 373676.5,
+   "y": 2684872.0,
+   "area": "Al Qattarah",
+   "location": "Bani Yas St, Al Qattarah - Al Mergab",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-072",
+   "x": 374168.8,
+   "y": 2684934.3,
+   "area": "Al Qattarah",
+   "location": "alfurusia roundabout (Equestrianism)- Al Qattarah - Al Mergab",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-073",
+   "x": 373490.2,
+   "y": 2684838.3,
+   "area": "Al Qattarah",
+   "location": "Bani Yas St, Al Qattarah - Al Mergab",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-074",
+   "x": 375680.3,
+   "y": 2677213.7,
+   "area": "Al Sarouj & Al Noud",
+   "location": "Al Qanadeel St, Al Sarouj - Al Harmoozi",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-075",
+   "x": 376249.2,
+   "y": 2676745.1,
+   "area": "Al Sarouj & Al Noud",
+   "location": "Al Harmoozi, Al Sarouj",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-076",
+   "x": 378034.0,
+   "y": 2675447.1,
+   "area": "Al Sarouj & Al Noud",
+   "location": "Hai Al Wadi, Al Sarouj",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-077",
+   "x": 376681.0,
+   "y": 2677130.0,
+   "area": "Al Sarouj & Al Noud",
+   "location": "Al Mashall, Al Sarouj",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-078",
+   "x": 375532.2,
+   "y": 2677045.1,
+   "area": "Al Sarouj & Al Noud",
+   "location": "Al Harmoozi, Al Sarouj",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-079",
+   "x": 378929.1,
+   "y": 2675494.0,
+   "area": "Al Sarouj & Al Noud",
+   "location": "29-23 Al Qutami St, Al Sarouj - Hai Al Wadi",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-080",
+   "x": 377778.7,
+   "y": 2676712.4,
+   "area": "Al Sarouj & Al Noud",
+   "location": "Al Mashall, Al Sarouj",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-081",
+   "x": 377705.7,
+   "y": 2674580.8,
+   "area": "Al Sarouj & Al Noud",
+   "location": "Zayed Bin Sultan St Hai Al Wadi, Al Sarouj",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-082",
+   "x": 376310.3,
+   "y": 2677596.4,
+   "area": "Al Sarouj & Al Noud",
+   "location": "Al Harmoozi, Al Sarouj",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-083",
+   "x": 380644.3,
+   "y": 2666986.6,
+   "area": "Al Sarouj & Al Noud",
+   "location": "Truck R/A Wadi Al Ain 3, Al Noud",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-084",
+   "x": 380335.6,
+   "y": 2668384.5,
+   "area": "Al Sarouj & Al Noud",
+   "location": "ADNOC Station, Wadi Al Ain 2, Al Noud",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-085",
+   "x": 377500.8,
+   "y": 2736703.3,
+   "area": "Al Shiwayb",
+   "location": "AL SHWAIB FAMILY PARK",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-086",
+   "x": 376747.6,
+   "y": 2735833.8,
+   "area": "Al Shiwayb",
+   "location": "Ramlat Al Shuwaib, Al Shiwayb",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-087",
+   "x": 378056.4,
+   "y": 2736640.8,
+   "area": "Al Shiwayb",
+   "location": "Al Shiwayb Rd, Al Shiwayb",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-088",
+   "x": 371276.3,
+   "y": 2731354.4,
+   "area": "Al Shiwayb",
+   "location": "Shibak 2, Al Shiwayb Rd.",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-089",
+   "x": 366715.1,
+   "y": 2682589.4,
+   "area": "Al Tiwayya",
+   "location": "6-8 Al Mu'attar St, Al Markhaniyyah - Muaifaa",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-090",
+   "x": 368247.0,
+   "y": 2682500.8,
+   "area": "Al Tiwayya",
+   "location": "Jafeer Obaid, Al Tiwayya",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-091",
+   "x": 367472.4,
+   "y": 2683071.5,
+   "area": "Al Tiwayya",
+   "location": "Ras Ash Sheikh St, Al Tiwayya - Eidan Al Ridda",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-092",
+   "x": 367240.8,
+   "y": 2683228.4,
+   "area": "Al Tiwayya",
+   "location": "Eidan Al Jareh, Al Tiwayya Area",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-093",
+   "x": 353908.1,
+   "y": 2614550.2,
+   "area": "Al Wiqan",
+   "location": "Um Az Zumoul Rd, Al Wiqan - Saq Al Awir",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-094",
+   "x": 351614.5,
+   "y": 2614257.4,
+   "area": "Al Wiqan",
+   "location": "26th St, Al Wiqan - Al Sayh",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-095",
+   "x": 353149.2,
+   "y": 2615243.8,
+   "area": "Al Wiqan",
+   "location": "Al Muhallab St, Al Wiqan - Ramlat Addimah",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-096",
+   "x": 337087.3,
+   "y": 2590353.9,
+   "area": "Al Quo'a",
+   "location": "40th St, Al Qou' - Al Quo'a Town",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-097",
+   "x": 376006.0,
+   "y": 2679358.3,
+   "area": "Central District",
+   "location": "25 Al Mandhour St, Central District - Hai Al Murabbaa",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-098",
+   "x": 375566.6,
+   "y": 2678709.7,
+   "area": "Central District",
+   "location": "AI Mut-haf St, Central District - Hai Al Hisn",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-099",
+   "x": 374109.7,
+   "y": 2678586.8,
+   "area": "Central District",
+   "location": "Al Ain Oasis, Central District",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-100",
+   "x": 377008.8,
+   "y": 2679616.0,
+   "area": "Central District",
+   "location": "33-9 Al Hdaybah St, Central District - Al Talaa",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-101",
+   "x": 377549.4,
+   "y": 2678220.0,
+   "area": "Central District",
+   "location": "Al Wisal St, Central District - Al Nyadat",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-102",
+   "x": 375995.8,
+   "y": 2678724.2,
+   "area": "Central District",
+   "location": "73-67 Al Masarrah St, Central District - Al Kuwaitat",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-103",
+   "x": 373122.4,
+   "y": 2680649.3,
+   "area": "Central District",
+   "location": "Al Ain Civil Defense",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-104",
+   "x": 373250.4,
+   "y": 2680336.6,
+   "area": "Central District",
+   "location": "25 Al Sufouq St, Central District",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-105",
+   "x": 376840.1,
+   "y": 2678443.0,
+   "area": "Central District",
+   "location": "25 Al Sufouq St, Central District",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-106",
+   "x": 373499.4,
+   "y": 2679798.1,
+   "area": "Central District",
+   "location": "Hai Al Qasr, Central District",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-107",
+   "x": 374035.8,
+   "y": 2680195.8,
+   "area": "Central District",
+   "location": "12-16 Seasons St, Central District - Nad Al Rusas",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-108",
+   "x": 373833.5,
+   "y": 2680508.7,
+   "area": "Central District",
+   "location": "Malayim St, Central District - Nad Al Gorban",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-109",
+   "x": 373494.0,
+   "y": 2680097.9,
+   "area": "Central District",
+   "location": "Al Sufouq St, Central District - Shiebat Bin Anbar",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-110",
+   "x": 373598.8,
+   "y": 2680590.9,
+   "area": "Central District",
+   "location": "97-87 Al Anhar St\nCentral District - Nad Al Gorban - Abu",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-111",
+   "x": 369108.7,
+   "y": 2675251.7,
+   "area": "Falaj Hazza",
+   "location": "Falaj Hazza' - Jefeer Jedeed",
+   "criticality": "Low"
+  },
+  {
+   "hotspot_id": "AAM-112",
+   "x": 369063.4,
+   "y": 2673695.5,
+   "area": "Falaj Hazza",
+   "location": "Falaj Hazza' - Jefeer Jedeed",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-113",
+   "x": 369851.1,
+   "y": 2674136.5,
+   "area": "Falaj Hazza",
+   "location": "14 شارع السَاسْ, Falaj Hazza' - Jefeer Jedeed",
+   "criticality": "Low"
+  },
+  {
+   "hotspot_id": "AAM-114",
+   "x": 369049.4,
+   "y": 2673460.2,
+   "area": "Falaj Hazza",
+   "location": "Zkhir Tunnel, Nahyan The First St, Falaj Hazza' - Ramlat Zakher",
+   "criticality": "Low"
+  },
+  {
+   "hotspot_id": "AAM-115",
+   "x": 367418.1,
+   "y": 2665306.7,
+   "area": "Green Mubazzarah & Ain Al Fayda & Al Dhahrah",
+   "location": "Ain Al Fayda, Ain Al Faydah",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-116",
+   "x": 368607.7,
+   "y": 2665471.9,
+   "area": "Green Mubazzarah & Ain Al Fayda & Al Dhahrah",
+   "location": "Al Bawarij St, Ain Al Faydah - Ain Al Fayda",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-117",
+   "x": 364155.6,
+   "y": 2663692.9,
+   "area": "Green Mubazzarah & Ain Al Fayda & Al Dhahrah",
+   "location": "Ain Al Fayda, E40 E30 R/A",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-118",
+   "x": 370894.7,
+   "y": 2663497.2,
+   "area": "Green Mubazzarah & Ain Al Fayda & Al Dhahrah",
+   "location": "Dihn Al ʹOud St, Mbazzarah Al Khadra - Green Mubazzarah 2",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-119",
+   "x": 353682.1,
+   "y": 2656460.9,
+   "area": "Green Mubazzarah & Ain Al Fayda & Al Dhahrah",
+   "location": "6-16 Tawi Tay St, Al Dhahrah - Al Malaleeh",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-120",
+   "x": 354647.5,
+   "y": 2654000.5,
+   "area": "Green Mubazzarah & Ain Al Fayda & Al Dhahrah",
+   "location": "Um Az Zumoul Rd, Al Dhahrah - Al Malaleeh",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-121",
+   "x": 377933.0,
+   "y": 2689673.0,
+   "area": "Hili",
+   "location": "4 An Nayfah St, Hili - Al Reef",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-122",
+   "x": 375746.8,
+   "y": 2686633.4,
+   "area": "Hili",
+   "location": "91-87 Muslim Bin Yasar St, Hili - Shareat Hili",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-123",
+   "x": 376030.6,
+   "y": 2685915.1,
+   "area": "Hili",
+   "location": "6 Al Astorlab St - Hili - Eidan Al Mahaba",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-124",
+   "x": 379187.6,
+   "y": 2689434.7,
+   "area": "Hili",
+   "location": "7-3 Irq As Simayh St Hili - Al Reef",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-125",
+   "x": 375041.0,
+   "y": 2686819.0,
+   "area": "Hili",
+   "location": "Al Misbah, Hili",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-126",
+   "x": 375827.3,
+   "y": 2686729.9,
+   "area": "Hili (completed only monitoring)",
+   "location": "Al Misbah, Al Athar St. Hili Area",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-127",
+   "x": 376517.2,
+   "y": 2686854.5,
+   "area": "Hili",
+   "location": "Hili Archaeological park Roundabout, 55 - Hili - Athar Hili",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-128",
+   "x": 379142.4,
+   "y": 2689546.0,
+   "area": "Hili",
+   "location": "62-66 Al Hawwami St, Hili - Al Reef",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-129",
+   "x": 374961.5,
+   "y": 2687508.6,
+   "area": "Hili",
+   "location": "Khalfan Bin Matar Al Rumaithi St, Hili - Al Misbah",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-130",
+   "x": 376739.9,
+   "y": 2690472.0,
+   "area": "Hili",
+   "location": "Falaj Hili St, Hili - Ugdat Al Husoon",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-131",
+   "x": 374224.7,
+   "y": 2688975.9,
+   "area": "Hili",
+   "location": "Mohammed Bin Khalifa St, Hili",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-132",
+   "x": 374319.0,
+   "y": 2687448.0,
+   "area": "Hili",
+   "location": "Imran Bin Talhah St, Hili - Al Nayfa 1",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-133",
+   "x": 374732.9,
+   "y": 2687778.7,
+   "area": "Hili",
+   "location": "Ramlat Al Ghabbah St, Hili - Al Nayfa 1",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-134",
+   "x": 374842.3,
+   "y": 2683887.2,
+   "area": "Hili",
+   "location": "Abu ʹUbaidah Bin Al Jarrah St, Al Fou'ah",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-135",
+   "x": 378387.8,
+   "y": 2687952.4,
+   "area": "Hili",
+   "location": "Al Reef, Hili Area",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-136",
+   "x": 374226.8,
+   "y": 2676989.2,
+   "area": "Industrial Area",
+   "location": "Al Naglah, Industrial Area",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-137",
+   "x": 374529.3,
+   "y": 2675948.8,
+   "area": "Industrial Area",
+   "location": "Al Naglah, Industrial Area",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-138",
+   "x": 373132.0,
+   "y": 2676516.8,
+   "area": "Industrial Area",
+   "location": "Shiebat Al Salam, Industrial Area",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-139",
+   "x": 373878.1,
+   "y": 2675455.7,
+   "area": "Industrial Area",
+   "location": "As Siham 2 St, Industrial Area - Leetag",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-140",
+   "x": 374158.8,
+   "y": 2677541.8,
+   "area": "Industrial Area",
+   "location": "Sanaiyah Tunnel, Khalid Bin Sultan St, Al Mutaw'ah - Hai Al Musalla",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-141",
+   "x": 374415.9,
+   "y": 2674187.6,
+   "area": "Industrial Area",
+   "location": "Al Aras, Industrial Area",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-142",
+   "x": 371717.0,
+   "y": 2670274.3,
+   "area": "Industrial Area",
+   "location": "Cement Factory R/A Green Mubazzarah 1",
+   "criticality": "Very High"
+  },
+  {
+   "hotspot_id": "AAM-143",
+   "x": 377227.3,
+   "y": 2702246.6,
+   "area": "Masakin",
+   "location": "1024 Rd, Masakin - Ghshabah",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-144",
+   "x": 375584.9,
+   "y": 2708880.3,
+   "area": "Masakin",
+   "location": "Al Adhamiyah, Masakin",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-145",
+   "x": 374684.4,
+   "y": 2712362.3,
+   "area": "Masakin",
+   "location": "Al Adhamiyah, Masakin",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-146",
+   "x": 361720.4,
+   "y": 2706351.4,
+   "area": "Nahil",
+   "location": "Al Shaqq, Nahil",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-147",
+   "x": 354747.1,
+   "y": 2711578.0,
+   "area": "Nahil",
+   "location": "Masakkin",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-148",
+   "x": 359774.9,
+   "y": 2707834.4,
+   "area": "Nahil",
+   "location": "E95, Nahil - Nahil 5",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-149",
+   "x": 351114.1,
+   "y": 2669526.8,
+   "area": "Saih Al Gharbal",
+   "location": "E30, Saih Al Gharbal",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-150",
+   "x": 353496.2,
+   "y": 2669025.1,
+   "area": "Saih Al Gharbal",
+   "location": "Saih Al Gharbal, Al Rawdah E30",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-151",
+   "x": 346155.0,
+   "y": 2670579.8,
+   "area": "Saih Al Gharbal",
+   "location": "E30, Al Salamat - Sayh Al Daay, Ar Rawdah Rd",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-152",
+   "x": 347023.0,
+   "y": 2670621.6,
+   "area": "Saih Al Gharbal",
+   "location": "E30, Al Salamat - Sayh Al Daay - Ar Rawdh Rd",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-153",
+   "x": 372798.0,
+   "y": 2685448.3,
+   "area": "Al Masoudi",
+   "location": "6-12 Al Mataf St, Al Mas'oudi - Al Gaseemah",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-154",
+   "x": 372961.4,
+   "y": 2685078.5,
+   "area": "Al Masoudi",
+   "location": "Al Mubtahil St, Al Mas'oudi - Al Gaseemah",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-155",
+   "x": 370025.0,
+   "y": 2685220.8,
+   "area": "Al Masoudi",
+   "location": "Tahnoun Bin Mohammed Al Nahyan Rd. Tunnel, Batha Bin Hilal, Al Tiwayya",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-156",
+   "x": 372112.6,
+   "y": 2685175.1,
+   "area": "Al Masoudi",
+   "location": "Tahnoun Bin Mohammed Al Nahyan Rd. Tunnel, Batha Bin Hilal, Al Tiwayya",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-157",
+   "x": 371262.9,
+   "y": 2685783.7,
+   "area": "Al Masoudi",
+   "location": "Al Abtal St, Al Mas'oudi - Manazef",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-158",
+   "x": 371115.3,
+   "y": 2695358.0,
+   "area": "Bad Bint Saud",
+   "location": "Al Sharf, Bad' Bint Sa'oud",
+   "criticality": "Medium"
+  },
+  {
+   "hotspot_id": "AAM-159",
+   "x": 370721.2,
+   "y": 2697811.1,
+   "area": "Bad Bint Saud",
+   "location": "E95, Bad' Bint Sa'oud - Qarn Bint Saud",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-160",
+   "x": 368687.4,
+   "y": 2700247.5,
+   "area": "Bad Bint Saud",
+   "location": "Qarn Bint Saud, Bad' Bint Sa'oud",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-161",
+   "x": 364938.9,
+   "y": 2703478.5,
+   "area": "Bad Bint Saud",
+   "location": "Qarn Bint Saud, Bad' Bint Sa'oud",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-162",
+   "x": 367059.4,
+   "y": 2701573.0,
+   "area": "Bad Bint Saud",
+   "location": "E95, Bad' Bint Sa'oud - Qarn Bint Saud. Nahil Rd.",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-163",
+   "x": 329453.3,
+   "y": 2705926.2,
+   "area": "Sweihan",
+   "location": "Ramlat Sweihan 3, Ramlat Sweihan",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-164",
+   "x": 317441.3,
+   "y": 2717883.1,
+   "area": "Sweihan",
+   "location": "Sayh Madhran, Al 'Ajban",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-165",
+   "x": 327385.3,
+   "y": 2711020.1,
+   "area": "Sweihan",
+   "location": "Al Taf Rd. Sweihan - Abu Dhabi Rd, Niqa Al Dheeb - Raigha",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-166",
+   "x": 337539.8,
+   "y": 2695411.6,
+   "area": "Sweihan",
+   "location": "Al Taf Rd. Sweihan - Abu Dhabi Rd, Sweihan - Bida Al Samah",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-167",
+   "x": 327826.6,
+   "y": 2705905.9,
+   "area": "Sweihan",
+   "location": "E20, Ramlat Sweihan - Ramlat Sweihan 3",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-168",
+   "x": 329700.5,
+   "y": 2708589.3,
+   "area": "Sweihan",
+   "location": "Al Taf Rd. Raigha, Niqa Al Dheeb",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-169",
+   "x": 339770.3,
+   "y": 2688727.4,
+   "area": "Sweihan",
+   "location": "Al Taf Rd. Sayh Al Tuwaissah, Al Sad",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-170",
+   "x": 336609.7,
+   "y": 2697330.3,
+   "area": "Sweihan",
+   "location": "Al Taf Rd. Sweihan - Bida Al Samah",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-171",
+   "x": 318820.3,
+   "y": 2704139.4,
+   "area": "Sweihan",
+   "location": "E20, Niqa Al Dheeb - Niqa Al Dheeb 2 - Sweihan Rd.",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-172",
+   "x": 330378.4,
+   "y": 2706973.8,
+   "area": "Sweihan",
+   "location": "Ramlat Sweihan 3, Ramlat Sweihan",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-173",
+   "x": 330585.9,
+   "y": 2707085.0,
+   "area": "Sweihan",
+   "location": "E20, Sweihan - Ghaffat Rakadh",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-174",
+   "x": 347929.4,
+   "y": 2712244.8,
+   "area": "Sweihan",
+   "location": "Bida Al Mghanni, Nahil Sweihan Rd.",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-175",
+   "x": 331811.9,
+   "y": 2706798.1,
+   "area": "Sweihan",
+   "location": "44th St, Sweihan - Shabiat Suweihan",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-176",
+   "x": 330687.4,
+   "y": 2707052.0,
+   "area": "Sweihan",
+   "location": "Shabiat Suweihan, Sweihan Area",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-177",
+   "x": 367967.3,
+   "y": 2668663.3,
+   "area": "Zakhir & Neima & Shi'bat Al Wutah",
+   "location": "Al Shamali St, Zakhir - Zakhir South",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-178",
+   "x": 366106.9,
+   "y": 2668977.5,
+   "area": "Zakhir & Neima & Shi'bat Al Wutah",
+   "location": "Gafat Al Nayyar, Zakhir",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-179",
+   "x": 366664.5,
+   "y": 2668976.8,
+   "area": "Zakhir & Neima & Shi'bat Al Wutah",
+   "location": "Zakher Wedding Hall",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-180",
+   "x": 367526.1,
+   "y": 2674284.0,
+   "area": "Zakhir & Neima & Shi'bat Al Wutah",
+   "location": "Ramlat Zakher, Zakhir",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-181",
+   "x": 368335.9,
+   "y": 2667865.3,
+   "area": "Zakhir & Neima & Shi'bat Al Wutah",
+   "location": "Neima 1, Ni'mah",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-182",
+   "x": 367495.6,
+   "y": 2671373.3,
+   "area": "Zakhir & Neima & Shi'bat Al Wutah",
+   "location": "Neima 1, Ni'mah",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-183",
+   "x": 368921.0,
+   "y": 2670534.5,
+   "area": "Zakhir & Neima & Shi'bat Al Wutah",
+   "location": "Neima 1, Ni'mah",
+   "criticality": "High"
+  },
+  {
+   "hotspot_id": "AAM-184",
+   "x": 370524.7,
+   "y": 2669017.9,
+   "area": "Zakhir & Neima & Shi'bat Al Wutah",
+   "location": "6 Al Hawayir St    Shi'bat Al Wutah - Shiebat Al Watah 1",
+   "criticality": "High"
+  }
+ ]
+}

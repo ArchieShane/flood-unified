@@ -1,0 +1,32 @@
+psycopg[binary]>=3.2
+pandas>=2.2
+numpy>=1.26
+scipy>=1.11
+shapely>=2.0
+networkx>=3.2
+pyarrow>=15
+pyproj>=3.6
+rasterio>=1.3
+geopandas>=1.0
+pyogrio>=0.9
+openpyxl>=3.1
+lxml>=5.0
+# 飞渡 DTS 输出（swbrain/dts_h2d.py 写三角网 shp）
+pyshp>=2.3
+# CP-SAT 排程（dispatch2 的车次/班组排程；缺了会静默退回贪心，测试还照样计 passed）
+ortools>=9.10
+# Markdown → Word（swbrain/md2docx.py）
+python-docx>=1.1
+# 塘的地表汇水区：填洼 + D8 流向 + 上游汇水（tools/pond_surface_catchments.py；Deltares 开源，依赖 numba）
+pyflwdir>=0.5
+# 智能体运行时的预设与配置是 YAML（swbrain/dsh_bridge.py 生成、tests/test_dsh_bridge.py 校验）
+PyYAML>=6.0
+# 智能体运行时（DeepSeek Harness Python SDK，自带 dsh 运行时；可选）
+deepseek-harness-sdk
+# 一二维热点群计算（C1 等）在本机要的：SWMM 求解器（全市一维、读入检查）、PDF 图纸解析、核对图、控制台截图
+swmm-toolkit>=0.15
+pymupdf>=1.24
+matplotlib>=3.8
+websocket-client>=1.7
+# 统一身份（可选，[identity].mode = "sdip" 时才要）：验 Keycloak 令牌。不对接统一身份的机器不用装
+# pip install "PyJWT[crypto]==2.10.1"

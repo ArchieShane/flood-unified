@@ -1,0 +1,32 @@
+{
+ "region": "BC",
+ "domain_km2": 4.08,
+ "stations": [
+  {
+   "unitid": "SW_KCI_SW17_01_PSS_21",
+   "ps_id": "21",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Undefined",
+   "n_pumps": null,
+   "q_each_lps": null,
+   "q_src": "无数据：不建泵，列为局限",
+   "parsons": [],
+   "wetwell_node": "249553_2701107",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 0.0,
+   "on_m": null,
+   "off_m": null,
+   "depth_note": "客户库没有井深",
+   "discharge_node": "249744_2701056",
+   "discharge_dist_m": 0,
+   "discharge_src": "客户 GDB 压力管",
+   "forcemain_m": 213,
+   "forcemain_unitids": [
+    "SW_KCI_SW17_01_PI_197571"
+   ],
+   "x": 249553.5,
+   "y": 2701107.1
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+{
+  "schema": "swbrain.checkins/1",
+  "as_of": "2026-11-01T06:00:00+04:00",
+  "source": "承包商到场登记（ADM 应急系统 check-in 提案；未建前由运行室手工汇总）",
+  "note": "每行一个驻地 / 预置点：到场泵台数与人数。depot_id 用车队里的驻地编号（A01…）或预置方案的 site_id（CD009…）。示例数据，非客户数据。",
+  "rows": [
+    {"depot_id": "A11", "name": "Al Shahama", "units": 40, "persons": 96, "time": "2026-11-01T05:40:00+04:00"},
+    {"depot_id": "A12", "name": "Al Wathbah", "units": 60, "persons": 110, "time": "2026-11-01T05:55:00+04:00"}
+  ]
+}

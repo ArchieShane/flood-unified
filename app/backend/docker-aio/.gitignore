@@ -1,0 +1,5 @@
+.ctx/
+db/*.dump
+backups/
+pgdata/
+cache/

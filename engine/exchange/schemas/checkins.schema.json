@@ -1,0 +1,68 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://swbrain.local/schemas/checkins.schema.json",
+ "title": "swbrain.checkins/1 · 承包商到场 check-in",
+ "description": "某驻地实际到位了几台泵，用于预置到位率。 顶层 {schema, as_of, source, rows[]}；也接受裸数组。",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "swbrain.checkins/1"
+  },
+  "as_of": {
+   "type": "string"
+  },
+  "source": {
+   "type": "string"
+  },
+  "rows": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "depot_id": {
+      "type": "string"
+     },
+     "site_id": {
+      "type": "string"
+     },
+     "units": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "到位台数"
+     },
+     "at": {
+      "type": "string"
+     },
+     "by": {
+      "type": "string"
+     },
+     "note": {
+      "type": "string"
+     }
+    },
+    "additionalProperties": true,
+    "required": [
+     "units"
+    ],
+    "anyOf": [
+     {
+      "required": [
+       "depot_id"
+      ]
+     },
+     {
+      "required": [
+       "site_id"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "required": [
+  "rows"
+ ]
+}

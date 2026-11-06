@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>排水系统管理端 · 多智能体</title>
+<style>
+:root{--bg:#f4f6f8;--card:#fff;--ink:#1b2430;--muted:#66717f;--line:#e3e7ec;--acc:#0b5fd7;--acc-soft:#e6effc;--ok:#15803d;--ok-soft:#e7f5ec;--warn:#b45309;--warn-soft:#fdf1e3;--bad:#b91c1c;--bad-soft:#fbe9e9;--mono:ui-monospace,SFMono-Regular,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:10px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+header h1{font-size:16px;margin:0}
+header .sub{color:var(--muted);font-size:12px}
+nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+nav button,.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:6px;padding:5px 12px;font:inherit;cursor:pointer}
+nav button.on{background:var(--acc-soft);border-color:var(--acc);color:var(--acc);font-weight:600}
+.btn:hover{border-color:var(--acc)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.ok{border-color:var(--ok);color:var(--ok)} .btn.bad{border-color:var(--bad);color:var(--bad)} .btn.warn{border-color:var(--warn);color:var(--warn)}
+.btn:disabled{opacity:.45;cursor:default}
+main{max-width:1280px;margin:0 auto;padding:16px 20px 60px;display:flex;flex-direction:column;gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+h2{font-size:15px;margin:0 0 8px}
+h3{font-size:14px;margin:0}
+.muted{color:var(--muted)} .small{font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:12px}
+.agent{display:flex;flex-direction:column;gap:8px}
+.agent .top{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.chip{display:inline-block;border-radius:10px;padding:0 8px;font-size:12px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.chip.ok{background:var(--ok-soft);border-color:transparent;color:var(--ok)} .chip.bad{background:var(--bad-soft);border-color:transparent;color:var(--bad)}
+.chip.warn{background:var(--warn-soft);border-color:transparent;color:var(--warn)} .chip.acc{background:var(--acc-soft);border-color:transparent;color:var(--acc)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;font-size:13px}
+.kv span:nth-child(odd){color:var(--muted)}
+.acts{display:flex;flex-direction:column;gap:2px;max-height:180px;overflow:auto;border:1px solid var(--line);border-radius:6px;padding:6px 8px;font-size:13px}
+.acts label{display:flex;gap:6px;align-items:baseline}
+textarea,input[type=text],input[type=password],select{font:inherit;border:1px solid var(--line);border-radius:6px;padding:5px 8px;background:var(--card);color:var(--ink);width:100%}
+textarea{min-height:56px;resize:vertical}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;white-space:nowrap}
+.bar{height:6px;border-radius:3px;background:var(--line);min-width:120px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--acc)}
+.bar.paused i{background:var(--warn)}
+pre{font-family:var(--mono);font-size:12px;background:#0f172a;color:#e2e8f0;border-radius:6px;padding:10px;max-height:360px;overflow:auto;white-space:pre-wrap;margin:6px 0 0}
+.sess{border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.sess .q{font-weight:600}
+.route{display:flex;gap:6px;flex-wrap:wrap;align-items:baseline}
+.steps{font-family:var(--mono);font-size:12px;color:var(--muted)}
+details summary{cursor:pointer;color:var(--acc)}
+.login{max-width:380px;margin:12vh auto;display:flex;flex-direction:column;gap:10px}
+.err{color:var(--bad)}
+.confirm{display:inline-flex;gap:6px;align-items:center;background:var(--warn-soft);border-radius:6px;padding:2px 6px}
+.nj{display:grid;grid-template-columns:minmax(320px,440px) 1fr;gap:14px;margin-top:10px}
+.nj fieldset{border:1px solid var(--line);border-radius:6px;padding:8px 10px;margin:0 0 10px}
+.nj legend{font-size:12px;color:var(--muted);padding:0 4px}
+.nj .f{display:grid;grid-template-columns:110px 1fr;gap:6px 10px;align-items:center;font-size:13px}
+.nj .f input[type=number]{font:inherit;border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%}
+.seg{display:flex;flex-wrap:wrap;gap:4px}
+.seg label{border:1px solid var(--line);border-radius:6px;padding:3px 10px;cursor:pointer;font-size:13px}
+.seg input{display:none}
+.seg label:has(input:checked){background:var(--acc-soft);border-color:var(--acc);color:var(--acc)}
+#njmap{height:460px;border:1px solid var(--line);border-radius:6px}
+.picklist{max-height:200px;overflow:auto;border:1px solid var(--line);border-radius:6px;padding:4px 6px;font-size:13px}
+.picklist label{display:flex;gap:6px;align-items:baseline}
+.planbox{border-radius:6px;background:var(--bg);padding:8px 10px;font-size:13px}
+.planbox .warn{color:var(--warn)}
+@media (max-width:900px){.nj{grid-template-columns:1fr}}
+@media (max-width:640px){.grid{grid-template-columns:1fr}header{padding:10px 16px}main{padding:12px 16px 60px}nav{margin-left:0}}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>管理端 · 多智能体</h1><div class="sub" id="sub">会思考的排水系统 · 阿布扎比</div></div>
+  <nav id="nav" hidden>
+    <button data-t="agents" class="on">智能体</button><button data-t="sessions">会话与轨迹</button><button data-t="jobs">计算任务</button><button data-t="audit">操作记录</button>
+    <a class="btn" href="index.html">← 控制台</a><button id="logout">退出</button>
+  </nav>
+</header>
+<main id="main"><div class="card muted">正在装载…</div></main>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="admin.js?v=3"></script>
+</body>
+</html>

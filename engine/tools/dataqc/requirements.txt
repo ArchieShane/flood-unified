@@ -1,0 +1,14 @@
+# dataqc 的依赖。需要 Python 3.10 或更高。
+# 这些都是有预编译包的通用库；装不动就先试：
+#   python -m pip install --only-binary :all: -r requirements.txt
+numpy>=1.26
+pandas>=2.2
+geopandas>=1.0
+shapely>=2.0
+pyproj>=3.6
+rasterio>=1.3
+scipy>=1.11
+# 读 GDB / GPKG：pyogrio（首选，快）。装不上会用 fiona（ArcGIS Pro 自带的那种环境就是它）
+pyogrio>=0.9
+# 只读 shapefile 目录时的兜底
+fiona>=1.9

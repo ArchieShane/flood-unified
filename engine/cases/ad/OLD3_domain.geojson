@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "OLD3_domain",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": "OLD3", "name": "OLD (part 3/6)", "area_km2": 2.627, "source": "ADM汇水区推演状态.geojson / OLD" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 54.649609, 24.523099 ], [ 54.655319, 24.549544 ], [ 54.656162, 24.549705 ], [ 54.657785, 24.550016 ], [ 54.659731, 24.549449 ], [ 54.661029, 24.549072 ], [ 54.661289, 24.542579 ], [ 54.6609, 24.527113 ], [ 54.657655, 24.520973 ], [ 54.649609, 24.523099 ] ] ] } }
+]
+}

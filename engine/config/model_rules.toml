@@ -1,0 +1,216 @@
+# 一二维水动力推演的公共规则（F 系列）——所有推演脚本只从这里读规则，不在脚本里写死数字。
+#
+# 来源：RD-A F 系列完整交付包（2026-10-29）的 inputs_A61D1_L1F.json / RDAG_A61D1_L1F.inp / pilot_RDAG_A61D1_L1F.json，
+#       和《RD-A 一二维水动力模型输入参数与数据映射全表》（01_核心文档）。
+# 约定：
+#   · 每条规则 = value + source（谁定的：客户 / WA-726 / 用户 / Claude）+ ref（出处）。source = "Claude" 的是资料里没有、我们自定的，要请专家复核。
+#   · 只放「换区域也成立」的规则；区域专属的（井、管、泵、出水口编号、深坑、建筑洞坐标、子汇水区、热点）不放这里，放区域数据里。
+#   · 改规则 = 改版本号 meta.version，并在 meta.changelog 记一行，不要悄悄改值。
+#   · 脚本读取：tools/model_rules.py 的 load() / get("a.b.c")。
+
+[meta]
+series = "F"
+version = "F.2"
+date = "2026-11-04"
+package = "RDA_F系列完整交付_20261029"
+changelog = ["F.1 2026-10-30：从 RD-A F 系列交付包整理成公共规则文件", "F.1 2026-10-30：补计算域闭运算 / 简化参数（domain_closing_m、domain_simplify_m）", "F.1 2026-10-30：对照 main 分支的 rda_gov_build.py / bldg_holes_prep.py 核对三项待核对：建筑糙率（挖洞 0.016，不挖 0.5）、格栅开孔面积、建筑挖洞参数", "F.2 2026-11-04：客户反馈 result-261031 的 OFL_193 漏水：拍门井按封闭构筑物（flap_gate_well_closed）；建模去掉重复管（dedup_duplicate_pipes）"]
+
+# ---------------------------------------------------------------- 三态定义（写推演脚本前必须先让用户确认）
+[states]
+confirm_required = true      # 每次写 / 改推演脚本前，先把 L1 / L2 / L2planned 各含哪些数据列给用户确认
+default_state = "L1"         # 数据里没有明确字段标出「临时」或「Planned」的设施，一律是 L1
+L1 = "永久设施"
+L2 = "临时设施：只有数据里有明确的临时标记才跑"
+L2planned = "计划设施：只有数据里有明确的 Planned 标注才跑"
+source = "用户 2026-10-30"
+
+# ---------------------------------------------------------------- 一维 SWMM 选项（与 RDAG_A61D1_L1F.inp 的 [OPTIONS] 逐项一致）
+[swmm.options]
+FLOW_UNITS = "CMS"
+INFILTRATION = "HORTON"                 # 写了但没有子汇水区，不起作用；下渗只在产流阶段按 SCS CN 扣
+FLOW_ROUTING = "DYNWAVE"
+LINK_OFFSETS = "DEPTH"
+FORCE_MAIN_EQUATION = "H-W"
+MIN_SLOPE = "0"
+ALLOW_PONDING = "NO"                    # 井内水位超过井盖即记为溢流，交给二维
+SKIP_STEADY_STATE = "NO"
+DRY_DAYS = "0"
+REPORT_STEP = "00:05:00"
+WET_STEP = "00:05:00"
+DRY_STEP = "01:00:00"
+ROUTING_STEP = "0.5"                    # F 系列：旧模型 1 s → 0.5 s
+VARIABLE_STEP = "0.5"
+MINIMUM_STEP = "0.1"
+LENGTHENING_STEP = "0"
+NORMAL_FLOW_LIMITED = "BOTH"
+SURCHARGE_METHOD = "SLOT"
+MAX_TRIALS = "8"
+HEAD_TOLERANCE = "0.0015"
+EVAPORATION_CONSTANT = "0.0"
+source = "客户（动力波、SLOT、步长）/ Claude（ALLOW_PONDING、报告步长、收敛参数）"
+ref = "全表 4.1；inp [OPTIONS]"
+
+# ---------------------------------------------------------------- 管道糙率
+[pipes]
+default_manning_n = 0.013
+force_main_hazen_williams_c = 130        # 压力管；WA-726 表 7-2 的 135/140 是新管设计值，既有管沿用客户
+source = "客户 / Claude"
+ref = "全表 4.2"
+
+[pipes.manning_by_material]              # 按 GDB / 资产库的 PIPE_MATERIAL 字段取
+"Reinforced Concrete - RCP" = 0.015
+"Glass Reinforced Plastic - GRP" = 0.013
+"Polyvinyl Chloride - PVC" = 0.013
+"High Density Polyethylene - HDPE" = 0.013
+"Other - OTH" = 0.013
+"Unknown" = 0.013
+
+# ---------------------------------------------------------------- 管网初始状态
+[init_state]
+pipe_fill_fraction_of_area = 0.25        # 管道断面面积的 25 % 有水（旧模型：空管）
+manhole_initial_depth_m = 0
+source = "客户 2026-10-28 给定"
+ref = "全表 4.5；inputs.init_fill"
+
+# ---------------------------------------------------------------- 出水口与潮位
+[outfalls]
+sea_boundary = "FIXED"
+sea_level_m = 1.3                        # WA-726 第一卷 4.8.1 / 表 4-5：设计高潮位 +1.3 m NADD（已含海平面上升 0.5 m）
+sensitivity_sea_level_m = 1.8            # DEC-01 规定另用 1.8 m 做敏感性复核
+apply_to = "全部海洋出水口（F 系列统一；旧模型只有出口 31 设 1.3 m）"
+gravity_outfall_flap_gate = true
+pump_outlet_flap_gate = false
+flap_gate_well_closed = true             # 出水口前的拍门井按封闭构筑物建模：给足超压深度，允许承压、不溢流、不与二维交换（M1，2026-11-04）
+dedup_duplicate_pipes = true             # 起止节点、管径、长度都相同的管只留一根（M2，2026-11-04）
+tide_process = false                    # 没有潮汐涨落过程和风暴增水
+source = "WA-726 / 客户"
+ref = "全表 4.4"
+
+# ---------------------------------------------------------------- 产流
+[runoff]
+method = "SCS_CN"
+initial_abstraction_ratio = 0.2          # Ia = 0.2 S，S = 25400/CN - 254 (mm)；Q = (P-Ia)^2/(P+0.8S)
+impervious_cn = 95
+unit_hydrograph = "SCS dimensionless, PRF 484"
+lag_ratio_to_tc = 0.6                    # Tl = 0.6 Tc
+min_tc_min = 1
+timestep_min = 1
+inflow_location = "每个子汇水区的径流直接作为点入流加到它的出口井，不经二维地面汇流、不受雨水口能力限制"
+split_pervious_impervious = true         # 成对地块（透水 + 不透水两块几何相同）先按几何去重，再按不透水比例 f 拆开，两部分分别算径流再相加
+surface_infiltration_in_2d = false       # 二维上的积水不再下渗、不蒸发
+source = "客户（CN、TC、单位线）/ WA-726 第一卷 3.4.1 / Claude（步长、f 的取法）"
+ref = "全表第五节"
+
+[runoff.impervious_fraction]             # f：Makani 1 m 栅格上逐地块数像元
+raster_cell_m = 1
+impervious = ["建筑（bas_building、bdms_bldg_landuse、udm_bldroofsurface）", "道路（udm_roadsurface / roadshoulder / roadisland / roadintersection 等）", "停车（udm_parking 等）"]
+pervious = ["绿地（ud_greenarea、udm_park 等）", "水面", "未建地块里没被前两类压住的部分"]
+unclassified = "impervious"              # 两类都没画到的（院内硬地、人行道、广场）按不透水
+source = "Claude"
+
+# ---------------------------------------------------------------- 一二维交换（每 60 s 一步）
+[exchange]
+couple_dt_s = 60
+ground_basis = "cell"                    # F 系列：地面高程取二维单元地面高程（旧：井盖高程）
+exchange_at = ["检查井", "雨水口"]
+no_exchange = ["压力管节点", "泵出水口节点"]
+wet_threshold_m = 0.01                   # 单元水深 > 0.01 m 才回流
+overflow_distribution = "ΔV 平均分给离井最近的 4 个三角形"
+no_suction_while_overflowing = true      # 本步正在溢流的井不吸水（雨水口照吸），防止空转
+cap_by_cell_water = true                 # 同一单元几个井 / 雨水口合计不超过单元现存水量，按比例缩小
+elevated_node_rule = "井底比单元地面高 1 m 以上的井只溢流、不吸水"
+source = "Claude / 客户"
+ref = "全表第七节"
+
+[exchange.manhole_cover]                 # 井盖回流：自由孔口 / 淹没孔口
+discharge_coefficient = 0.6
+diameter_m = 0.6                         # DN600，面积 π×0.3² = 0.283 m²，所有井相同
+
+[exchange.inlet]                         # 雨水口进水：WA-726 表 A3-1 堰流 + 孔流组合，两者同时起作用
+formula = "Q = Cw·P·h^1.5 + Co·Ag·sqrt(2g·h)"
+weir_coefficient_si = 1.66               # Cw，P = 2(L+W)
+orifice_coefficient = 0.67               # Co，Ag = 开孔率 × L × W
+open_area_ratio = 0.5
+clog_factor = 0.5                        # 防堵折减 50 %
+min_depth_m = 0.01
+stop_when_node_full = true
+grate_size_m = 0.635                     # 洼地格栅式 635×635（rda_gov_build.INLET）
+grate_weir_sides = 3                     # P = 3 × 0.635 = 1.905 m（三边堰长）
+grate_open_area_m2 = 0.2016              # A = 0.635² × 50 % = 开孔面积（rda_gov_build.INLET，已核对）
+source = "WA-726 附录 A3（洼地格栅式，净开孔 50 %）/ Claude（防堵 50 %）"
+ref = "全表 7.2；tools/rda_gov_build.py"
+
+# ---------------------------------------------------------------- 二维地表
+[twod]
+solver = "ANUGA DE0"
+cfl = 0.9
+max_triangle_area_m2 = 75                # 名义网格 15 m = 15²/3
+frame_interval_s = 300
+dry_threshold_m = 0.02                   # 统计「淹没」用
+dem_clip_margin_m = 50                   # 计算域外接矩形外扩 50 m 裁剪，不重采样
+domain_closing_m = 20                    # 计算域 = 子汇水区并集，外扩再内缩 20 m（闭运算，把相隔十几米的碎块连上），只留外环（填洞）
+domain_simplify_m = 15                   # 计算域边界按 15 m 容差简化顶点
+dem_cell_elevation = "三角形形心所在 DTM 像元的值（最近像元，不插值）"
+dem_nodata_rule = "无数据或 < -1000 m 的像元改为「全窗最高值 + 50 m」，相当于不透水的墙"
+domain_boundary = "Dirichlet：水位 = 地形最低值 - 1 m，流速 0（自由出流，不是潮位边界）"
+initial_condition = "地面全干"
+infiltration = "无"
+direct_rainfall = "无：雨全部经产流 → 井 → 管网"
+source = "用户（C1 E18：网格尺寸、最近像元）/ Claude / ANUGA 默认"
+ref = "全表第三节"
+
+[twod.surface_roughness]                 # 曼宁 n，按 Makani 下垫面分区（取自 pilot_RDAG_A61D1_L1F.json 的 surface_classes）
+other_hard = 0.016                       # 类别 0：其他硬地
+road_pavement_parking = 0.016            # 类别 1：路面 / 铺装 / 停车
+building = 0.016                         # 类别 2：建筑，**挖洞法**（F 系列 L1F）下取 0.016（tools/bldg_holes_prep.py：楼已挖掉，剩下的是楼边地面）
+building_without_holes = 0.5             # 不挖洞时的高糙率法（rda_gov_build.SURF 的基础值）；交付包 L1F 的 pilot 里仍留着 0.5，因为建筑单元已全部挖掉，不起作用
+green_vacant = 0.035                     # 类别 3：绿地 / 未建地块
+water = 0.020                            # 类别 4：水面
+default = 0.016
+source = "WA-726 第一卷表 A3"
+status = "已核对 rda_gov_build.py / bldg_holes_prep.py"
+
+[twod.buildings]
+treatment = "挖洞：建筑轮廓按 2.5 m 栅格化后作为网格洞，洞边为反射墙"
+raster_cell_m = 2.5
+source_layers = ["Makani 建筑轮廓"]
+narrow_gap_closing = "闭运算一格宽（约 < 3 m 的缝当作堵死）→ 填天井 → 去对角相接"
+min_area_m2 = 25                         # 面积小于此的建筑不挖
+edge_buffer_m = 4.0                      # 离计算域边界太近的格去掉
+method_note = "栅格法；矢量缓冲 + 化简试过两次，洞间距收敛不了，最小内切圆 0.02–0.05 m，二维步长被拖垮"
+source = "Claude（用户 2026-10-28 同意挖洞）"
+ref = "全表 3.1；tools/bldg_holes_prep.py"
+
+[twod.dem_edits]
+deep_pit_rule = "核查为施工开挖的深坑，按周边地面填平"
+source = "Claude"
+
+# ---------------------------------------------------------------- 降雨库（场景，不属于区域）
+[rain.A61D1]
+depth_mm = 60.7
+duration_h = 1.0
+shape = "AECOM 10 年一遇 + 20 % 气候变化，3 min 间隔，空间均匀"
+series_file = "AECOM RD-A inp：RD - A.stsw_1_51263.inp · Various_durations-51273-10yrs.+20%CC-1Hr-10yr_TS（序列本身不在本文件）"
+sim_hours = 11
+source = "客户"
+
+[rain.S_series]
+rule = "雨型取客户 Mussafah 模型同历时「10 年一遇含 CC」曲线，按雨量等比缩放"
+depths_mm = [33, 61, 96]
+durations_h = [1, 2, 24]
+source = "用户约定"
+
+[rain.standard]
+S25D1 = "WA-726 表 3-6 B 区 10 年 × 1.2：25.4 mm / 1 h"
+S31D2 = "WA-726 表 3-6 B 区 10 年 × 1.2：30.8 mm / 2 h"
+
+# ---------------------------------------------------------------- 已知缺项（照实记，不假装做了）
+[known_gaps]
+items = [
+  "二维地面无下渗、无蒸发",
+  "没有潮汐涨落与风暴增水",
+  "路缘石、下穿通道 5 m 网格表达不出，未加断线",
+  "无计算域外来水",
+  "DTM 高程基准未声明，需客户确认是否与管网同一基准（NADD）",
+  "管道淤积、堵塞、泵停电故障不考虑",
+]

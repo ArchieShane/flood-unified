@@ -1,0 +1,83 @@
+# 排水系统部署包（2026-10-03，纯离线 Linux 服务器）：
+#   swbrain     系统服务（控制台 + 接口 + 多智能体 + 管理端），一二维计算经 docker.sock 在宿主机上另起 anuga-swmm:1.0 容器
+#   db          离线数据库 swbrain-db：pipe / makani / liveability 三库的用到的表已烤进镜像，只在 compose 内网里，不对外发布端口
+# 用法：cp .env.example .env（改路径）→ bash start.sh → http://<服务器内网IP>:${PORT}/ ；自检：docker compose exec swbrain python -m swbrain.doctor
+# 所有输入/输出目录都在宿主机上、由 .env 决定，容器里不留任何要保留的数据：
+#   DATA_DIR     客户原始数据（只读挂进 /data）；换更高精度地形就是换 DATA_DIR/dtm/ 里的文件
+#   WORK_DIR     一二维工作目录（读写，纯英文无空格路径；挂载时容器内外路径相同，起计算容器要用宿主机路径）
+#   RUNTIME_DIR  config.toml、out/（含 out/state 数据快照与交付目录）、console_data/、exchange/
+services:
+  db:
+    image: swbrain-db:${VERSION}
+    container_name: swbrain-db
+    restart: unless-stopped
+    shm_size: 1gb
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d pipe"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+  swbrain:
+    image: swbrain-app:${VERSION}
+    container_name: swbrain
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${BIND:-0.0.0.0}:${PORT:-8766}:8766"        # 内网使用：设了 config.toml 的 access_key 之后再对内网开放
+    volumes:
+      - ${RUNTIME_DIR}/config.toml:/app/config.toml
+      - ${DATA_DIR}:/data:ro
+      - ${WORK_DIR}:/work
+      - ${RUNTIME_DIR}/out:/app/out
+      - ${RUNTIME_DIR}/console_data:/app/console/data
+      - ${RUNTIME_DIR}/exchange:/app/exchange
+      - /var/run/docker.sock:/var/run/docker.sock   # 管理端批准的一二维计算、快速验证要在宿主机上起 anuga-swmm 容器
+    environment:
+      SWBRAIN_SWMM_WORK: /work
+      SWBRAIN_SWMM_WORK_HOST: ${WORK_DIR}              # 起计算容器时挂载要用宿主机路径
+      SWBRAIN_DEMO_WORK: /work/demo
+      SWBRAIN_DEMO_WORK_HOST: ${WORK_DIR}/demo
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}          # 纯离线：留空，智能体用规则规划器
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"            # 容器里连宿主机上的本地 PostGIS 输出库用这个主机名
+    logging:
+      driver: json-file
+      options: {max-size: "50m", max-file: "5"}
+
+  # DeepSeek Harness 原生 Web UI（可选，2026-10-02）：第二个入口，和控制台同一套本体动作与审计。
+  # 它不装载数据，数字经 MCP 薄桥回调 swbrain 服务（同网络里 http://swbrain:8766）；**只读**（SWBRAIN_READONLY=1）：
+  # dsh 的 MCP 客户端 headers 是静态配置、按会话传不了身份，所以这个入口不放写动作（要写到控制台用平台账号做）。
+  # 端口只给本机；进这个入口要先在控制台登录（控制台「在 Harness 打开」会带一次性 token 的地址）。
+  #
+  # 放在 profile 里（2026-10-04 修）：这个镜像基于 swbrain-app 再加 node 与全局 dsh，单独 3.8 GB，默认不导出。
+  # 不加 profile 的话 `docker compose up -d` 会连它一起拉，而部署包里没有这个镜像 → 整个启动失败（交付实测踩到）。
+  # 要用它：先构建（仓库根目录）docker build -f docker/dsh-web/Dockerfile --build-arg APP_IMAGE=swbrain-app:${VERSION} -t swbrain-dsh:${VERSION} .
+  #         再用 docker compose --profile harness up -d 启动。
+  swbrain-dsh:
+    profiles: ["harness"]
+    image: swbrain-dsh:${VERSION}
+    container_name: swbrain-dsh
+    restart: unless-stopped
+    depends_on:
+      - swbrain
+    ports:
+      - "127.0.0.1:${DSH_PORT:-3080}:3080"
+    environment:
+      SWBRAIN_URL: http://swbrain:8766
+      SWBRAIN_READONLY: "1"
+      DSH_PORT: "3080"
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}          # Harness 的模型密钥（缺省用 DeepSeek）
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+    volumes:
+      - ${RUNTIME_DIR}/config.toml:/app/config.toml:ro  # 渲染预设 / 补丁要读它（模型路由等）
+      # Web 主目录：控制台托管启动时把只读凭据写在这里（<home_web>/.delegation），容器里的 MCP 桥读同一个文件。
+      # 用仓库里 dsh 的默认位置 out/dsh_home_web，两边的路径就自然对齐，不必再配 [agent.dsh].home_web。
+      - ${RUNTIME_DIR}/out/dsh_home_web:/dsh_home

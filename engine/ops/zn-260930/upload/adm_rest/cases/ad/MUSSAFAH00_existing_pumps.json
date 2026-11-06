@@ -1,0 +1,94 @@
+{
+ "region": "MUSSAFAH00",
+ "domain_km2": 1.52,
+ "stations": [
+  {
+   "unitid": "SW_MUS_M26_PSS_36",
+   "ps_id": "ADM_RD-34",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::2x58,Separate power supply is not available",
+   "n_pumps": 2,
+   "q_each_lps": 58.0,
+   "q_src": "客户备注 2×58",
+   "parsons": [],
+   "wetwell_node": "248877_2695120",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 14.8,
+   "on_m": 7.4,
+   "off_m": 1.48,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 248877.8,
+   "y": 2695120.4
+  },
+  {
+   "unitid": "SW_MUS_M2_PSS_37",
+   "ps_id": "ADM_RD-27",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::2x60,Separate power supply is not available",
+   "n_pumps": 2,
+   "q_each_lps": 60.0,
+   "q_src": "客户备注 2×60",
+   "parsons": [],
+   "wetwell_node": "248878_2697982",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 14.5,
+   "on_m": 7.25,
+   "off_m": 1.45,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 248878.6,
+   "y": 2697982.5
+  },
+  {
+   "unitid": "SW_MUS_MN1_PSS_54",
+   "ps_id": "ADM_RD-09",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::2x123,Station has only two pump the third pump unavailable",
+   "n_pumps": 2,
+   "q_each_lps": 123.0,
+   "q_src": "客户备注 2×123",
+   "parsons": [
+    {
+     "model": "Musaffah_RD09",
+     "flow_lps": 0.0,
+     "dist_m": 8
+    },
+    {
+     "model": "Musaffah_RD09",
+     "flow_lps": 154.31,
+     "dist_m": 6
+    },
+    {
+     "model": "Musaffah_RD09",
+     "flow_lps": 153.68,
+     "dist_m": 3
+    }
+   ],
+   "wetwell_node": "248659_2699157",
+   "wetwell_dist_m": 1,
+   "well_depth_m": 6.5,
+   "on_m": 3.25,
+   "off_m": 0.65,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 248660.5,
+   "y": 2699157.4
+  }
+ ]
+}

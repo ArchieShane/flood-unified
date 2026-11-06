@@ -1,0 +1,248 @@
+<title>__TITLE__</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* 布局：上方一条控制栏，左地图右清单；窄屏时地图在上、清单在下。底图只有道路线，水是主角 */
+:root{
+  --bg:#f3f5f6; --panel:#ffffff; --ink:#15212b; --muted:#5d6b77; --line:#d9e0e5;
+  --road1:#8f9ba5; --road2:#b2bcc4; --road3:#cbd3d9; --road4:#dfe5e9; --domain:#3d4f5e;
+  --w1:#a9d1ec; --w2:#5aa3d6; --w3:#1f6fb2; --w4:#0b3f78;
+  --sim:#1f6fb2; --sim-chip:#e3f0fa;
+  --client:#d9480f; --client-chip:#fdebe2; --sel:#f2b705;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace; --sans:"IBM Plex Sans","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f161c; --panel:#162029; --ink:#e4ebf0; --muted:#93a3b0; --line:#2a3743;
+  --road1:#6c7a86; --road2:#4f5c67; --road3:#3c4853; --road4:#2c3741; --domain:#c4d0da;
+  --w1:#1d4d73; --w2:#2f78b4; --w3:#5aa8e6; --w4:#a8d8ff;
+  --sim:#6cb4ee; --sim-chip:#16324a; --client:#ff7a3d; --client-chip:#3f2216; --sel:#f2c94c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f161c; --panel:#162029; --ink:#e4ebf0; --muted:#93a3b0; --line:#2a3743;
+  --road1:#6c7a86; --road2:#4f5c67; --road3:#3c4853; --road4:#2c3741; --domain:#c4d0da;
+  --w1:#1d4d73; --w2:#2f78b4; --w3:#5aa8e6; --w4:#a8d8ff;
+  --sim:#6cb4ee; --sim-chip:#16324a; --client:#ff7a3d; --client-chip:#3f2216; --sel:#f2c94c; color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;display:flex;flex-direction:column}
+.bar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));border-bottom:1px solid var(--line);background:var(--panel)}
+.bar h1{font-size:17px;font-weight:600;margin:0;text-wrap:balance}
+.bar .scen{color:var(--muted);font-size:12.5px}
+.grp{display:flex;align-items:center;gap:6px}
+.grp>span{font-size:11.5px;color:var(--muted);letter-spacing:.04em}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{font:inherit;font-size:12.5px;border:0;background:transparent;color:var(--ink);padding:5px 10px;cursor:pointer;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--panel)}
+.seg button:focus-visible,.item:focus-visible,input:focus-visible{outline:2px solid var(--sel);outline-offset:1px}
+main{flex:1;display:flex;min-height:0}
+#map{flex:1;min-width:0;background:var(--bg)}
+aside{width:360px;max-width:100%;display:flex;flex-direction:column;border-left:1px solid var(--line);background:var(--panel);min-height:0}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
+.sum div{background:var(--panel);padding:9px 12px}
+.sum b{display:block;font-family:var(--mono);font-size:17px;font-weight:600;font-variant-numeric:tabular-nums}
+.sum small{color:var(--muted);font-size:11.5px}
+.tools{display:flex;flex-direction:column;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.tools input[type=search]{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:100%;box-sizing:border-box}
+.tools label{font-size:12.5px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.list{overflow:auto;flex:1;min-height:0}
+.item{display:grid;grid-template-columns:auto 1fr auto;gap:2px 10px;padding:8px 12px;border-bottom:1px solid var(--line);cursor:pointer}
+.item:hover{background:var(--bg)}
+.item.on{background:var(--sim-chip)}
+.item .v{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.item .meta{grid-column:1/-1;color:var(--muted);font-size:12px}
+.id-sim{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--sim);background:var(--sim-chip);border-radius:4px;padding:1px 6px;white-space:nowrap}
+.id-client{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--client);background:var(--client-chip);border-radius:4px;padding:1px 6px;white-space:nowrap}
+.legend{padding:10px 12px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.legend .row{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center}
+.sw{display:inline-block;width:14px;height:10px;border-radius:2px;vertical-align:middle;margin-right:4px}
+.dia{display:inline-block;width:9px;height:9px;background:var(--client);transform:rotate(45deg);margin:0 5px 0 2px;vertical-align:middle;border:1.5px solid var(--panel);box-shadow:0 0 0 1px var(--client)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--sim);opacity:.85;margin-right:4px;vertical-align:middle}
+.note{font-size:11.5px;line-height:1.5}
+/* Leaflet 必需样式（只放用到的） */
+.leaflet-pane,.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile-container,.leaflet-pane>svg,.leaflet-pane>canvas,.leaflet-zoom-box,.leaflet-image-layer,.leaflet-layer{position:absolute;left:0;top:0}
+.leaflet-container{overflow:hidden;-webkit-tap-highlight-color:transparent;outline:0;font-family:var(--sans);touch-action:none}
+.leaflet-container .leaflet-marker-pane img,.leaflet-container img.leaflet-image-layer{max-width:none!important}
+.leaflet-marker-icon,.leaflet-interactive{cursor:pointer}
+.leaflet-zoom-animated{transform-origin:0 0}
+.leaflet-zoom-anim .leaflet-zoom-animated{transition:transform .25s cubic-bezier(0,0,.25,1)}
+.leaflet-zoom-anim .leaflet-zoom-hide{visibility:hidden}
+.leaflet-pane{z-index:400}.leaflet-overlay-pane{z-index:400}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}
+.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}
+.leaflet-control{position:relative;z-index:800;pointer-events:auto;float:left;clear:both}
+.leaflet-top,.leaflet-bottom{position:absolute;z-index:1000;pointer-events:none}
+.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}
+.leaflet-right .leaflet-control{float:right;margin-right:10px}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}
+.leaflet-bar{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel)}
+.leaflet-bar a{display:block;width:30px;height:30px;line-height:30px;text-align:center;text-decoration:none;color:var(--ink);font-size:18px;border-bottom:1px solid var(--line)}
+.leaflet-bar a:last-child{border-bottom:0}
+.leaflet-control-scale-line{border:2px solid var(--muted);border-top:0;padding:0 5px;font-size:11px;color:var(--ink);background:color-mix(in srgb,var(--panel) 80%,transparent)}
+.leaflet-control-attribution{font-size:10.5px;color:var(--muted);background:color-mix(in srgb,var(--panel) 80%,transparent);padding:0 5px}
+.leaflet-popup{position:absolute;text-align:left;margin-bottom:14px}
+.leaflet-popup-content-wrapper{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,.18)}
+.leaflet-popup-content{margin:10px 12px;font-size:12.5px;line-height:1.45;min-width:220px}
+.leaflet-popup-tip-container{width:28px;height:14px;position:absolute;left:50%;margin-left:-14px;overflow:hidden;pointer-events:none}
+.leaflet-popup-tip{width:12px;height:12px;padding:1px;margin:-7px auto 0;transform:rotate(45deg);background:var(--panel);border:1px solid var(--line)}
+.leaflet-popup-close-button{position:absolute;top:4px;right:6px;color:var(--muted);text-decoration:none;font-size:18px;border:0;background:none;cursor:pointer}
+.leaflet-tooltip{position:absolute;padding:2px 6px;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:4px;white-space:nowrap;font-size:11.5px;pointer-events:none;box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.leaflet-tooltip.client{color:var(--client);border-color:var(--client);font-family:var(--mono);font-weight:600}
+.leaflet-tooltip.sim{color:var(--sim);font-family:var(--mono);font-weight:600}
+.hsicon{width:12px;height:12px;background:var(--client);transform:rotate(45deg);border:2px solid var(--panel);box-shadow:0 0 0 1px var(--client);box-sizing:border-box}
+.hsicon.minor{width:9px;height:9px;opacity:.75}
+.pop h3{margin:0 0 2px;font-size:13px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.pop .kind{color:var(--muted);font-size:11.5px;margin-bottom:6px}
+.pop table{border-collapse:collapse;width:100%}
+.pop td{padding:2px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.pop td:last-child{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;padding-left:10px}
+@media (max-width:760px){main{flex-direction:column}#map{flex:none;height:58vh}aside{width:auto;border-left:0;border-top:1px solid var(--line)}.list{max-height:none}}
+@media (prefers-reduced-motion:reduce){.leaflet-zoom-anim .leaflet-zoom-animated{transition:none}}
+</style>
+
+<div class="bar">
+  <div><h1 id="ttl"></h1><div class="scen" id="scen"></div></div>
+  <div class="grp"><span>工况</span><div class="seg" id="segState" role="group" aria-label="工况"></div></div>
+  <div class="grp"><span>水深阈值</span><div class="seg" id="segDepth" role="group" aria-label="水深阈值"></div></div>
+</div>
+<main>
+  <div id="map" aria-label="积水点地图"></div>
+  <aside>
+    <div class="sum">
+      <div><b id="sN">–</b><small>模拟积水点</small></div>
+      <div><b id="sV">–</b><small>峰值积水量合计 m³</small></div>
+      <div><b id="sR">–</b><small>雨后 4 h 仍未退</small></div>
+    </div>
+    <div class="tools">
+      <input type="search" id="q" placeholder="查编号：SIM-L1-001 或客户热点 ADM-140" aria-label="查编号">
+      <label><input type="checkbox" id="onlyNear"> 只看客户热点 200 m 内的积水点</label>
+    </div>
+    <div class="list" id="list"></div>
+    <div class="legend">
+      <div class="row"><span><span class="dot"></span><span class="id-sim">SIM-…</span> 模型算出的积水点（本次新编号）</span></div>
+      <div class="row"><span><span class="dia"></span><span class="id-client">ADM-…</span> 客户热点（客户原编号）</span></div>
+      <div class="row">最大水深 <span><span class="sw" style="background:var(--w1)"></span>&lt;0.30</span><span><span class="sw" style="background:var(--w2)"></span>0.30–0.50</span><span><span class="sw" style="background:var(--w3)"></span>0.50–1.00</span><span><span class="sw" style="background:var(--w4)"></span>≥1.00 m</span></div>
+      <div class="note" id="note"></div>
+    </div>
+  </aside>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>
+const D = /*__DATA__*/null;
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt = n => Math.round(n).toLocaleString('en-US');
+const st = {state: 'L1', depth: Object.keys(D.layers)[0], sel: null, q: '', near: false};
+try { const s = JSON.parse(localStorage.getItem('pond-map') || '{}'); if (D.states.includes(s.state)) st.state = s.state; if (D.layers[s.depth]) st.depth = s.depth; } catch (e) {}
+const save = () => { try { localStorage.setItem('pond-map', JSON.stringify({state: st.state, depth: st.depth})); } catch (e) {} };
+
+document.getElementById('ttl').textContent = D.title;
+document.getElementById('scen').textContent = D.scen;
+
+const map = L.map('map', {preferCanvas: true, zoomSnap: 0.25, attributionControl: true});
+map.attributionControl.setPrefix(false).addAttribution('道路 © OpenStreetMap');
+L.control.scale({imperial: false, position: 'bottomleft'}).addTo(map);
+const rend = L.canvas({padding: 0.3});
+
+let roadLayer, domLayer, pondLayer, ptLayer, hsLayer;
+function depthColor(h) { return h >= 1 ? css('--w4') : h >= 0.5 ? css('--w3') : h >= 0.3 ? css('--w2') : css('--w1'); }
+
+function drawBase() {
+  if (roadLayer) roadLayer.remove(); if (domLayer) domLayer.remove();
+  const cols = [null, css('--road1'), css('--road2'), css('--road3'), css('--road4')], wts = [0, 2.6, 1.8, 1.3, 0.9];
+  roadLayer = L.layerGroup(D.roads.sort((a, b) => b[0] - a[0]).map(([r, c]) =>
+    L.polyline(c.map(p => [p[1], p[0]]), {renderer: rend, color: cols[r], weight: wts[r], interactive: false}))).addTo(map);
+  domLayer = L.geoJSON(D.domain, {renderer: rend, interactive: false, style: {color: css('--domain'), weight: 1.6, dashArray: '6 4', fill: false}}).addTo(map);
+}
+
+const feats = () => D.layers[st.depth].feats.filter(f => f.s === st.state);
+const isGroup = new Set(D.hs.filter(h => h.g).map(h => h.id));
+const nearGroup = f => f.near.split(';').some(x => x.endsWith('*'));
+
+function popSim(f) {
+  const near = f.near ? f.near.split(';').map(x => `<span class="id-client">${x.replace('*', '')}</span>`).join(' ') : '无';
+  return `<div class="pop"><h3><span class="id-sim">${f.id}</span></h3><div class="kind">模型算出的积水点 · 不是客户热点编号</div><table>
+  <tr><td>最大水深</td><td>${f.h.toFixed(2)} m</td></tr>
+  <tr><td>积水面积（≥${st.depth} m）</td><td>${fmt(f.A)} m²</td></tr>
+  <tr><td>其中 ≥0.30 m</td><td>${fmt(f.A30)} m²</td></tr>
+  <tr><td>峰值积水量</td><td>${fmt(f.V)} m³</td></tr>
+  <tr><td>峰值时刻</td><td>${f.tV} h</td></tr>
+  <tr><td>持续（超阈值）</td><td>${f.dur} h</td></tr>
+  <tr><td>退水（峰值起）</td><td>${f.rec === '未退' ? '雨后 4 h 未退' : f.rec + ' h'}</td></tr>
+  <tr><td>末帧积水量</td><td>${fmt(f.Vend)} m³</td></tr>
+  <tr><td>最深点地面高程</td><td>${f.z} m</td></tr>
+  <tr><td>最近客户热点</td><td><span class="id-client">${f.nh}</span> ${fmt(f.nd)} m</td></tr>
+  </table><div class="kind" style="margin-top:6px">200 m 内客户热点：${near}</div></div>`;
+}
+function popHs(h) {
+  const ff = feats().filter(f => f.near.split(';').map(x => x.replace('*', '')).includes(h.id));
+  const lst = ff.length ? ff.slice(0, 8).map(f => `<span class="id-sim">${f.id}</span> ${fmt(f.V)} m³`).join('<br>') : '无';
+  return `<div class="pop"><h3><span class="id-client">${h.id}</span></h3><div class="kind">客户热点 · 客户原编号${h.g ? ' · RB-01 热点群' : ''}</div><table>
+  <tr><td>等级</td><td>${h.crit || '–'}</td></tr><tr><td>客户写的原因</td><td style="font-family:var(--sans)">${h.cause || '–'}</td></tr></table>
+  <div class="kind" style="margin-top:6px">${D.stateNames[st.state]} · 200 m 内的模拟积水点：</div><div>${lst}${ff.length > 8 ? '<br>…共 ' + ff.length + ' 个' : ''}</div></div>`;
+}
+
+const byId = {};
+function drawPonds() {
+  [pondLayer, ptLayer].forEach(l => l && l.remove());
+  for (const k in byId) delete byId[k];
+  const F = feats(), vmax = Math.max(...F.map(f => f.V), 1);
+  pondLayer = L.layerGroup(); ptLayer = L.layerGroup();
+  F.forEach(f => {
+    const poly = L.geoJSON(f.g, {renderer: rend, style: {color: depthColor(f.h), weight: 0.6, fillColor: depthColor(f.h), fillOpacity: 0.62}})
+      .bindPopup(() => popSim(f)).on('click', () => select(f.id, false));
+    const pt = L.circleMarker([f.py, f.px], {renderer: rend, radius: 3 + 11 * Math.sqrt(f.V / vmax), color: css('--panel'), weight: 1.2, fillColor: css('--sim'), fillOpacity: 0.9})
+      .bindPopup(() => popSim(f)).bindTooltip(f.id, {className: 'sim', direction: 'top', offset: [0, -4]}).on('click', () => select(f.id, false));
+    pondLayer.addLayer(poly); ptLayer.addLayer(pt); byId[f.id] = {f, poly, pt};
+  });
+  pondLayer.addTo(map); ptLayer.addTo(map);
+  if (hsLayer) hsLayer.remove();
+  hsLayer = L.layerGroup(D.hs.map(h => L.marker([h.y, h.x], {icon: L.divIcon({className: '', html: `<div class="hsicon${h.g ? '' : ' minor'}"></div>`, iconSize: h.g ? [12, 12] : [9, 9]}), zIndexOffset: 1000})
+    .bindTooltip(h.id, {className: 'client', permanent: h.g, direction: 'right', offset: [8, 0]}).bindPopup(() => popHs(h)))).addTo(map);
+  const tot = F.reduce((s, f) => s + f.V, 0);
+  document.getElementById('sN').textContent = F.length;
+  document.getElementById('sV').textContent = fmt(tot);
+  document.getElementById('sR').textContent = F.filter(f => f.rec === '未退').length;
+  const p = D.layers[st.depth].params;
+  document.getElementById('note').textContent = `判定（试算，未与客户对齐）：最大水深 ≥${p.depth_m} m、连片 ≥${p.min_area_m2} m²、持续 ≥${p.min_dur_h} h，塘的占地不算。编号 SIM-工况-序号，按峰值积水量从大到小，只在本工况、本阈值内有效：换工况或阈值后同一个编号不是同一处。`;
+  drawList();
+}
+
+function drawList() {
+  const q = st.q.trim().toUpperCase();
+  let F = feats();
+  if (st.near) F = F.filter(nearGroup);
+  if (q) F = F.filter(f => f.id.includes(q) || f.near.toUpperCase().includes(q));
+  const el = document.getElementById('list');
+  el.innerHTML = F.slice(0, 400).map(f => `<div class="item${f.id === st.sel ? ' on' : ''}" tabindex="0" data-id="${f.id}">
+    <span class="id-sim">${f.id}</span><span>${f.h.toFixed(2)} m · ${fmt(f.A)} m²</span><span class="v">${fmt(f.V)} m³</span>
+    <span class="meta">${f.rec === '未退' ? '未退' : '退水 ' + f.rec + ' h'} · 最近客户热点 ${f.nh} ${fmt(f.nd)} m</span></div>`).join('')
+    || `<div class="item"><span class="meta">没有符合条件的积水点。${q.startsWith('ADM') ? '这个客户热点 200 m 内没有模拟积水点。' : ''}</span></div>`;
+}
+document.getElementById('list').addEventListener('click', e => { const it = e.target.closest('.item[data-id]'); if (it) select(it.dataset.id, true); });
+document.getElementById('list').addEventListener('keydown', e => { if (e.key === 'Enter') { const it = e.target.closest('.item[data-id]'); if (it) select(it.dataset.id, true); } });
+
+function select(id, fly) {
+  const o = byId[id]; if (!o) return;
+  if (st.sel && byId[st.sel]) byId[st.sel].poly.setStyle({color: depthColor(byId[st.sel].f.h), weight: 0.6});
+  st.sel = id; o.poly.setStyle({color: css('--sel'), weight: 2.5});
+  if (fly) { map.fitBounds(o.poly.getBounds(), {maxZoom: 17, padding: [60, 60]}); o.pt.openPopup(); }
+  document.querySelectorAll('.item').forEach(x => x.classList.toggle('on', x.dataset.id === id));
+}
+
+function seg(elId, items, key) {
+  const el = document.getElementById(elId);
+  el.innerHTML = items.map(([v, t]) => `<button type="button" data-v="${v}" aria-pressed="${st[key] === v}">${t}</button>`).join('');
+  el.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; st[key] = b.dataset.v; st.sel = null;
+    el.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); save(); map.closePopup(); drawPonds(); });
+}
+seg('segState', D.states.map(s => [s, D.stateNames[s]]), 'state');
+seg('segDepth', Object.keys(D.layers).map(d => [d, '≥' + d + ' m']), 'depth');
+document.getElementById('q').addEventListener('input', e => { st.q = e.target.value; drawList();
+  const q = st.q.trim().toUpperCase(); const h = D.hs.find(x => x.id === q); if (h) map.setView([h.y, h.x], 16);
+  else if (byId[q]) select(q, true); });
+document.getElementById('onlyNear').addEventListener('change', e => { st.near = e.target.checked; drawList(); });
+
+drawBase(); drawPonds();
+map.fitBounds(L.geoJSON(D.domain).getBounds(), {padding: [10, 10]});
+const mq = matchMedia('(prefers-color-scheme: dark)');
+const redraw = () => { drawBase(); drawPonds(); };
+mq.addEventListener('change', redraw);
+new MutationObserver(redraw).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+</script>

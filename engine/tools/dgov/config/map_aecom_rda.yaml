@@ -1,0 +1,77 @@
+# AECOM RD-A SewerGEMS 模型 → 标准结构。网络取「Base Scenario」那组情景的 shapefile（9 个情景的几何和输入属性相同，只差结果列），
+# 泵曲线取 Base Scenario › 10yrs.+20%CC-1hrs 的 SWMM 导出（运算 51263，英尺和 CFS，换成米和 m³/s）。
+# shapefile 里的 FLOW_MAX、HGL、EVER_OF、CAP_FULL、V_(MAX)、Q_(MAX)、RUNOFF_VOL 等是运算结果，不进标准结构。
+source: aecom_rda
+crs: 32640
+folder: 10+20%-1hr
+id_field: LABEL
+null_text: ["", "None", "nan"]
+layers:
+  Manholes.shp:                     # 10+20%-* 和 2024-1hr / 2024-24hr 里叫 Manholes.shp，其余情景叫 Manhole.shp
+    target: node
+    un: [StructureJunction, Sewer Storm Vault, Manhole]
+    kind: {const: junction}
+    fields:
+      rim_elev: {from: ELV_GND}
+      invert_elev: {from: ELV_INV}
+  Wetwell.shp:
+    target: node
+    un: [StructureJunction, Sewer Storm Vault, Wet Well（扩展）]
+    kind: {const: wetwell}
+    fields:
+      rim_elev: {from: ELV_GND}
+      invert_elev: {from: INIT_ELEV}
+  Outfall.shp:
+    target: node
+    un: [StormwaterDevice, Outlet, by_flap]
+    kind: {const: outfall}
+    fields:
+      rim_elev: {from: ELV_GND}
+      invert_elev: {from: ELV_INV}
+      boundary_type: {from: BOUNDCOND, map: {"User Defined Tailwater": FIXED, "Free Outfall": FREE}}
+      tailwater: {from: TAILWATER}
+      flap: {from: "TIDALGATE?", map: {"True": "yes", "False": "no", "1": "yes", "0": "no"}}
+  Conduit.shp:
+    target: link
+    un: [StormwaterLine, Pipe, Gravity Pipe]
+    kind: {const: gravity}
+    fields:
+      from_src: {from: START_NODE}
+      to_src: {from: STOP_NODE}
+      diameter_mm: {from: D}
+      upelev: {from: INV_STRT}
+      downelev: {from: INV_STP}
+      length_attr: {from: LENGTH}
+      manning_n: {from: MANN_N}
+  Pressure Pipe.shp:
+    target: link
+    un: [StormwaterLine, Pipe, Force Pipe]
+    kind: {const: force}
+    fields:
+      from_src: {from: START_NODE}
+      to_src: {from: STOP_NODE}
+      diameter_mm: {from: D}
+      length_attr: {from: LENGTH}
+      manning_n: {from: MANN_N}
+  Pump.shp:
+    target: pump
+    un: [StormwaterDevice, Pump, Pump]
+    kind: {const: model}
+    fields:
+      on_elev: {from: ONELEV}
+      off_elev: {from: OFFELEV}
+      curve_id: {from: P_DEF}
+      comments_src: {from: P_DEF}
+  Catchment.shp:
+    target: catchment
+    un: [—, —, —]
+    kind: {const: catchment}
+    fields:
+      area_m2: {from: A, scale: 10000.0}           # A 是公顷
+      cn: {from: SCS_CN}
+      tc_min: {from: TC}
+      out_node_src: {from: OUT_NODE}
+pump_curves:
+  run: "51263"                                      # Base Scenario › 10yrs. +20%CC- 1hrs
+  ft: 0.3048
+  cfs: 0.0283168

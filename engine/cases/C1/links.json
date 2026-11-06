@@ -1,0 +1,5 @@
+{
+ "report": {"title": "C1 热点群一二维计算在线报告", "url": "https://claude.ai/artifact/NZKLeppNDkvRx593PSjrYJ", "local": "out/c1_report.html"},
+ "materials": {"title": "C1 一二维计算资料清单", "url": "https://claude.ai/artifact/7cpuT6spVpSHphWzSRgNRR", "local": "docs/C1_资料清单.md"},
+ "params": {"title": "C1 参数对齐页", "url": "https://claude.ai/artifact/CkRHWiRfwvXCBvwBQuxNp4", "local": "cases/C1/params_answers.json"}
+}

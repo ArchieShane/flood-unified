@@ -1,0 +1,60 @@
+# Web 配置树的覆盖层（dsh --patch <本文件渲染后> web ...）。
+# 按 id 覆盖整段 config；占位符由 swbrain.dsh_bridge 渲染。
+- id: agent-default-model
+  config:
+    provider: __PROVIDER__
+    model: __MODEL__
+
+# 四个预设放在 $DSH_HOME/.agent-presets/{drainage,hydro,report,qa}（用户根，自动扫描）：与系统里的四个工作智能体一一对应，
+# 在 Harness 页面的预设下拉里选；每个预设的 MCP 桥只暴露那个智能体名下的动作（SWBRAIN_OWNER）。
+# default 仍是 drainage = 调度研判（最常问的那类问题）。
+- id: agent-presets
+  config:
+    default: drainage
+
+# Python SDK 自带的运行时没有打包 dsh-session-title-llm（sdk profile 也把它关了）：关掉，否则 web 树装不起来
+- id: session-title-llm
+  disabled: true
+
+# ── 子智能体：默认组合把面向模型的这几个工具关了，这里打开（2026-10-02）────────────────
+# 控制台走的 sdk profile 本来就开着（实测派子智能体去查积水点数，14 s 回来、数字对得上）；
+# 原生 Web UI 这一份关着，打开后页面上也能派子智能体、用 @ 进子会话看它的过程。
+# 注意：子智能体的工具调用与主智能体在动作日志里记同一个身份（MCP 客户端只发 name+arguments，
+# dsh 也明确不许插件改写参数），要细分到子会话得另写 dsh 插件拦 tools/execute。
+- id: tool-subagent
+  config:
+    provider: spawn
+    toolName: subagent
+    backgroundMode: continuable
+  disabled: false
+- id: tool-subagent-fork
+  config:
+    provider: fork
+    toolName: subagent_fork
+    backgroundMode: one-shot
+  disabled: false
+- id: tool-subagent-list-agents
+  disabled: false
+- id: tool-subagent-control
+  disabled: false
+
+# ── workflow：让模型写一段 JS 编排脚本，并行派多个子智能体（2026-10-02）──────────────
+# dsh 自带：`dsh-workflow` 是能力接口（ctx.workflowEngine）、`dsh-workflow-worker-thread` 在线程里执行脚本、
+# `dsh-tool-workflow` 是给模型的工具（脚本里 agent() 落到 ctx.subagents）、`ui-workflow-run` 在页面显示运行过程。
+# 控制台走的 sdk profile 里本来就是开的，且已实测跑通（一句「用 workflow 并行派两个子智能体查…」
+# → workflow 一步、2 个子智能体、返回 845 与 448 两个口径）；web 这份关着，这里打开。
+- id: workflow-worker-thread
+  config:
+    provider: spawn
+  disabled: false
+- id: tool-workflow
+  disabled: false
+
+# 浏览器对同一主机的 HTTP/1.1 连接上限是 6 条，而 Web UI 每个标签页常驻 5～6 条流式长连接
+# （$events、session/control、session/follow、workspace/follow、workspaceFiles/changes，再加 HMR 的 /plugins/events）。
+# 占满之后所有普通请求（建会话、发消息）都会排队不返回，表现为「界面卡死、选了工作区也没法输入」。
+# 这两个在演示环境没用的流关掉，把每页常驻连接降到 4 条以内；另外同一浏览器只开一个 Harness 标签页。
+- id: client-hmr          # 开发热更新（只在 pnpm dev:web 重编译时才有用），它开着 /plugins/events 事件流
+  disabled: true
+- id: ui-sidebar-files    # 右侧「文件树」标签，它开着 workspaceFiles/changes 变更流；工作区里只有几份说明文档
+  disabled: true

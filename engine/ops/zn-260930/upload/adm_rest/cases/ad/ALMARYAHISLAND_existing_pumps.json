@@ -1,0 +1,30 @@
+{
+ "region": "ALMARYAHISLAND",
+ "domain_km2": 1.67,
+ "stations": [
+  {
+   "unitid": "SW_AMI_MI3_PSS_87",
+   "ps_id": "87",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "RD-MRY",
+   "n_pumps": null,
+   "q_each_lps": null,
+   "q_src": "无数据：不建泵，列为局限",
+   "parsons": [],
+   "wetwell_node": "235512_2711684",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 0.0,
+   "on_m": null,
+   "off_m": null,
+   "depth_note": "客户库没有井深",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 235512.4,
+   "y": 2711684.8
+  }
+ ]
+}

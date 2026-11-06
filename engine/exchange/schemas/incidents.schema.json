@@ -1,0 +1,77 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://swbrain.local/schemas/incidents.schema.json",
+ "title": "swbrain.incidents/1 · 993 报案",
+ "description": "一条现场报案。有热点编号最好；只有坐标时我们按 300 m 内最近的热点匹配，匹配不上的会原样退回。 顶层 {schema, as_of, source, rows[]}；也接受裸数组。",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "swbrain.incidents/1"
+  },
+  "as_of": {
+   "type": "string"
+  },
+  "source": {
+   "type": "string"
+  },
+  "rows": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "fp_id": {
+      "type": "string",
+      "pattern": "^(ADM|AAM|DRM|HS)[ \\-_]?\\d{1,4}$",
+      "description": "客户热点编号，如 ADM-62"
+     },
+     "lon": {
+      "type": "number",
+      "minimum": 51.0,
+      "maximum": 57.0,
+      "description": "经度（WGS84）"
+     },
+     "lat": {
+      "type": "number",
+      "minimum": 22.3,
+      "maximum": 26.6,
+      "description": "纬度（WGS84）"
+     },
+     "at": {
+      "type": "string",
+      "description": "报案时间（ISO）"
+     },
+     "verified": {
+      "type": "boolean",
+      "description": "是否已核实（核实过的在重规划里加权更多）"
+     },
+     "note": {
+      "type": "string"
+     },
+     "source": {
+      "type": "string"
+     }
+    },
+    "additionalProperties": true,
+    "anyOf": [
+     {
+      "required": [
+       "fp_id"
+      ]
+     },
+     {
+      "required": [
+       "lon",
+       "lat"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "required": [
+  "rows"
+ ]
+}

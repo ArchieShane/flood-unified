@@ -1,0 +1,31 @@
+# 构建上下文 = backend/。只进代码与依赖清单；data/ 运行时挂载，不传给 daemon。
+
+# 本机虚拟环境（macOS arm64 的二进制，进镜像必炸）
+.venv/
+
+# 凭据：PIPE_DB_PASSWORD 在里面，绝不进镜像，运行时用 --env-file 注入
+.env
+
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+**/.DS_Store
+logs/
+*.log
+
+# 测试与本机启动脚本（start.sh 走 .venv，容器里用 CMD）
+tests/
+pytest.ini
+start.sh
+
+# 数据整个不进镜像，运行时从宿主机挂载 /app/data（见 docker-run.sh）
+data/
+
+# 容器相关文件本身
+Dockerfile
+.dockerignore
+docker-build.sh
+docker-run.sh
+docker-import.sh

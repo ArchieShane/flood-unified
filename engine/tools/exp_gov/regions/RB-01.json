@@ -1,0 +1,18 @@
+{
+  "name": "RB-01",
+  "code": "RB01",
+  "note": "SOP 试跑（用户 2026-10-26 批准）：场景①，阿布扎比内换一个区域。DMT 已在全市治理第十四轮中治理过，这里只截取、区域检查、对账、验证。",
+  "work": "D:/swbrain_work/exp_gov",
+  "domain": {"from": "parsons", "path": "D:/阿布扎比/Parsons_Model Data Export/26092026/RB-01"},
+  "consultant": {
+    "type": "parsons",
+    "path": "D:/阿布扎比/Parsons_Model Data Export/26092026/RB-01",
+    "label": "Parsons 模型（改造后模型去掉塘 / 泵 / 压力管 / 湿井 = 现状 L1）",
+    "reference_run": {"name": "RB01_H61", "model": "L1", "storm": "D61"},
+    "fuse": false,
+    "fuse_note": "Parsons 导出的是改造后模型（含方案塘、泵），不是现状资产台账，不融合进资产库，只用来对账和作验证参照（Claude 自定，已告知用户）"
+  },
+  "runoff": {"from": "consultant", "note": "所有模型用同一套产流：Parsons 子汇水区 + SCS CN（客户方法，rb01_build.hydrographs），入流挂到各模型最近的井"},
+  "storms": [{"tag": "D61", "mm": 61.0, "dur_h": 1.0, "tail_h": 4.0, "label": "61 mm / 1 h（10 年一遇 + 20 %）"}],
+  "models": ["R", "G"]
+}

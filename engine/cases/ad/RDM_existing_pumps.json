@@ -1,0 +1,30 @@
+{
+ "region": "RDM",
+ "domain_km2": 4.63,
+ "stations": [
+  {
+   "unitid": "SW_AKE_AGA_PSS_63",
+   "ps_id": "63",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::350 & 85x2",
+   "n_pumps": null,
+   "q_each_lps": null,
+   "q_src": "无数据：不建泵，列为局限",
+   "parsons": [],
+   "wetwell_node": "238365_2705907",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 8.0,
+   "on_m": 4.0,
+   "off_m": 0.8,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 238365.5,
+   "y": 2705907.4
+  }
+ ]
+}

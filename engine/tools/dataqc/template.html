@@ -1,0 +1,147 @@
+<title>__TITLE__</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f8f9; --paper:#ffffff; --ink:#15212b; --ink2:#46545f; --ink3:#77838c; --line:#dde3e7; --line2:#eef2f4;
+  --accent:#0f6b7a; --accent-soft:#e3f1f3;
+  --crit:#b3261e; --crit-soft:#fbe9e7; --warn:#9a6700; --warn-soft:#fdf3dc; --info:#4b5b66; --info-soft:#eef1f3;
+  --ok:#1f7a4d; --ok-soft:#e5f4ec;
+  --r-desk:#3b5bcc; --r-supply:#8a4fbf; --r-survey:#c2410c; --r-none:#77838c;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1519; --paper:#161e24; --ink:#e3e9ed; --ink2:#b3bec6; --ink3:#86939c; --line:#2a353d; --line2:#1f282e;
+  --accent:#5cc2d1; --accent-soft:#16333a;
+  --crit:#ff8a80; --crit-soft:#3a1d1b; --warn:#f2c14e; --warn-soft:#352b12; --info:#aab6be; --info-soft:#232d33;
+  --ok:#6fd3a0; --ok-soft:#15302a; --r-desk:#8ea6ff; --r-supply:#c9a2f0; --r-survey:#ff9d6b; --r-none:#86939c;
+  color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#0f1519; --paper:#161e24; --ink:#e3e9ed; --ink2:#b3bec6; --ink3:#86939c; --line:#2a353d; --line2:#1f282e;
+  --accent:#5cc2d1; --accent-soft:#16333a;
+  --crit:#ff8a80; --crit-soft:#3a1d1b; --warn:#f2c14e; --warn-soft:#352b12; --info:#aab6be; --info-soft:#232d33;
+  --ok:#6fd3a0; --ok-soft:#15302a; --r-desk:#8ea6ff; --r-supply:#c9a2f0; --r-survey:#ff9d6b; --r-none:#86939c;
+  color-scheme:dark;}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.7 "Noto Sans SC",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+.mono,code{font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-size:.92em}
+.num{font-variant-numeric:tabular-nums}
+h1{font-size:1.9rem;line-height:1.3;margin:0 0 6px;text-wrap:balance;font-weight:700;letter-spacing:.01em}
+h2{font-size:1.28rem;margin:44px 0 12px;padding-top:8px;border-top:2px solid var(--ink);text-wrap:balance}
+h3{font-size:1.05rem;margin:26px 0 8px}
+p{margin:.4em 0 .8em;max-width:78ch}
+.sub{color:var(--ink2);margin:0 0 14px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 22px;color:var(--ink2);font-size:.9rem;margin:10px 0 16px}
+.meta b{color:var(--ink);font-weight:500}
+.note{background:var(--accent-soft);border-left:3px solid var(--accent);padding:10px 14px;border-radius:4px;margin:14px 0;max-width:none}
+.verdicts{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-top:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+.card h3{margin:0 0 4px}
+.verdict{font-weight:700;margin:0 0 10px}
+.verdict.bad{color:var(--crit)} .verdict.mid{color:var(--warn)} .verdict.good{color:var(--ok)}
+.card ul{margin:6px 0 0;padding-left:1.2em} .card li{margin:4px 0}
+.tbl{overflow-x:auto;background:var(--paper);border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line2);vertical-align:top;text-align:left}
+th{font-weight:500;color:var(--ink2);background:var(--line2);position:sticky;top:0;white-space:nowrap}
+td.r{text-align:right;white-space:nowrap}
+tr.grp td{background:var(--bg);font-weight:700;color:var(--ink);border-bottom:1px solid var(--line)}
+.sev{display:inline-block;padding:0 7px;border-radius:10px;font-size:.78rem;font-weight:500;white-space:nowrap}
+.sev.crit{background:var(--crit-soft);color:var(--crit)} .sev.warn{background:var(--warn-soft);color:var(--warn)}
+.sev.info{background:var(--info-soft);color:var(--info)} .sev.ok{background:var(--ok-soft);color:var(--ok)}
+.route{white-space:nowrap;font-size:.82rem;font-weight:500}
+.route.desk{color:var(--r-desk)} .route.supply{color:var(--r-supply)} .route.survey{color:var(--r-survey)} .route.none{color:var(--r-none)} .route.std{color:var(--accent)}
+.samples{color:var(--ink3);font-size:.8rem;word-break:break-all}
+.muted{color:var(--ink3)}
+.bar{height:8px;background:var(--line2);border-radius:4px;overflow:hidden;min-width:60px}
+.bar i{display:block;height:100%;background:var(--accent)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.chip{border:1px solid var(--line);background:var(--paper);color:var(--ink2);border-radius:14px;padding:3px 12px;font:inherit;font-size:.85rem;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.routes .card h3 .route{font-size:1rem}
+.routes ol{margin:6px 0 0;padding-left:1.3em} .routes li{margin:5px 0}
+.hist{display:grid;grid-template-columns:auto 1fr auto;gap:4px 10px;align-items:center;font-size:.85rem;max-width:560px}
+.hist .b{height:14px;background:var(--accent);border-radius:2px}
+.hist .b.off{background:var(--warn)}
+footer{margin-top:48px;color:var(--ink3);font-size:.82rem;border-top:1px solid var(--line);padding-top:12px}
+@media (max-width:640px){h1{font-size:1.5rem} th,td{padding:6px 8px}}
+</style>
+
+<div class="wrap">
+  <h1 id="title"></h1>
+  <p class="sub" id="sub"></p>
+  <div class="meta" id="meta"></div>
+  <p class="note">本报告的全部结果都是在客户数据的<b>只读副本</b>上计算得出的，<b>没有修改客户数据</b>。报告只陈述原始数据的现状、对建模的影响以及整改应由谁、通过什么途径完成；许多整改只能由客户补交资料或重新外业采集，不属于本平台可以代为完成的工作。</p>
+
+  <h2>一、结论</h2>
+  <div class="verdicts" id="verdicts"></div>
+
+  <h2>二、数据概况</h2>
+  <div id="overview"></div>
+
+  <section data-sec="pipeChecks">
+  <h2>三、管线数据检查明细</h2>
+  <p>按建模关心的四类列出：A 建模必需的属性、B 几何、C 拓扑与连通、D 水力合理性。「占比」的分母是这一项实际可检查的要素数（例如坡度只在两端管底标高都有值的管段上算）。</p>
+  <div class="filters" id="filters"></div>
+  <div class="tbl"><table id="pipeTable"></table></div>
+  <h3>检查用到的阈值与出处</h3>
+  <p>每个阈值回答两个问题之一。<b>数据错误</b>：值落到这里多半是录错了，这类阈值出自通用工程经验，<b>待客户确认</b>；例如 D7 覆土不足用的 0.3 m 就属此类，它不是阿布扎比的设计标准。<b>标准符合</b>：不满足 DMT 2022 雨水与地下排水设计手册（WA-726-1）的条款，现有资产不一定按现行版手册建造，只作提示。客户可以按依据调整任一阈值，调整后重跑，报告会注明哪些已调整。</p>
+  <div class="tbl"><table id="thTable"></table></div>
+  </section>
+
+  <section data-sec="dtmChecks">
+  <h2>四、DTM 数据检查</h2>
+  <p id="dtmIntro"></p>
+  <div class="tbl"><table id="dtmTable"></table></div>
+  <h3>高程统计与极值</h3>
+  <div class="tbl"><table id="dtmStats"></table></div>
+  <h3>高程分布</h3>
+  <p class="muted" id="elevNote"></p>
+  <div class="hist" id="elevHist"></div>
+  <h3 id="lowTitle"></h3>
+  <p id="lowIntro"></p>
+  <div class="tbl"><table id="lowTable"></table></div>
+  </section>
+
+  <section data-sec="eChecks">
+  <h2>五、管线与 DTM 的一致性</h2>
+  <p>用 DTM 在每个节点位置的地面高程，与管线数据原有的井盖、井底标高比对（节点层里另有一组数据加工时从 DEM 提取的高程字段，不参与比对）。</p>
+  <div class="tbl"><table id="eTable"></table></div>
+  <h3>井盖标高与地面高程之差的分布</h3>
+  <p class="muted" id="histNote"></p>
+  <div class="hist" id="hist"></div>
+  </section>
+
+  <h2>六、提升数据质量的建议</h2>
+  <p>按整改途径归并。<b>桌面修正</b>：数据方在现有资料上即可完成；<b>补交资料</b>：需要客户补交交付物中缺少的内容；<b>外业复测</b>：只能重新测量或采集才能改正。</p>
+  <div class="routes" id="routes"></div>
+
+  <section data-sec="dq">
+  <h2>七、与客户侧 dq 质量报告的对照</h2>
+  <p>客户侧另有一份质量检查（dq 2026-09-26.2，57 条规则，数据集 asset_adm／asset_aam／asset_drm，在客户环境运行）。下表只对照 asset_adm（阿布扎比市）中与本报告可比的项目。<b>两边查的不是同一份数据</b>：原始资产库带检查井层，本次上传的 Processed GDB 没有。</p>
+  <div class="tbl"><table id="dqTable"></table></div>
+  </section>
+
+  <section data-sec="cross">
+  <h2>附录 A　结果的独立复核</h2>
+  <p id="crossIntro"></p>
+  <div class="tbl"><table id="xTable"></table></div>
+  <section data-sec="bugs">
+  <h3>复核中发现并已修正的本平台程序问题</h3>
+  <div class="tbl"><table id="bugTable"></table></div>
+  </section>
+  </section>
+
+  <h2>附录 B　口径说明</h2>
+  <div class="tbl"><table id="defTable"></table></div>
+
+  <footer id="footer"></footer>
+</div>
+
+<script type="application/json" id="data">__DATA__</script>
+<script>
+__SCRIPT__
+</script>

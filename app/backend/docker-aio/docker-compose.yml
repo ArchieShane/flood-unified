@@ -1,0 +1,20 @@
+# 一体化容器（前端 + API + PostGIS），只对外一个端口。目录映射都相对本文件所在目录，可用 .env 里的变量改到别处。
+# 数据库文件在 PGDATA_DIR（宿主机目录）：容器重建、升级镜像、服务器重启都不丢；千万别删这个目录。
+services:
+  flood:
+    image: flood-aio:${TAG:-latest}
+    container_name: flood-aio
+    restart: unless-stopped
+    stop_grace_period: 2m               # 数据库要做完检查点再退出
+    ports:
+      - "${APP_PORT:-8002}:8080"        # 页面 + /api，唯一对外端口
+    environment:
+      SIM_MOCK_PROGRESS: ${SIM_MOCK_PROGRESS:-1}
+    volumes:
+      - ${DATA_DIR:-./data}:/app/data:ro                                   # 数据目录（DEM、批算 CSV、仿真成果）——只读
+      - ${DATA_DIR:-./data}/processed/sim_deliveries:/app/data/processed/sim_deliveries   # 抽取出的成果——可写
+      - ${CACHE_DIR:-./cache/sim_ponding}:/app/data/processed/sim_ponding  # 溢水点缓存——可写（宿主机 data/processed/sim_ponding 要事先建好空目录）
+      - ${PGDATA_DIR:-./pgdata}:/var/lib/postgresql/data                   # 数据库文件——可写，首次由镜像种子填充
+      - ${RESULT:-/media/pop-fs/flood_data/result}:/nas:ro                 # 服务器成果（登记用）
+      # 可选：库快照，仅在 pgdata 为空的首次启动时恢复（没有这个文件就建空库；要用就把下一行的注释去掉）
+      # - ./db/syq-pipe.dump:/seed/syq-pipe.dump:ro

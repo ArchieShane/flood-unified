@@ -1,0 +1,19 @@
+{
+ "name": "CC_ADMLINE",
+ "code": "CCADMLINE",
+ "note": "客户汇水区 ADMLINE：区域检查（claude-a4 委托、用户 2026-10-27 批准；只读全市第 14 轮治理结果，不跑一二维）",
+ "work": "D:/swbrain_work/exp_gov",
+ "domain": {
+  "from": "geojson",
+  "path": "D:/阿布扎比/排水智能体/out/exp_gov/regions_rl/inputs/CC_ADMLINE.geojson"
+ },
+ "consultant": {
+  "type": "none"
+ },
+ "runoff": {
+  "from": "none",
+  "note": ""
+ },
+ "storms": [],
+ "models": []
+}

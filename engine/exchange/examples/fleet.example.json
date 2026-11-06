@@ -1,0 +1,55 @@
+{
+  "schema": "swbrain.fleet/1",
+  "as_of": "2026-10-01",
+  "models": [
+    {
+      "model": "trailer-500",
+      "rate_m3h": 500,
+      "head_m": 12,
+      "hose_m": 100,
+      "setup_min": 20,
+      "crew": 2,
+      "weight_t": 3.5,
+      "vehicle_class": "light"
+    },
+    {
+      "model": "truck-1500",
+      "rate_m3h": 1500,
+      "head_m": 15,
+      "hose_m": 150,
+      "setup_min": 30,
+      "crew": 3,
+      "weight_t": 12,
+      "vehicle_class": "heavy"
+    },
+    {
+      "model": "heavy-3000",
+      "rate_m3h": 3000,
+      "head_m": 20,
+      "hose_m": 300,
+      "setup_min": 40,
+      "crew": 4,
+      "weight_t": 22,
+      "vehicle_class": "heavy"
+    }
+  ],
+  "depots": [
+    {
+      "depot_id": "D01",
+      "name": "Civil Defence Centre – Mussafah",
+      "lon": 54.5,
+      "lat": 24.35,
+      "capacity_units": 8
+    }
+  ],
+  "units": [
+    {
+      "unit_id": "P-001",
+      "model": "truck-1500",
+      "depot_id": "D01",
+      "status": "available",
+      "lon": 54.5,
+      "lat": 24.35
+    }
+  ]
+}

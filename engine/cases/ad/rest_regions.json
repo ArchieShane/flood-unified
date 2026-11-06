@@ -1,0 +1,884 @@
+{
+ "ADMLINE": {
+  "title": "ADMLINE",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "ADMLINE",
+  "dir": "ADMLINE",
+  "adm": "库35",
+  "km2": 40.44,
+  "res": 30,
+  "libid": 35,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 13
+ },
+ "OUTLET64": {
+  "title": "OUTLET",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "OUTLET",
+  "dir": "OUTLET-64",
+  "adm": "库64",
+  "km2": 0.32,
+  "res": 5,
+  "libid": 64,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 0
+ },
+ "MUSSAFAH08": {
+  "title": "Mussafah_08",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "Mussafah_08",
+  "dir": "Mussafah_08",
+  "adm": "库19",
+  "km2": 7.54,
+  "res": 30,
+  "libid": 19,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 5
+ },
+ "BAG": {
+  "title": "BAG",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "BAG",
+  "dir": "BAG",
+  "adm": "库3",
+  "km2": 0.2,
+  "res": 5,
+  "libid": 3,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 0
+ },
+ "MUSSAFAH02": {
+  "title": "Mussafah_02",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "Mussafah_02",
+  "dir": "Mussafah_02",
+  "adm": "库13",
+  "km2": 7.04,
+  "res": 30,
+  "libid": 13,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 0
+ },
+ "ICADCA123": {
+  "title": "ICAD-CA-1_2_3",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "ICAD-CA-1_2_3",
+  "dir": "ICAD-CA-1_2_3",
+  "adm": "库32",
+  "km2": 6.9,
+  "res": 30,
+  "libid": 32,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 1
+ },
+ "RDH": {
+  "title": "RD-H",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD-H",
+  "dir": "RD-H",
+  "adm": "库49",
+  "km2": 5.75,
+  "res": 30,
+  "libid": 49,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 8
+ },
+ "RDM": {
+  "title": "RD-M",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD-M",
+  "dir": "RD-M",
+  "adm": "库52",
+  "km2": 4.63,
+  "res": 30,
+  "libid": 52,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 11
+ },
+ "RDB": {
+  "title": "RD-B",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD-B",
+  "dir": "RD-B",
+  "adm": "库45",
+  "km2": 4.38,
+  "res": 30,
+  "libid": 45,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 4
+ },
+ "BC": {
+  "title": "B_C",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "B_C",
+  "dir": "B_C",
+  "adm": "库9",
+  "km2": 4.08,
+  "res": 30,
+  "libid": 9,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 5
+ },
+ "RDP": {
+  "title": "RD-P",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD-P",
+  "dir": "RD-P",
+  "adm": "库57",
+  "km2": 3.56,
+  "res": 30,
+  "libid": 57,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 5
+ },
+ "RDO": {
+  "title": "RD-O",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD-O",
+  "dir": "RD-O",
+  "adm": "库54",
+  "km2": 3.27,
+  "res": 30,
+  "libid": 54,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 4
+ },
+ "RDN": {
+  "title": "RD-N",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD-N",
+  "dir": "RD-N",
+  "adm": "库55",
+  "km2": 2.8,
+  "res": 30,
+  "libid": 55,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 2
+ },
+ "OUTLET67": {
+  "title": "OUTLET",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "OUTLET",
+  "dir": "OUTLET-67",
+  "adm": "库67",
+  "km2": 0.07,
+  "res": 5,
+  "libid": 67,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 0
+ },
+ "RDD": {
+  "title": "RD-D",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD-D",
+  "dir": "RD-D",
+  "adm": "库41",
+  "km2": 2.06,
+  "res": 30,
+  "libid": 41,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 7
+ },
+ "RDK": {
+  "title": "RD-K",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD-K",
+  "dir": "RD-K",
+  "adm": "库51",
+  "km2": 1.78,
+  "res": 30,
+  "libid": 51,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 2
+ },
+ "OUTLET68": {
+  "title": "OUTLET",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "OUTLET",
+  "dir": "OUTLET-68",
+  "adm": "库68",
+  "km2": 1.59,
+  "res": 30,
+  "libid": 68,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 4
+ },
+ "W59011": {
+  "title": "W59_01-1",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "W59_01-1",
+  "dir": "W59_01-1",
+  "adm": "库56",
+  "km2": 0.04,
+  "res": 5,
+  "libid": 56,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 0
+ },
+ "RDY": {
+  "title": "RD-Y",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD-Y",
+  "dir": "RD-Y",
+  "adm": "库42",
+  "km2": 1.28,
+  "res": 30,
+  "libid": 42,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 4
+ },
+ "BAJ34": {
+  "title": "BAJ3_4",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "BAJ3_4",
+  "dir": "BAJ3_4",
+  "adm": "库5",
+  "km2": 1.17,
+  "res": 30,
+  "libid": 5,
+  "server": 1,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 1
+ },
+ "RD26A": {
+  "title": "RD 26a",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD 26a",
+  "dir": "RD_26a",
+  "adm": "库34",
+  "km2": 0.96,
+  "res": 5,
+  "libid": 34,
+  "server": 2,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 1
+ },
+ "OUTLET65": {
+  "title": "OUTLET",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "OUTLET",
+  "dir": "OUTLET-65",
+  "adm": "库65",
+  "km2": 0.27,
+  "res": 5,
+  "libid": 65,
+  "server": 2,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 0
+ },
+ "MUSSAFAH01": {
+  "title": "Mussafah_01",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "Mussafah_01",
+  "dir": "Mussafah_01",
+  "adm": "库20",
+  "km2": 7.1,
+  "res": 30,
+  "libid": 20,
+  "server": 2,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 11
+ },
+ "ALREEMISLAND": {
+  "title": "Al Reem Island",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "Al Reem Island",
+  "dir": "Al_Reem_Island",
+  "adm": "库70",
+  "km2": 6.01,
+  "res": 30,
+  "libid": 70,
+  "server": 2,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 1
+ },
+ "MUSSAFAH06": {
+  "title": "Mussafah_06",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "Mussafah_06",
+  "dir": "Mussafah_06",
+  "adm": "库15",
+  "km2": 5.15,
+  "res": 30,
+  "libid": 15,
+  "server": 2,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 3
+ },
+ "MUSSAFAH10": {
+  "title": "Mussafah_10",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "Mussafah_10",
+  "dir": "Mussafah_10",
+  "adm": "库30",
+  "km2": 4.27,
+  "res": 30,
+  "libid": 30,
+  "server": 2,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 1
+ },
+ "RDJ": {
+  "title": "RD-J",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD-J",
+  "dir": "RD-J",
+  "adm": "库50",
+  "km2": 3.37,
+  "res": 30,
+  "libid": 50,
+  "server": 2,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 2
+ },
+ "NEW": {
+  "title": "New",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "New",
+  "dir": "New",
+  "adm": "库24",
+  "km2": 2.87,
+  "res": 30,
+  "libid": 24,
+  "server": 2,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 0
+ },
+ "RDE": {
+  "title": "RD-E",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD-E",
+  "dir": "RD-E",
+  "adm": "库43",
+  "km2": 2.26,
+  "res": 30,
+  "libid": 43,
+  "server": 2,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 8
+ },
+ "RDL": {
+  "title": "RD-L",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD-L",
+  "dir": "RD-L",
+  "adm": "库53",
+  "km2": 1.95,
+  "res": 30,
+  "libid": 53,
+  "server": 2,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 5
+ },
+ "MUSSAFAH00": {
+  "title": "Mussafah_00",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "Mussafah_00",
+  "dir": "Mussafah_00",
+  "adm": "库40",
+  "km2": 1.52,
+  "res": 30,
+  "libid": 40,
+  "server": 2,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 1
+ },
+ "ADCG6": {
+  "title": "ADCG6",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "ADCG6",
+  "dir": "ADCG6",
+  "adm": "库11",
+  "km2": 1.3,
+  "res": 30,
+  "libid": 11,
+  "server": 2,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 3
+ },
+ "SHALIELA": {
+  "title": "Shaliela",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "Shaliela",
+  "dir": "Shaliela",
+  "adm": "库23",
+  "km2": 25.88,
+  "res": 30,
+  "libid": 23,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 9
+ },
+ "OLD1": {
+  "title": "OLD (part 1/6)",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "OLD",
+  "dir": "OLD-1",
+  "adm": "库1",
+  "km2": 8.96,
+  "res": 30,
+  "libid": 1,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 6
+ },
+ "OLD2": {
+  "title": "OLD (part 2/6)",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "OLD",
+  "dir": "OLD-2",
+  "adm": "库1",
+  "km2": 6.8,
+  "res": 30,
+  "libid": 1,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 4
+ },
+ "OLD3": {
+  "title": "OLD (part 3/6)",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "OLD",
+  "dir": "OLD-3",
+  "adm": "库1",
+  "km2": 2.63,
+  "res": 30,
+  "libid": 1,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 0
+ },
+ "OLD4": {
+  "title": "OLD (part 4/6)",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "OLD",
+  "dir": "OLD-4",
+  "adm": "库1",
+  "km2": 2.21,
+  "res": 30,
+  "libid": 1,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 2
+ },
+ "OLD5": {
+  "title": "OLD (part 5/6)",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "OLD",
+  "dir": "OLD-5",
+  "adm": "库1",
+  "km2": 1.65,
+  "res": 30,
+  "libid": 1,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 1
+ },
+ "OLD6": {
+  "title": "OLD (part 6/6)",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "OLD",
+  "dir": "OLD-6",
+  "adm": "库1",
+  "km2": 1.02,
+  "res": 30,
+  "libid": 1,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 1
+ },
+ "W571": {
+  "title": "W57-1",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "W57-1",
+  "dir": "W57-1",
+  "adm": "库58",
+  "km2": 0.19,
+  "res": 5,
+  "libid": 58,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 0
+ },
+ "OUTLET63": {
+  "title": "OUTLET",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "OUTLET",
+  "dir": "OUTLET-63",
+  "adm": "库63",
+  "km2": 5.23,
+  "res": 30,
+  "libid": 63,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 3
+ },
+ "RDQ": {
+  "title": "RD-Q",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD-Q",
+  "dir": "RD-Q",
+  "adm": "库60",
+  "km2": 4.3,
+  "res": 30,
+  "libid": 60,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 3
+ },
+ "MUSSAFAH03": {
+  "title": "Mussafah_03",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "Mussafah_03",
+  "dir": "Mussafah_03",
+  "adm": "库12",
+  "km2": 3.91,
+  "res": 30,
+  "libid": 12,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 1
+ },
+ "AA1A2": {
+  "title": "A-A1-A2",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "A-A1-A2",
+  "dir": "A-A1-A2",
+  "adm": "库7",
+  "km2": 2.89,
+  "res": 30,
+  "libid": 7,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 7
+ },
+ "SDPHASE1": {
+  "title": "SD_Phase1",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "SD_Phase1",
+  "dir": "SD_Phase1",
+  "adm": "库2",
+  "km2": 2.54,
+  "res": 30,
+  "libid": 2,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 0
+ },
+ "RDR": {
+  "title": "RD-R",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD-R",
+  "dir": "RD-R",
+  "adm": "库59",
+  "km2": 2.01,
+  "res": 30,
+  "libid": 59,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 2
+ },
+ "ALMARYAHISLAND": {
+  "title": "Al Maryah Island",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "Al Maryah Island",
+  "dir": "Al_Maryah_Island",
+  "adm": "库69",
+  "km2": 1.67,
+  "res": 30,
+  "libid": 69,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 0
+ },
+ "RD22BAJ2ADGC15": {
+  "title": "RD 22 BAJ 2 ADGC 15",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "RD 22 BAJ 2 ADGC 15",
+  "dir": "RD_22_BAJ_2_ADGC_15",
+  "adm": "库10",
+  "km2": 1.37,
+  "res": 30,
+  "libid": 10,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 1
+ },
+ "OUTLET66": {
+  "title": "OUTLET",
+  "kmz": "ADM汇水区推演状态.geojson",
+  "feat": "OUTLET",
+  "dir": "OUTLET-66",
+  "adm": "库66",
+  "km2": 0.03,
+  "res": 5,
+  "libid": 66,
+  "server": 3,
+  "rains": [
+   [
+    61,
+    1
+   ]
+  ],
+  "hs_n": 0
+ }
+}

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RB-01 L2+suggested 候选措施</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<style>
+:root{--bg:#f4f6f7;--panel:#fff;--ink:#16212b;--muted:#5e6b76;--line:#d8dfe4;--well:#c2410c;--grav:#1d4ed8;--pn:#7c3aed;--sump:#0e7490;--hs:#dc2626}
+html,body{height:100%;margin:0}
+body{font:13.5px/1.45 "Microsoft YaHei","PingFang SC",system-ui,sans-serif;color:var(--ink);background:var(--bg);display:flex;flex-direction:column}
+header{padding:10px 16px;background:var(--panel);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px 22px;align-items:baseline}
+header h1{font-size:16px;margin:0}
+header .m{color:var(--muted);font-size:12.5px}
+main{flex:1;display:flex;min-height:0}
+#map{flex:1}
+aside{width:380px;overflow:auto;background:var(--panel);border-left:1px solid var(--line);padding:10px 14px;box-sizing:border-box}
+aside h2{font-size:13.5px;margin:12px 0 6px}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+td,th{padding:3px 4px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.sw{display:inline-block;width:12px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle}
+.note{color:var(--muted);font-size:12px}
+.leaflet-popup-content{font-size:12.5px;max-height:55vh;overflow:auto}
+.chip{display:inline-block;padding:0 6px;border-radius:4px;background:#eef2f7;margin:1px 2px 1px 0;font-size:11.5px}
+</style></head><body>
+<header><h1>RB-01 · L2+suggested 优化试点 · 候选措施（M1）</h1><span class="m" id="hdr"></span></header>
+<main><div id="map"></div><aside id="side"></aside></main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>
+const D=/*__DATA__*/null;
+const fmt=(v,d=0)=>v==null?'—':Number(v).toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:d});
+const KIND={pump_pond:'泵 → 现有塘',pump_newpond:'泵 → 新塘',gravity:'重力管 → 低处新塘',sump:'地面取水泵',deepen:'现有塘加深'};
+const LV={'一级':'#1a9850','二级':'#e6b800','二级b':'#f46d43'};
+const domLv=l=>{if(!l)return null;let b=null;for(const k in l)if(b==null||l[k]>l[b])b=k;return b};
+document.getElementById('hdr').textContent=`运行 ${D.run} · 起点 L2+planned · 候选井 ${D.summ.n_wells} 口、地面取水点 ${D.summ.n_sump_points} 个、候选 ${fmt(D.summ.n_candidates)} 个 · 造价为占位单价，只作相对比较`;
+const map=L.map('map',{preferCanvas:true});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+const land=L.imageOverlay(D.img,D.bnd,{opacity:.75}).addTo(map);
+map.fitBounds(D.bnd);
+const gL=L.layerGroup().addTo(map), pnL=L.layerGroup(), suL=L.layerGroup().addTo(map), exL=L.layerGroup().addTo(map), v5L=L.layerGroup(), dpL=L.layerGroup().addTo(map), wL=L.layerGroup().addTo(map), hsL=L.layerGroup().addTo(map);
+const parcelTxt=ps=>(ps||[]).map(p=>`<span class=chip>${p.table} ${p.plot||p.id}${p.use?' · '+p.use:''}${p.status?' · '+p.status:''}</span>`).join('')||'<span class=note>无地块记录</span>';
+const lvTxt=l=>l?Object.entries(l).map(([k,v])=>`${k} ${Math.round(v*100)}%`).join('、'):'—';
+D.gsites.forEach(s=>{const c=LV[domLv(s.land)]||'#888';
+  L.geoJSON(s.g,{style:{color:c,weight:1.5,fillColor:c,fillOpacity:.35}}).bindPopup(`<b>重力塘址</b> ${s.well} 第 ${s.site} 处<br>容积 ${fmt(s.vol)} m³（1× 溢流、1.5 m 深这一档）<br>重力管 ${fmt(s.pipe)} m、Ø${s.d} m<br>土地：${lvTxt(s.land)}<br>${parcelTxt(s.parcels)}<br>占位造价 ${fmt(s.cost/1e3)} k USD`).addTo(gL);
+  if(s.link)L.polyline(s.link.map(p=>[p[1],p[0]]),{color:'#1d4ed8',weight:1.2,dashArray:'4,3'}).addTo(gL);});
+D.pnew.forEach(s=>{const c=LV[domLv(s.land)]||'#888';
+  L.geoJSON(s.g,{style:{color:'#7c3aed',weight:1.2,fillColor:c,fillOpacity:.25,dashArray:'3,2'}}).bindPopup(`<b>泵送新塘</b> ${s.well}<br>容积 ${fmt(s.vol)} m³（1× 溢流、2 m 深）<br>土地：${lvTxt(s.land)}<br>${parcelTxt(s.parcels)}`).addTo(pnL);
+  if(s.link)L.polyline(s.link.map(p=>[p[1],p[0]]),{color:'#7c3aed',weight:1,dashArray:'2,3'}).addTo(pnL);});
+D.sumps.filter(s=>s.clear===1).forEach(s=>L.circleMarker([s.lat,s.lon],{radius:6,color:'#fff',weight:1.5,fillColor:'#0e7490',fillOpacity:1}).bindPopup(`<b>地面取水点</b>（积水点 ${s.pt}）<br>峰值积水量 ${fmt(s.vol)} m³、最深 ${s.h} m<br>1 h 抽完：${s.n} 台 12 英寸泵 → ${s.dest}<br>占位造价 ${fmt(s.cost/1e3)} k USD`).addTo(suL));
+D.exist.forEach(p=>L.circleMarker([p.lat,p.lon],{radius:7,color:'#0f172a',weight:1.5,fillColor:p.spare>500?'#22c55e':'#94a3b8',fillOpacity:1}).bindTooltip(`${p.node} 余 ${fmt(p.spare)} m³（最高 ${p.pct}%）${p.nosurf?' · 塘面在域外':''}`).addTo(exL));
+D.deep.filter(d=>d.add===0.5).forEach(d=>L.geoJSON(d.g,{style:{color:'#0f172a',weight:2,fill:false}}).bindPopup(`<b>现有塘加深</b> ${d.pond}<br>+0.5 m：+${fmt(d.vol)} m³（+1.0 m 翻倍）`).addTo(dpL));
+D.v5.forEach(p=>L.geoJSON(p.g,{style:{color:'#111',weight:1.5,dashArray:'5,4',fill:false}}).bindTooltip(`v5 ${p.id}（${fmt(p.vol)} m³）`).addTo(v5L));
+const vmax=Math.max(...D.wells.map(w=>w.overflow_m3));
+D.wells.forEach(w=>{if(w.lat==null)return;
+  const by={};w.opts.forEach(o=>{(by[o.kind]=by[o.kind]||[]).push(o)});
+  const rows=Object.entries(by).map(([k,os])=>{const best=os.reduce((a,b)=>a.cost_usd<b.cost_usd?a:b);return `<tr><td>${KIND[k]}</td><td class=n>${os.length}</td><td class=n>${fmt(best.cost_usd/1e3)}</td></tr>`}).join('');
+  const hasG=!!by.gravity;
+  L.circleMarker([w.lat,w.lon],{radius:3+9*Math.sqrt(w.overflow_m3/vmax),color:'#fff',weight:1,fillColor:hasG?'#1d4ed8':'#c2410c',fillOpacity:.95})
+   .bindPopup(`<b>${w.well}</b> · 离 ${w.hotspot} ${fmt(w.hs_dist_m)} m<br>L2+planned 溢流 ${fmt(w.overflow_m3)} m³、峰 ${w.rate} m³/s、井口 ${w.rim} m<table><tr><th>候选</th><th class=n>个数</th><th class=n>最低占位造价 k USD</th></tr>${rows}</table>${w.reject.length?'<div class=note>'+w.reject.join('<br>')+'</div>':''}`).addTo(wL);});
+D.hs.forEach(h=>L.circleMarker([h.lat,h.lon],{radius:7,color:'#fff',weight:2,fillColor:'#dc2626',fillOpacity:1}).bindTooltip(`客户热点 ${h.id} · ${h.crit}`,{permanent:true,direction:'right',offset:[6,0]}).addTo(hsL));
+L.control.layers(null,{'土地分级（Makani）':land,'重力塘址':gL,'泵送新塘':pnL,'地面取水点':suL,'现有塘（余量）':exL,'现有塘加深':dpL,'v5 新塘（对照）':v5L,'候选井':wL,'热点':hsL},{collapsed:false}).addTo(map);
+const s=D.summ, byK=s.by_kind;
+document.getElementById('side').innerHTML=`
+<h2>候选措施（${fmt(s.n_candidates)} 个）</h2>
+<table>${Object.entries(byK).map(([k,v])=>`<tr><td>${KIND[k]}</td><td class=n>${fmt(v)}</td></tr>`).join('')}</table>
+<p class=note>候选井 ${s.n_wells} 口里 ${s.n_wells-s.wells_no_gravity} 口有重力塘址，${s.wells_no_gravity} 口在 500 m 管长内找不到低于进水口的可用地（只能用泵）。</p>
+<h2>按热点</h2>
+<table><tr><th>热点</th>${Object.keys(KIND).map(k=>`<th class=n>${KIND[k].slice(0,4)}</th>`).join('')}</tr>
+${Object.entries(s.by_hotspot).map(([h,v])=>`<tr><td>${h}</td>${Object.keys(KIND).map(k=>`<td class=n>${v[k]||0}</td>`).join('')}</tr>`).join('')}</table>
+<h2>土地分级（计算域外包框，ha）</h2>
+<table>${Object.entries(D.land).map(([k,v])=>`<tr><td>${k}</td><td class=n>${fmt(v,1)}</td></tr>`).join('')}</table>
+<h2>图例</h2>
+<div><span class=sw style="background:#1a9850"></span>一级 <span class=sw style="background:#fee08b"></span>二级 <span class=sw style="background:#fdae61"></span>二级 b <span class=sw style="background:#9e9ac8"></span>红线 <span class=sw style="background:#787878"></span>不能用</div>
+<div style="margin-top:4px">井：<span class=sw style="background:#1d4ed8;border-radius:50%"></span>有重力塘址 <span class=sw style="background:#c2410c;border-radius:50%"></span>只能用泵（圆大小 = 溢流量）</div>
+<div>现有塘：<span class=sw style="background:#22c55e;border-radius:50%"></span>有余量 <span class=sw style="background:#94a3b8;border-radius:50%"></span>满了</div>
+<h2>占位单价（USD）</h2>
+<p class=note>12 英寸泵 ${fmt(D.cost.pump)} / 台；土方 ${D.cost.exc_m3} / m³；压力管 ${D.cost.fmain_m} / m；重力管 ${Object.entries(D.cost.gpipe_m).map(([d,v])=>'Ø'+d+' '+v).join('、')} / m；地面取水口 ${fmt(D.cost.sump)}。量级估计，不是报价。</p>`;
+</script></body></html>

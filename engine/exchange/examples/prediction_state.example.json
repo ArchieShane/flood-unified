@@ -1,0 +1,56 @@
+{
+  "schema": "swbrain.prediction_state/1",
+  "run_id": "hydro-2026-09-20-001",
+  "model": {
+    "name": "AD 1D2D",
+    "type": "1D2D",
+    "version": "0.9"
+  },
+  "network_version": "pipe@2026-09-15",
+  "scenario": {
+    "name": "强降雨",
+    "rain_mmh": 60,
+    "rain_depth_mm": null,
+    "duration_min": 60,
+    "return_period_yr": 10,
+    "tide_m": 1.0,
+    "event_id": null,
+    "start": null,
+    "end": null
+  },
+  "intervention_set_id": null,
+  "nodes": [
+    {
+      "vertex_id": 157832,
+      "unitid": "SW_MBZ_Z17_01_INL_18922",
+      "max_depth_m": 0.32,
+      "flood_volume_m3": 410.0,
+      "flood_duration_min": 55,
+      "max_hgl_m": 3.9
+    }
+  ],
+  "edges": [
+    {
+      "gid": 48630,
+      "max_flow_m3s": 0.61,
+      "max_fill_ratio": 1.0,
+      "surcharge_min": 40
+    }
+  ],
+  "outfalls": [
+    {
+      "unitid": "SW_MUS_MN3_OFL_83",
+      "tide_locked_min": 95,
+      "max_discharge_m3s": 0.8
+    }
+  ],
+  "cells_geojson": "predictions/hydro-2026-09-20-001_depth.geojson",
+  "kpis": {
+    "flood_volume_m3": 182000,
+    "flooded_area_m2": 1200000.0,
+    "affected_inlets": 2140,
+    "affected_buildings": 380,
+    "surcharge_len_km": 610,
+    "tide_locked_min": 95
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "swbrain.hotspots/1",
+  "generated_at": "2026-10-02T11:05:39",
+  "source": "example",
+  "regions": {
+    "ADM": 1
+  },
+  "n": 1,
+  "hotspots": [
+    {
+      "region": "ADM",
+      "seq": 1,
+      "hotspot_id": "ADM-1",
+      "area": "Example Area",
+      "location": "Example underpass",
+      "lat": 24.45,
+      "lon": 54.6,
+      "criticality": "Very High",
+      "developer_private": false,
+      "developer_name": null,
+      "network_available": true,
+      "root_cause_raw": "The network needs an upgrade",
+      "root_cause": "capacity",
+      "root_cause_details": null,
+      "planA_manpower": 4,
+      "planA_pumps": 3,
+      "planA_pump12": 1,
+      "planA_pump8": 0,
+      "planA_pump6": 2,
+      "planA_tankers": 1,
+      "planA_budget_aed": 250000.0,
+      "planB_manpower": 4,
+      "planB_pumps": 3,
+      "planB_tankers": 1,
+      "planB_budget_aed": 250000.0,
+      "idd_planned": "Yes",
+      "idd_planned_flag": "yes",
+      "idd_category": "Detailed",
+      "idd_type": "Permanent",
+      "idd_stage": "Contractor Design Phase",
+      "idd_owner": "Consultant A",
+      "idd_idas_approved": "No",
+      "idd_mobilization": "2026-10-01",
+      "idd_completion": "2027-01-31",
+      "design_event_current": "1-in-5 yr",
+      "design_event_future": "1-in-10 yr + 20% climate change factor",
+      "idd_budget_note": null,
+      "source_sheet": "example",
+      "source_file": "example.xlsx"
+    }
+  ]
+}

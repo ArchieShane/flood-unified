@@ -1,0 +1,24 @@
+- [用中文回答](reply-in-chinese.md) — 用户要求所有回复用中文
+- [C1 5 m 推演服务器分工](c1-5m-servers.md) — 服务器 1/2/3 各跑哪些情景、镜像版本、M61G5 已完成
+- [服务器2 G5 已停](server2-g5-stopped.md) — 2026-10-08 叫停 5 m 网格推演，结果也已删除
+- [服务器2 改跑 15 m](server2-15m-runs.md) — 10-08 起跑 v25 15m 第 1–8/17–20/25–32 行，M61/M96H1 旧结果先备份再重算
+- [成果同步到 NAS](nas-result-sync.md) — /media/pop-fs/flood_data/result/<主机名>/，用 sync_to_nas.sh
+- [Mussafah 15 m 推演](mussafah-15m-runs.md) — 服务器2/3 10-10 已 start；口径、ms_run_15m.py、上传包 upload/mussafah_15m
+- [32→33 mm 更正与重跑](rain-32-to-33-correction.md) — 10-10 起 M32 全改 M33，服务器 2/3 已开跑，服务器 1 等现批跑完再开；杀调度器的坑
+- [flood-viewer 新展示前端](flood-viewer.md) — 三下拉框看 NAS 成果，docker 部署，目录 flood-viewer/
+- [三区域只做 L1/L2](three-regions-l1l2.md) — Yas/Al Bateen/Bani Yas 口径、脚本、上传包 upload/regions_15m（10-11 准备完，未上服务器）
+- [服务器2/3 恢复跑 5 m](servers23-g5-resume.md) — 10-12 用户同意，包 upload/server23_g5，3 槽，分工待上传
+- [全市 250 m 推演](city-250m-runs.md) — 10-13 定，18 态，服务器2 10-19 起跑，计划表 v39
+- [全市250m改服务器1](city-250m-server1.md) — runner/包已写在 upload/city_250m，未上服务器，计划表待改 v42
+- [艾因 250 m 推演](alain-250m-runs.md) — 10-15 定 9 场×L1/L2、1000 m 外扩域；脚本 aa_run_250m、包 upload/aa_250m，未上服务器
+- [艾因新 GDB 10-17](alain-new-gdb-1017.md) — 原始版缺 StartCode 等字段，新旧差异与缺项
+- [ADM 30 m 计划表](adm-30m-plan.md) — 10-15 新表，13 区×L1/L2×61mm/1h，3 台分工，runner 未写
+- [服务器推演交付链清单](server-run-delivery-checklist.md) — 输出位置/shp+dat/flood-viewer 必须一次做全并先验证（10-17 艾因教训）
+- [不确定先问](ask-when-unsure.md) — 有歧义就先问，服务器脚本返工成本高；.sh 要 LF
+- [ADM 剩余 49 任务](adm-rest-49-tasks.md) — 10-19 库图层未推演 44→49 任务，5m/30m，一条龙+发布 flood-aio id 命名，踩坑清单
+- [ADM 全市 250 m 只算 L2](adm-city-250m-l2.md) — 10-19 9 场固定分工，不进 viewer/aio/shp+dat，包 upload/adm_250m
+- [ADM L2+planned 数据排查](adm-l2-planned-data-check.md) — 10-20 data/261020：仅 AECOM 3 处有规划塘泵，Parsons 无新信息，6 个待定问题
+- [全市 250 m 发客户英文版](adm-city-250m-client-export.md) — 路径+内容无中文，包 upload/adm_250m_export，算完后用
+- [文件链接先核实存在](verify-file-links.md) — 回复里的可点路径必须真实存在，从工作目录起写完整
+- [全市250m v2 用合并结果](adm-city-100m-merged-data.md) — 10-20 排查+脚本包 upload/adm_250m_v2，未上服务器、容器内未实测
+- [全市100m治理后L1/L2](adm-city-100m-after.md) — 10-26 包 upload/adm_100m_after，服务器1，含 shp+dat/viewer，只泵 38 个，未上服务器

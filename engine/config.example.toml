@@ -1,0 +1,935 @@
+# 会思考的排水系统（swbrain）配置
+# 所有源库只读；唯一可写的是 [output] 指向的本地 sw_brain 库。
+
+[source.pipe]
+host = "PIPE_DB_HOST"
+port = 5443
+user = "postgres"
+password = "CHANGE_ME"
+dbname = "pipe"
+schema_assets = "dmt_irrigationstormwater_abudhabi"
+schema_network = "dmt_irrigationstormwater_abudhabi_network"
+
+[source.makani]
+host = "PIPE_DB_HOST"
+port = 5443
+user = "postgres"
+password = "CHANGE_ME"
+dbname = "makani_sync_full"
+
+[source.flood]
+# 客户 L1 雨水资产台账（35 张表、49.7 万行）+ 汇水区边界。只读。
+host = "FLOOD_DB_HOST"
+port = 5443
+user = "postgres"
+password = "CHANGE_ME"
+dbname = "flood"
+
+[source.liveability]
+host = "PIPE_DB_HOST"
+port = 5443
+user = "postgres"
+password = "CHANGE_ME"
+dbname = "liveability_data_20260730"
+
+[output]
+host = "localhost"
+port = 55432
+user = "postgres"
+password = "CHANGE_ME"
+dbname = "sw_brain"
+schema = "swbrain"
+srid = 32640
+
+[model]
+# 标高基准：源库里所有 level 字段都是 MSL=100 的本地基准（由井盖标高分布与拍门出水口标高推得）
+datum_offset_m = 100.0
+# 设计高潮位（米，NADD≈MSL）。DMT WA-726-1 表 4-5：观测到风暴高潮 +1.3 m，设计取 +1.3 m（含 0.5 m 海平面上升余量）
+tide_high_m = 1.3
+# 径流系数（密集城区默认）。DMT 表 3-8：沥青/混凝土 0.90、屋面 0.85、联锁砖 0.78、灌溉绿地 0.15；按用地加权的 C 待地表覆盖数据到位后替换
+runoff_c = 0.85
+# 每个进水口/雨水井代表的汇水面积（平方米）。阿布扎比地块多自排渗井，路面进水口主要收道路：按 30 m 间距 × 20 m 半幅计
+inlet_area_m2 = 600.0
+# 沿管长折算的道路汇水宽度（米），与进水口法取大者
+road_width_m = 20.0
+# 标高无效或逆坡时用于算能力的最小坡度、无标高时的默认坡度
+min_slope = 0.0005
+default_slope = 0.002
+# 设计历时（分钟）
+duration_min = 15
+# 蓄水量按此降雨深度算（毫米，单场设计雨）
+design_depth_mm = 25.0
+
+[model.scenarios]
+# 设计雨强（mm/h，15 分钟历时），取 DMT WA-726-1 (2022) 表 3-6 B 区：常规 = 5 年一遇（一般管网设计标准）、强降雨 = 25 年、极端 = 50 年、百年一遇 = 100 年
+"常规" = 51.0
+"强降雨" = 84.1
+"极端" = 118.2
+"百年一遇" = 138.5
+[model.scenario_return_period]
+"常规" = 5
+"强降雨" = 25
+"极端" = 50
+"百年一遇" = 100
+
+[model.manning]
+default = 0.013
+GRP = 0.011
+UPVC = 0.011
+uPVC = 0.011
+PVC = 0.011
+HDPE = 0.011
+HDPI = 0.011
+"Reinforced Concrete" = 0.013
+"Vitrified Clay" = 0.013
+Concrete = 0.013
+Other = 0.013
+Undefined = 0.013
+
+[model.storage]
+# 无尺寸时的默认容积（立方米）
+soakaway_default_m3 = 12.0
+reservoir_default_m3 = 500.0
+soakaway_porosity = 0.35
+
+[decision]
+ratio_threshold = 1.0
+target_ratio = 0.85
+standard_diameters_mm = [150, 200, 225, 250, 300, 375, 400, 450, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1500, 1600, 1800, 2000, 2200, 2400, 2600, 3000]
+# 无出路汇水区提建议的最小汇水面积（公顷）
+no_outlet_min_ha = 2.0
+# 提议点 500 m 内已有在批雨水结构，则建议并入该项目
+merge_planned_within_m = 500.0
+# 雨季前维护截止（月-日）
+rainy_season_deadline = "10-31"
+# 事件前调度触发：NCM 预报 24 小时雨量阈值（毫米）
+event_trigger_rain_mm = 20.0
+# 低点判定：井盖标高低于所在汇水区中位数多少米（上限防止基准混杂造成的假低点）
+low_point_below_median_m = 0.5
+low_point_max_m = 3.0
+# 出水口汇水区里最低一成进水口相对高潮位的净空低于此值（米）视为高潮易涝。阿布扎比最低进水口约 +1.85 m MSL，取 1.5 留出长距离干管的水头损失
+tide_clearance_min_m = 1.5
+# 片区排序的最小管长（公里），太小的片区不参与排序
+zone_min_km = 5.0
+# 断头终点上游超过此面积（公顷）视为疑似漏登的出水口/泵站，走核实而不是补蓄水
+dead_end_suspect_ha = 20.0
+# 每类建议最多输出条数
+max_per_type = 60
+
+[exchange]
+# 与预测侧（一维二维水动力 / 世界模型）的文件交换目录：predictions/ 收基线预测，requests/ 发 what-if 请求，results/ 收评估结果
+dir = "exchange"
+# 预测侧的 HTTP 接口；留空则只落文件
+http_url = ""
+network_version = "pipe@2026-09-15"
+
+[cost]
+# 单价全是占位（AED），要换成 ADM/ADPIC 的费率表
+pipe_aed_per_m_by_dn = { "300" = 1200, "400" = 1500, "500" = 1900, "600" = 2400, "800" = 3300, "1000" = 4500, "1200" = 6000, "1500" = 8500, "2000" = 13000, "3000" = 25000 }
+storage_aed_per_m3 = 900
+storage_fixed_aed = 500000
+pump_aed_per_m3s = 4000000
+pump_fixed_aed = 2000000
+tide_gate_aed = 800000
+connect_fixed_aed = 150000
+survey_aed_per_item = 20000
+temp_pump_aed_per_event = 15000
+
+[whatif]
+# 一轮资本计划的预算（AED），贪心按 收益/成本 选到用完
+budget_aed = 200000000
+# 入选前 N 条各自成一个干预集合、再打一个包，交给预测侧评估
+request_top_n = 10
+
+[whatif.kpi_weights]
+# KPI 每减少一个单位记多少分；代理评估与外部评估的 KPI 名都在这张表里
+surcharge_len_km = 1.0
+affected_inlets = 0.02
+tide_exposed_inlets = 0.02
+storage_deficit_m3 = 0.001
+no_outlet_len_km = 0.5
+flood_volume_m3 = 0.001
+flooded_area_m2 = 0.00001
+affected_buildings = 0.1
+tide_locked_min = 0.05
+
+[standard]
+# 验收标准：两个工程都按它算「达标」。目标情景名要在 [model.scenarios] 里
+target_scenario = "百年一遇"
+target_return_period_yr = 100
+climate_factor = 1.2
+# 可接受积水：按用地类型的最大深度（米）与最长历时（分钟）。0 表示不允许
+acceptable_depth_m = { road = 0.15, plot_residential = 0.0, plot_other = 0.10, critical_facility = 0.0, open_space = 0.30 }
+acceptable_duration_min = 30
+# 代理评估下的达标判据：目标情景下承载不足管长占比 ≤ 此值、高潮暴露进水口 = 0、蓄渗缺口 = 0、疑似漏登终点 = 0
+surcharge_share_tolerance = 0.05
+# 分期：年度预算（AED）与最长年限；X 年 = ceil(达标总成本 / 年度预算)，超过 max_years 就要么加钱要么降标准
+annual_budget_aed = 1500000000
+max_years = 15
+
+[standard.scenario_weights]
+# 稳健选择的情景权重：干预的收益 = Σ 权重 × 该情景下 KPI 的减少量。按年超越概率 1/T 归一（5/25/50/100 年）
+"常规" = 0.74
+"强降雨" = 0.15
+"极端" = 0.07
+"百年一遇" = 0.04
+
+[verification]
+# 每场雨后的对账：触发阈值与合格线
+event_rain_trigger_mm = 20.0
+observation_sources = ["NCM 雨量站", "泵站液位与运行记录", "市政投诉/警情积水点", "无人机或卫星影像", "现场巡检打点"]
+pass_pod_min = 0.80
+pass_far_max = 0.30
+pass_depth_rmse_m = 0.10
+# 连续几场不合格触发模型重校准与方案重算
+recalibrate_after_failures = 2
+
+[dispatch]
+# 第二、三道防线：预报后预置与事中应急调度。泵队来自 exchange/fleet.json，没有就按客户预案 A 生成。
+# 积水点来源 flood_source：system = 本系统（客户热点 × 管网缺口 × DTM 洼地，按 system_points_rp 年一遇，控制台切重现期时当场重算）；
+# prediction = exchange/predictions 里最新的世界模型输出；auto = 能用 system 就 system，否则 prediction，再否则模拟
+flood_source = "system"
+system_points_rp = 10
+simulate_if_missing = true
+# 事件开始后第几分钟做调度决策（默认雨峰 180 分钟后 30 分钟）
+decision_time_min = 210
+# 重点单位影响半径（米）、排放去处搜索半径（米）
+facility_radius_m = 300
+discharge_radius_m = 1500
+# 软管实际要走多远 ÷ 直线距离。实测路网/直线的中位是 1.66（40 个点抽样，四分位 1.32/2.52）。
+# 缺省 1.0 = 用直线，保持原行为；改大之前要想清楚：约一半的可派泵点会因为超出半径而变成只能靠罐车。
+discharge_detour_factor = 1.0
+# 离最近排放终点超过这个距离 = 这一片根本没有管网数据（而不是「没有排放去处」）。
+# 实测：ADM 的点最远 16.1 km，AAM 最近 27.9 km、DRM 最近 88.8 km，两组不重叠。
+discharge_unknown_beyond_m = 20000
+# 超过软管长度、但在排放半径内的，标「需接力」（两台泵串联或铺长管），行程外加架设时间
+relay_beyond_m = 300
+# 一个积水点最多同时几台泵；单程最长可接受行程（分钟）
+max_units_per_point = 3
+max_travel_min = 90
+# 目标函数里行程与架设时间的权重（相对于优先级）
+tie_penalty = 0.02
+waves = 3
+slow_factor = 3.0
+# 积水挡路用的面怎么来：area = 按积水面积还原等效圆（缺省）；point = 用原始点（等于关掉这个功能）
+flood_extent_from = "area"
+# 等效圆的最小半径 m：面积再小也按这个算，免得一条路正好压在小积水点上却判不出来
+flood_extent_min_r_m = 15
+# 预置：规定到达时间（分钟）内的最大加权覆盖；按预警等级放宽范围、增加驻地数（见下面两张子表）
+preposition_cover_min = 20
+# 预置的价值重演：预置在驻地的泵在事件开始后第几分钟出发（WA-726-3 动员 30 分钟）
+preposition_depart_min = 30
+
+# 接力排放：排放点超出 relay_beyond_m 的部分每 relay_hose_m 一级接力，每级泵排量 × relay_rate_factor（不低于 relay_min_factor），每级多一次架设时间；规划级近似，等泵厂家水头曲线
+relay_hose_m = 100
+relay_rate_factor = 0.85
+relay_min_factor = 0.4
+# 第三道页面地图时间轴的采样步长（分钟）
+timeline_dt_min = 15
+# 额外的预置候选驻地（JSON 列表 site_id/name/lon/lat[/area]）：DMT 模型导出里的临时塘，python -m swbrain.dmtmodel 生成
+extra_sites_file = "out/dmt_model/ponds_sites.json"
+
+# 求解器：v1 = 三波分派 MILP；v2 = 处置包 + 资源（泵 / 车 / 人 / 物资 / 罐车）+ 滚动时间轴 + 费用进目标（swbrain/dispatch2.py，设计见 docs/第三道防线优化调度方案设计.md）
+solver = "v2"
+
+[dispatch.v2]
+# 滚动窗口（分钟）、规划视界、最多几个窗口
+window_min = 60
+horizon_min = 1440
+max_windows = 8
+# 目标函数里「一个优先级·小时的积水」值多少 AED：三档对应 最快退水 / 平衡 / 最省钱（帕累托三点）
+default_objective = "balanced"
+value_aed_per_priority_hour = { fastest = 1000.0, balanced = 100.0, cheapest = 10.0 }
+# 错过目标时限的加权延误权重；各等级可接受的单程行程上限（分钟）
+delay_weight = 1.0
+max_travel_min_by_level = { III = 120, II = 90, I = 90 }
+max_units_per_point = 3
+# 处置包重演步长；罐车包的辆数档
+package_dt_min = 10
+tanker_counts = [2, 4, 6]
+# 抢占：入流已低于在场排量的这个比例、且剩余水量在这么多分钟内抽完，就把多余的泵释放去下一个点
+preempt_inflow_share = 0.3
+preempt_remaining_min = 30
+milp_time_limit_s = 30
+# 帕累托另两个目标 + 承包商各管各的对照三路：缺省顺序跑。并行（true）在 2026-09-22 真机试过：HiGHS 与重演都握着 GIL，四路并行反而让服务整体卡住（88 线程、单核饱和、HTTP 20 s 不响应），别开
+parallel_extras = false
+
+[dispatch.robust]
+# 鲁棒目标（严格版）：处置包的收益 = Σ 情景权重 × 该情景过程线上重演的收益，一张单同时对几种雨；权重按年超越概率大致归一（与 [standard.scenario_weights] 同思路）。
+# 控制台第三道「鲁棒」开关 / /api/dispatch?robust=1 / 智能体 dispatch_plan(robust=true) 用它；每个处置包要重演 |S| 次，求解时间约 ×|S|
+enabled = true
+scenarios = { "10cc" = 0.6, "25" = 0.3, "50" = 0.1 }
+
+[dispatch.resources]
+# 运输车辆 / 班组 / 物资 / 费率：客户没给的按行业常规模拟（simulated = true 时页面标「模拟」）；fleet.json 的 depots[].resources 可逐项覆盖
+simulated = true
+regions = ["ADM", "AAM", "DRM"]
+# 一辆车（重卡带吊 / 轻型拖挂）服务几台泵、90 min 窗口内跑几趟、各型号一车载几台
+units_per_vehicle_heavy = 2
+units_per_vehicle_light = 2
+trips_per_window = 2
+carry = { "diesel-12in" = 1, "diesel-8in" = 2, "diesel-6in-x3" = 1 }
+# 人员：无人员数的片区按每台泵 2.5 人；当班 50%，其余 60 min 内召回；12 h 班次、30 min 交接
+crew_per_unit_if_missing = 2.5
+on_duty_share = 0.5
+callable_mobilization_min = 60
+shift_h = 12
+handover_min = 30
+# 物资：软管库存每台 250 m，铺设 = 50 m 基础 + 每级接力 100 m；燃油库存每台 400 L，消耗 L/h 按型号；照明每 2.5 台一套；路障每热点 2 套
+hose_m_per_unit = 250
+hose_base_m = 50
+hose_per_stage_m = 100
+fuel_l_per_unit = 400
+fuel_l_per_h = { "diesel-12in" = 25, "diesel-8in" = 12, "diesel-6in-x3" = 18 }
+lights_per_unit = 0.4
+barriers_per_hotspot = 2
+# 费率（占位，等费率表）：人工 AED/人·h，车辆 AED/km（重 / 轻），车速 km/h，柴油 AED/L，夜班加价与时段
+crew_aed_h = 35.0
+vehicle_aed_km = { heavy = 4.0, light = 2.5 }
+vehicle_speed_kmh = 35.0
+fuel_aed_l = 2.6
+night_premium = 1.25
+night_hours = [19, 6]
+
+[dispatch.contractors]
+# ADM 现状（2026-09-22 应急室会议）：5 家雨水运维承包商按地理分区各管各的，只有严重时市政开工单叫别家。这里承包商 = 预案 A 片区（ADM 五片区各一家），
+# AAM / DRM 各按市政一家（模拟）。mode：pooled = 集中调度（管理层决定资源去哪，跨区支援开工单）；silo = 各管各的（现状）。compare_silo 同时算现状作对照。
+simulated = true
+mode = "pooled"
+work_order_aed = 2000
+compare_silo = true
+
+[dispatch.bridges]
+# 限重桥 / 净高不足的下穿道：重型车（泵 + 车 ≈ 12 t、高 3.8 m）过不去的，在重型行程矩阵里把附近路段断开。没有桥梁台账，下面两条是模拟占位；
+# 真实台账放 exchange/bridges.json（契约 swbrain.bridges/1，见 [feeds.bridges]，可拉可推）到了就替换这里、不再标模拟
+simulated = true
+radius_m = 40
+vehicle_tare_t = 4.0
+heavy_height_m = 3.8
+items = [
+  { name = "Al Bahia canal culvert (simulated)", lon = 54.6330, lat = 24.5170, limit_t = 10 },
+  { name = "Mussafah channel bridge (simulated)", lon = 54.5100, lat = 24.3470, limit_t = 10 },
+]
+
+[dispatch.impassable_depth_m]
+light = 0.30
+heavy = 0.45
+
+[dispatch.target_drain_min]
+hospital = 120
+tunnel = 180
+metro = 180
+school = 240
+ambulance = 180
+default = 360
+
+[dispatch.facility_weight]
+hospital = 10
+tunnel = 8
+metro = 6
+school = 5
+ambulance = 4
+civil_defense = 4
+rescue = 4
+clinic = 2
+
+[dispatch.preposition_max_sites]
+"蓝" = 4
+"黄" = 6
+"橙" = 9
+"红" = 12
+[dispatch.preposition_priority_quantile]
+"蓝" = 0.75
+"黄" = 0.50
+"橙" = 0.25
+"红" = 0.0
+
+[dispatch.simulation]
+scenario_name = "50年一遇（模拟）"
+return_period_yr = 50
+n_points = 60
+n_depots = 12
+seed = 42
+[dispatch.simulation.units]
+"trailer-500" = 18
+"truck-1500" = 16
+"heavy-3000" = 6
+
+[gwm]
+# 世界模型（Abu Dhabi Urban Flood GWM API，本机 Docker 容器 abu-dhabi-gwm）。适配器：python -m swbrain.gwm
+base_url = "http://127.0.0.1:8090"
+token_file = "<世界模型 API 令牌文件（可选）>"
+# 本机能直读结果目录时用它（省去下载 22 MB 的 npz）；跨机部署留空走接口
+runs_dir = "<世界模型推演结果目录（可选）>"
+# 聚合参数：≥ depth_min_m 的格算积水；核之间至少隔 separation_m；每格最多归到 assign_radius_m 内的核；最多输出 max_points 个点
+depth_min_m = 0.30
+separation_m = 750
+assign_radius_m = 1500
+max_points = 150
+hydrograph_step_min = 15
+
+[idf]
+# 阿布扎比 DMT《雨水与地下排水设计手册》WA-726-1 第三版（2022-04）表 3-6 / 3-7，B 区（阿布扎比市区、Dhafra、艾因非山区）。
+# A 区（艾因东北山区，>200 m 等高线）另有表 3-4 / 3-5，未收录。页面重现期开关、管网筛查、世界模型输入都从这里取数。
+source = "DMT WA-726-1 (2022) 表 3-6 B 区"
+source_en = "DMT WA-726-1 (2022) Table 3-6, Zone B"
+zone = "B"
+duration_hours = 24
+durations_min = [5, 10, 15, 30, 60, 120, 180, 360, 720, 1440]
+[idf.intensity_mmh]
+# 表 3-6 雨强 mm/h，与 durations_min 一一对应
+"2" = [48.39, 29.54, 22.13, 13.51, 8.25, 5.04, 3.77, 2.30, 1.41, 0.86]
+"5" = [113.18, 68.48, 51.04, 30.88, 18.68, 11.30, 8.43, 5.10, 3.08, 1.87]
+"10" = [127.64, 77.34, 57.70, 34.96, 21.18, 12.84, 9.57, 5.80, 3.52, 2.13]
+"25" = [189.05, 113.38, 84.07, 50.42, 30.24, 18.13, 13.45, 8.06, 4.84, 2.90]
+"50" = [277.48, 161.98, 118.22, 69.01, 40.28, 23.51, 17.16, 10.02, 5.85, 3.41]
+"100" = [325.17, 189.81, 138.54, 80.87, 47.21, 27.56, 20.11, 11.74, 6.85, 4.00]
+[idf.equation]
+# 表 3-7：i = alpha * t^(-beta)，t 为小时
+"2" = { alpha = 8.248, beta = 0.712 }
+"5" = { alpha = 18.685, beta = 0.725 }
+"10" = { alpha = 21.183, beta = 0.723 }
+"15" = { alpha = 22.327, beta = 0.695 }
+"25" = { alpha = 30.237, beta = 0.738 }
+"50" = { alpha = 40.284, beta = 0.777 }
+"100" = { alpha = 47.206, beta = 0.777 }
+[idf.return_periods]
+# 页面重现期开关：15 分钟雨强（喂管网筛查）与 24 小时雨量（喂世界模型），取自表 3-6
+"5" = { i15_mmh = 51.0, p24_mm = 44.9 }
+"10" = { i15_mmh = 57.7, p24_mm = 51.1 }
+"25" = { i15_mmh = 84.1, p24_mm = 69.6 }
+"50" = { i15_mmh = 118.2, p24_mm = 81.8 }
+"100" = { i15_mmh = 138.5, p24_mm = 96.0 }
+
+[standards]
+# 手册表 3-2（设计重现期）与表 3-3（历时倍数）按用地/设施分级。分级依据 makani：道路中心线 roadtype、道路隧道面、机场面、公园面、建筑用途与层数；重点单位来自 refdata 缓存。
+# 分级是启发式，下面每个数都能改；用 python -m swbrain.standards --build-ref 抓参考数据。
+entry_time_min = 10
+v_full_clip_ms = [0.3, 3.0]
+road_buffer_m = 30
+tunnel_buffer_m = 60
+airport_buffer_m = 50
+facility_buffer_m = 100
+building_buffer_m = 150
+high_density_min_floors = 4
+# 渗井类建议因 §4.12 需个案批准，优先级乘此系数
+soakaway_priority_factor = 0.85
+[standards.classes]
+# 类别 -> 设计重现期 rp、校核重现期 check（0 = 无）、历时倍数 m（表 3-2 / 3-3）
+underpass = { rp = 50, check = 100, m = 1 }
+airport = { rp = 25, check = 50, m = 1 }
+major_road = { rp = 10, check = 0, m = 1 }
+critical_facility = { rp = 10, check = 0, m = 2 }
+industrial = { rp = 5, check = 0, m = 5 }
+open_space = { rp = 5, check = 0, m = 12 }
+high_density = { rp = 5, check = 0, m = 2 }
+low_density = { rp = 5, check = 0, m = 3 }
+general = { rp = 5, check = 0, m = 2 }
+[standards.roadtype_major]
+# udm_roadcentreline.roadtype 里视为「主干路」的取值（假设：secondaryRoad 也算）
+values = ["majorRoad", "secondaryRoad"]
+
+[hotspots]
+# 客户热点清单（DMT 三个市政区的 Stormwater Hotspot Analysis 工作簿，2026-09-09 v4.x）。解析：python -m swbrain.hotspots --dir <目录>
+file = "exchange/hotspots/hotspots.json"
+# 客户 2026-09-20 发来的「506 Hot Spots AUH.kmz」：ADM 热点的修正坐标（v4.4 工作簿的经纬度整体错了一行）。解析时按序号覆盖 ADM 的坐标；文件是客户数据，不入库
+coords_kmz = "<coords_kmz>"
+coords_kmz_region = "ADM"
+# 积水点 / 建议 与客户热点的匹配半径（米）
+match_radius_m = 300
+# 客户重要度 → 调度优先级加权
+[hotspots.criticality_weight]
+"Very High" = 6
+"High" = 4
+"Medium" = 2
+"Low" = 1
+# 预案 A 的泵型号 → 排量等参数（客户表只给尺寸与小时单价，排量按柴油自吸泵典型样本估，是假设）
+[hotspots.pump_models]
+"12in" = { model = "diesel-12in", rate_m3h = 700, head_m = 15, hose_m = 100, setup_min = 25, crew = 3, weight_t = 8.0, vehicle_class = "heavy", duty_aed_h = 90 }
+"8in" = { model = "diesel-8in", rate_m3h = 350, head_m = 15, hose_m = 100, setup_min = 20, crew = 2, weight_t = 4.0, vehicle_class = "light", duty_aed_h = 60 }
+"6in" = { model = "diesel-6in", rate_m3h = 180, head_m = 12, hose_m = 60, setup_min = 15, crew = 2, weight_t = 2.0, vehicle_class = "light", duty_aed_h = 36 }
+# 6 寸泵数量大，进分派模型时按 bank_size 台一组建模（组内同驻地同型号）
+six_inch_bank = 3
+# 罐车：客户表只给数量与 250 AED/h；容量按 4,500 gal 罐车估
+tanker_capacity_m3 = 17.0
+tanker_duty_aed_h = 250
+
+[dispatch.cost]
+# 应急泵的指示性成本：台时 × 小时单价 + 每台动员费。小时单价用客户预案 A 表的 duty_aed_h（[hotspots.pump_models]：12 寸 90 / 8 寸 60 / 6 寸 36 AED/h）
+# 台时从出发算到该点重演退干；48 h 内退不干按 horizon_min。下面三项是假设，等客户费率表
+mobilisation_aed_per_unit = 500
+min_duty_h = 4
+default_duty_aed_h = 60
+horizon_min = 2880
+
+[dispatch.tankers]
+# 罐车：客户预案 A 表只给数量与 250 AED/h；容量按 4,500 gal（17 m³）。派给「1.5 km 内无排放去处」且泵没处置的点：有效排量 = 容量 / 周转（装 + 卸 + 往返最近可接纳排放点，没有按缺省运距）
+enabled = true
+capacity_m3 = 17
+duty_aed_h = 250
+load_min = 10
+unload_min = 10
+speed_kmh = 30
+default_haul_km = 5
+# 最近可接纳排放点超过这个距离（艾因 / Dhafra 常见）按缺省运距到就近处置点算；派满上限也在 horizon_min 内拉不完的点不派（不浪费池）
+max_haul_km = 15
+horizon_min = 2880
+max_per_point = 6
+
+[dispatch.manual_levels]
+# 预警等级 ↔ WA-726-3 表 11-1 / 附录 H-1 的应急分级。蓝 = 例行（不宣布应急），黄/橙/红 = 预计 I/II/III 级（优先级 C/B/A）
+# 手册指标：到场目标 2 小时（11.6；WA-726-4 §17000 1.1.1），应急动员 30 分钟（5.7.1 KPI）
+trt_min = 120
+mobilization_min = 30
+"蓝" = { level = "0", priority = "-", zh = "例行：预报有雨，巡查班组待命，不宣布应急", en = "Routine: rain forecast, patrol teams on standby, no emergency declared" }
+"黄" = { level = "I", priority = "C", zh = "I 级：路面积水，例行班组处置不了需应急土建班组；对公众与财产无风险（工头→网络工程师宣布）", en = "Level I: surface flooding beyond routine crews, emergency civil team needed; no risk to public or property (Foreman → Networks Engineer declares)" }
+"橙" = { level = "II", priority = "B", zh = "II 级：VIP 地点 6 小时内可恢复、室内积水、支路交通受阻、管网隔离 ≤6 小时、可能引起媒体关注（高级网络工程师宣布）", en = "Level II: VIP location fixable within 6 h, internal property flooding, branch roads blocked, network isolated ≤6 h, potential media interest (Senior Networks Engineer declares)" }
+"红" = { level = "III", priority = "A", zh = "III 级：VIP 地点 6 小时内不能恢复、多处物业外部积水、主干路/高速受阻、多座泵站失电、对公众与财产高风险（项目经理宣布，联合部门设控制室）", en = "Level III: VIP location not fixable within 6 h, external flooding of many properties, main roads/highways blocked, power loss at multiple pump stations, high risk to public and property (Project Manager declares, joint control room)" }
+
+
+[terrain]
+# 客户提供的 5 m DTM（EPSG:32640，全酋，2026-03，ADNOC 来源）。2026-09-19 抽 6,000 个进水口实测：井盖标高 − DTM 中位 99.8（岛上）/ 100.2 m（内陆），
+# 82% 在 ±0.5 m 内 → 台账 level = DTM + [model].datum_offset_m。文件不存在时全部地形功能自动跳过。
+dtm_path = "<5 m DTM GeoTIFF 路径（AUH_DTM_5m_Z40.TIF）>"
+# 台账井盖标高与 DTM+基准差超过此值（米）只标可疑不改（桥面、隧道上方以台账为准）
+cover_tol_m = 2.0
+# 热点填洼：分析窗半宽（米）、找种子低点的半径（米）、洼地碰到窗边时加倍重算的窗半宽上限、判「近海」的低点高程（米）
+window_m = 300
+seed_radius_m = 30
+max_window_m = 1200
+coastal_z_m = 0.5
+# 积水面积超过此值（公顷）的洼地标「区域性」：体积是整片低地的，不是这一处热点的
+regional_area_ha = 25
+
+[terrain.catchment]
+# DTM 子汇水区：把「每进水口 600 m² / 每米管 20 m 路面」的估算换成地形推算。enabled=false 退回估算
+enabled = true
+res_m = 10.0
+tile_m = 4000.0
+buffer_m = 1000.0
+# 有地形汇水区的进水口面积下限 / 上限（平方米）；超上限的截断并打标（平坦大片地面的 D8 归属不可靠，推理公式也只到 80 ha）
+min_area_m2 = 100.0
+max_area_m2 = 200000.0
+# 只计地面汇流路程不超过此值的格（米）：约 15 分钟以内能到进水口；平坦沙地上 D8 会把几公里外的地面都归到一个进水口
+max_flow_len_m = 1000.0
+# 地块内（建筑与院落）按阿布扎比惯例自排（渗井/自有系统），不计入公共雨水管网汇水；false 则全部地面都计入
+plot_self_drain = true
+eps_m = 1e-4
+
+[terrain.catchment.runoff_c]
+# 径流系数按地表覆盖（makani 建筑 / 路面 / 停车场 / 公园绿地 / 地块多边形栅格化）加权。前四项按 DMT WA-726-1 表 3-8；
+# 「地块内其余地面」0.55 与「地块外空地（沙地）」0.30 是假设
+building = 0.85
+road = 0.90
+parking = 0.78
+green = 0.15
+plot = 0.55
+open = 0.30
+
+[dispatch.system_points]
+# 本系统积水点：待排体积下限（小于它的热点不进调度）、无洼地时的假设水深（米）、无管网热点按 DTM 填洼体积灌满的时间（分钟）
+min_volume_m3 = 100.0
+flat_depth_m = 0.10
+proxy_fill_min = 180
+
+[scenarios]
+# 除表 3-6 重现期外的情景（页面重现期开关会多出这些档）。key 同时驱动管网筛查、积水点与调度。
+[scenarios.cc."10cc"]
+# DMT 现行评估口径（Parsons 2026-09 四份大陆汇水区评估）：ADQCC 10 年 24 h 51.12 mm × 1.2 = 61.34 mm；所有历时雨强同比 ×1.2
+base_rp = 10
+factor = 1.2
+label = "10 年 + 20% CC"
+label_en = "10-yr + 20% CC"
+source = "DMT 现行评估口径（Parsons 2026-09）：10 年一遇 24 h 51.12 mm × 1.2 气候变化 = 61.34 mm"
+source_en = "DMT current assessment basis (Parsons, Sep 2026): 10-yr 24-h 51.12 mm × 1.2 climate change = 61.34 mm"
+
+[scenarios.events."2024-04"]
+i15_source = "DMT SWMM 雨量计序列（2024 24 h）最大 15 分钟：Shaliela 43.2 / RB3 26.0 / Mussafah 24.8 mm → 172.6 / 104.1 / 99.3 mm/h；其余片区仍按 24 h 雨量等比缩放"
+i15_source_en = "DMT SWMM rain gauge series (2024, 24 h) peak 15 min: Shaliela 43.2 / RB3 26.0 / Mussafah 24.8 mm → 172.6 / 104.1 / 99.3 mm/h; elsewhere still scaled by 24-h depth"
+# 2024-04 Al Hadeer 暴雨：Parsons 用 NCM 雨量站 Thiessen 加权（日雨量 ×1.14）的分区 24 h 雨量；按与 10 年 IDF 24 h 51.12 mm 的比例缩放 10 年 IDF 曲线。
+# 只有四个大陆汇水区有数；岛上等未覆盖片区按 RB3/Mussafah 量级取 94 mm（假设，拿到 NCM 站点记录后替换）
+label = "2024-04 实测（Al Hadeer）"
+label_en = "Apr 2024 observed (Al Hadeer)"
+date = "2024-04-16"
+base_rp = 10
+p24_ref_mm = 51.12
+p24_default_mm = 94.0
+source = "Parsons 2026-09：Shaliela 159.58 / RB3 96.23 / Mussafah 91.8 / ICAD 84.37 mm（Thiessen 加权 NCM）；其余片区 94 mm 为假设"
+source_en = "Parsons Sep 2026: Shaliela 159.58 / RB3 96.23 / Mussafah 91.8 / ICAD 84.37 mm (Thiessen-weighted NCM); 94 mm elsewhere is an assumption"
+[scenarios.events."2024-04".p24_by_area]
+"Al Shahama" = 159.58
+"Zayed" = 96.23
+"Mussafah" = 91.8
+"Al Wathbah" = 96.23
+"Island" = 94.0
+[scenarios.events."2024-04".p24_by_zone]
+"Al Rahbah" = 159.58
+"Al Samhah" = 159.58
+"Al Bahyah" = 159.58
+"Al Shahamah" = 159.58
+"Khalifa City" = 96.23
+"Zayed City" = 96.23
+"Mohammed Bin Zayed City" = 96.23
+"Al Wathbah" = 96.23
+"Musaffah" = 91.8
+"Madinat Zayed" = 91.8
+"Abu Dhabi Industrial City" = 84.37
+"Khalifa Industrial" = 84.37
+[scenarios.events."2024-04".i15_by_area]
+"Al Shahama" = 172.6
+"Zayed" = 104.1
+"Mussafah" = 99.3
+[scenarios.events."2024-04".i15_by_zone]
+"Al Rahbah" = 172.6
+"Al Samhah" = 172.6
+"Al Bahyah" = 172.6
+"Al Shahamah" = 172.6
+"Khalifa City" = 104.1
+"Zayed City" = 104.1
+"Mohammed Bin Zayed City" = 104.1
+"Al Wathbah" = 104.1
+"Musaffah" = 99.3
+"Madinat Zayed" = 99.3
+[scenarios.events."2026-03"]
+i15_source = "DMT SWMM 雨量计序列（2026 24 h）最大 15 分钟：Shaliela 25.4 / RB3 20.1 / Mussafah 18.8 mm → 101.6 / 80.5 / 75.1 mm/h；其余片区仍按 24 h 雨量等比缩放"
+i15_source_en = "DMT SWMM rain gauge series (2026, 24 h) peak 15 min: Shaliela 25.4 / RB3 20.1 / Mussafah 18.8 mm → 101.6 / 80.5 / 75.1 mm/h; elsewhere still scaled by 24-h depth"
+label = "2026-03 实测（Al AAZM）"
+label_en = "Mar 2026 observed (Al AAZM)"
+date = "2026-03"
+base_rp = 10
+p24_ref_mm = 51.12
+p24_default_mm = 72.0
+source = "Parsons 2026-09：Shaliela 93.96 / RB3 74.41 / Mussafah 69.42 / ICAD 60.88 mm（Thiessen 加权 NCM）；其余片区 72 mm 为假设"
+source_en = "Parsons Sep 2026: Shaliela 93.96 / RB3 74.41 / Mussafah 69.42 / ICAD 60.88 mm (Thiessen-weighted NCM); 72 mm elsewhere is an assumption"
+[scenarios.events."2026-03".p24_by_area]
+"Al Shahama" = 93.96
+"Zayed" = 74.41
+"Mussafah" = 69.42
+"Al Wathbah" = 74.41
+"Island" = 72.0
+[scenarios.events."2026-03".p24_by_zone]
+"Al Rahbah" = 93.96
+"Al Samhah" = 93.96
+"Al Bahyah" = 93.96
+"Al Shahamah" = 93.96
+"Khalifa City" = 74.41
+"Zayed City" = 74.41
+"Mohammed Bin Zayed City" = 74.41
+"Al Wathbah" = 74.41
+"Musaffah" = 69.42
+"Madinat Zayed" = 69.42
+"Abu Dhabi Industrial City" = 60.88
+"Khalifa Industrial" = 60.88
+[scenarios.events."2026-03".i15_by_area]
+"Al Shahama" = 101.6
+"Zayed" = 80.5
+"Mussafah" = 75.1
+[scenarios.events."2026-03".i15_by_zone]
+"Al Rahbah" = 101.6
+"Al Samhah" = 101.6
+"Al Bahyah" = 101.6
+"Al Shahamah" = 101.6
+"Khalifa City" = 80.5
+"Zayed City" = 80.5
+"Mohammed Bin Zayed City" = 80.5
+"Al Wathbah" = 80.5
+"Musaffah" = 75.1
+"Madinat Zayed" = 75.1
+[dispatch.plans]
+# 第二道防线并排比较的外部预案。onsite：客户预案 A 的泵就放在各自热点；staging：按热点区域给定台数，从离该区域积水点最近的候选驻地出发
+[dispatch.plans.plan_a_onsite]
+kind = "onsite"
+label = "客户预案 A（泵就地预置在热点）"
+label_en = "Client Plan A (pumps pre-positioned at the hotspots)"
+source = "Origen Batch 1 客户热点清单 Plan A 各热点泵数；艾因/Dhafra 未注明口径的按 6 寸"
+source_en = "Origen Batch 1 client hotspot list, Plan A pumps per hotspot; Al Ain / Dhafra pumps without a stated size counted as 6-in"
+depart_min = 30
+[dispatch.plans.parsons2027]
+kind = "staging"
+label = "Parsons 2027 临时方案（临时塘 + 12 寸泵）"
+label_en = "Parsons 2027 interim plan (temporary ponds + 12-in pumps)"
+source = "Parsons 2026-09 四份大陆汇水区评估：Shaliela 33 台 / 10 塘 404,213 m³，RB3 22 台 / 7 塘 445,012 m³，Mussafah_00 2 台 / 1 塘 900 m³，ICAD 1-3 14 台 / 10 塘 76,673 m³；泵从 DMT 模型导出里的临时塘位置出发（2026-09-20 拿到坐标），同区域各塘按最近点分泵"
+source_en = "Parsons Sep 2026 mainland catchment assessments: Shaliela 33 pumps / 10 ponds 404,213 m³, RB3 22 / 7 ponds 445,012 m³, Mussafah_00 2 / 1 pond 900 m³, ICAD 1-3 14 / 10 ponds 76,673 m³; pumps depart from the temporary-pond locations in the DMT model export (coordinates received 2026-09-20); ponds in an area split the pumps by nearest points"
+model = "diesel-12in"
+depart_min = 30
+# 泵从 DMT 模型里的临时塘出发（extra_sites_file 里 site_id 以此开头的驻地；同区域的塘各管离它最近的点，台数按点数分）
+sites_prefix = "POND-"
+[dispatch.plans.parsons2027.catchments]
+"Al Shahama" = { name = "Shaliela", pumps = 33, ponds = 10, pond_m3 = 404213 }
+"Zayed" = { name = "RB3", pumps = 22, ponds = 7, pond_m3 = 445012 }
+"Mussafah" = { name = "Mussafah_00 + ICAD 1-3", pumps = 16, ponds = 11, pond_m3 = 77573 }
+
+[dmt_model]
+# DMT 三个 1D 水力模型的导出（客户 2026-09-20 发，Bentley shapefile + SWMM inp；客户数据，不入库）。shapefile 无 .prj，按 UTM 40N
+dir = "<dir>"
+crs = "EPSG:32640"
+# 热点到 DMT 溢流人孔多远算「对上」（米）；parsons_flood_m3 是 Parsons 报告 2026-09 的 24 h 溢流量（10 年+CC、2024-04），用来和本系统全网溢流路由对表
+overflow_radius_m = 150
+[dmt_model.models]
+Musaffah_00 = { area = "Mussafah", inp = "SWMM_Export/Mussafah_00.inp", parsons = "Mussafah_00", parsons_flood_m3 = { "10cc" = 832, "2024-04" = 23902 } }
+RB3 = { area = "Zayed", inp = "SWMM_Export/WITH CD catchments.inp", parsons = "RB3", parsons_flood_m3 = { "10cc" = 318392, "2024-04" = 737918 } }
+Shaliela = { area = "Al Shahama", inp = "SWMM_Export/Shaliela.inp", parsons = "Shaliela", parsons_flood_m3 = { "10cc" = 140668, "2024-04" = 1106911 } }
+
+[traffic]
+# 路况：把带路况的行程时间套到本地路网行程矩阵上（swbrain/traffic.py）。
+# provider = google：Google Routes API computeRouteMatrix（TRAFFIC_AWARE，出发时刻可以是未来 → 预测路况）；密钥只从环境变量 api_key_env 读，永不写进配置或仓库；
+#            按元素（起点×终点）计费：系数层每个驻地抽样 sample_per_depot 个目的地（近 / 中 / 远分层），精算层只查调度单里实际出现的 驻地→点 对（≤ refine_pairs_max）
+# provider = simulated：阿布扎比工作日 / 周末时段曲线（当地 UTC+4）× 雨天加成，全驻地同一系数，页面标「模拟」；配了 google 但没密钥也退到这里
+# provider = none：系数 1
+provider = "google"
+api_key_env = "GOOGLE_MAPS_API_KEY"
+sample_per_depot = 12
+refine_pairs_max = 300
+cache_ttl_min = 15
+cache_file = "out/traffic_cache.json"
+routing_preference = "TRAFFIC_AWARE"
+region_code = "AE"
+# 出发时刻缺省：now = 事件按「现在开始」，决策第 t 分钟出发；也可以 /api/traffic?depart=2026-09-25T14:00（当地时间）按预报时刻取预测路况
+departure = "now"
+auto_refresh = true
+apply_to_point_to_point = true
+factor_min = 0.8
+factor_max = 3.0
+# 时变：后续每个滚动窗口（window_min 一档，共 windows_ahead 个）按各自出发时刻再取一次系数，早晚高峰进时间轴；Google 时后续窗口每驻地只抽 per_window_sample_per_depot 个目的地
+per_window = true
+windows_ahead = 8
+window_min = 60
+per_window_sample_per_depot = 6
+
+[traffic.simulated]
+# 暴雨时城市道路车速下降 10–20%（文献常见值）；周五、周六按周末曲线
+rain_uplift = 1.15
+weekend_days = [4, 5]
+
+[feeds]
+# 外部实时源（swbrain/feeds.py）。每个源：url 非空就拉（Authorization: Bearer <token_env 环境变量>，poll_s 内缓存），拉不到退回文件；
+# 也可以推：POST /api/feed/<name>，正文 = 契约 JSON（exchange/examples/<name>.example.json），合并进 exchange/<name>.json。ADM 应急系统开放接口后只需填 url。
+[feeds.incidents]
+# 993 报案（契约 swbrain.incidents/1）：replan 自动并入、按 300 m 匹配积水点加权
+file = "exchange/incidents.json"
+url = ""
+token_env = "ADM_INCIDENTS_TOKEN"
+poll_s = 60
+[feeds.checkins]
+# 承包商到场 check-in（契约 swbrain.checkins/1）：预置到位率
+file = "exchange/checkins.json"
+url = ""
+token_env = "ADM_CHECKINS_TOKEN"
+poll_s = 60
+[feeds.bridges]
+# 桥梁限重 / 净高台账（契约 swbrain.bridges/1）：到了就替换 [dispatch.bridges].items 的模拟条目
+file = "exchange/bridges.json"
+url = ""
+token_env = "ADM_BRIDGES_TOKEN"
+poll_s = 3600
+[feeds.contractors]
+# 承包商服务边界（契约 swbrain.contractors/1）：depot_id → contractor，或 region/area → contractor；到了就替换按片区模拟的承包商名
+file = "exchange/contractors.json"
+url = ""
+token_env = "ADM_CONTRACTORS_TOKEN"
+poll_s = 3600
+[feeds.events]
+# 客户补的历史降雨事件（契约 swbrain.events/1）：event_id、date/start/end、p24_mm、分片区雨量；2024-04 与 2026-03 已在 [scenarios.events]
+file = "exchange/events.json"
+url = ""
+token_env = "ADM_EVENTS_TOKEN"
+poll_s = 3600
+[feeds.episodes]
+# 客户的历史积水记录（契约 swbrain.episodes/1）：某积水点在某事件里 是否积水 / 水深 / 时长 / 派泵 / 退干 / 阶段时间；ADM 的投诉、巡查、993 台账都能落成这个形状
+file = "exchange/episodes.json"
+url = ""
+token_env = "ADM_EPISODES_TOKEN"
+poll_s = 3600
+
+[lifecycle]
+# 积水点生命周期层（swbrain/lifecycle.py）：历史事件按 date 前后几天算窗口（现场观测 / 993 报案落在窗口内就归到该事件）；值班开的事件、登记的阶段、工程建议状态都只写 out/*.jsonl
+event_window_days = 3
+events_file = "out/events.jsonl"
+episodes_file = "out/episodes.jsonl"
+proposal_status_file = "out/proposal_status.jsonl"
+# 雨后对账至少要多少个有记录的经历才给 pass / fail（否则 insufficient）
+min_observed_for_verification = 10
+
+[serve]
+# 启动时装哪个情景（留空 = 情景目录里第一个）。不看盘上哪个预测文件最新，那会让分母随重启变
+startup_scenario = ""
+# 控制台访问口令：为空不设；设了以后地址要带 ?key=…（首次）或在首页输入，之后 30 天 cookie。设了口令时 serve 缺省监听 0.0.0.0
+access_key = ""
+# 管理端（/admin.html：多智能体、配置、调用轨迹、计算审批）的管理员口令，与 access_key 分开；空 = 管理端关闭。只放本文件，不入库
+admin_key = ""
+# no_warm = true 关掉启动后台预热全部情景
+# 落盘缓存：算过的情景上下文与调度载荷按「代码 + 配置 + 状态指纹」存 out/cache/，重启几十秒可用（改本体 / 页面不作废；改模型模块 / 配置 / out/state 才作废）
+disk_cache = true
+# 求解子进程数（0 = 同进程）：HiGHS 与重演握着 GIL，进子进程后长求解不再卡住别的请求
+solver_workers = 2
+# 异步任务线程数（/api/dispatch?async=1 等接口返回 job_id，/api/jobs/<id> 轮询）
+job_threads = 4
+# 预热时调度怎么算：all = 每个情景都解一遍（缺省：智能体首问不再现解，现解一次要几分钟）；cached = 只解盘上已有的（后台少占 CPU）
+warm_dispatch = "all"
+# 先预热哪些情景（演示与值班最常问的放前面）；其余按情景目录。用户问到还没算的情景时它会插到队首
+warm_first = ["50", "10"]
+# 启动时就在后台拉起 DeepSeek Harness（约 60 s），首问不用等；false = 首问时再拉
+dsh_prestart = true
+
+# HTTPS（可选）：统一身份的回调平台登记的是 https://…:8766/auth/callback，此时要真提供 HTTPS。都空 = http。
+# 本机自签：python -m swbrain.tlscert（写 out/tls/）；正式环境换成机构 CA 签的证书
+tls_cert = ""
+tls_key = ""
+[assets]
+# 排水资产台账（python -m swbrain.assets）：客户 L1/L2/L3 分级里的实体资产。
+# 雨水口全量 194,510 个（vertices.node_table 为 inlet / catchbasin），不适合都装进本体，
+# 只收热点半径内的。实测：100 m → 4,148 个；200 m → 24,367 个（每点中位 58）；
+# 300 m → 更多。200 m 装载 1.8 s、序列化约 20 MB，量级可控。
+inlet_radius_m = 200.0
+inlet_max = 40000
+
+[ponds]
+# 第二道防线：汇水区滞蓄塘的选址、定容与进水方式（python -m swbrain.ponds）
+# 核心判据是「有效库容 = min(库容, 进水能力 × 雨峰窗口)」——塘再大，水进不去也没用。
+serve_radius_m = 1200.0            # 一个塘往上游服务多远
+assign_by = "lowest"               # lowest = 归给能到达的最低点（汇水区尺度）；nearest = 归给最近的
+min_head_m = 0.3                   # 点要比塘底高这么多才算能自流
+min_natural_m3 = 100.0             # 天然洼地小于这个不当候选
+exclude_terrain_note = ["flat", "regional"]   # 没有真洼地的、洼地漫到分析窗口边界外的
+design_depth_m = 2.5               # 塘的设计水深；库容定了，占地跟着算
+volume_tiers = [0.25, 0.5, 1.0, 1.5]          # 相对「服务范围峰值积水量」的倍数
+max_pond_area_m2 = 200000.0        # 单塘占地上限
+pipe_dn_mm = [600, 900, 1200, 1500]
+pipe_slope = 0.002
+pipe_n = 0.013
+pump_counts = [2, 4]
+pump_rate_m3h = 700.0              # 12 寸泵，与第三道防线同一口径
+peak_window_min = 120.0            # 雨峰窗口：只有在这段时间里进的水才真正顶用
+infiltration_mm_h = 5.0            # 塘底下渗（假设值，见假设总账 pond_infiltration）
+release_m3h = 0.0                  # 受控出流（接下游管网），0 = 只靠渗和事后抽
+dt_min = 10.0
+horizon_min = 1440.0
+min_saved_h = 0.05                 # 省不到这么多积水小时的方案包不进 MILP
+milp_time_limit_s = 30.0
+value_aed_per_priority_hour = 100.0   # 和第三道防线同一把尺子，三道防线才能放一起比
+
+[ponds.cost]
+# 单价全是占位值，等客户给 BoQ（见假设总账 pond_unit_cost）
+excavate_aed_m3 = 45.0
+pipe_min_len_m = 50.0              # 再近的点也得有一段收水管
+hose_aed_m = 400.0                 # 泵配的临时排水管
+pump_capital_aed = 120000.0
+land_aed_m2 = 0.0                  # 市政用地缺省不计地价
+
+[ponds.cost.pipe_aed_m]
+600 = 1800.0
+900 = 2900.0
+1200 = 4300.0
+1500 = 6100.0
+
+[networkflood]
+# 全网溢流路由的顶托代理：自己不溢、但沿流向 backwater_m 内有溢流段、且峰值利用率 ≥ backwater_ratio 的管段标「顶托风险」
+backwater_m = 300
+backwater_ratio = 0.8
+
+[alerts]
+# 预警触发规则层（PoC 议程第 5 项）：预报 24 h 雨量 → 目录里最接近的情景 → 三条规则取最高等级（雨量 / 该情景 III 级积水点数 / 全网溢流量）。
+# 阈值是演示用的起点：雨量档对应约 5 / 25 / 100 年一遇；接了 NCM 预报后由 DMT 定
+[alerts.rain_mm]
+"黄" = 45
+"橙" = 70
+"红" = 90
+[alerts.iii_points]
+"黄" = 75
+"橙" = 100
+"红" = 150
+[alerts.spill_m3]
+"黄" = 1500000
+"橙" = 3000000
+"红" = 5000000
+
+[agent]
+# 智能体（本体驱动的交互入口，swbrain/ontology）。有大模型密钥就用 Anthropic Messages API 规划（纯 urllib），没有就用规则规划器（关键词意图 + 实体抽取）；两者动作一致。
+# 密钥只从环境变量读，不写进本文件
+api_key_env = "ANTHROPIC_API_KEY"
+model = "claude-sonnet-5"
+base_url = "https://api.anthropic.com"
+max_steps = 6
+timeout_s = 60
+# 现场观测（record_observation 动作）与动作审计日志
+observations_file = "out/observations.jsonl"
+action_log = "out/ontology_actions.jsonl"
+
+[agent.dsh]
+# DeepSeek Harness（github.com/deepseek-ai/deepseek-harness）作为真正的 agent 运行时：pip install deepseek-harness-sdk 后自动可用。
+# 规划器顺序 dsh → llm → rules。预设 / 补丁 / 技能模板在 agent/dsh/，渲染到 home；Web UI：python -m swbrain.dsh_bridge --web（或 scripts/dsh_web.ps1）
+enabled = true
+home = "out/dsh_home"
+# Web UI 用另一个主目录（与 SDK 的会话、运行时包桩隔开）
+home_web = "out/dsh_home_web"
+# 模型路由：缺省有 DEEPSEEK_API_KEY 用 deepseek-official/deepseek-flash，否则有 OPENAI_API_KEY 用 openai/gpt-5.1；密钥只从环境变量读
+# provider = "deepseek-official"
+# model = "deepseek-v4-pro"
+web_port = 3080
+# Web UI 的局域网入口（控制台服务里的反向代理，只放管理员，转到 127.0.0.1:web_port；dsh 自己不许听局域网）；0 = 不开
+lan_port = 3081
+initialize_timeout_s = 120
+
+[data]
+# 客户原始数据的位置（一二维热点群计算用；tools/datapaths.py 读，环境变量 SWBRAIN_DATA_<键大写> 可覆盖）。
+# 全部是客户数据，不入库；每项的用途见 docs/C1_资料清单.md。另两项在别处：5 m DTM = [terrain].dtm_path，热点坐标 KMZ = [hotspots].coords_kmz
+gdb_zip = "<客户雨水管网 GDB 压缩包 DMT_StormWater_AbuDhabi_Processed.gdb.zip>"
+gdb_dir = "<同一 GDB 解压后的 .gdb 目录>"
+hotspot_xlsx_dir = "<客户热点工作簿目录（Stormwater Hotspot Analysis *.xlsx）>"
+client_models_zip = "<客户 22 个水力模型 zip（OneDrive_1_9-26-2026.zip）>"
+client_swmm_export = "<客户 SWMM 导出目录（含 Mussafah_00.inp）>"
+parsons_root = "<Parsons 交付解压目录（含 Critical Hotspots/ 与 26092026/）>"
+
+[routing]
+# L3 卡车路线来源（swbrain/routing.py）：按顺序试，前一个求不出或连不上就换下一个。2026-10-28 用户：本地服务接入为首选，ArcGIS Online 保持备选。
+# 本地服务的已知问题（路网不连通、时间按小汽车、没有最近设施分析等）见 docs/本地路径服务问题说明_20261028.md
+providers = ["local", "online"]
+# 内网 ArcGIS Server 10.8 NAServer 的 Route 图层（不要令牌）
+local_url = "<内网 NAServer Route 图层地址，如 https://<主机>:6443/arcgis/rest/services/.../NAServer/Route>"
+local_mode = "Heavy Vehicles"
+# 服务器是自签证书：false = 只对 local_url 跳过证书校验
+local_verify_ssl = false
+# 本地服务的 Minutes 是小汽车口径；乘这个系数对齐在线卡车时间。Claude 自定（2026-10-28）：
+# RD-A 两场 61 mm 雨 315 段派单，在线卡车 ÷ 本地 中位 1.67（P10 1.48、P90 1.87），out/routes/svc_compare/。1 = 不校正
+local_time_factor = 1.67
+
+[agents]
+# 多智能体（swbrain/agents/）：主智能体把问题分派给调度研判 / 一二维计算 / 报告交付 / 数据质检。false = 退回单个排水智能体
+enabled = true
+# 主智能体用大模型分派（delegate 工具）、三个专业智能体用大模型规划（工具只有自己名下的动作）；用 [agent] 的模型与密钥，没密钥或出错退回规则。false = 全部规则
+llm = true
+# 端点 / 模型 / 密钥变量可以单独给多智能体指定（缺省沿用 [agent]）。DeepSeek 的 Anthropic 兼容端点：
+# api_key_env = "DEEPSEEK_API_KEY"
+# base_url = "https://api.deepseek.com/anthropic"
+# model = "deepseek-flash"
+# 主智能体分派一次的 token 上限（思考型模型先想再调工具，太小会在调 delegate 之前截断）
+# router_max_tokens = 2000
+
+[identity]
+# 统一身份与租户（SDIP，可选）。缺省 shared_key = 照旧用 [serve].access_key / admin_key 两把共享口令，不需要 SDIP、不需要 PyJWT。
+# 有 SDIP 平台、并拿到回执（docs/SDIP工单_排水智能体接入统一身份.md）后才改成 sdip：每人用平台账号登录，按职能 SWBRAIN.* 判权限，共享口令一律不认。
+# sdip 模式还要：pip install "PyJWT[crypto]==2.10.1"；客户端密钥放环境变量（client_secret_env 指的那个），不写进本文件。
+mode = "shared_key"
+# ---- 以下只在 mode = "sdip" 时用 ----
+# 签发源（Keycloak realm）。JWKS 与令牌地址按 Keycloak 约定从它推出，平台换地址只改这一处
+# 服务和签发源在同一台机器时写本机回环地址（局域网地址会变，回环不会），并开 issuer_discovery
+issuer = ""
+# true = 启动时取发现文档：令牌的 iss、浏览器去登录 / 注销的地址都按签发源自己报的（Keycloak 按它的主机名签 iss，局域网地址一换就跟着变）；
+# 验签遇到 iss 不符时再取一次，不用重启。false = iss 必须和上面的 issuer 一字不差
+issuer_discovery = false
+client_id = "swbrain"
+# 用户令牌的 aud（平台给客户端配的受众映射器）
+audience = "swbrain"
+client_secret_env = "SWBRAIN_SDIP_CLIENT_SECRET"
+# SDIP 门户服务（/api/portal/session）
+portal_base = ""
+# 租户号：服务端不给缺省值，必填
+tenant_id = ""
+# 本服务对外地址：拼登录回调 <public_base>/auth/callback，也是写请求的 Origin 校验值（要和浏览器地址栏一致）
+public_base = "http://127.0.0.1:8766"
+# 其他对外地址（局域网访问用，2026-10-02）：每个都要在平台登记 <地址>/auth/callback 与 <地址>/ 两条回跳。
+# 有一个非本机地址，服务就听全部网卡，Harness Web UI 也会让这些主机访问。局域网走 http 时登录凭据明文过网。
+# 写 "auto" = 本机当前的每个局域网 IPv4（端口同 public_base），换了地址不用改配置、不用重启；平台那边仍要登记新地址的回调。
+extra_public_bases = []
+# 允许推 /api/feed/* 的服务账号：Keycloak 用户名（swb-feed 用 swbrain 客户端的客户端凭据，用户名是 service-account-swbrain，回执第四节）
+feed_clients = ["service-account-swbrain"]

@@ -1,0 +1,806 @@
+# -*- coding: utf-8 -*-
+"""从客户 GDB 重建一张**拓扑正确**的全市一维管网，并生成 L1 / L2 两个 .inp。
+
+------------------------------------------------------------------ 为什么要重建
+客户之前那份全市耦合模型（`coupled_scenario.inp`）在拓扑上不是一张网：
+146,823 个节点只有 93,669 根管（**边比点少**），53,165 个连通块，
+最大一块只有 39 个节点，**只有 436 个节点（0.3%）能连到出水口**。
+所以那次运行 SWMM 的出流只有 3,660 m³，占产流 6,251,340 m³ 的 **0.06%** ——
+那不是排水基线，是「下雨但管网不存在」。
+
+不是裁域造成的：同一个计算域内，GDB 有 239,270 根管（全量的 91.8%），
+1,605 个连通块、最大块 29,785 节点、95.1% 的节点在 ≥50 节点的块里。
+那份 .inp 只用了域内管的 39.1%，丢掉的 61% 把链打断了。
+节点本身是对的——146,823 个节点**精确落在 GDB 节点上**（中位距离 0.0 m）。
+
+所以这里用 GDB 全量重建。L1 与 L2 **共用同一张网**，只差 23 座塘，
+这样两者之差才只归因于塘，不混进建模差异。
+
+------------------------------------------------------------------ 标高怎么定
+三套数据三个基准（`tools/pond_link.py` 里验过）：
+  `StartElev`/`EndElev`   DEM 原始基准，是**地面**不是管内底
+  `INVERT_LEVEL_*`        **DEM + 100**，减 100 回到 DEM 基准
+判据：地面减管内底中位 1.61 m、四分位 0.75–2.82 m，是标准埋深分布。
+
+  井底 = 相邻各管管内底的**最小值**（这样每根管的进出口都不低于井底）
+  井盖 = 相邻各端点地面高的中位数
+  两端管内底都无效的管（31,281 根，12.0%）→ 按中位埋深 1.61 m 从地面往下推
+  埋深 <0.3 m 或 >20 m 的端点（14.4%）→ 同样按中位埋深补，不照抄离谱值
+
+------------------------------------------------------------------ 产流怎么给
+不照搬那份 .inp 的「每个节点一个 0.1 ha」——那样全市产流面积只有 114 km²，
+而管网实际服务面积约 409 km²，等于把 72% 的雨丢了。
+这里按**最近节点法**把地面摊到节点上，半径自适应
+`R = 1.2 × 节点平均间距`，迭代到收敛。系数 1.2 在两个已知区上标过：
+Mussafah +1.1%、Shaliela +5.3%（见 tools/citywide.py）。
+
+损失用 **SCS 曲线法 CN = 82** —— 客户自己的值（Mussafah 全区 82、
+Shaliela 面积加权 82.5）。
+
+**不用 SWMM 的子汇水区 + CURVE_NUMBER 下渗**：那个的产流量**依赖划分**。
+实测同样 CN=82，1,726 m² 的小区跑出 26.9 mm、10 ha 的大区跑出 17.9 mm，
+而纯 SCS 是 23.53 mm —— 没有一个 CN 能同时对上。
+改成先按 SCS 公式算净雨、再用 SCS 单位线卷积，把产流**按节点注入**
+（客户自己那三个模型也是这么做的，`.inp` 里没有 [SUBCATCHMENTS]；
+`tools/runoff.py` 复现时对到 +0.01%）。这样产流总量是解析值，与划分无关。
+
+24 万节点不可能各写一条过程线（客户 Shaliela 一个区 2,757 个节点就写了 290 万行），
+所以只写**一条单位面积过程线**，每个节点用 [INFLOWS] 的 Sfactor 乘自己的面积。
+
+------------------------------------------------------------------ L2 是什么
+L1 上加 23 座塘，每座：
+  · 深度—库容曲线取自 `tools/pond_link.py`（5 m DTM 反解、挖到台账体积）
+  · 进水：从判定的进水管上游井，带闸孔口（塘满 95% 关闸）
+  · 出水：到判定的出水管下游井，单向拍门堰；没有更低的管就配排空泵
+  · 净空：管内底比塘底高 ≥ 0.30 m（手册 §4.14.1(p)）
+13 座有重力出水、10 座必须上泵、6 座有管道进水——其余靠地表汇流，
+**一维模型看不见地表汇流**，所以 L2 的收益在这里是**下界**，不是定论。
+
+用法：
+    python tools/build_city1d.py L1
+    python tools/build_city1d.py L2
+    python tools/build_city1d.py L1 --bbox 246000 2692000 252000 2698000   # 试跑
+产物：$SWBRAIN_SWMM_WORK/City_{L1,L2}.inp
+源库与 GDB 都只读。
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import math
+import pathlib
+import sys
+from collections import defaultdict
+
+import numpy as np
+
+HERE = pathlib.Path(__file__).resolve().parent
+ROOT = HERE.parent
+sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(HERE))
+
+from workdir import WORK  # noqa: E402
+
+import datapaths  # noqa: E402  客户数据位置：config.toml [data]
+GDB = "/vsizip/" + datapaths.get("gdb_zip").as_posix()
+
+DATUM = 100.0          # 管内底 → DEM 基准
+COVER_MED = 1.61       # 实测埋深中位数，用来补缺失/离谱的管内底
+COVER_MIN, COVER_MAX = 0.30, 20.0
+N_MANN = 0.013
+MIN_LEN = 1.0          # 1,627 根管记录长度 <1 m，给个下限免得 SWMM 不稳
+CN = 82.0              # 客户自己的曲线数
+TC_MIN = 30.0          # 汇流时间，分钟（runoff.py 由客户交付过程线反算标定）
+K_RADIUS = 1.2         # 服务半径 = K × 节点平均间距（两个已知区标定过）
+CELL = 20.0            # 服务面积栅格
+DEAD_STATUS = {"Abandoned", "Expired", "Removed"}
+
+P_MM, DUR_H = 61.0, 2.0
+SIM_H = 24.0
+SWMM_THREADS = int(__import__("os").environ.get("SWMM_THREADS", "4"))
+RAIN_STEP_MIN = 5
+
+PIPE_COLS = ["UNITID", "StartCode", "EndCode", "StartX", "StartY", "EndX", "EndY",
+             "StartElev", "EndElev", "PIPE_DIAMETER", "LineLength",
+             "INVERT_LEVEL_UPSTREAM", "INVERT_LEVEL_DOWNSTREAM", "STATUS"]
+
+
+# ------------------------------------------------------------------ 读网
+def read_pipes(bbox=None, log=print):
+    import pyogrio
+
+    kw = {"bbox": bbox} if bbox else {}
+    df = pyogrio.read_dataframe(GDB, layer="PIPELINE", read_geometry=False,
+                                columns=PIPE_COLS, **kw)
+    n0 = len(df)
+    st = df.STATUS.astype("string").fillna("")
+    df = df[~st.isin(DEAD_STATUS)].copy()
+    log(f"  管 {n0:,} → 剔掉废弃/过期/拆除 {n0 - len(df):,} 根，留 {len(df):,}")
+    return df
+
+
+def sample_dtm(x, y):
+    """在客户 5 m DTM 上取点高程；取不到（范围外 / 无数据 / 没配 DTM）的给 NaN。"""
+    x = np.asarray(x, float); y = np.asarray(y, float)
+    out = np.full(len(x), np.nan)
+    try:
+        import rasterio
+        from swbrain import db
+        path = (db.load_config(None).get("terrain") or {}).get("dtm_path")
+        if not path or not pathlib.Path(path).exists():
+            return out
+        with rasterio.open(path) as ds:
+            nod = ds.nodata
+            ok = np.isfinite(x) & np.isfinite(y)
+            vals = np.array([v[0] for v in ds.sample(zip(x[ok], y[ok]))], float)
+            bad = ~np.isfinite(vals) | (vals < -100) | ((nod is not None) & (vals == nod))
+            vals[bad] = np.nan
+            out[ok] = vals
+    except Exception:
+        pass
+    return out
+
+
+def build_nodes(df, log=print):
+    """节点表：坐标、井盖、井底。
+
+    井底取相邻管管内底的**最小值** —— 取平均会让某些管的进出口低于井底，
+    SWMM 会报错或自己抬高，结果就不是我们给的那张网了。
+    """
+    sc = df.StartCode.astype("string").fillna("").values
+    ec = df.EndCode.astype("string").fillna("").values
+    sx, sy = df.StartX.astype("float64").values, df.StartY.astype("float64").values
+    ex, ey = df.EndX.astype("float64").values, df.EndY.astype("float64").values
+    gs, ge = df.StartElev.astype("float64").values, df.EndElev.astype("float64").values
+    # **地面高程取 5 m DTM，不取 GDB 的 StartElev / EndElev**（2026-09-27 查实）：
+    # GDB 的地面和 DTM 比，68% 的节点差 >0.5 m、40% 差 >1 m；在 Mussafah 与客户模型对过，
+    # 客户井盖 3.67 m、DTM 3.73 m，GDB 记的是 0.18 m。原先按 GDB 地面判「埋深离谱」，
+    # 把 15.5% 本来正确的管底扔掉、换成「地面 − 1.61 m」，造出一批比真实低 3 m 多的「假坑」，
+    # 周围的管都往坑里掉，溢流集中在少数井、是客户模型的 2.1 倍（tools/validate_city_net.py）。
+    # 二维用的也是这张 DTM，这样一维的井盖和二维的地面自然对齐。DTM 没数的地方才退回 GDB。
+    gs_d = np.asarray(sample_dtm(sx, sy), float); ge_d = np.asarray(sample_dtm(ex, ey), float)
+    n_dtm = int(np.isfinite(gs_d).sum() + np.isfinite(ge_d).sum())
+    gs = np.where(np.isfinite(gs_d), gs_d, gs); ge = np.where(np.isfinite(ge_d), ge_d, ge)
+    log(f"  地面高程：{n_dtm:,} / {2 * len(df):,} 个端点取 DTM，其余退回 GDB")
+    iu = df.INVERT_LEVEL_UPSTREAM.astype("float64").values
+    idn = df.INVERT_LEVEL_DOWNSTREAM.astype("float64").values
+    vu = np.where((iu > 50) & (iu < 500), iu - DATUM, np.nan)
+    vd = np.where((idn > 50) & (idn < 500), idn - DATUM, np.nan)
+
+    # 管底缺失、或埋得离谱地深的端点按中位埋深补。**埋深太浅不补**：那多半是地面错了，不是管底错了——
+    # 在 Mussafah 与客户模型对过，GDB 管底 99% 一致；原先「埋深 < 0.3 m 就扔掉管底」在 DTM 有洼坑的点
+    # （如 249052_2695176：DTM 0.65 m、管底 1.16 m）把正确的管底换成 −0.96 m，一个井就冒了 9,361 m³。
+    # 太浅的由下面「井盖必须高过井底」那一步抬井盖。
+    def fix(g, v):
+        cov = g - v
+        bad = ~np.isfinite(v) | (cov > COVER_MAX)
+        return np.where(bad, g - COVER_MED, v), bad
+
+    vu, bad_u = fix(gs, vu)
+    vd, bad_d = fix(ge, vd)
+    log(f"  管内底：按中位埋深 {COVER_MED:g} m 补了 {int(bad_u.sum() + bad_d.sum()):,} 个端点"
+        f"（占 {(bad_u.sum() + bad_d.sum()) / (2 * len(df)) * 100:.1f}%）")
+
+    xy: dict[str, tuple[float, float]] = {}
+    gnd: dict[str, list[float]] = defaultdict(list)
+    inv: dict[str, float] = {}
+    for code, x, y, g, v in ((sc, sx, sy, gs, vu), (ec, ex, ey, ge, vd)):
+        for k, xx, yy, gg, vv in zip(code, x, y, g, v):
+            if k not in xy:
+                xy[k] = (float(xx), float(yy))
+            gnd[k].append(float(gg))
+            p = inv.get(k)
+            if p is None or vv < p:
+                inv[k] = float(vv)
+    ground = {k: float(np.median(v)) for k, v in gnd.items()}
+    # 井盖必须高过井底：地面数据有噪声，硬兜一下
+    for k in inv:
+        if ground[k] - inv[k] < COVER_MIN:
+            ground[k] = inv[k] + COVER_MED
+    log(f"  节点 {len(xy):,}")
+    return xy, ground, inv, (vu, vd)
+
+
+def read_outfalls(nodes: set[str], log=print):
+    import pyogrio
+
+    of = pyogrio.read_dataframe(GDB, layer="OUTFALL", read_geometry=False,
+                                columns=["UNITID", "PointCode", "INVERT_LEVEL"])
+    pc = of.PointCode.astype("string").fillna("")
+    hit = {k for k in pc if k in nodes}
+    log(f"  出水口 {len(of)} 个，端点码能对上管网的 {len(hit)}")
+    return hit
+
+
+# ------------------------------------------------------------------ 服务面积
+def served_areas(xy: dict[str, tuple[float, float]], log=print) -> dict[str, float]:
+    """最近节点法把地面摊到节点上，半径自适应、迭代到收敛。
+
+    全市 26 万节点、上千平方公里，一次性开栅格开不下，按瓦片扫。
+    """
+    from scipy.spatial import cKDTree
+
+    keys = list(xy)
+    P = np.array([xy[k] for k in keys])
+    tree = cKDTree(P)
+    x0, y0 = P[:, 0].min(), P[:, 1].min()
+    x1, y1 = P[:, 0].max(), P[:, 1].max()
+    R = 50.0
+    cnt = None
+    for it in range(6):
+        cnt = np.zeros(len(keys), dtype=np.int64)
+        pad = R + 2 * CELL
+        step = 2000.0 * CELL / 20.0            # 瓦片边长，控制内存
+        yy = np.arange(y0 - pad, y1 + pad, step)
+        for ty in yy:
+            xs = np.arange(x0 - pad, x1 + pad, CELL)
+            ys = np.arange(ty, min(ty + step, y1 + pad), CELL)
+            if len(xs) == 0 or len(ys) == 0:
+                continue
+            GX, GY = np.meshgrid(xs, ys)
+            d, j = tree.query(np.c_[GX.ravel(), GY.ravel()], k=1,
+                              distance_upper_bound=R, workers=-1)
+            sel = np.isfinite(d)
+            if sel.any():
+                np.add.at(cnt, j[sel], 1)
+        A = float(cnt.sum()) * CELL * CELL
+        Rn = K_RADIUS * math.sqrt(A / len(keys)) if A > 0 else R
+        log(f"    迭代 {it + 1}: R={R:.1f} m → 服务面积 {A / 1e6:,.1f} km²，下一轮 R={Rn:.1f}")
+        if abs(Rn - R) < 0.5:
+            R = Rn
+            break
+        R = 0.5 * (R + Rn)
+    area = {k: float(c) * CELL * CELL for k, c in zip(keys, cnt)}
+    tot = sum(area.values())
+    log(f"  服务面积合计 {tot / 1e6:,.1f} km²（收敛半径 {R:.1f} m），"
+        f"有面积的节点 {sum(1 for v in area.values() if v > 0):,}")
+    return area
+
+
+# ------------------------------------------------------------------ 写 .inp
+def unit_runoff() -> list[tuple[str, float]]:
+    """**每公顷**的产流过程线（m³/s），SCS 曲线法 + SCS 单位线。
+
+    为什么不用 SWMM 的子汇水区 + CURVE_NUMBER 下渗：那个的产流量**依赖划分**
+    —— 同样 CN=82，1,726 m² 的小区跑出 26.9 mm、10 ha 的大区跑出 17.9 mm，
+    而纯 SCS 是 23.53 mm，没有一个 CN 能同时对上。按公式先算净雨再注入，
+    产流总量就是解析值，与划分无关。这也正是客户自己三个模型的做法
+    （他们的 .inp 里没有 [SUBCATCHMENTS]），tools/runoff.py 复现时对到 +0.01%。
+
+    24 万节点不可能各写一条过程线，所以只写**一条单位面积的**，
+    每个节点用 [INFLOWS] 的 Sfactor 乘自己的面积（公顷）。
+    """
+    import runoff as R
+
+    dt_h = RAIN_STEP_MIN / 60.0
+    # 雨型取客户模型自带的 2 小时设计雨型（与 Mussafah_00 完全一致）。原先传 None，得到的是**均匀雨**——
+    # 全市一维那一轮（2026-09-26）因此与 Mussafah 不可比。取不到客户雨型时才退回均匀雨，并说出来。
+    shape = R.read_shape(WORK / "Mussafah_baseline.inp", DUR_H, log=lambda *a: None)         if (WORK / "Mussafah_baseline.inp").exists() else None
+    if shape is None:
+        print("  ! 没找到客户 2 h 设计雨型，退回均匀雨")
+    t, P_cum = R.hyetograph(P_MM, DUR_H, dt_h, shape, 0.0)
+    exc = R.scs_cum_excess(P_cum, CN)
+    inc = np.diff(exc, append=exc[-1])         # append 不是 prepend：inc[i] 是从 t[i] 起那格的净雨
+    u = R.unit_hydrograph(TC_MIN, dt_h, 10_000.0)      # 1 ha
+    q = np.convolve(inc, u, mode="full")[:len(t) + len(u)]
+    out = []
+    for i, v in enumerate(q):
+        m = int(round(i * RAIN_STEP_MIN))
+        out.append((f"{m // 60:02d}:{m % 60:02d}", float(v)))
+    vol = float(q.sum()) * dt_h * 3600.0
+    want = 10_000.0 * R.scs_cum_excess(np.array([P_MM]), CN)[0] / 1000.0
+    assert abs(vol - want) / want < 0.02, (vol, want)   # 体积必须是解析值
+    return out
+
+
+def write_inp(path: pathlib.Path, xy, ground, inv, pipes, outfalls, area,
+              ponds=None, of_dia=None, log=print):
+    of_dia = of_dia or {}
+    L = []
+    ap = L.append
+    ap("[TITLE]")
+    ap(f";; 全市一维管网（GDB 重建）　{'L2：含 23 座塘' if ponds else 'L1：既有设施'}")
+    ap("")
+    ap("[OPTIONS]")
+    for k, v in (("FLOW_UNITS", "CMS"), ("INFILTRATION", "HORTON"),
+                 ("FLOW_ROUTING", "DYNWAVE"), ("LINK_OFFSETS", "ELEVATION"),
+                 ("MIN_SLOPE", "0"), ("ALLOW_PONDING", "NO"),
+                 ("SKIP_STEADY_STATE", "NO"),
+                 ("START_DATE", "04/16/2024"), ("START_TIME", "00:00:00"),
+                 ("REPORT_START_DATE", "04/16/2024"), ("REPORT_START_TIME", "00:00:00"),
+                 # 结束时刻按 SIM_H 从开始日推算。原先日期写死 04/17、只改钟点，
+                 # --sim 6 实际跑了 30 h（2026-09-27 全市一维 v2 查出；溢出量 5 h 内已定型，结论不受影响）
+                 ("END_DATE", f"04/{16 + int(SIM_H) // 24:02d}/2024"),
+                 ("END_TIME", f"{int(SIM_H) % 24:02d}:{int(round((SIM_H % 1) * 60)):02d}:00"),
+                 ("SWEEP_START", "01/01"), ("SWEEP_END", "12/31"), ("DRY_DAYS", "0"),
+                 ("REPORT_STEP", "00:15:00"), ("WET_STEP", "00:05:00"),
+                 ("DRY_STEP", "01:00:00"), ("ROUTING_STEP", "00:00:30"),
+                 # 1,754 / 44,229 根管不到 5 m（试跑实测），动力波可变步长被最短的管卡死；
+                 # LENGTHENING_STEP 是 SWMM 自带的标准做法，THREADS 多线程。并行跑分片时线程数要跟着降
+                 ("LENGTHENING_STEP", "10"), ("THREADS", str(SWMM_THREADS))):
+        ap(f"{k}  {v}")
+    ap("")
+    ap("[REPORT]")
+    ap("INPUT  NO")
+    ap("CONTROLS  NO")
+    ap("SUBCATCHMENTS  NONE")
+    ap("NODES  NONE")
+    ap("LINKS  NONE")
+    ap("")
+    ap("[EVAPORATION]")
+    ap("CONSTANT  0.0")
+    ap("")
+
+    # 出水口节点上往往挂着好几根管，而 SWMM 要求出水口**只能有一根进水管、
+    # 不能有出水管**（ERROR 141）。所以原节点留作普通井，另起一个出水口节点，
+    # 用一根短管接过去 —— 这是标准做法，也不改变管网拓扑。
+    # 塘是 [STORAGE] 节点，不能再写进 [JUNCTIONS] —— 同名会报 ERROR 207
+    pond_ids = {p["node"] for p in (ponds or [])}
+    ap("[JUNCTIONS]")
+    for k in xy:
+        if k in pond_ids:
+            continue
+        ap(f"{k}  {inv[k]:.3f}  {max(ground[k] - inv[k], 0.5):.3f}  0  0  0")
+    ap("")
+    ap("[OUTFALLS]")
+    for k in sorted(outfalls):
+        ap(f"OUT_{k}  {inv[k] - 0.10:.3f}  FREE  NO")
+    ap("")
+
+    if ponds:
+        ap("[STORAGE]")
+        for p in ponds:
+            ap(f"{p['node']}  {p['z_floor']:.3f}  {p['depth']:.3f}  0  TABULAR  "
+               f"CRV_{p['node']}  0  0  0")
+        ap("")
+
+    ap("[CONDUITS]")
+    for c in pipes:
+        ap(f"{c['id']}  {c['n1']}  {c['n2']}  {max(c['len'], MIN_LEN):.3f}  "
+           f"{N_MANN}  {c['z1']:.3f}  {c['z2']:.3f}  0  0")
+    for k in sorted(outfalls):
+        d = of_dia.get(k, 1.0)
+        ap(f"of_{k}  {k}  OUT_{k}  10.000  {N_MANN}  {inv[k]:.3f}  {inv[k] - 0.10:.3f}  0  0")
+    ap("")
+    ap("[XSECTIONS]")
+    for c in pipes:
+        ap(f"{c['id']}  CIRCULAR  {c['d']:.3f}  0  0  0  1")
+    for k in sorted(outfalls):
+        ap(f"of_{k}  CIRCULAR  {of_dia.get(k, 1.0):.3f}  0  0  0  1")
+    if ponds:
+        for p in ponds:
+            r = math.sqrt(p["in_area"] / math.pi)
+            ap(f"OI_{p['node']}  CIRCULAR  {2 * r:.3f}  0  0  0")
+            if p.get("out_node"):
+                r2 = math.sqrt(p["out_area"] / math.pi)
+                ap(f"OO_{p['node']}  CIRCULAR  {2 * r2:.3f}  0  0  0")
+            # 应急堰：宽 5 m、高 0.5 m 的矩形
+            ap(f"OW_{p['node']}  RECT_OPEN  0.500  5.0  0  0")
+    ap("")
+
+    if ponds:
+        ap("[ORIFICES]")
+        for p in ponds:
+            # 进水：带闸孔口，按「灌满 ≈ 雨峰窗口」定径
+            ap(f"OI_{p['node']}  {p['in_node']}  {p['node']}  SIDE  "
+               f"{p['in_z']:.3f}  {CD}  YES  0")
+            # 出水：按 24 h 排空定径。不限流的话塘就成了管网的旁通管，存不住水
+            if p.get("out_node"):
+                ap(f"OO_{p['node']}  {p['node']}  {p['out_node']}  BOTTOM  "
+                   f"{p['out_z']:.3f}  {CD}  YES  0")
+        ap("")
+        ap("[WEIRS]")
+        for p in ponds:
+            # 应急溢流堰，**Gated YES**：不带闸会从堰倒灌回管网
+            ap(f"OW_{p['node']}  {p['node']}  {p['in_node']}  TRANSVERSE  "
+               f"{p['weir_z']:.3f}  1.4  YES  0")
+        ap("")
+        ap("[PUMPS]")
+        for p in ponds:
+            if p.get("pump_node"):
+                ap(f"PU_{p['node']}  {p['node']}  {p['pump_node']}  "
+                   f"PC_{p['node']}  ON  0  0")
+        ap("")
+
+    # 产流按节点注入：一条单位面积过程线，每个节点乘自己的面积（公顷）
+    ap("[INFLOWS]")
+    for k, a in area.items():
+        if a <= 0:
+            continue
+        ap(f"{k}  FLOW  TS_RUNOFF  FLOW  1.0  {a / 1e4:.5f}")
+    ap("")
+
+    ap("[CURVES]")
+    if ponds:
+        # SWMM 只认**第一行**带类型关键字（Storage / Pump4）；后续行必须是
+        # 「名字 X Y」。每行都写类型会逐行报 ERROR 211: invalid number Storage，
+        # 而且报错发生在解析阶段，整个分片直接退出 —— 全市 8 个 L2 分片里
+        # 含塘的 5 个就是这么挂的，rpt 只有 2 KB 却带着「Analysis ended」的假象。
+        for p in ponds:
+            for i, (d, aa) in enumerate(p["curve"]):
+                kind = "  Storage" if i == 0 else ""
+                ap(f"CRV_{p['node']}{kind}  {d:.3f}  {aa:.1f}")
+            if p.get("pump_node"):
+                ap(f"PC_{p['node']}  Pump4  0  0")
+                ap(f"PC_{p['node']}  {p['depth']:.3f}  {p['pump_q']:.4f}")
+    ap("")
+    ap("[TIMESERIES]")
+    for hhmm, v in unit_runoff():
+        ap(f"TS_RUNOFF  04/16/2024  {hhmm}  {v:.6f}")
+    ap("")
+    ap("[COORDINATES]")
+    for k, (x, y) in xy.items():
+        ap(f"{k}  {x:.2f}  {y:.2f}")
+    for k in sorted(outfalls):
+        x, y = xy[k]
+        ap(f"OUT_{k}  {x + 5:.2f}  {y + 5:.2f}")
+    ap("")
+    path.write_text("\n".join(L), encoding="utf-8")
+    log(f"  写出 {path.name}　{path.stat().st_size / 1048576:.1f} MB")
+
+
+def partition(pipes, nparts: int, log=print):
+    """按连通块把管分成 nparts 份，按管数均衡。
+
+    块之间不交换水（既无管相连，产流也是逐节点给的），所以分开跑再相加
+    与整跑**完全一致**。用最大块优先的贪心装箱，避免某一份特别大。
+    """
+    idx: dict[str, int] = {}
+
+    def gid(k):
+        v = idx.get(k)
+        if v is None:
+            v = len(idx); idx[k] = v
+        return v
+
+    par = []
+    for c in pipes:
+        gid(c["n1"]); gid(c["n2"])
+    par = list(range(len(idx)))
+
+    def find(x):
+        while par[x] != x:
+            par[x] = par[par[x]]; x = par[x]
+        return x
+
+    for c in pipes:
+        ru, rv = find(idx[c["n1"]]), find(idx[c["n2"]])
+        if ru != rv:
+            par[ru] = rv
+    groups: dict[int, list[int]] = {}
+    for i, c in enumerate(pipes):
+        groups.setdefault(find(idx[c["n1"]]), []).append(i)
+    order = sorted(groups.values(), key=len, reverse=True)
+    bins = [[] for _ in range(nparts)]
+    load = [0] * nparts
+    for g in order:                      # 最大块优先塞进最空的一份
+        j = load.index(min(load))
+        bins[j].extend(g); load[j] += len(g)
+    log(f"  连通块 {len(order):,} 个（最大 {len(order[0]):,} 根管）"
+        f"→ 切 {nparts} 份，每份 {min(load):,}~{max(load):,} 根管")
+    return bins
+
+
+# ------------------------------------------------------------------ 塘
+CLEAR_M = 0.30         # 管内底高出塘底的净空，手册 §4.14.1(p)
+FILL_H = 1.0           # 进水口按「灌满 ≈ 雨峰窗口」定径，2 h 雨的峰窗约 1 h
+EMPTY_H = 24.0         # 出水口按 24 h 排空定径 —— 不限流的塘不是蓄水池，是旁通管
+CD = 0.65
+
+
+def _orifice_area(q_m3s: float, head_m: float) -> float:
+    """按孔口出流反算面积：q = Cd·A·sqrt(2 g h)。"""
+    h = max(head_m, 0.1)
+    return max(q_m3s / (CD * math.sqrt(2 * 9.81 * h)), 0.01)
+
+
+def load_ponds(xy, ground, inv, log=print):
+    """把 pond_link.py 的结果接到重建的网上。
+
+    **进水口和出水口必须接在不同的井上**，否则水进来又原路流回去，
+    塘等于不存在（这是我先前写错的一处）。节点名就是 GDB 的端点码，
+    而 pond_link 已经把每座塘的进/出水管的 `start_code` / `end_code` 存下来了，
+    直接用它们，不再「找最近的井」。
+
+    出水口按 **24 h 排空**定径：不限流的重力出水会让塘变成管网的旁通管，
+    暴雨期间存不住水（tools/dig_pond5.py 里已经踩过这个坑）。
+    进水口按「灌满 ≈ 雨峰窗口」定径，太小进不去、太大变过水通道。
+    再加一道应急溢流堰，**Gated YES**——不带闸会从堰倒灌回管网。
+    """
+    f = ROOT / "out" / "pondlink" / "ponds_linked.json"
+    if not f.exists():
+        log("  缺 out/pondlink/ponds_linked.json，先跑 tools/pond_link.py"); return []
+    data = json.loads(f.read_text(encoding="utf-8"))
+
+    def pick(codes, want_high: bool):
+        """从管的两个端点码里挑一个在网里的，按井底高低取。"""
+        cand = [c for c in codes if c in inv]
+        if not cand:
+            return None
+        return max(cand, key=lambda c: inv[c]) if want_high else min(cand, key=lambda c: inv[c])
+
+def storage_curve(ss, depth: float, V: float, min_dh: float = 0.01):
+    """深度—**水面面积**曲线，外加「这条曲线是怎么来的」。
+
+    SWMM 的 TABULAR 存储曲线要的是水面面积，它自己按梯形积分还原体积，
+    所以面积是 dV/dh —— **不是 V/h**。V/h 是「到该深度为止的平均面积」，
+    对等截面的塘碰巧数值接近，所以这个错一直被掩盖着；
+    一旦碰上 h→0 就会炸：台账里有三座塘 z_floor == z_top（设计深度记成 0），
+    首点 h=0 让 V/max(h,1e-6) 放大 10⁶ 倍，写出 5.6e11 m² 的水面
+    （比整个酋长国还大），SWMM 报 ERROR 171，整个分片退出。
+
+    深度还必须**严格递增**：台账那 10 个点会挤在 [0, 0.02] 内，
+    写成 {d:.3f} 后全塌成同一个 X，同样是 ERROR 171。
+
+    返回 (curve, how)：how 说明用的是台账分布还是等截面兜底，要写进产物备查。
+    """
+    depth = max(float(depth), 0.3)
+    flat = max(float(V) / depth, 1.0)
+    uniq = {}
+    for h, v in ss or []:
+        try:
+            hh, vv = round(float(h), 3), float(v)
+        except (TypeError, ValueError):
+            continue
+        if hh > 0 and vv > 0:
+            uniq[hh] = max(uniq.get(hh, 0.0), vv)
+    pts = sorted(uniq.items())
+    # 相邻深度差不到 min_dh 的点写出来会塌成同一个 X，先抽稀
+    thin = []
+    for hh, vv in pts:
+        if not thin or hh - thin[-1][0] >= min_dh:
+            thin.append((hh, vv))
+    if len(thin) < 2 or thin[-1][0] < 0.1:
+        # 台账没给可用的深度分布（典型：z_floor == z_top），按设计库容做等截面
+        return [(0.0, flat), (round(depth, 3), flat)], "等截面（台账无可用深度分布）"
+
+    curve, prev_h, prev_v = [], 0.0, 0.0
+    areas = []
+    for hh, vv in thin:
+        a = max((vv - prev_v) / (hh - prev_h), 1.0)
+        areas.append(a)
+        prev_h, prev_v = hh, vv
+    curve.append((0.0, areas[0]))                 # 底面积取最底一段的增量面积
+    for (hh, _), a in zip(thin, areas):
+        curve.append((hh, a))
+    return curve, "台账逐级库容的增量面积"
+
+
+    out, skipped = [], []
+    for d in data:
+        des, lk = d["design"], d["link"]
+        z_floor, z_top = float(des["z_floor_m"]), float(des["z_top_m"])
+        depth = max(z_top - z_floor, 0.3)
+        V = float(des["volume_design_m3"])
+        if V <= 0:
+            skipped.append((d["unitid"], "设计库容为 0")); continue
+        # 深度—面积曲线（SWMM 的 TABULAR 存储曲线要的是**水面面积**，不是体积）
+        curve, curve_how = storage_curve(des.get("stage_storage"), depth, V)
+
+        fin = lk.get("inflow"); fout = lk.get("outflow")
+        in_node = pick([fin["start_code"], fin["end_code"]], True) if fin else None
+        out_node = pick([fout["start_code"], fout["end_code"]], False) if fout else None
+        if in_node is None and out_node is None:
+            skipped.append((d["unitid"], "进出水管的端点都不在重建的网里")); continue
+        # 进水口缺了就用出水管的上游端顶一下，反之亦然；但两者不能同一个井
+        if in_node is None:
+            in_node = pick([fout["start_code"], fout["end_code"]], True)
+        if out_node is not None and out_node == in_node:
+            out_node = None
+
+        rec = {"node": "PND_" + str(d["unitid"]), "unitid": d["unitid"],
+               "z_floor": z_floor, "depth": depth, "curve": curve,
+               "curve_how": curve_how, "vol": V,
+               "in_node": in_node,
+               "in_z": max(z_floor + CLEAR_M, min(inv.get(in_node, z_floor) + CLEAR_M, z_top - 0.1)),
+               "in_area": _orifice_area(V / (FILL_H * 3600.0), depth / 2.0),
+               "weir_z": z_top}
+        if out_node is not None:
+            rec["out_node"] = out_node
+            rec["out_z"] = z_floor
+            rec["out_area"] = _orifice_area(V / (EMPTY_H * 3600.0), depth / 2.0)
+        else:
+            rec["pump_node"] = in_node          # 没有更低的管，只能往回泵
+            rec["pump_q"] = V / (EMPTY_H * 3600.0)
+        out.append(rec)
+
+    for u, why in skipped:
+        log(f"  {u}：{why}，跳过")
+    log(f"  塘 {len(out)}/{len(data)} 座接上（重力出水 "
+        f"{sum(1 for p in out if p.get('out_node'))} 座、泵 "
+        f"{sum(1 for p in out if p.get('pump_node'))} 座）")
+    return out
+
+
+# ------------------------------------------------------------------ 塘作为无出口管网的末端（L2，第二版）
+LINK_M = 100.0         # 无出口管网的最低井离塘轮廓多近才接
+
+
+def terminal_ponds(xy, inv, pipes, outs, keep_pond=None, log=print):
+    """已建成的塘接进管网，第二版。返回 (ponds, links)。
+
+    第一版（load_ponds）把进水口挂在 pond_link 判定的「出水管」上游端——接反了。
+    Madinat Al Riyad 查实（2026-09-27）：那一片 29 块 ≥ 50 节点的管网没有登记出水口，
+    最大几块的最低井离某座塘只有 12–28 m；所谓「出水管」其实是往塘里排水的末端管。
+    所以：**每块没有出口的管网，最低井 100 m 内有塘，就用一根带单向拍门的短管接进最近的塘**；
+    pond_link 认出的进水管也接上。塘是末端，不设出水口和排空泵（2 h 的雨、6 h 的窗口里本来不排空）。
+    拍门是必须的：没有它，塘从地面接了水、水位一涨就倒灌回管网（试跑里 RZS_20 漏掉 30 万 m³）。
+    **这条接法是按位置与标高推断的，不是台账写的。**
+    keep_pond(unitid, centroid) → bool 用来只取某一片的塘（试跑用）。
+    """
+    import geopandas as gpd
+    from shapely.geometry import Point, mapping
+    P = gpd.read_file(ROOT / "console" / "data" / "ponds_l2.geojson").to_crs(32640)
+    if keep_pond:
+        P = P[[keep_pond(u, g.centroid) for u, g in zip(P.unitid, P.geometry)]]
+    LK = {d["unitid"]: d for d in json.loads((ROOT / "out" / "pondlink" / "ponds_linked.json").read_text(encoding="utf-8"))}
+    par = {}
+
+    def f(x):
+        par.setdefault(x, x)
+        while par[x] != x:
+            par[x] = par[par[x]]; x = par[x]
+        return x
+    dmax = defaultdict(float)
+    for c in pipes:
+        par[f(c["n1"])] = f(c["n2"])
+        dmax[c["n1"]] = max(dmax[c["n1"]], c["d"]); dmax[c["n2"]] = max(dmax[c["n2"]], c["d"])
+    comp = defaultdict(list)
+    for n in xy:
+        comp[f(n)].append(n)
+    term = defaultdict(list)
+    for r, ns in comp.items():
+        if len(ns) < 2 or any(n in outs for n in ns):
+            continue
+        low = min(ns, key=lambda n: inv[n])
+        d = P.geometry.distance(Point(xy[low])); j = d.idxmin()
+        if d[j] <= LINK_M:
+            term[P.unitid[j]].append((low, float(d[j]), len(ns)))
+    ponds, links = [], []
+    for _, p in P.iterrows():
+        u = p.unitid; des = (LK.get(u) or {}).get("design")
+        if not des or float(des["volume_design_m3"]) <= 0:
+            log(f"  {u}：台账没有设计库容，跳过"); continue
+        z_floor, z_top = float(des["z_floor_m"]), float(des["z_top_m"])
+        depth = max(z_top - z_floor, 0.3)
+        curve, how = storage_curve(des.get("stage_storage"), depth, float(des["volume_design_m3"]))
+        node = "PND_" + u
+        ins = list(term.get(u, []))
+        fin = (LK[u].get("link") or {}).get("inflow")
+        if fin:
+            cand = [c for c in (fin["start_code"], fin["end_code"]) if c in xy]
+            if cand:
+                k = max(cand, key=lambda c: inv[c])
+                if k not in [x[0] for x in ins]:
+                    ins.append((k, float(fin.get("dist_m") or 20.0), 0))
+        c0 = p.geometry.centroid
+        ponds.append({"node": node, "unitid": u, "z_floor": z_floor, "depth": depth, "curve": curve,
+                      "curve_how": how, "vol": float(des["volume_design_m3"]), "xy": (c0.x, c0.y),
+                      "footprint": mapping(p.geometry), "inflows": ins})
+        for k, dist, nn in ins:
+            links.append({"id": f"PI_{u}_{k}", "n1": k, "n2": node, "len": max(dist, 10.0),
+                          "z1": inv[k], "z2": max(z_floor, min(inv[k], z_top)), "d": max(dmax.get(k, 0.6), 0.6),
+                          "uid": "", "why": f"无出口管网（{nn} 节点）的最低井" if nn else "pond_link 认出的进水管"})
+    log(f"  塘 {len(ponds)} 座；接进塘的管 {len(links)} 根（无出口网的末端 "
+        f"{sum(1 for l in links if l['why'].startswith('无'))} 根），{sum(1 for p in ponds if not p['inflows'])} 座没有管道进水")
+    return ponds, links
+
+
+def append_ponds(path: pathlib.Path, ponds, links):
+    """把塘（蓄水节点 + 库容曲线 + 坐标）和接塘管的拍门写进 write_inp 已写好的 .inp。"""
+    if not ponds:
+        return
+    txt = path.read_text(encoding="utf-8")
+    sto = "[STORAGE]\n" + "".join(f"{p['node']}  {p['z_floor']:.3f}  {p['depth']:.3f}  0  TABULAR  CRV_{p['node']}  0  0  0\n"
+                                  for p in ponds) + "\n"
+    crv = "".join(f"CRV_{p['node']}{'  Storage' if i == 0 else ''}  {d:.3f}  {aa:.1f}\n"
+                  for p in ponds for i, (d, aa) in enumerate(p["curve"]))
+    crd = "".join(f"{p['node']}  {p['xy'][0]:.2f}  {p['xy'][1]:.2f}\n" for p in ponds)
+    los = "[LOSSES]\n" + "".join(f"{l['id']}  0  0  0  YES  0\n" for l in links) + "\n"
+    txt = txt.replace("[CONDUITS]", sto + "[CONDUITS]", 1)
+    txt = txt.replace("[CURVES]\n", "[CURVES]\n" + crv, 1)
+    txt = txt.replace("[COORDINATES]\n", "[COORDINATES]\n" + crd, 1)
+    txt = txt.replace("[XSECTIONS]", los + "[XSECTIONS]", 1)
+    path.write_text(txt, encoding="utf-8")
+
+
+# ------------------------------------------------------------------ 主流程
+def main(argv=None):
+    sys.stdout.reconfigure(encoding="utf-8")
+    ap = argparse.ArgumentParser(description="从 GDB 重建全市一维网，出 L1 / L2")
+    ap.add_argument("state", choices=["L1", "L2"])
+    ap.add_argument("--bbox", nargs=4, type=float, default=None,
+                    metavar=("X0", "Y0", "X1", "Y1"), help="只建这个范围（试跑用）")
+    ap.add_argument("--tag", default="", help="输出文件名后缀")
+    ap.add_argument("--sim", type=float, default=None,
+                    help="演算窗口小时数。默认 24；这场雨的累计溢出量 4 h 就 100%% 定型，6 h 足够，且耗时减半")
+    ap.add_argument("--parts", type=int, default=1,
+                    help="按连通块切成几份并行跑（块间不交换水，切分是精确的）")
+    a = ap.parse_args(argv)
+    global SIM_H
+    if a.sim:
+        SIM_H = float(a.sim)
+
+    print(f"重建全市一维网（{a.state}）：")
+    df = read_pipes(tuple(a.bbox) if a.bbox else None)
+    xy, ground, inv, (vu, vd) = build_nodes(df)
+    outs = read_outfalls(set(xy))
+
+    sc = df.StartCode.astype("string").fillna("").values
+    ec = df.EndCode.astype("string").fillna("").values
+    ln = df.LineLength.astype("float64").values
+    dia = df.PIPE_DIAMETER.astype("float64").values / 1000.0
+    uid = df.UNITID.astype("string").fillna("").values
+    pipes, flip = [], 0
+    for i in range(len(df)):
+        n1, n2 = sc[i], ec[i]
+        if n1 == n2:
+            continue
+        z1, z2 = float(vu[i]), float(vd[i])
+        if z2 > z1:                      # 记录的「下游」反而高 → 反过来
+            n1, n2, z1, z2 = n2, n1, z2, z1
+            flip += 1
+        # 管口不得低于井底
+        z1 = max(z1, inv[n1]); z2 = max(z2, inv[n2])
+        d = dia[i] if dia[i] > 0 else 0.3
+        pipes.append({"id": f"c_{i}", "n1": n1, "n2": n2,
+                      "len": float(ln[i]) if ln[i] > 0 else MIN_LEN,
+                      "z1": z1, "z2": z2, "d": float(d), "uid": uid[i]})
+    print(f"  管 {len(pipes):,} 根（按管内底翻转流向 {flip:,} 根）")
+
+    print("  摊产流面积（最近节点法，半径自适应）：")
+    area = served_areas(xy)
+
+    # L2：塘作为无出口管网的末端（第二版，terminal_ponds）。接塘管进 pipes 一起参与切片——
+    # 排进同一座塘的几块网必须落在同一份里，否则塘里的水会被拆开算
+    ponds, links = (terminal_ponds(xy, inv, pipes, outs) if a.state == "L2" else ([], []))
+    pond_ids = {p["node"] for p in ponds}
+    for p in ponds:
+        area[p["node"]] = 0.0
+    pipes = pipes + links
+
+    WORK.mkdir(parents=True, exist_ok=True)
+    # 出水短管的管径取该节点上最大的一根，别把出口卡细了
+    of_dia = {}
+    for c in pipes:
+        for nd in (c["n1"], c["n2"]):
+            if nd in outs and c["d"] > of_dia.get(nd, 0.0):
+                of_dia[nd] = c["d"]
+
+    if a.parts <= 1:
+        out = WORK / f"City_{a.state}{a.tag}.inp"
+        write_inp(out, xy, ground, inv, pipes, outs, {k: v for k, v in area.items() if k not in pond_ids}, None, of_dia)
+        append_ponds(out, ponds, links)
+        n_sub = sum(1 for v in area.values() if v > 0)
+        print(f"\n{a.state}：井 {len(xy) - len(outs):,}　出水口 {len(outs)}　管 {len(pipes):,}"
+              f"　子汇水区 {n_sub:,}（{sum(area.values()) / 1e6:,.1f} km²）"
+              + (f"　塘 {len(ponds)}" if ponds else ""))
+    else:
+        bins = partition(pipes, a.parts)
+        tot_a, tot_p = 0.0, 0
+        for i, ids in enumerate(bins):
+            sub_pipes = [pipes[j] for j in ids]
+            nd = {c["n1"] for c in sub_pipes} | {c["n2"] for c in sub_pipes}
+            sub_ponds = [p for p in ponds if p["node"] in nd]
+            sub_links = [c for c in sub_pipes if c["n2"] in pond_ids]
+            nd = {k for k in nd if k not in pond_ids}                  # 塘写成 [STORAGE]，不写成井
+            tot_p += len(sub_ponds)
+            sar = {k: area.get(k, 0.0) for k in nd}
+            tot_a += sum(sar.values())
+            out = WORK / f"City_{a.state}{a.tag}_p{i + 1}.inp"
+            write_inp(out, {k: xy[k] for k in nd}, {k: ground[k] for k in nd},
+                      {k: inv[k] for k in nd}, sub_pipes, outs & nd, sar,
+                      None, of_dia, log=lambda *x: None)
+            append_ponds(out, sub_ponds, sub_links)
+            print(f"    第 {i + 1}/{a.parts} 份：管 {len(sub_pipes):,}　节点 {len(nd):,}"
+                  f"　出水口 {len(outs & nd)}　{sum(sar.values()) / 1e6:,.1f} km²"
+                  + (f"　塘 {len(sub_ponds)}" if sub_ponds else "") + f"　→ {out.name}")
+        print(f"\n{a.state}：切 {a.parts} 份，合计 {len(pipes):,} 根管、{tot_a / 1e6:,.1f} km²"
+              + (f"、塘 {tot_p}" if ponds else ""))
+        print("  块间不交换水，分开跑再把水量相加 = 整跑，不是近似")
+    print(f"雨：{P_MM:g} mm / {DUR_H:g} h（客户 2 h 设计雨型），演算 {SIM_H:g} h，CN={CN:.0f}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

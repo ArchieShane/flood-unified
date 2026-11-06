@@ -1,0 +1,39 @@
+# 一二维模型输入需求清单 × 现有供给（数据现状分析 · 缺口矩阵）。
+# status：有 = 有且基本可用；有·有问题 = 有但质量问题影响建模；部分 = 只覆盖部分范围或部分字段；无 = 没有
+# evidence 指向探查或试点的证据；ask = 要向客户要什么（进缺口清单）。
+requirements:
+  - {group: 管网, item: 管段几何与拓扑, need: SWMM 一维, sources: [S02, S01], status: 有·有问题,
+     evidence: "S02 26.1 万根；上下游编号多为 NC；试点 RD-A 融合后仍有 C7 32、C8 28 处",
+     ask: ""}
+  - {group: 管网, item: 管径, need: SWMM, sources: [S02], status: 有, evidence: "S02 全部有值（0 个缺失）；个别 160 mm 与模型 300 mm 冲突", ask: ""}
+  - {group: 管网, item: 管底高程, need: SWMM, sources: [S02, 顾问模型], status: 有·有问题,
+     evidence: "S02 约 3.2 万根为 0（缺失）；RD-A 试点 228 处与 AECOM 不一致；基准 = NADD + 100 m", ask: "缺失管底的补测或竣工图"}
+  - {group: 管网, item: 糙率, need: SWMM, sources: [顾问模型, S40], status: 部分, evidence: "资产库没有；只有顾问模型里有（0.011–0.013）", ask: "确认按材质取 WA-726 值"}
+  - {group: 管网, item: 检查井井盖、井底, need: SWMM + 一二维耦合, sources: [S02], status: 有·有问题,
+     evidence: "9 月 GDB 没有检查井层，10 月 shapefile 才有 33,626 个；井盖整体比 DTM 低约 0.4 m；雨水口成片高程错（RD-A 10 片约 100 个）",
+     ask: "资产库高程与 DTM 的基准关系；成片错误的核实"}
+  - {group: 管网, item: 雨水口（进水能力）, need: 一二维耦合, sources: [S02], status: 部分, evidence: "167,470 个点，有尺寸字段但多为空；进水能力（格栅面积、类型）缺", ask: "雨水口类型与格栅尺寸"}
+  - {group: 管网, item: 出水口及边界, need: SWMM 边界, sources: [S02, S40, S21], status: 部分,
+     evidence: "资产库出水口只有 254 个（模型里多得多），有拍门类型；Makani 另有艾因 403 个、宰夫拉 163 个及自由排放点 144 个；尾水按 WA-726-1 §4.8 +1.3 m", ask: "出水口清单补全；哪些排海、哪些排湖 / 塘；潮位"}
+  - {group: 泵站, item: 现状泵站能力, need: SWMM 泵, sources: [S02, 顾问模型], status: 有·有问题,
+     evidence: "资产库 103 条泵记录 FLOW_RATE 多为 0，容量只在备注；AECOM / Parsons 模型有泵曲线；全市 250 m 计算漏建 158 条", ask: "每座泵站的额定流量、台数、开停泵水位、出水点"}
+  - {group: 泵站, item: 湿井、压力管、出水点, need: SWMM, sources: [S02, 顾问模型], status: 部分, evidence: "资产库压力管 221 根；湿井在顾问模型里；Makani 有湿井 30 个、泵站结构 43 座，但容量字段全为 0", ask: "同上"}
+  - {group: 蓄水, item: 已建成塘（L1）, need: SWMM 蓄水, sources: [S02, S16, S21], status: 有·有问题,
+     evidence: "资产库 POND 23 座（10 月才有）；Existing Storage 46 个面；部分高程基准混用（+100 与原值）；Makani 另有蓄水结构 20 个、水面 3,555 个", ask: "塘的库容曲线、进出水口"}
+  - {group: 蓄水, item: 渗井, need: 蓄水 / 下渗, sources: [S02], status: 有·有问题, evidence: "993 个，731 个没有可用尺寸", ask: "渗井尺寸与下渗率"}
+  - {group: 措施, item: L2 临时措施的设计（塘、泵、压力管）, need: L2 / L2+planned 态, sources: [S10, S11, S13, S15], status: 部分,
+     evidence: "Parsons 25 个模型、AECOM 临时干预情景；5 个模型在不同批次里内容不同", ask: "每项措施对应哪个模型版本"}
+  - {group: 措施, item: L2 措施的状态、交付线, need: 分态, sources: [S30], status: 部分, evidence: "热点表有 IDD 状态但只到热点一级，不到设施；交付线全无", ask: "IDD 措施与设施的对照表、交付线"}
+  - {group: 措施, item: 级别定义（L1 / L2 / L3）, need: 分态, sources: [S43, 定义图], status: 有·有问题, evidence: "两份客户材料冲突（泵归 L2 还是 L3 等）", ask: "确认定义（已备邮件）"}
+  - {group: 产流, item: 子汇水区（面积、CN、Tc、出口）, need: SWMM 产流, sources: [顾问模型], status: 部分,
+     evidence: "只在有顾问模型的汇水区有；AECOM 成对地块面积算两遍；Parsons 部分模型 0 个子汇水区", ask: "全市汇水区与下垫面参数"}
+  - {group: 产流, item: 土地利用 / 不透水率, need: 产流, sources: [S21], status: 有, evidence: "Makani 776 张表；RD-A 已用来算不透水比例", ask: ""}
+  - {group: 地形, item: DTM, need: ANUGA 二维, sources: [S20], status: 有·有问题, evidence: "5 m，全市；坐标系有完整定义（UTM 40N，未带 EPSG 代码），高程基准没声明；与资产库井盖差 0.4 m", ask: "DTM 的高程基准与采集时间"}
+  - {group: 地形, item: 建筑、路缘、下穿通道等细地形, need: ANUGA, sources: [S21], status: 部分, evidence: "Makani 有建筑与道路面、地形断裂线 97.7 万条、沟渠 8,254 条；下穿通道没有专门数据", ask: "下穿通道清单与断面"}
+  - {group: 降雨与边界, item: 设计暴雨（雨量、历时、雨型）, need: 驱动, sources: [S40, S43, 顾问模型], status: 有,
+     evidence: "WA-726 IDF；客户公式文档 61 mm / 1 h、24 h；SCS II 型；顾问模型里的雨型", ask: ""}
+  - {group: 降雨与边界, item: 实测降雨（2024-04、2026-03 等）, need: 率定 / 复演, sources: [], status: 无, evidence: "只有报告里的日雨量，没有雨量站过程", ask: "NCM 雨量站逐 5–15 分钟记录"}
+  - {group: 降雨与边界, item: 潮位, need: 出水口边界, sources: [S40], status: 部分, evidence: "只有设计值 +1.3 m NADD；没有潮位过程", ask: "潮位站记录或设计潮位过程"}
+  - {group: 验证, item: 积水记录（位置、水深、时长）, need: 率定 / 验证, sources: [S30], status: 部分, evidence: "热点表有位置和重要度，没有实测水深、时长", ask: "历史事件的积水观测、照片、工单"}
+  - {group: 验证, item: 管网液位 / 流量观测, need: 率定, sources: [S21], status: 无, evidence: "Makani 有雨水流量计表 3 张，结构在、0 行", ask: "泵站运行记录（SCADA）、液位计、流量计数据"}
+  - {group: 元数据, item: 字段定义、单位、值域（要素目录）, need: 全部, sources: [S46, S48], status: 部分, evidence: "S48 有 UDM-SW 官方字段说明和值域（引自客户的 Unified Schema V7），但多数字段没写单位；MOVABLE_PUMP.FLOW_RATE 单位不明；资产库状态值大量在官方值域外", ask: "Unified Schema V7 原文；各字段单位"}

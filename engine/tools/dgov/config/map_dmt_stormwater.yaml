@@ -1,0 +1,121 @@
+# DMT 全市雨水资产库（shapefile 导出）→ 标准结构。字段名是 shapefile 截断后的 10 个字符。
+# 取值操作：from（来源字段）、offset / scale（换算）、null_if（视为缺失的值）、map（值对照）、const（常量）、date（日期，去掉占位日期）、
+#           plausible（换算后的合理范围；超出就退回原值再判一次，原值合理则用原值并把置信度降为 D，都不合理记缺失）。
+source: dmt_stormwater
+crs: 32640
+id_field: UNITID
+null_text: ["N/A", "NA", "Undefined", "UNDEFINED", "None", "nan", "", "NC"]
+null_dates: ["1899-12-30", "1600-11-01"]
+elev: &elev {offset: -100.0, null_if: [0, 0.0], plausible: [-30, 200]}   # GDB 高程 = NADD + 100；0 是缺失
+layers:
+  PIPELINE:
+    target: link
+    un: [StormwaterLine, Pipe, by_kind]
+    kind:
+      field: PIPE_SUBTY
+      map: {GravitLine: gravity, PressrLine: force, Abandoned: abandoned, LocSupLine: local_supply}
+      refine: {field: PIPE_TYPE, map: {Perforated: perforated}}      # 穿孔管单独一类（Esri: Perforated Pipe）
+    fields:
+      from_src: {from: ASSET_BEFO}
+      to_src: {from: ASSET_AFTE}
+      diameter_mm: {from: PIPE_DIAME, null_if: [0]}
+      upelev: {from: INVERT_LEV, <<: *elev}
+      downelev: {from: INVERT_L_1, <<: *elev}
+      length_attr: {from: PIPE_LENGT, null_if: [0]}
+      material: {from: PIPE_MATER}
+      install_date: {from: ASSET_INST, date: true}
+      status_src: {from: STATUS}
+      migration_src: {from: INFORMIGRA}
+  MANHOLECHAMBER:
+    target: node
+    un: [StructureJunction, Sewer Storm Vault, Manhole]
+    kind: {field: MH_CHAMBER, map: {Manhole: manhole, JctChamber: junction_chamber, ConManhole: manhole, Other: manhole}}
+    fields: &nodef
+      rim_elev: {from: COVER_LEVE, <<: *elev}
+      invert_elev: {from: INVERT_LEV, <<: *elev}
+      install_date: {from: ASSET_INST, date: true}
+      status_src: {from: STATUS}
+      migration_src: {from: INFORMIGRA}
+      outfall_id_src: {from: OUTFALLID}
+      comments_src: {from: COMMENTS}
+  CATCHBASIN:
+    target: node
+    un: [StormwaterDevice, Catch Basin, Drop Inlet]
+    kind: {const: catchbasin}
+    fields: *nodef
+  INLET:
+    target: node
+    un: [StormwaterDevice, BMP Inlet, Unknown]
+    kind: {const: inlet}
+    fields:
+      rim_elev: {from: COVER_LEVE, <<: *elev}
+      invert_elev: {from: INVERT_LEV, <<: *elev}
+      status_src: {from: STATUS}
+      outfall_id_src: {from: OUTFALLID}
+  SW_CAPPEDEND:
+    target: node
+    un: [StormwaterDevice, Connection, Pipe Connection]
+    kind: {const: capped_end}
+    fields: *nodef
+  PETROLINTERCEPTOR:
+    target: node
+    un: [StructureJunction, Sewer Storm Vault, Unknown]
+    kind: {const: interceptor}
+    fields: *nodef
+  OUTFALL:
+    target: node
+    un: [StormwaterDevice, Outlet, by_flap]
+    kind: {const: outfall}
+    fields:
+      invert_elev: {from: INVERT_LEV, <<: *elev}
+      flap: {from: UNITTYPEDE, map: {"Outfall with Flap Gate": "yes", "Outfall HeadWall": "no", "Standard": "no"}}
+      status_src: {from: STATUS}
+      migration_src: {from: INFORMIGRA}
+      comments_src: {from: COMMENTS}
+  PUMP:
+    target: pump
+    un: [StormwaterDevice, Pump, Pump]
+    kind: {const: station}
+    fields:
+      station_id: {from: PUMP_STATI}
+      flow_lps: {from: FLOW_RATE, null_if: [0]}          # 单位待核实（多数为 0，容量写在 COMMENTS 里）
+      head_m: {from: HEAD, null_if: [0]}
+      n_pumps: {from: NO_OF_PUMP, null_if: [0]}
+      comments_src: {from: COMMENTS}
+      status_src: {from: STATUS}
+      migration_src: {from: INFORMIGRA}
+  MOVABLE_PUMP:
+    target: pump
+    un: [StormwaterDevice, Pump, Pump]
+    kind: {const: movable}
+    fields:
+      flow_lps: {from: FLOW_RATE, scale: 0.277778, null_if: [0]}   # 推断 FLOW_RATE 为 m³/h（12 寸泵 1,250–2,050 m³/h），换成 L/s；置信度 D
+      head_m: {from: HEAD, null_if: [0]}
+      comments_src: {from: COMMENTS}
+      status_src: {from: STATUS}
+    conf_override: {flow_lps: D}
+  POND:
+    target: storage
+    un: [StructureBoundary, BMP Boundary, Detention Basin]
+    kind: {const: pond}
+    fields:
+      volume_m3: {from: VOLUME, null_if: [0]}
+      depth_m: {from: DEPTH, null_if: [0]}
+      floor_elev: {from: BOTTOM_FLO, <<: *elev}
+      rim_elev: {from: COVER_LEVE, <<: *elev}
+      area_m2: {from: ASSET_AREA, null_if: [0]}
+      comments_src: {from: COMMENTS}
+      status_src: {from: STATUS}
+      migration_src: {from: INFORMIGRA}
+  SOAKAWAY:
+    target: storage
+    un: [StormwaterDevice, BMP Point, Infiltration Feature]
+    kind: {const: soakaway}
+    fields:
+      length_m: {from: SOAKAWAY_L, null_if: [0]}
+      width_m: {from: SOAKAWAY_W, null_if: [0]}
+      depth_m: {from: SOAKAWAY_D, null_if: [0]}
+      floor_elev: {from: BOTTOM_LEV, <<: *elev}
+      rim_elev: {from: COVER_LEVE, <<: *elev}
+      status_src: {from: STATUS}
+      comments_src: {from: COMMENTS}

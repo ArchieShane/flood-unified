@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 430" role="img" aria-label="挡导 · 土堤 / Jersey 护栏 / 沙袋" font-family="IBM Plex Sans, 'Noto Sans SC', sans-serif">
+  <defs>
+    <pattern id="soil" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#efe6d2"/><circle cx="3" cy="3" r="1" fill="#cdbb95"/><circle cx="8" cy="7" r="1" fill="#cdbb95"/></pattern>
+    <pattern id="conc" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#c9ced6"/><path d="M0 8L8 0" stroke="#aeb5bf" stroke-width="1"/></pattern>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 8 8"><path d="M0,0 L8,4 L0,8 z" fill="#1d4ed8"/></marker>
+    <marker id="dm" markerWidth="9" markerHeight="9" refX="4" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 8 8"><path d="M0,4 L8,4 M4,0 L4,8" stroke="#334155" stroke-width="1.2"/></marker>
+  </defs>
+  <rect width="780" height="430" fill="#f8fafc"/>
+  <text x="20" y="28" font-size="17" font-weight="700" fill="#0f172a">挡导 · 土堤 / Jersey 护栏 / 沙袋</text>
+  <text x="760" y="28" font-size="12" text-anchor="end" fill="#7c3aed" font-weight="600">客户分级：L2 · IDD / Municipality</text>
+  <rect x="0" y="300" width="780" height="100" fill="url(#soil)"/><rect x="0" y="294" width="780" height="6" fill="#475569"/>
+  <rect x="0" y="250" width="560" height="44" fill="#60a5fa" opacity=".45"/>
+  <path d="M30 270 H200" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#ar)"/><text x="30" y="242" font-size="11.5" fill="#1e3a8a" font-weight="600">地表来水</text>
+  <path d="M250 294 L278 230 L312 230 L340 294 Z" fill="#b08a5a" stroke="#7c5c34"/><text x="295" y="322" font-size="12" text-anchor="middle" fill="#5b4520" font-weight="600">土堤</text>
+  <path d="M400 294 L408 270 L414 226 L430 226 L436 270 L444 294 Z" fill="url(#conc)" stroke="#64748b"/><text x="422" y="322" font-size="12" text-anchor="middle" fill="#334155" font-weight="600">Jersey 护栏</text>
+  <rect x="500" y="282" width="18" height="13" rx="4" fill="#e7dcc3" stroke="#a8946a"/><rect x="518" y="282" width="18" height="13" rx="4" fill="#e7dcc3" stroke="#a8946a"/><rect x="536" y="282" width="18" height="13" rx="4" fill="#e7dcc3" stroke="#a8946a"/><rect x="506" y="268" width="18" height="13" rx="4" fill="#e7dcc3" stroke="#a8946a"/><rect x="524" y="268" width="18" height="13" rx="4" fill="#e7dcc3" stroke="#a8946a"/><rect x="542" y="268" width="18" height="13" rx="4" fill="#e7dcc3" stroke="#a8946a"/><rect x="500" y="254" width="18" height="13" rx="4" fill="#e7dcc3" stroke="#a8946a"/><rect x="518" y="254" width="18" height="13" rx="4" fill="#e7dcc3" stroke="#a8946a"/><rect x="536" y="254" width="18" height="13" rx="4" fill="#e7dcc3" stroke="#a8946a"/><rect x="506" y="240" width="18" height="13" rx="4" fill="#e7dcc3" stroke="#a8946a"/><rect x="524" y="240" width="18" height="13" rx="4" fill="#e7dcc3" stroke="#a8946a"/><rect x="542" y="240" width="18" height="13" rx="4" fill="#e7dcc3" stroke="#a8946a"/>
+  <text x="530" y="322" font-size="12" text-anchor="middle" fill="#5b4520" font-weight="600">沙袋</text>
+  <path d="M570 294 V180 H700 V294" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/><path d="M600 294 V230 Q635 200 670 230 V294 Z" fill="#1f2937"/>
+  <text x="635" y="172" font-size="11.5" text-anchor="middle" fill="#334155" font-weight="600">要保护的入口（隧道口 / 地下通道）</text>
+  <path d="M232 294 V226" stroke="#334155" stroke-width="1.2" marker-start="url(#dm)" marker-end="url(#dm)"/><text x="226" y="220" font-size="10.5" text-anchor="end" fill="#334155">挡水高度 = 预计水深 + 0.3 m 超高</text>
+  <path d="M300 210 Q300 150 180 130" stroke="#1d4ed8" stroke-width="2" fill="none" stroke-dasharray="6 4" marker-end="url(#ar)"/>
+  <text x="100" y="122" font-size="11" fill="#1e3a8a">导向可以淹的地方</text>
+  <text x="20" y="418" font-size="10.5" fill="#64748b">不减少水量，只改变水去哪里：护住重要地点，把水导向可以接受积水的地方。二维里表达为地形上的障碍。示意，不是施工图。</text>
+</svg>

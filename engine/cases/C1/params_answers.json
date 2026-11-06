@@ -1,0 +1,142 @@
+{
+ "A1": {
+  "status": "agreed",
+  "choice": "c1_487",
+  "choice_label": "C1 的 7 个热点 + ADM-487",
+  "value": "",
+  "note": ""
+ },
+ "A2": {
+  "status": "agreed",
+  "choice": "city_chk",
+  "choice_label": "全市模型截取，用 Parsons 结果做校核",
+  "value": "",
+  "note": ""
+ },
+ "A3": {
+  "status": "agreed",
+  "choice": "city",
+  "choice_label": "C1 各热点汇水区外扩 300 m，自由出流（同全市）",
+  "value": "8 个热点（C1 的 7 个 + ADM-487）的地表 + 管网汇水区并集外扩 300 m = 42.8 km²（tools/hotspot_catchments.py --tag _C1）；ADM-90 地表汇水区 2,175 ha 碰到窗口边未收敛，窗口外来水算不进，列为局限",
+  "note": "2026-09-28 用户在对话中选①，由 Claude 代录"
+ },
+ "B4": {
+  "status": "agreed",
+  "choice": "2h",
+  "choice_label": "2 小时",
+  "value": "",
+  "note": ""
+ },
+ "B5": {
+  "status": "agreed",
+  "choice": "client2h",
+  "choice_label": "客户模型自带的 2 小时设计雨型（同全市）",
+  "value": "",
+  "note": ""
+ },
+ "B6": {
+  "status": "agreed",
+  "choice": "design2h",
+  "choice_label": "96 mm / 2 小时设计雨",
+  "value": "",
+  "note": ""
+ },
+ "B7": {
+  "status": "agreed",
+  "choice": "scaled",
+  "choice_label": "按 61 mm 设计雨型等比放大到 96 mm",
+  "value": "",
+  "note": ""
+ },
+ "B8": {
+  "status": "agreed",
+  "choice": "city",
+  "choice_label": "全域均匀，离井超过 46 m 的地面在二维上直接降雨（同全市）",
+  "value": "",
+  "note": ""
+ },
+ "C10": {
+  "status": "agreed",
+  "choice": "pumps",
+  "choice_label": "现状管网 + 预置泵",
+  "value": "L2 = L1 + Parsons OP-02 的 12 英寸移动泵（雨前布设在固定点位）。用户 2026-09-28「都按建议」：L2-1 接收井 = 按 C1 L1 结果，沿管网往下游第一口不溢流的井（列表待用户核对）；L2-2 MP-16 流量 25 L/s（同类点中位数）；L2-3 去掉塘边 4 点 MP-03/11/25/27；L2-4 偏离 43–136 m 的 5 点沿用配对 PDF 泵站单泵流量；L2-5 启停 = 井中水深 > 1.0 m 开、< 0.3 m 停；只开主用；不含 OP-02 的塘和压力管；C1 内没有已建塘",
+  "note": "2026-09-28 用户在对话中确认，由 Claude 代录"
+ },
+ "C11": {
+  "status": "agreed",
+  "choice": "pdf",
+  "choice_label": "PDF 版：27 座泵站，主泵合计 1,535 L/s",
+  "value": "PDF 版（C1_WITH MECHANICAL DATA）：27 座固定泵站（只开主用，合计 1,535 L/s）+ 12 座地上衬砌塘（1.0 m 围堤，443,274 m³）+ 压力管 / HDD。用户确认：P-1 泵站落点无异议；P-4 塘满溢到塘的占地。Claude 自定（用户 2026-09-28 授权自动推进）：① P-2 排放路线 = C1 压力管 / 重力管 / 塘溢流管拼成网，沿网到最近的塘或 PROPOSED OUTFALL；网里找不到终点的排到最近的规划塘（P1、P2、P3、P4、P10、P12、P13、P14）；② P5 / P8 / P12 / P19 从旁边的塘抽，塘水深 ≥ 0.20 m 开、≤ 0.05 m 停；③ 与 PDF 泵站同址的 22 台 L2 移动泵被固定泵站取代，MP-16 保留；④ P-3 地道线性调蓄不建（图纸无位置与尺寸），列为局限；⑤ L2 接收井两场雨都按 C1 L1 96 mm 结果选",
+  "note": "2026-09-28 用户在对话中确认，由 Claude 代录。【加算 2026-09-29，用户定】按 Parsons 设计降雨检验：61.34 mm / 24 h，雨型 SCS II 型（= 客户 Mussafah 模型自带的 24 h「10 年含气候变化」雨型，缩放到 61.34 mm；客户那条总量 51.12 mm），净雨 23.78 mm，模拟 28 h；L1 + L2+planned（设施同上）同时算，情景名 C1_D24，09:55 开算"
+ },
+ "C12": {
+  "status": "agreed",
+  "choice": "other",
+  "choice_label": "其他（写明）",
+  "value": "L2+suggested = L2+planned + Claude 按 L2+planned 结果中仍积水的位置提出的措施，以转输（地面管线 + 固定泵）和挡水（土堤 / 隔离墩围护地道口与低洼路段）为主，箱涵只用在确实需要调蓄的地方。**两场雨各设计一套**：61 mm 的按 61 mm 下 L2+planned 的残余积水设计，96 mm 的按 96 mm 设计（用户 2026-09-29）。L2+planned 两场雨设施相同。方案发给用户看，按授权不等确认直接算",
+  "note": "2026-09-29 用户同意（原「Parsons 方案 + 箱涵」）；由 Claude 代录。Claude 自定（tools/c1_design_l2s.py）：只处理 8 个热点 500 m 内、最大积水 ≥ 200 m³ 或 ≥ 0.05 ha 的残余积水；片内井溢流 ≥ 积水量一半 → 转输（12 英寸泵 0.36 m³/s，排到 1.5 km 内满度 < 80% 的规划塘，否则 3 km 内出水口，否则箱涵）；地表来水且比周边低 ≥ 1 m → 土堤（堤顶 = 周边地面中位 + 0.3 m）；浅积水 → 地面取水泵（3 h 抽完）。→ 61 mm：10 处（转输 3 / 土堤 4 / 地面取水泵 3，泵合计 3.6 m³/s，无箱涵），2026-09-29 05:58 开算。→ 96 mm：44 处（转输 19 / 土堤 7 / 地面取水泵 15 / 箱涵 3 共 1,500 m³，泵合计 29.9 m³/s ≈ 83 台 12 英寸——按峰值溢流率定，规模偏大、可再优化），06:36 开算。【09:15 改 v2，Claude 自定】61 mm v1 算完发现：4 道土堤把地表水挡在堤外，堤外 3.9 ha 变深（ADM-90 旁 +0.6 m）→ 土堤全部改成地面取水泵，排到 1.5 km 内有余量的规划塘（否则出水口）；96 mm v1 同样的问题，算到约 2.5 h 时停掉。v2：61 mm 转输 3 + 取水泵 7（5.04 m³/s）；96 mm 转输 19 + 取水泵 22 + 箱涵 3（35.6 m³/s）；09:17 两场同时开算。v1 61 mm 结果保留为「L2S1 土堤版（弃用）」写进报告"
+ },
+ "C9": {
+  "status": "agreed",
+  "choice": "other",
+  "choice_label": "其他（写明）",
+  "value": "L1 = 现状管网 + 客户 GDB（PS_PUMP）登记、落在计算域（42.8 km²）内的现状泵站 + 客户台账的现状塘（C1 内没有）。泵站（tools/c1_existing_pumps.py）：ADM_RD-01 2×99（Parsons）→ 客户压力管末端井 251955_2700196（2,132 m）；ADM_RD-09 2×123（客户备注）→ 出水口 OFL_137（1 m）；ADM_RD-26、ADM_RD-27 各 2×60（客户备注）→ OFL_137（推断）；PSS_98 4 台合计 4,769、PSS_99 4 台合计 4,220（Parsons）→ 抽出计算域（推断：最近出水口在 4 km 外）；ADM_RD-02 停用；PSS_20、PSS_21 无数据不建。流量优先客户备注，其次 Parsons 同址泵 PUMP_FLOW。Parsons 独有、GDB 未登记的泵不进 L1。",
+  "note": "2026-09-28 按客户 SW Management Levels 定义图核验后改（原「现状管网，不含塘」与定义不符）；用户在对话中确认，由 Claude 代录。运行方式（用户确认默认做法）：备注写几台就几台同时运行；启停水位同 D13（开 = 井深 50%，停 = 井深 10%，井深取客户库 RESERVIOR_DEPTH_METER；PSS_98 井深 2.74 m 存疑，单独标注）"
+ },
+ "D13": {
+  "status": "agreed",
+  "choice": "fixed",
+  "choice_label": "固定流量；启停水位按湿井深度设定（数值写在取值里）",
+  "value": "开泵 = 井深的 50%，停泵 = 井深的 10%（4 m 井：2.0 / 0.4 m；5 m 井：2.5 / 0.5 m）",
+  "note": "2026-09-28 用户在对话中确认，由 Claude 代录"
+ },
+ "D14": {
+  "status": "agreed",
+  "choice": "fixed",
+  "choice_label": "按面积 × 固定深度（深度写在取值里）",
+  "value": "塘底 = 塘轮廓内现状地面最低点，不挖；四周 1.0 m 围堤、直立塘壁；库容 = 面积 × 1.0 m，12 座合计 443,274 m³；塘满后溢到塘的占地（二维）",
+  "note": "2026-09-28 改：原「只算现状地形能兜住的水」12 座合计仅 280 m³（地面平，Parsons 为地上衬砌塘），用户在对话中改选 1.0 m 围堤（取自 Parsons SHP Depth），由 Claude 代录"
+ },
+ "D15": {
+  "status": "agreed",
+  "choice": "free",
+  "choice_label": "自由出流（同全市）",
+  "value": "",
+  "note": ""
+ },
+ "E16": {
+  "status": "agreed",
+  "choice": "cn82",
+  "choice_label": "统一 CN 82、Tc 30 min（同全市一维）",
+  "value": "",
+  "note": ""
+ },
+ "E17": {
+  "status": "agreed",
+  "choice": "rain4",
+  "choice_label": "降雨历时 + 4 h（2 h 雨 → 6 h；24 h 雨 → 28 h）",
+  "value": "",
+  "note": ""
+ },
+ "E18": {
+  "status": "agreed",
+  "choice": "m15",
+  "choice_label": "15 m 网格（同 Mussafah）",
+  "value": "15 m（原填 5，2026-09-28 改为 15 m）",
+  "note": "2026-09-28 用户在对话中确认，由 Claude 代录"
+ },
+ "E19": {
+  "status": "agreed",
+  "choice": "city",
+  "choice_label": "同全市",
+  "value": "",
+  "note": ""
+ },
+ "E20": {
+  "status": "agreed",
+  "choice": "vel",
+  "choice_label": "同全市，但 .sww 带流速（计算时直接存 ANUGA 原生 .sww，文件大很多）",
+  "value": "",
+  "note": ""
+ }
+}

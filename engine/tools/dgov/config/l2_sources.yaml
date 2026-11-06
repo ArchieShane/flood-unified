@@ -1,0 +1,10 @@
+# RD-A 的 L2 / 计划措施：来自 AECOM 两个 SewerGEMS 模型的方案备选（docs/RD-A_数据现状分析_20261021.md 第一节 2、3）。
+rda:
+  extent_shp: "D:/swbrain_work/esri_un/runs/rda/territory.shp"
+  models:
+    - name: AECOM RD-A（RD-A + RD-B，2026 评估模型）
+      db: "D:/阿布扎比/排水智能体/20261019/test/RD-A/RD-A/Hydraulic Model/RD - A.stsw.sqlite"
+      alternatives: ["TIP", "PROP_PUMP UP"]          # TIP = 临时干预；PROP_PUMP UP = 泵站扩容（没有情景用它）
+    - name: AECOM 岛屿模型（Sewergems Model，含土工格室方案）
+      db: "D:/阿布扎比/一级汇水区_RDA相关/AECOM/1019/RDA/Sewergems Model.stsw.sqlite"
+      alternatives: ["ADD TANKS", "PS"]               # 土工格室储水；格室配套提升泵站

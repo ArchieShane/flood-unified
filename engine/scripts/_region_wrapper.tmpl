@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# __ID__ 推演服务脚本：__ID__-server.sh check | start | stop | status | log | resume | report
+# （自动生成；真正的实现在 engine/scripts/region-server.sh，用法见它的开头注释。）
+exec "$(cd "$(dirname "$0")/../../.." && pwd)/scripts/region-server.sh" "__ID__" "$@"

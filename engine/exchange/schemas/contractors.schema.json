@@ -1,0 +1,68 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://swbrain.local/schemas/contractors.schema.json",
+ "title": "swbrain.contractors/1 · 承包商服务边界",
+ "description": "驻地 → 承包商，或市政 / 片区 → 承包商。 顶层 {schema, as_of, source, rows[]}；也接受裸数组。",
+ "type": "object",
+ "properties": {
+  "schema": {
+   "const": "swbrain.contractors/1"
+  },
+  "as_of": {
+   "type": "string"
+  },
+  "source": {
+   "type": "string"
+  },
+  "rows": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "depot_id": {
+      "type": "string"
+     },
+     "region": {
+      "type": "string",
+      "enum": [
+       "ADM",
+       "AAM",
+       "DRM"
+      ]
+     },
+     "area": {
+      "type": "string"
+     },
+     "contractor": {
+      "type": "string"
+     },
+     "contact": {
+      "type": "string"
+     },
+     "boundary": {
+      "description": "可选的 GeoJSON 面"
+     }
+    },
+    "additionalProperties": true,
+    "required": [
+     "contractor"
+    ],
+    "anyOf": [
+     {
+      "required": [
+       "depot_id"
+      ]
+     },
+     {
+      "required": [
+       "region"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "required": [
+  "rows"
+ ]
+}

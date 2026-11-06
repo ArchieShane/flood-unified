@@ -1,0 +1,13 @@
+{
+ "schema": "swbrain.episodes/1",
+ "as_of": "2026-09-23T02:00:00+04:00",
+ "source": "example — per-point flooding records for historical rain events (illustrative). Complaint logs, inspection sheets and 993 records can all be flattened into this shape.",
+ "notes": "One row = one fact about one flood point (fp_id, client id such as ADM-62) in one event (event_id, e.g. 2024-04). flooded true/false is the ground truth for verification; depth_m (max observed), duration_min, units (pumps actually sent), first_arrival_min, drain_min are optional; stage (alerted/staged/reported/verified/dispatched/arrived/pumping/dry/closed/reviewed) with at (ISO time) records a lifecycle timestamp; source names the origin (complaint / inspection / 993 / contractor / satellite). Several rows per point-event are merged. Place the real file at exchange/episodes.json, POST it to /api/feed/episodes, or set [feeds.episodes].url.",
+ "rows": [
+  {"id": "EP-2024-04-ADM-62-1", "fp_id": "ADM-62", "event_id": "2024-04", "flooded": true, "depth_m": 0.45, "duration_min": 540, "units": 3, "first_arrival_min": 95, "drain_min": 520, "source": "inspection", "note": "example row"},
+  {"id": "EP-2024-04-ADM-62-2", "fp_id": "ADM-62", "event_id": "2024-04", "stage": "reported", "at": "2024-04-16 09:40:00", "source": "993", "note": "example row"},
+  {"id": "EP-2024-04-ADM-62-3", "fp_id": "ADM-62", "event_id": "2024-04", "stage": "dry", "at": "2024-04-16 20:10:00", "source": "contractor", "note": "example row"},
+  {"id": "EP-2024-04-ADM-4-1", "fp_id": "ADM-4", "event_id": "2024-04", "flooded": false, "source": "inspection", "note": "example row"},
+  {"id": "EP-2026-03-ADM-62-1", "fp_id": "ADM-62", "event_id": "2026-03", "flooded": true, "depth_m": 0.20, "duration_min": 180, "units": 1, "source": "complaint", "note": "example row"}
+ ]
+}

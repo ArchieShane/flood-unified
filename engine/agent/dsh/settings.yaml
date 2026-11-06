@@ -1,0 +1,10 @@
+# $DSH_HOME/settings.yaml 的初始版本（只在不存在时写入；之后由 Web UI「Settings → Models」维护）。
+# 模型密钥只从环境变量读：OPENAI_API_KEY / DEEPSEEK_API_KEY / ANTHROPIC_API_KEY，不写进本文件。
+llm-pi-ai:
+  providers:
+    openai:
+      apiKeyEnv: OPENAI_API_KEY
+    anthropic:
+      apiKeyEnv: ANTHROPIC_API_KEY
+# DeepSeek 官方路由（deepseek-official）由 llm-deepseek 适配器提供：
+# 在 Web UI 的 Settings → Models 填 DeepSeek API key，或在环境里给 DEEPSEEK_API_KEY。

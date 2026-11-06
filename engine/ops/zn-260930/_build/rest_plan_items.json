@@ -1,0 +1,442 @@
+[
+{
+"lid": 35,
+"label": "ADMLINE",
+"km2": 40.44,
+"res": 30,
+"server": 1,
+"hs": 13,
+"ov": 0.49,
+"start": null
+},
+{
+"lid": 64,
+"label": "OUTLET",
+"km2": 0.32,
+"res": 5,
+"server": 1,
+"hs": 0,
+"ov": 0,
+"start": null
+},
+{
+"lid": 19,
+"label": "Mussafah_08",
+"km2": 7.54,
+"res": 30,
+"server": 1,
+"hs": 5,
+"ov": 0.01,
+"start": null
+},
+{
+"lid": 3,
+"label": "BAG",
+"km2": 0.2,
+"res": 5,
+"server": 1,
+"hs": 0,
+"ov": 0,
+"start": null
+},
+{
+"lid": 13,
+"label": "Mussafah_02",
+"km2": 7.04,
+"res": 30,
+"server": 1,
+"hs": 0,
+"ov": 0.02,
+"start": null
+},
+{
+"lid": 32,
+"label": "ICAD-CA-1_2_3",
+"km2": 6.9,
+"res": 30,
+"server": 1,
+"hs": 1,
+"ov": 0,
+"start": null
+},
+{
+"lid": 49,
+"label": "RD-H",
+"km2": 5.75,
+"res": 30,
+"server": 1,
+"hs": 8,
+"ov": 0,
+"start": null
+},
+{
+"lid": 52,
+"label": "RD-M",
+"km2": 4.63,
+"res": 30,
+"server": 1,
+"hs": 11,
+"ov": null,
+"start": null
+},
+{
+"lid": 45,
+"label": "RD-B",
+"km2": 4.38,
+"res": 30,
+"server": 1,
+"hs": 4,
+"ov": 0,
+"start": null
+},
+{
+"lid": 9,
+"label": "B_C",
+"km2": 4.08,
+"res": 30,
+"server": 1,
+"hs": 5,
+"ov": 0.1,
+"start": null
+},
+{
+"lid": 57,
+"label": "RD-P",
+"km2": 3.56,
+"res": 30,
+"server": 1,
+"hs": 5,
+"ov": 0,
+"start": null
+},
+{
+"lid": 54,
+"label": "RD-O",
+"km2": 3.27,
+"res": 30,
+"server": 1,
+"hs": 4,
+"ov": 0,
+"start": null
+},
+{
+"lid": 55,
+"label": "RD-N",
+"km2": 2.8,
+"res": 30,
+"server": 1,
+"hs": 2,
+"ov": 0,
+"start": null
+},
+{
+"lid": 67,
+"label": "OUTLET",
+"km2": 0.07,
+"res": 5,
+"server": 1,
+"hs": 0,
+"ov": 0,
+"start": null
+},
+{
+"lid": 41,
+"label": "RD-D",
+"km2": 2.06,
+"res": 30,
+"server": 1,
+"hs": 7,
+"ov": 0,
+"start": null
+},
+{
+"lid": 51,
+"label": "RD-K",
+"km2": 1.78,
+"res": 30,
+"server": 1,
+"hs": 2,
+"ov": 0,
+"start": null
+},
+{
+"lid": 68,
+"label": "OUTLET",
+"km2": 1.59,
+"res": 30,
+"server": 1,
+"hs": 4,
+"ov": 0,
+"start": null
+},
+{
+"lid": 56,
+"label": "W59_01-1",
+"km2": 0.04,
+"res": 5,
+"server": 1,
+"hs": 0,
+"ov": 0,
+"start": null
+},
+{
+"lid": 42,
+"label": "RD-Y",
+"km2": 1.28,
+"res": 30,
+"server": 1,
+"hs": 4,
+"ov": 0,
+"start": null
+},
+{
+"lid": 5,
+"label": "BAJ3_4",
+"km2": 1.17,
+"res": 30,
+"server": 1,
+"hs": 1,
+"ov": 0,
+"start": null
+},
+{
+"lid": 34,
+"label": "RD 26a",
+"km2": 0.96,
+"res": 5,
+"server": 2,
+"hs": 1,
+"ov": 0,
+"start": null
+},
+{
+"lid": 65,
+"label": "OUTLET",
+"km2": 0.27,
+"res": 5,
+"server": 2,
+"hs": 0,
+"ov": 0,
+"start": null
+},
+{
+"lid": 20,
+"label": "Mussafah_01",
+"km2": 7.1,
+"res": 30,
+"server": 2,
+"hs": 11,
+"ov": 0.01,
+"start": null
+},
+{
+"lid": 70,
+"label": "Al Reem Island",
+"km2": 6.01,
+"res": 30,
+"server": 2,
+"hs": 1,
+"ov": 0,
+"start": null
+},
+{
+"lid": 15,
+"label": "Mussafah_06",
+"km2": 5.15,
+"res": 30,
+"server": 2,
+"hs": 3,
+"ov": 0,
+"start": null
+},
+{
+"lid": 30,
+"label": "Mussafah_10",
+"km2": 4.27,
+"res": 30,
+"server": 2,
+"hs": 1,
+"ov": 0.26,
+"start": null
+},
+{
+"lid": 50,
+"label": "RD-J",
+"km2": 3.37,
+"res": 30,
+"server": 2,
+"hs": 2,
+"ov": 0,
+"start": null
+},
+{
+"lid": 24,
+"label": "New",
+"km2": 2.87,
+"res": 30,
+"server": 2,
+"hs": 0,
+"ov": 0,
+"start": null
+},
+{
+"lid": 43,
+"label": "RD-E",
+"km2": 2.26,
+"res": 30,
+"server": 2,
+"hs": 8,
+"ov": 0,
+"start": null
+},
+{
+"lid": 53,
+"label": "RD-L",
+"km2": 1.95,
+"res": 30,
+"server": 2,
+"hs": 5,
+"ov": 0,
+"start": null
+},
+{
+"lid": 40,
+"label": "Mussafah_00",
+"km2": 1.52,
+"res": 30,
+"server": 2,
+"hs": 1,
+"ov": 0.3,
+"start": null
+},
+{
+"lid": 11,
+"label": "ADCG6",
+"km2": 1.3,
+"res": 30,
+"server": 2,
+"hs": 3,
+"ov": 0,
+"start": null
+},
+{
+"lid": 23,
+"label": "Shaliela",
+"km2": 25.88,
+"res": 30,
+"server": 3,
+"hs": 9,
+"ov": 0,
+"start": null
+},
+{
+"lid": 1,
+"label": "OLD",
+"km2": 23.28,
+"res": 30,
+"server": 3,
+"hs": 14,
+"ov": 0,
+"start": null
+},
+{
+"lid": 58,
+"label": "W57-1",
+"km2": 0.19,
+"res": 5,
+"server": 3,
+"hs": 0,
+"ov": 0,
+"start": null
+},
+{
+"lid": 63,
+"label": "OUTLET",
+"km2": 5.23,
+"res": 30,
+"server": 3,
+"hs": 3,
+"ov": 0,
+"start": null
+},
+{
+"lid": 60,
+"label": "RD-Q",
+"km2": 4.3,
+"res": 30,
+"server": 3,
+"hs": 3,
+"ov": 0,
+"start": null
+},
+{
+"lid": 12,
+"label": "Mussafah_03",
+"km2": 3.91,
+"res": 30,
+"server": 3,
+"hs": 1,
+"ov": 0,
+"start": null
+},
+{
+"lid": 7,
+"label": "A-A1-A2",
+"km2": 2.89,
+"res": 30,
+"server": 3,
+"hs": 7,
+"ov": 0,
+"start": null
+},
+{
+"lid": 2,
+"label": "SD_Phase1",
+"km2": 2.54,
+"res": 30,
+"server": 3,
+"hs": 0,
+"ov": 0,
+"start": null
+},
+{
+"lid": 59,
+"label": "RD-R",
+"km2": 2.01,
+"res": 30,
+"server": 3,
+"hs": 2,
+"ov": 0,
+"start": null
+},
+{
+"lid": 69,
+"label": "Al Maryah Island",
+"km2": 1.67,
+"res": 30,
+"server": 3,
+"hs": 0,
+"ov": 0,
+"start": null
+},
+{
+"lid": 10,
+"label": "RD 22 BAJ 2 ADGC 15",
+"km2": 1.37,
+"res": 30,
+"server": 3,
+"hs": 1,
+"ov": 0,
+"start": null
+},
+{
+"lid": 66,
+"label": "OUTLET",
+"km2": 0.03,
+"res": 5,
+"server": 3,
+"hs": 0,
+"ov": 0,
+"start": null
+}
+]

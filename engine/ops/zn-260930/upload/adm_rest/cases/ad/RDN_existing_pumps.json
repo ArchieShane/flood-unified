@@ -1,0 +1,30 @@
+{
+ "region": "RDN",
+ "domain_km2": 2.8,
+ "stations": [
+  {
+   "unitid": "SW_AMZ_W62_PSS_78",
+   "ps_id": "78",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::350 & 85x2",
+   "n_pumps": null,
+   "q_each_lps": null,
+   "q_src": "无数据：不建泵，列为局限",
+   "parsons": [],
+   "wetwell_node": "240494_2702574",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 7.0,
+   "on_m": 3.5,
+   "off_m": 0.7,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 240494.9,
+   "y": 2702574.4
+  }
+ ]
+}

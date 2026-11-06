@@ -1,0 +1,43 @@
+{
+  "schema": "swbrain.event_observation/1",
+  "event_id": "2026-11-03",
+  "start": "2026-11-03T02:00:00+04:00",
+  "end": "2026-11-03T09:00:00+04:00",
+  "rain": [
+    {
+      "station": "Abu Dhabi Intl",
+      "total_mm": 48.0,
+      "max_15min_mmh": 72.0
+    }
+  ],
+  "tide_max_m": 0.9,
+  "flood_points": [
+    {
+      "vertex_id": 157832,
+      "lon": 54.55,
+      "lat": 24.4,
+      "observed_depth_m": 0.25,
+      "duration_min": 70,
+      "source": "投诉",
+      "flooded": true
+    },
+    {
+      "vertex_id": 48630,
+      "lon": 54.51,
+      "lat": 24.42,
+      "observed_depth_m": 0.0,
+      "duration_min": 0,
+      "source": "巡检",
+      "flooded": false
+    }
+  ],
+  "pump_runs": [
+    {
+      "station": "SW_AZA_E16_PSS_1",
+      "runtime_min": 210,
+      "max_wet_well_level_m": 1.8,
+      "faults": 0
+    }
+  ],
+  "notes": "积水点来自 993 投诉与巡检打点，深度为现场估读"
+}

@@ -1,0 +1,74 @@
+# 数据资源编目（数据现状分析 · 资源盘点）。只登记「原始资料」：客户、顾问、公开资料；我方加工产物（out/、result-*.tar 等）不在这里。
+# role：network 管网资产 / model 顾问水力模型 / terrain 地形 / landuse 土地利用 / hotspot 热点与计划 / standard 规范与客户口径 / report 顾问报告 / other
+# kind：gdb / shp_dir / shp_dirs（多模型目录）/ raster / sewergems / swmm_inp / xlsx / kmz / pdf / db / archive
+# 每条的 received 取文件日期或聊天记录里的收到日期；不确定的写「待核」。
+datasets:
+  - {id: S01, title: DMT 雨水管网 GDB（Processed，解压版）, role: network, kind: gdb, owner: DMT, received: 2026-09-25,
+     path: "D:/阿布扎比/DMT_StormWater_AbuDhabi_Processed.gdb/DMT_StormWater_AbuDhabi_Processed.gdb"}
+  - {id: S01z, title: DMT 雨水管网 GDB（压缩包，S01 的原件）, role: network, kind: archive, owner: DMT, received: 2026-09-25,
+     path: "D:/阿布扎比/DMT_StormWater_AbuDhabi_Processed.gdb.zip", originals: ["D:/阿布扎比/排水智能体/Stormwater.zip"]}
+  - {id: S02, title: DMT 雨水资产库 shapefile 导出（11 层）, role: network, kind: shp_dir, owner: DMT, received: 2026-10-19,
+     path: "D:/阿布扎比/排水智能体/20261019/Stormwater", originals: ["D:/阿布扎比/排水智能体/20261019/Stormwater.zip"]}
+  - {id: S03, title: DMT 灌溉 + 雨水 GDB（压缩包）, role: network, kind: archive, owner: DMT, received: 2026-09-25,
+     path: "D:/阿布扎比/DMT_IrrigationStormWater_AbuDhabi_Processed.gdb.zip"}
+  - {id: S10, title: Parsons 模型导出 26092026（各汇水区改造后模型 shapefile + 结果汇总表）, role: model, kind: shp_dirs, owner: Parsons（经 DMT）, received: 2026-09-27,
+     path: "D:/阿布扎比/Parsons_Model Data Export/26092026", originals: ["D:/阿布扎比/Parsons_Model Data Export.rar"]}
+  - {id: S11, title: 客户转来的水力模型（OneDrive，shapefile）, role: model, kind: shp_dirs, owner: DMT（多为 Parsons 编制）, received: 2026-09-26,
+     path: "D:/世界模型/OneDrive_1_9-26-2026", originals: ["D:/世界模型/OneDrive_1_9-26-2026.zip"]}
+  - {id: S12, title: 客户模型导出（Musaffah_00 / RB3 / Shaliela shapefile + 3 个 SWMM inp）, role: model, kind: shp_dirs, owner: DMT, received: 2026-09-20,
+     path: "D:/世界模型/Hydraulic Model Data Export", originals: ["D:/世界模型/Hydraulic Model Data Export.zip"]}
+  - {id: S13, title: 客户模型包 test（AECOM RD-A/C/F/G/I SewerGEMS；Musaffah_RD09 / RB-01 / RB3 shapefile）, role: model, kind: shp_dirs, owner: DMT（AECOM、Parsons 编制）, received: 2026-10-19,
+     path: "D:/阿布扎比/排水智能体/20261019/test", originals: ["D:/阿布扎比/排水智能体/20261019/test.zip"]}
+  - {id: S14, title: RB-01 资料包（仓库根目录 RB-01/）, role: model, kind: shp_dirs, owner: 待核, received: 待核,
+     path: "D:/阿布扎比/排水智能体/RB-01", originals: ["D:/阿布扎比/排水智能体/RB-01.rar"]}
+  - {id: S15, title: Parsons 关键热点资料（PDF 方案图 / SHP / CAD）, role: model, kind: shp_dirs, owner: Parsons, received: 2026-09-27,
+     path: "D:/阿布扎比/Parsons_Model Data Export/Critical Hotspots"}
+  - {id: S16, title: Parsons 已建成蓄水（Existing Storage 三个图层）, role: network, kind: shp_dirs, owner: Parsons, received: 2026-09-27,
+     path: "D:/阿布扎比/Parsons_Model Data Export/Existing Storage"}
+  - {id: S20, title: 客户 DTM 5 m, role: terrain, kind: raster, owner: DMT, received: 2026-09-19,
+     path: "D:/阿布扎比/DTM_z40_customer/AUH_DTM_5m_Z40.TIF", originals: ["D:/阿布扎比/DTM_z40_customer"]}
+  - {id: S21, title: Makani 城市底图库（建筑、地块、道路、绿地等）, role: landuse, kind: db, owner: 阿布扎比市政, received: 待核,
+     path: "config.toml [source.makani]",
+     # 库里还有 DMT 雨水资产库的整套表（无后缀 = ADM，_1 = AAM 艾因，_2 = DRM 宰夫拉），以及断裂线、沟渠、水面等地形与水体层
+     tables_of_interest: [pipeline, pipeline_1, pipeline_2, manholechamber, manholechamber_1, chamber_2, inlet, inlet_1, inlet_2,
+                          catchbasin, catchbasin_2, outfall, outfall_1, outfall_2, soakaway, soakaway_1, soakaway_2,
+                          sw_node, sw_node_1, sw_node_2, ps_pump, ps_pump_1, ps_wet_well_area, ps_wet_well_area_1,
+                          sw_pumpingstationstructure, sw_pumpingstationstructure_1, sw_pumpingstationstructure_2, sw_reservoirstructure,
+                          pond, pond_1, pond_2, movable_pump, boxculvert_1, gratedchanneldrainage, freedischargepoint_2,
+                          udm_ditch, udm_breakline, udm_watersurface, udm_floodwaterline, sw_flowmeter, sw_flowmeter_1, sw_flowmeter_2]}
+  - {id: S48, title: Makani 库数据字典（764 张表逐表说明，含 UDM-SW 官方字段定义与值域）, role: standard, kind: archive, owner: 待核（文件日期早于本项目）, received: 待核,
+     path: "D:/阿布扎比/数据字典.zip"}
+  - {id: S30, title: 客户热点表（ADM v4.4 / AAM v4.2 / DRM v4.2）, role: hotspot, kind: xlsx, owner: DMT, received: 2026-09-19,
+     path: "D:/世界模型/FloodData_Batch1/Flood Management Data - Origen - Batch1", originals: ["D:/世界模型/Flood Management Data - Origen - Batch1.zip"]}
+  - {id: S31, title: 热点坐标 KMZ（506 Hot Spots AUH）, role: hotspot, kind: kmz, owner: DMT, received: 2026-09-20,
+     path: "D:/世界模型/FW__Hot_Spots_506/506 Hot Spots AUH.kmz", originals: ["D:/世界模型/FW__Hot_Spots_506.zip", "D:/世界模型/FW__Hot_Spots_506", "D:/阿布扎比/排水智能体/FW__Hot_Spots_506", "D:/阿布扎比/排水智能体/FW__Hot_Spots_506.rar"]}
+  - {id: S40, title: DMT 雨水设计手册 WA-726（4 卷）, role: standard, kind: pdf, owner: DMT, received: 2026-09-18,
+     path: "D:/阿布扎比/排水智能体/20261019",
+     paths: ["D:/阿布扎比/排水智能体/20261019/WA-726-1.pdf", "D:/阿布扎比/排水智能体/20261019/WA-726-2.pdf", "D:/阿布扎比/排水智能体/20261019/WA-726-3.pdf", "D:/阿布扎比/排水智能体/20261019/WA-726-4.pdf"],
+     originals: ["D:/阿布扎比/排水智能体/WA-726-1.pdf", "D:/阿布扎比/排水智能体/WA-726-2.pdf", "D:/阿布扎比/排水智能体/WA-726-3.pdf", "D:/阿布扎比/排水智能体/WA-726-4.pdf",
+                 "D:/世界模型/WA-726-官方手册2.pdf", "D:/世界模型/WA-726官方手册-3.pdf", "D:/世界模型/WA-726官方手册-4.pdf", "D:/世界模型/阿布扎比 DMT2022官方设计手册.pdf"]}
+  - {id: S41, title: Parsons 大陆汇水区评估报告（ICAD / Mussafah / RB3 / Shaliela）, role: report, kind: pdf, owner: Parsons, received: 2026-09-20,
+     path: "D:/世界模型",
+     paths: ["D:/世界模型/DMT_Main land Catchment Assessment_ICAD Catchment 1,2&3 Rev.00_17 Sep 2026 Final.pdf", "D:/世界模型/DMT_Main land Catchment Assessment_Mussafah_Rev.00_17Sep 2026.pdf",
+             "D:/世界模型/DMT_Main land Catchment Assessment_RB3_Rev00 17 Sep 2026.pdf", "D:/世界模型/DMT_Main land Catchment Assessment_Shaliela_Rev.AA_17 Sep 2026_Final.pdf"]}
+  - {id: S42, title: 汇水区报告-Parsons, role: report, kind: pdf, owner: Parsons, received: 2026-10-18,
+     path: "D:/阿布扎比/排水智能体/汇水区报告-Parsons", originals: ["D:/阿布扎比/排水智能体/汇水区报告-Parsons.rar", "D:/阿布扎比/汇水区报告-Parsons.rar"]}
+  - {id: S43, title: DMT「Rainfall Capacity Formula」, role: standard, kind: pdf, owner: DMT, received: 2026-10-21,
+     path: "D:/阿布扎比/排水智能体/DMT_Stormwater_Volume_Formula.pdf"}
+  - {id: S44, title: DMT 雨水模型工作簿 v3（WA-726）, role: standard, kind: xlsx, owner: DMT, received: 2026-09-20,
+     path: "D:/阿布扎比/Stormwater model v3 (DMT WA-726).xlsx", originals: ["D:/世界模型/Stormwater model v3 (DMT WA-726).xlsx", "D:/世界模型/Stormwater model v2.xlsx"]}
+  - {id: S45, title: Origen 管网能力问询表（Tatica / DMT）, role: other, kind: xlsx, owner: DMT, received: 2026-10-19,
+     path: "D:/阿布扎比/排水智能体/Origen_Request_Drainage_Capacity_per_Catchment.xlsx"}
+  - {id: S46, title: 客户数据清单（UPPC_SDD 数据列表、数据库表清单、雨水档案统计、需求比对）, role: other, kind: xlsx, owner: DMT, received: 2026-09-20,
+     path: "D:/世界模型/数据清单"}
+  - {id: S47, title: ADM 工作流说明, role: other, kind: pdf, owner: 待核, received: 2026-09-22,
+     path: "D:/世界模型/20260922_ADM 工作流.pdf"}
+  - {id: S49, title: AECOM 一级汇水区模型包 1019（24 个片区 SewerGEMS 模型、模拟结果汇总、方案设计报告、降雨情景汇总；经同事转来）, role: model, kind: archive, owner: AECOM（经 DMT）, received: 2026-10-19,
+     path: "H:/shenyaqi/一级汇水区.zip",
+     originals: ["D:/阿布扎比/一级汇水区_RDA相关"]}   # 本地只摘取了 RD-A 相关文件：第二个 RD-A 模型、降雨情景汇总、DMT 热点总图、RD-B 模拟汇总
+roots:                       # 扫这些目录，找没编目的数据文件
+  - "D:/阿布扎比"
+  - "D:/世界模型"
+skip_dirs: ["排水智能体/out", "排水智能体/.git", "排水智能体/console", "排水智能体/swbrain", "排水智能体/tools", "排水智能体/tests", "排水智能体/exchange",
+            "排水智能体/docs", "FLUS_console_crossplatform", "abu-dhabi-geospatial-kernel-paper", "宜居", "DUNE", "tools", "scripts", "node_modules", "__pycache__"]
+data_ext: [".shp", ".gdb", ".gpkg", ".tif", ".tiff", ".inp", ".stsw", ".xlsx", ".kmz", ".zip", ".rar", ".tar", ".pdf", ".dwg", ".csv"]

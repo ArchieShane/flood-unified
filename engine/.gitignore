@@ -1,0 +1,33 @@
+# 真实连接串与口令：只提交 config.example.toml
+config.toml
+# 运行产物：从客户库算出的中间状态与结果，不入库
+out/
+console/data/
+exchange/*
+!exchange/examples/
+!exchange/examples/*.json
+!exchange/schemas/
+!exchange/schemas/*        # 契约的正式模式是我们自己的规格文件，要进仓库
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Word 打开文件时的锁文件
+~$*
+
+# 部署包（tools/make_release.py 的产物，几个 GB）
+dist/
+
+# agent 运行时的本地副本与日志：.agents/ 是 .claude/skills 的旧副本（措辞是 Codex 版），
+# 入库的那份在 .claude/skills/；日志与临时图片都不进仓库
+.agents/
+*.log
+微信图片_*
+# 部署用的暂存物（tools/make_release.py、tools/make_db_snapshot.py 生成）
+docker/app/seed/
+docker/db/dumps/
+
+# 本地环境与客户数据（体积大，不入库）
+.venv/
+data/

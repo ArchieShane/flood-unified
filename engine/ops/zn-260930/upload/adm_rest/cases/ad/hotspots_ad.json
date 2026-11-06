@@ -1,0 +1,5679 @@
+{
+"crs": "EPSG:32640",
+"regions": {
+"MI8": {
+"title": "MI-8 (RD-10) – Mussafah",
+"kmz": "Shahamah_Zayed catchments.kmz",
+"feat": "MI-8",
+"dir": "MI-8",
+"adm": "B7",
+"km2": 250.62
+},
+"RD2": {
+"title": "RD-2 (PS-4 / RD6, 7 & 8)",
+"kmz": "Shahamah_Zayed catchments.kmz",
+"feat": "RD-2",
+"dir": "RD-2",
+"adm": "B14",
+"km2": 126.99
+},
+"YASO": {
+"title": "YAS OUTFALL – AUH Airport",
+"kmz": "Shahamah_Zayed catchments.kmz",
+"feat": "YAS OUTFALL",
+"dir": "YAS_OUTFALL",
+"adm": "B11",
+"km2": 25.86
+},
+"RB1": {
+"title": "RB-1",
+"kmz": "Shahamah_Zayed catchments.kmz",
+"feat": "RB-1",
+"dir": "RB-1",
+"adm": "B10",
+"km2": 18.42
+},
+"RBE1": {
+"title": "RBE1-OF1 (Yas2 – Al Falah)",
+"kmz": "Shahamah_Zayed catchments.kmz",
+"feat": "RBE1-OF1",
+"dir": "RBE1-OF1",
+"adm": "B12",
+"km2": 22.06
+},
+"MBZ": {
+"title": "MBZ (RD-9) – Mussafah / MBZ",
+"kmz": "Shahamah_Zayed catchments.kmz",
+"feat": "MBZ",
+"dir": "MBZ",
+"adm": "B9",
+"km2": 18.07
+},
+"RD14": {
+"title": "RD-14",
+"kmz": "Al Wathba catchments.kmz",
+"feat": "RD 14",
+"dir": "RD-14",
+"adm": "B15",
+"km2": 15.44
+},
+"RB3": {
+"title": "RB-3",
+"kmz": "Shahamah_Zayed catchments.kmz",
+"feat": "RB-3",
+"dir": "RB-3",
+"adm": "B8",
+"km2": 7.99
+},
+"RDA": {
+"title": "RD-A",
+"kmz": "island catchment.kmz",
+"feat": "RD-A",
+"dir": "RD-A",
+"adm": "A1",
+"km2": 3.21
+},
+"RDF": {
+"title": "RD-F",
+"kmz": "island catchment.kmz",
+"feat": "RD-F",
+"dir": "RD-F",
+"adm": "A2",
+"km2": 5.44
+},
+"RDC": {
+"title": "RD-C",
+"kmz": "island catchment.kmz",
+"feat": "RD-C",
+"dir": "RD-C",
+"adm": "A3",
+"km2": 1.94
+},
+"QAB1": {
+"title": "Qasr Al Bahr-1",
+"kmz": "island catchment.kmz",
+"feat": "Qasr Al Bahr-1",
+"dir": "Qasr_Al_Bahr-1",
+"adm": "A4",
+"km2": 1.52
+},
+"RDI": {
+"title": "RD-I",
+"kmz": "island catchment.kmz",
+"feat": "RD-I",
+"dir": "RD-I",
+"adm": "A5",
+"km2": 5.79
+},
+"RDG": {
+"title": "RD-G",
+"kmz": "island catchment.kmz",
+"feat": "RD-G",
+"dir": "RD-G",
+"adm": "A6",
+"km2": 4.28
+},
+"ALR": {
+"title": "Al Riyadh City – all ponds",
+"kmz": "Al Wathba catchments.kmz",
+"feat": "Pond 1/2A/2B/3/4/A/B/c/D",
+"dir": "Al_Riyadh_ponds",
+"adm": "B16",
+"km2": 76.15,
+"feats": [
+"Pond 1",
+"Pond 2A",
+"Pond 2B",
+"Pond 3",
+"Pond 4",
+"Pond A",
+"Pond B",
+"Pond c",
+"Pond D"
+]
+},
+"ADMLINE": {
+"title": "ADMLINE",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "ADMLINE",
+"dir": "ADMLINE",
+"adm": "库35",
+"km2": 40.44,
+"res": 30,
+"libid": 35,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"OUTLET64": {
+"title": "OUTLET",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "OUTLET",
+"dir": "OUTLET-64",
+"adm": "库64",
+"km2": 0.32,
+"res": 5,
+"libid": 64,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"MUSSAFAH08": {
+"title": "Mussafah_08",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "Mussafah_08",
+"dir": "Mussafah_08",
+"adm": "库19",
+"km2": 7.54,
+"res": 30,
+"libid": 19,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"BAG": {
+"title": "BAG",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "BAG",
+"dir": "BAG",
+"adm": "库3",
+"km2": 0.2,
+"res": 5,
+"libid": 3,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"MUSSAFAH02": {
+"title": "Mussafah_02",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "Mussafah_02",
+"dir": "Mussafah_02",
+"adm": "库13",
+"km2": 7.04,
+"res": 30,
+"libid": 13,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"ICADCA123": {
+"title": "ICAD-CA-1_2_3",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "ICAD-CA-1_2_3",
+"dir": "ICAD-CA-1_2_3",
+"adm": "库32",
+"km2": 6.9,
+"res": 30,
+"libid": 32,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RDH": {
+"title": "RD-H",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD-H",
+"dir": "RD-H",
+"adm": "库49",
+"km2": 5.75,
+"res": 30,
+"libid": 49,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RDM": {
+"title": "RD-M",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD-M",
+"dir": "RD-M",
+"adm": "库52",
+"km2": 4.63,
+"res": 30,
+"libid": 52,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RDB": {
+"title": "RD-B",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD-B",
+"dir": "RD-B",
+"adm": "库45",
+"km2": 4.38,
+"res": 30,
+"libid": 45,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"BC": {
+"title": "B_C",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "B_C",
+"dir": "B_C",
+"adm": "库9",
+"km2": 4.08,
+"res": 30,
+"libid": 9,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RDP": {
+"title": "RD-P",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD-P",
+"dir": "RD-P",
+"adm": "库57",
+"km2": 3.56,
+"res": 30,
+"libid": 57,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RDO": {
+"title": "RD-O",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD-O",
+"dir": "RD-O",
+"adm": "库54",
+"km2": 3.27,
+"res": 30,
+"libid": 54,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RDN": {
+"title": "RD-N",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD-N",
+"dir": "RD-N",
+"adm": "库55",
+"km2": 2.8,
+"res": 30,
+"libid": 55,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"OUTLET67": {
+"title": "OUTLET",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "OUTLET",
+"dir": "OUTLET-67",
+"adm": "库67",
+"km2": 0.07,
+"res": 5,
+"libid": 67,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RDD": {
+"title": "RD-D",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD-D",
+"dir": "RD-D",
+"adm": "库41",
+"km2": 2.06,
+"res": 30,
+"libid": 41,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RDK": {
+"title": "RD-K",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD-K",
+"dir": "RD-K",
+"adm": "库51",
+"km2": 1.78,
+"res": 30,
+"libid": 51,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"OUTLET68": {
+"title": "OUTLET",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "OUTLET",
+"dir": "OUTLET-68",
+"adm": "库68",
+"km2": 1.59,
+"res": 30,
+"libid": 68,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"W59011": {
+"title": "W59_01-1",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "W59_01-1",
+"dir": "W59_01-1",
+"adm": "库56",
+"km2": 0.04,
+"res": 5,
+"libid": 56,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RDY": {
+"title": "RD-Y",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD-Y",
+"dir": "RD-Y",
+"adm": "库42",
+"km2": 1.28,
+"res": 30,
+"libid": 42,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"BAJ34": {
+"title": "BAJ3_4",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "BAJ3_4",
+"dir": "BAJ3_4",
+"adm": "库5",
+"km2": 1.17,
+"res": 30,
+"libid": 5,
+"server": 1,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RD26A": {
+"title": "RD 26a",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD 26a",
+"dir": "RD_26a",
+"adm": "库34",
+"km2": 0.96,
+"res": 5,
+"libid": 34,
+"server": 2,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"OUTLET65": {
+"title": "OUTLET",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "OUTLET",
+"dir": "OUTLET-65",
+"adm": "库65",
+"km2": 0.27,
+"res": 5,
+"libid": 65,
+"server": 2,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"MUSSAFAH01": {
+"title": "Mussafah_01",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "Mussafah_01",
+"dir": "Mussafah_01",
+"adm": "库20",
+"km2": 7.1,
+"res": 30,
+"libid": 20,
+"server": 2,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"ALREEMISLAND": {
+"title": "Al Reem Island",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "Al Reem Island",
+"dir": "Al_Reem_Island",
+"adm": "库70",
+"km2": 6.01,
+"res": 30,
+"libid": 70,
+"server": 2,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"MUSSAFAH06": {
+"title": "Mussafah_06",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "Mussafah_06",
+"dir": "Mussafah_06",
+"adm": "库15",
+"km2": 5.15,
+"res": 30,
+"libid": 15,
+"server": 2,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"MUSSAFAH10": {
+"title": "Mussafah_10",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "Mussafah_10",
+"dir": "Mussafah_10",
+"adm": "库30",
+"km2": 4.27,
+"res": 30,
+"libid": 30,
+"server": 2,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RDJ": {
+"title": "RD-J",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD-J",
+"dir": "RD-J",
+"adm": "库50",
+"km2": 3.37,
+"res": 30,
+"libid": 50,
+"server": 2,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"NEW": {
+"title": "New",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "New",
+"dir": "New",
+"adm": "库24",
+"km2": 2.87,
+"res": 30,
+"libid": 24,
+"server": 2,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RDE": {
+"title": "RD-E",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD-E",
+"dir": "RD-E",
+"adm": "库43",
+"km2": 2.26,
+"res": 30,
+"libid": 43,
+"server": 2,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RDL": {
+"title": "RD-L",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD-L",
+"dir": "RD-L",
+"adm": "库53",
+"km2": 1.95,
+"res": 30,
+"libid": 53,
+"server": 2,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"MUSSAFAH00": {
+"title": "Mussafah_00",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "Mussafah_00",
+"dir": "Mussafah_00",
+"adm": "库40",
+"km2": 1.52,
+"res": 30,
+"libid": 40,
+"server": 2,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"ADCG6": {
+"title": "ADCG6",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "ADCG6",
+"dir": "ADCG6",
+"adm": "库11",
+"km2": 1.3,
+"res": 30,
+"libid": 11,
+"server": 2,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"SHALIELA": {
+"title": "Shaliela",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "Shaliela",
+"dir": "Shaliela",
+"adm": "库23",
+"km2": 25.88,
+"res": 30,
+"libid": 23,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"OLD1": {
+"title": "OLD (part 1/6)",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "OLD",
+"dir": "OLD-1",
+"adm": "库1",
+"km2": 8.96,
+"res": 30,
+"libid": 1,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"OLD2": {
+"title": "OLD (part 2/6)",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "OLD",
+"dir": "OLD-2",
+"adm": "库1",
+"km2": 6.8,
+"res": 30,
+"libid": 1,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"OLD3": {
+"title": "OLD (part 3/6)",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "OLD",
+"dir": "OLD-3",
+"adm": "库1",
+"km2": 2.63,
+"res": 30,
+"libid": 1,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"OLD4": {
+"title": "OLD (part 4/6)",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "OLD",
+"dir": "OLD-4",
+"adm": "库1",
+"km2": 2.21,
+"res": 30,
+"libid": 1,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"OLD5": {
+"title": "OLD (part 5/6)",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "OLD",
+"dir": "OLD-5",
+"adm": "库1",
+"km2": 1.65,
+"res": 30,
+"libid": 1,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"OLD6": {
+"title": "OLD (part 6/6)",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "OLD",
+"dir": "OLD-6",
+"adm": "库1",
+"km2": 1.02,
+"res": 30,
+"libid": 1,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"W571": {
+"title": "W57-1",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "W57-1",
+"dir": "W57-1",
+"adm": "库58",
+"km2": 0.19,
+"res": 5,
+"libid": 58,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"OUTLET63": {
+"title": "OUTLET",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "OUTLET",
+"dir": "OUTLET-63",
+"adm": "库63",
+"km2": 5.23,
+"res": 30,
+"libid": 63,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RDQ": {
+"title": "RD-Q",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD-Q",
+"dir": "RD-Q",
+"adm": "库60",
+"km2": 4.3,
+"res": 30,
+"libid": 60,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"MUSSAFAH03": {
+"title": "Mussafah_03",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "Mussafah_03",
+"dir": "Mussafah_03",
+"adm": "库12",
+"km2": 3.91,
+"res": 30,
+"libid": 12,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"AA1A2": {
+"title": "A-A1-A2",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "A-A1-A2",
+"dir": "A-A1-A2",
+"adm": "库7",
+"km2": 2.89,
+"res": 30,
+"libid": 7,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"SDPHASE1": {
+"title": "SD_Phase1",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "SD_Phase1",
+"dir": "SD_Phase1",
+"adm": "库2",
+"km2": 2.54,
+"res": 30,
+"libid": 2,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RDR": {
+"title": "RD-R",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD-R",
+"dir": "RD-R",
+"adm": "库59",
+"km2": 2.01,
+"res": 30,
+"libid": 59,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"ALMARYAHISLAND": {
+"title": "Al Maryah Island",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "Al Maryah Island",
+"dir": "Al_Maryah_Island",
+"adm": "库69",
+"km2": 1.67,
+"res": 30,
+"libid": 69,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"RD22BAJ2ADGC15": {
+"title": "RD 22 BAJ 2 ADGC 15",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "RD 22 BAJ 2 ADGC 15",
+"dir": "RD_22_BAJ_2_ADGC_15",
+"adm": "库10",
+"km2": 1.37,
+"res": 30,
+"libid": 10,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+},
+"OUTLET66": {
+"title": "OUTLET",
+"kmz": "ADM汇水区推演状态.geojson",
+"feat": "OUTLET",
+"dir": "OUTLET-66",
+"adm": "库66",
+"km2": 0.03,
+"res": 5,
+"libid": 66,
+"server": 3,
+"rains": [
+[
+61,
+1
+]
+]
+}
+},
+"hotspots": [
+{
+"hotspot_id": "ADM-23",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Mussafah",
+"location": "دوار دينا تريد",
+"criticality": "High",
+"x": 252797.34,
+"y": 2688315.63
+},
+{
+"hotspot_id": "ADM-24",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Mussafah",
+"location": "مستودعات البلدية",
+"criticality": "Medium",
+"x": 254476.94,
+"y": 2688839.54
+},
+{
+"hotspot_id": "ADM-51",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Al Wathbah",
+"location": "نفق النهضة",
+"criticality": "High",
+"x": 270201.27,
+"y": 2682852.42
+},
+{
+"hotspot_id": "ADM-55",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Al Wathbah",
+"location": "الوثبة - شارع الرسوخ - بجانب منتزة الوثبة",
+"criticality": "Medium",
+"x": 267459.37,
+"y": 2683352.55
+},
+{
+"hotspot_id": "ADM-57",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Al Wathbah",
+"location": "بني ياس - شارع السهل",
+"criticality": "Medium",
+"x": 261418.77,
+"y": 2686141.6
+},
+{
+"hotspot_id": "ADM-91",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "جسر تعليم القيادة بالاتجاهين",
+"criticality": "High",
+"x": 249288.04,
+"y": 2694872.9
+},
+{
+"hotspot_id": "ADM-99",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "طريق ابوظبي العين قبل جسر محوي باتجاه الداخل",
+"criticality": "Very High",
+"x": 253775.79,
+"y": 2694699.7
+},
+{
+"hotspot_id": "ADM-108",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "منطقة ربدان",
+"criticality": "Medium",
+"x": 250061.24,
+"y": 2693040.08
+},
+{
+"hotspot_id": "ADM-115",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد",
+"criticality": "High",
+"x": 254534.52,
+"y": 2690457.7
+},
+{
+"hotspot_id": "ADM-119",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - شارع خليفة بن خميس الديهلي",
+"criticality": "Medium",
+"x": 252218.34,
+"y": 2694076.08
+},
+{
+"hotspot_id": "ADM-120",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد",
+"criticality": "Medium",
+"x": 252691.15,
+"y": 2689247.25
+},
+{
+"hotspot_id": "ADM-124",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد",
+"criticality": "Medium",
+"x": 249671.95,
+"y": 2691611.51
+},
+{
+"hotspot_id": "ADM-134",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Mussafah",
+"location": "مصفح صناعية",
+"criticality": "Medium",
+"x": 247957.37,
+"y": 2692570.73
+},
+{
+"hotspot_id": "ADM-146",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Al Wathbah",
+"location": "الوثبة جنوب",
+"criticality": "Medium",
+"x": 262304.37,
+"y": 2685286.72
+},
+{
+"hotspot_id": "ADM-156",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Al Wathbah",
+"location": "طريق أبو ظبي - العين",
+"criticality": "High",
+"x": 256948.28,
+"y": 2690354.32
+},
+{
+"hotspot_id": "ADM-196",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "قبل الجسر المؤدي للمفرق الصناعية",
+"criticality": "Very High",
+"x": 252262.04,
+"y": 2688741.05
+},
+{
+"hotspot_id": "ADM-197",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "شارع النصيلة- مدينة محمد بن زايد",
+"criticality": "High",
+"x": 249402.95,
+"y": 2692372.87
+},
+{
+"hotspot_id": "ADM-198",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "شارع النصيلة- مدينة محمد بن زايد - قبل الجسر",
+"criticality": "Very High",
+"x": 254848.72,
+"y": 2692487.98
+},
+{
+"hotspot_id": "ADM-199",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "الجسر المؤدي الى المصفح - طريق أبو ظبي - العين",
+"criticality": "Very High",
+"x": 255041.64,
+"y": 2692646.92
+},
+{
+"hotspot_id": "ADM-214",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Mussafah",
+"location": "مصفح صناعية",
+"criticality": "Medium",
+"x": 248977.89,
+"y": 2692819.17
+},
+{
+"hotspot_id": "ADM-215",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Mussafah",
+"location": "مصفح صناعية - ICAD I",
+"criticality": "Medium",
+"x": 246792.35,
+"y": 2692126.8
+},
+{
+"hotspot_id": "ADM-226",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z9",
+"criticality": "Medium",
+"x": 250213.05,
+"y": 2694902.85
+},
+{
+"hotspot_id": "ADM-227",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - ME9",
+"criticality": "Medium",
+"x": 249924.33,
+"y": 2694653.08
+},
+{
+"hotspot_id": "ADM-228",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - ME9",
+"criticality": "Medium",
+"x": 249627.14,
+"y": 2693926.93
+},
+{
+"hotspot_id": "ADM-229",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - ME10",
+"criticality": "Medium",
+"x": 249957.0,
+"y": 2693632.94
+},
+{
+"hotspot_id": "ADM-230",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - ME11",
+"criticality": "Medium",
+"x": 250217.73,
+"y": 2692874.74
+},
+{
+"hotspot_id": "ADM-231",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - ME11",
+"criticality": "Medium",
+"x": 250263.98,
+"y": 2692619.03
+},
+{
+"hotspot_id": "ADM-232",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z20",
+"criticality": "Medium",
+"x": 250333.58,
+"y": 2691387.68
+},
+{
+"hotspot_id": "ADM-233",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z24",
+"criticality": "Medium",
+"x": 251449.56,
+"y": 2691323.65
+},
+{
+"hotspot_id": "ADM-234",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z23",
+"criticality": "Medium",
+"x": 251939.79,
+"y": 2691481.26
+},
+{
+"hotspot_id": "ADM-235",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z30",
+"criticality": "Medium",
+"x": 251849.7,
+"y": 2689244.28
+},
+{
+"hotspot_id": "ADM-236",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z30",
+"criticality": "Medium",
+"x": 252221.26,
+"y": 2689581.3
+},
+{
+"hotspot_id": "ADM-237",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z30",
+"criticality": "Medium",
+"x": 252814.04,
+"y": 2689792.55
+},
+{
+"hotspot_id": "ADM-238",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z30",
+"criticality": "Medium",
+"x": 253075.21,
+"y": 2689045.5
+},
+{
+"hotspot_id": "ADM-239",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z31",
+"criticality": "Medium",
+"x": 253819.41,
+"y": 2689786.07
+},
+{
+"hotspot_id": "ADM-240",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z34",
+"criticality": "Medium",
+"x": 254783.78,
+"y": 2689758.21
+},
+{
+"hotspot_id": "ADM-241",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z34",
+"criticality": "Medium",
+"x": 254520.57,
+"y": 2689807.11
+},
+{
+"hotspot_id": "ADM-242",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z34",
+"criticality": "Medium",
+"x": 254676.52,
+"y": 2690014.95
+},
+{
+"hotspot_id": "ADM-243",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z34",
+"criticality": "Medium",
+"x": 254134.94,
+"y": 2689824.9
+},
+{
+"hotspot_id": "ADM-244",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z34",
+"criticality": "Medium",
+"x": 254139.76,
+"y": 2690101.86
+},
+{
+"hotspot_id": "ADM-245",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z35",
+"criticality": "Medium",
+"x": 255576.9,
+"y": 2690398.28
+},
+{
+"hotspot_id": "ADM-246",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z35",
+"criticality": "Medium",
+"x": 255065.3,
+"y": 2691349.09
+},
+{
+"hotspot_id": "ADM-247",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z33",
+"criticality": "Medium",
+"x": 254123.74,
+"y": 2692096.86
+},
+{
+"hotspot_id": "ADM-248",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z33",
+"criticality": "Medium",
+"x": 254238.8,
+"y": 2691706.99
+},
+{
+"hotspot_id": "ADM-249",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z33",
+"criticality": "Medium",
+"x": 253961.89,
+"y": 2692132.93
+},
+{
+"hotspot_id": "ADM-250",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z22",
+"criticality": "Medium",
+"x": 253290.53,
+"y": 2692067.08
+},
+{
+"hotspot_id": "ADM-251",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z22",
+"criticality": "Medium",
+"x": 252853.81,
+"y": 2692063.64
+},
+{
+"hotspot_id": "ADM-252",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z22",
+"criticality": "Medium",
+"x": 252634.16,
+"y": 2692278.05
+},
+{
+"hotspot_id": "ADM-253",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z21",
+"criticality": "Medium",
+"x": 252165.44,
+"y": 2692186.54
+},
+{
+"hotspot_id": "ADM-254",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z15",
+"criticality": "Medium",
+"x": 252205.6,
+"y": 2693316.19
+},
+{
+"hotspot_id": "ADM-255",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z13",
+"criticality": "Medium",
+"x": 251890.7,
+"y": 2694463.18
+},
+{
+"hotspot_id": "ADM-256",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z13_01",
+"criticality": "Medium",
+"x": 252801.29,
+"y": 2694280.95
+},
+{
+"hotspot_id": "ADM-257",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z36",
+"criticality": "Medium",
+"x": 254270.46,
+"y": 2693523.86
+},
+{
+"hotspot_id": "ADM-258",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Mussafah",
+"location": "مصفح - جرن يافور -  المفرق الصناعية",
+"criticality": "Low",
+"x": 255344.09,
+"y": 2688097.32
+},
+{
+"hotspot_id": "ADM-259",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Mussafah",
+"location": "مصفح - جرن يافور -  المفرق الصناعية",
+"criticality": "Low",
+"x": 254847.06,
+"y": 2687551.85
+},
+{
+"hotspot_id": "ADM-260",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Mussafah",
+"location": "مصفح - جرن يافور -  المفرق الصناعية",
+"criticality": "Low",
+"x": 259804.81,
+"y": 2684607.76
+},
+{
+"hotspot_id": "ADM-329",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Al Wathbah",
+"location": "بني ياس -WB3_A",
+"criticality": "Medium",
+"x": 259866.52,
+"y": 2688241.37
+},
+{
+"hotspot_id": "ADM-372",
+"region": "MI8",
+"adm": "B7",
+"catchment": "MI-8",
+"area": "Al Wathbah",
+"location": "Al Dhafrah East",
+"criticality": "Medium",
+"x": 259720.75,
+"y": 2682647.81
+},
+{
+"hotspot_id": "ADM-36",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "الشوامخ - شارع خضيرمان",
+"criticality": "Medium",
+"x": 261494.57,
+"y": 2695382.72
+},
+{
+"hotspot_id": "ADM-38",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "شارع الشوامخ",
+"criticality": "Medium",
+"x": 263700.92,
+"y": 2698890.41
+},
+{
+"hotspot_id": "ADM-39",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "دوار - الشوامخ 12",
+"criticality": "Medium",
+"x": 264138.1,
+"y": 2698756.18
+},
+{
+"hotspot_id": "ADM-41",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "الشوامخ 7 - شارع بدع بوحصية",
+"criticality": "Medium",
+"x": 263710.33,
+"y": 2697406.45
+},
+{
+"hotspot_id": "ADM-44",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "بني ياس - شارع اليال",
+"criticality": "High",
+"x": 259833.12,
+"y": 2692725.43
+},
+{
+"hotspot_id": "ADM-45",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "بني ياس -شارع اليال",
+"criticality": "High",
+"x": 260793.38,
+"y": 2691880.65
+},
+{
+"hotspot_id": "ADM-46",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "بني ياس -شارع اليال",
+"criticality": "High",
+"x": 261861.49,
+"y": 2691049.6
+},
+{
+"hotspot_id": "ADM-47",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "بني ياس - شارع اليال",
+"criticality": "High",
+"x": 262853.34,
+"y": 2690195.95
+},
+{
+"hotspot_id": "ADM-89",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Shahama",
+"location": "مخرج جسر سويحان للقادم من جسر كرم الشام باتجاه الشامخة الفلاح",
+"criticality": "Very High",
+"x": 263738.66,
+"y": 2700778.38
+},
+{
+"hotspot_id": "ADM-92",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "جسر المفرق للقادم من مدينة شخبوط الطبية باتجاه ابوظبي",
+"criticality": "High",
+"x": 256800.59,
+"y": 2690976.68
+},
+{
+"hotspot_id": "ADM-97",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "على طول شارع ذياب بن عيسى في مدينة خليفة أ بالاتجاهين",
+"criticality": "High",
+"x": 253817.55,
+"y": 2700943.0
+},
+{
+"hotspot_id": "ADM-98",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "شارع الشيخ مكتوم بن راشد مقابل مستشفى شخبوط باتجاه الغربية",
+"criticality": "Very High",
+"x": 257720.73,
+"y": 2691793.04
+},
+{
+"hotspot_id": "ADM-100",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "شارع الشيخ مكتوم بن راشد عن حسر كرم الشام (الشوامخ) باتجاه دبي",
+"criticality": "Very High",
+"x": 262256.58,
+"y": 2697488.12
+},
+{
+"hotspot_id": "ADM-105",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "منطقة ربدان",
+"criticality": "Medium",
+"x": 258689.53,
+"y": 2694963.15
+},
+{
+"hotspot_id": "ADM-106",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط",
+"criticality": "Medium",
+"x": 261427.73,
+"y": 2696663.37
+},
+{
+"hotspot_id": "ADM-110",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة زايد",
+"criticality": "Medium",
+"x": 256051.3,
+"y": 2698751.98
+},
+{
+"hotspot_id": "ADM-116",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة  زايد",
+"criticality": "High",
+"x": 259927.29,
+"y": 2698850.75
+},
+{
+"hotspot_id": "ADM-117",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة  زايد",
+"criticality": "Medium",
+"x": 257595.77,
+"y": 2695526.69
+},
+{
+"hotspot_id": "ADM-118",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة  زايد",
+"criticality": "Medium",
+"x": 257219.39,
+"y": 2696902.2
+},
+{
+"hotspot_id": "ADM-121",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "Zayed City",
+"criticality": "Medium",
+"x": 256601.43,
+"y": 2697144.36
+},
+{
+"hotspot_id": "ADM-122",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "طريق الخليج العربي - من جسر الكريكت لجسر سويجان",
+"criticality": "High",
+"x": 255911.71,
+"y": 2700562.51
+},
+{
+"hotspot_id": "ADM-125",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - MZ 17",
+"criticality": "Medium",
+"x": 257521.42,
+"y": 2699448.76
+},
+{
+"hotspot_id": "ADM-126",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة زايد",
+"criticality": "Medium",
+"x": 255053.47,
+"y": 2698320.07
+},
+{
+"hotspot_id": "ADM-128",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "طريق الخليج العربي - من جسر الكريكت لجسر سويجان",
+"criticality": "High",
+"x": 260362.21,
+"y": 2701632.43
+},
+{
+"hotspot_id": "ADM-129",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "طريق الخليج العربي - من جسر الكريكت لجسر سويجان",
+"criticality": "High",
+"x": 261049.86,
+"y": 2701678.45
+},
+{
+"hotspot_id": "ADM-130",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة زايد",
+"criticality": "Medium",
+"x": 258403.03,
+"y": 2697312.58
+},
+{
+"hotspot_id": "ADM-131",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة",
+"criticality": "High",
+"x": 254332.53,
+"y": 2704360.43
+},
+{
+"hotspot_id": "ADM-200",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "الشوامخ - تقاطع شارع  طوي القامة مع شارع المورد",
+"criticality": "High",
+"x": 263398.27,
+"y": 2696043.95
+},
+{
+"hotspot_id": "ADM-203",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة",
+"criticality": "High",
+"x": 252955.13,
+"y": 2703970.4
+},
+{
+"hotspot_id": "ADM-275",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - SW13",
+"criticality": "Medium",
+"x": 252330.76,
+"y": 2702157.46
+},
+{
+"hotspot_id": "ADM-276",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - SW2",
+"criticality": "Medium",
+"x": 252444.9,
+"y": 2702875.79
+},
+{
+"hotspot_id": "ADM-277",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - SW3",
+"criticality": "Medium",
+"x": 252993.07,
+"y": 2702312.03
+},
+{
+"hotspot_id": "ADM-278",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - SW4",
+"criticality": "High",
+"x": 253024.5,
+"y": 2701790.63
+},
+{
+"hotspot_id": "ADM-279",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - شارع المطار بالاتجاه لأبو ظبي",
+"criticality": "Medium",
+"x": 253944.29,
+"y": 2700422.49
+},
+{
+"hotspot_id": "ADM-280",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - SE3",
+"criticality": "Medium",
+"x": 253428.47,
+"y": 2702836.32
+},
+{
+"hotspot_id": "ADM-281",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - SE13",
+"criticality": "Medium",
+"x": 254937.78,
+"y": 2702688.0
+},
+{
+"hotspot_id": "ADM-282",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - SE24",
+"criticality": "Medium",
+"x": 255466.92,
+"y": 2702191.18
+},
+{
+"hotspot_id": "ADM-283",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - SE26",
+"criticality": "Medium",
+"x": 255853.31,
+"y": 2701652.53
+},
+{
+"hotspot_id": "ADM-284",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - SE6",
+"criticality": "Medium",
+"x": 254428.49,
+"y": 2700835.14
+},
+{
+"hotspot_id": "ADM-285",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - SE16",
+"criticality": "Medium",
+"x": 255019.04,
+"y": 2700946.73
+},
+{
+"hotspot_id": "ADM-286",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - SE26",
+"criticality": "Medium",
+"x": 255803.68,
+"y": 2701132.55
+},
+{
+"hotspot_id": "ADM-287",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - SE36",
+"criticality": "Medium",
+"x": 257107.03,
+"y": 2701387.01
+},
+{
+"hotspot_id": "ADM-288",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - SE38",
+"criticality": "Medium",
+"x": 256965.2,
+"y": 2701987.87
+},
+{
+"hotspot_id": "ADM-289",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - SE35",
+"criticality": "Medium",
+"x": 256799.27,
+"y": 2702367.52
+},
+{
+"hotspot_id": "ADM-290",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - SE44",
+"criticality": "Medium",
+"x": 254808.07,
+"y": 2703975.77
+},
+{
+"hotspot_id": "ADM-295",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة خليفة - الراحة  - طريق أبو ظبي دبي - بالاتجاه الى دبي",
+"criticality": "High",
+"x": 254408.49,
+"y": 2704913.64
+},
+{
+"hotspot_id": "ADM-297",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - طريق سويحان باتجاه الى طريق المفرق",
+"criticality": "Very High",
+"x": 263096.82,
+"y": 2701550.7
+},
+{
+"hotspot_id": "ADM-298",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة زايد - MZ6",
+"criticality": "Medium",
+"x": 256067.45,
+"y": 2698202.38
+},
+{
+"hotspot_id": "ADM-299",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة زايد - MZ6",
+"criticality": "Medium",
+"x": 256816.81,
+"y": 2698688.09
+},
+{
+"hotspot_id": "ADM-300",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة زايد - MZ7",
+"criticality": "Medium",
+"x": 257179.78,
+"y": 2699136.17
+},
+{
+"hotspot_id": "ADM-301",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة زايد - MZ7",
+"criticality": "Medium",
+"x": 257454.71,
+"y": 2698599.5
+},
+{
+"hotspot_id": "ADM-302",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة زايد - MZ10",
+"criticality": "Medium",
+"x": 257014.21,
+"y": 2697188.65
+},
+{
+"hotspot_id": "ADM-303",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة زايد - MZ1",
+"criticality": "Medium",
+"x": 256865.64,
+"y": 2696814.44
+},
+{
+"hotspot_id": "ADM-304",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة زايد - MZ1",
+"criticality": "Medium",
+"x": 256530.75,
+"y": 2696232.9
+},
+{
+"hotspot_id": "ADM-305",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة زايد - MZ8",
+"criticality": "Medium",
+"x": 258503.56,
+"y": 2699390.42
+},
+{
+"hotspot_id": "ADM-306",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة زايد - MZ9",
+"criticality": "Medium",
+"x": 258833.93,
+"y": 2699717.19
+},
+{
+"hotspot_id": "ADM-307",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH7",
+"criticality": "Medium",
+"x": 257371.62,
+"y": 2694955.08
+},
+{
+"hotspot_id": "ADM-308",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH7",
+"criticality": "Medium",
+"x": 257630.88,
+"y": 2695271.99
+},
+{
+"hotspot_id": "ADM-309",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH7",
+"criticality": "Medium",
+"x": 257836.58,
+"y": 2694836.27
+},
+{
+"hotspot_id": "ADM-310",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH5",
+"criticality": "Medium",
+"x": 258165.17,
+"y": 2695052.26
+},
+{
+"hotspot_id": "ADM-311",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH5",
+"criticality": "Medium",
+"x": 258399.17,
+"y": 2695081.49
+},
+{
+"hotspot_id": "ADM-312",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH5",
+"criticality": "Medium",
+"x": 258174.63,
+"y": 2694420.45
+},
+{
+"hotspot_id": "ADM-313",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH3",
+"criticality": "Medium",
+"x": 258673.86,
+"y": 2694522.71
+},
+{
+"hotspot_id": "ADM-314",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH1",
+"criticality": "Medium",
+"x": 258892.14,
+"y": 2693632.45
+},
+{
+"hotspot_id": "ADM-315",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH2",
+"criticality": "Medium",
+"x": 259256.86,
+"y": 2694180.29
+},
+{
+"hotspot_id": "ADM-316",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH1",
+"criticality": "Medium",
+"x": 259705.91,
+"y": 2694316.69
+},
+{
+"hotspot_id": "ADM-317",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH15",
+"criticality": "Medium",
+"x": 260281.7,
+"y": 2695935.84
+},
+{
+"hotspot_id": "ADM-318",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH14",
+"criticality": "Medium",
+"x": 260039.31,
+"y": 2696604.85
+},
+{
+"hotspot_id": "ADM-319",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH17",
+"criticality": "Medium",
+"x": 261500.61,
+"y": 2697178.42
+},
+{
+"hotspot_id": "ADM-320",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH19",
+"criticality": "Medium",
+"x": 261293.15,
+"y": 2697514.37
+},
+{
+"hotspot_id": "ADM-321",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH19",
+"criticality": "Medium",
+"x": 261293.15,
+"y": 2697514.37
+},
+{
+"hotspot_id": "ADM-322",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH23",
+"criticality": "Medium",
+"x": 259668.32,
+"y": 2698062.85
+},
+{
+"hotspot_id": "ADM-323",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH20",
+"criticality": "Medium",
+"x": 261166.68,
+"y": 2697837.88
+},
+{
+"hotspot_id": "ADM-324",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "مدينة شخبوط - MSH24",
+"criticality": "Medium",
+"x": 260601.53,
+"y": 2699221.57
+},
+{
+"hotspot_id": "ADM-325",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "بني ياس - EB1_03",
+"criticality": "Medium",
+"x": 260052.37,
+"y": 2691407.47
+},
+{
+"hotspot_id": "ADM-326",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "بني ياس - EB6_01",
+"criticality": "Medium",
+"x": 260956.29,
+"y": 2690217.52
+},
+{
+"hotspot_id": "ADM-330",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "بني ياس -EB11_01",
+"criticality": "Medium",
+"x": 261061.75,
+"y": 2690448.44
+},
+{
+"hotspot_id": "ADM-331",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "بني ياس -EB1_04",
+"criticality": "Medium",
+"x": 260280.99,
+"y": 2692312.25
+},
+{
+"hotspot_id": "ADM-332",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "الشوامخ - SHM10",
+"criticality": "Medium",
+"x": 261501.46,
+"y": 2694230.78
+},
+{
+"hotspot_id": "ADM-333",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "الشوامخ - SHM9",
+"criticality": "Medium",
+"x": 262102.66,
+"y": 2694963.06
+},
+{
+"hotspot_id": "ADM-334",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "الشوامخ - SHM9",
+"criticality": "Medium",
+"x": 262799.7,
+"y": 2695361.32
+},
+{
+"hotspot_id": "ADM-335",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "الشوامخ - SHM3",
+"criticality": "Medium",
+"x": 262135.64,
+"y": 2696314.42
+},
+{
+"hotspot_id": "ADM-336",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "الشوامخ - SHM2",
+"criticality": "Medium",
+"x": 262664.58,
+"y": 2696981.45
+},
+{
+"hotspot_id": "ADM-337",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Al Wathbah",
+"location": "الشوامخ - SHM1",
+"criticality": "Medium",
+"x": 263016.24,
+"y": 2697972.83
+},
+{
+"hotspot_id": "ADM-488",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "دوار كرم الشام - مدينة شخبوط",
+"criticality": "High",
+"x": 261757.86,
+"y": 2697384.61
+},
+{
+"hotspot_id": "ADM-489",
+"region": "RD2",
+"adm": "B14",
+"catchment": "RD-2",
+"area": "Zayed",
+"location": "شارع مطر بن خادم المهيري- مدينة شخبوط",
+"criticality": "High",
+"x": 261432.95,
+"y": 2697379.03
+},
+{
+"hotspot_id": "ADM-191",
+"region": "YASO",
+"adm": "B11",
+"catchment": "YAS OUTFALL",
+"area": "Al Shahama",
+"location": "نفق ياس",
+"criticality": "High",
+"x": 257845.29,
+"y": 2707356.5
+},
+{
+"hotspot_id": "ADM-101",
+"region": "RB1",
+"adm": "B10",
+"catchment": "RB-1",
+"area": "Zayed",
+"location": "مدينة خليفة",
+"criticality": "High",
+"x": 256705.57,
+"y": 2705121.78
+},
+{
+"hotspot_id": "ADM-140",
+"region": "RB1",
+"adm": "B10",
+"catchment": "RB-1",
+"area": "Zayed",
+"location": "مدينة خليفة - دوار طيران الرئاسة",
+"criticality": "Very High",
+"x": 259237.67,
+"y": 2704567.1
+},
+{
+"hotspot_id": "ADM-205",
+"region": "RB1",
+"adm": "B10",
+"catchment": "RB-1",
+"area": "Zayed",
+"location": "مدينة خليفة - طريق المطار",
+"criticality": "Very High",
+"x": 258030.63,
+"y": 2705941.6
+},
+{
+"hotspot_id": "ADM-206",
+"region": "RB1",
+"adm": "B10",
+"catchment": "RB-1",
+"area": "Zayed",
+"location": "مدينة خليفة",
+"criticality": "High",
+"x": 258532.98,
+"y": 2705762.6
+},
+{
+"hotspot_id": "ADM-291",
+"region": "RB1",
+"adm": "B10",
+"catchment": "RB-1",
+"area": "Zayed",
+"location": "مدينة خليفة - SE47",
+"criticality": "Medium",
+"x": 255348.05,
+"y": 2704686.67
+},
+{
+"hotspot_id": "ADM-292",
+"region": "RB1",
+"adm": "B10",
+"catchment": "RB-1",
+"area": "Zayed",
+"location": "مدينة خليفة - SE47",
+"criticality": "Medium",
+"x": 255719.93,
+"y": 2705068.06
+},
+{
+"hotspot_id": "ADM-293",
+"region": "RB1",
+"adm": "B10",
+"catchment": "RB-1",
+"area": "Zayed",
+"location": "مدينة خليفة - SE40",
+"criticality": "Medium",
+"x": 256677.6,
+"y": 2703544.3
+},
+{
+"hotspot_id": "ADM-296",
+"region": "RB1",
+"adm": "B10",
+"catchment": "RB-1",
+"area": "Zayed",
+"location": "مدينة خليفة - الراحة  - طريق أبو ظبي دبي - بالاتجاه الى دبي",
+"criticality": "High",
+"x": 256009.11,
+"y": 2705362.24
+},
+{
+"hotspot_id": "ADM-3",
+"region": "RBE1",
+"adm": "B12",
+"catchment": "RBE1-OF1",
+"area": "Al Shahama",
+"location": "مجمع الجسور ياس",
+"criticality": "Very High",
+"x": 261320.18,
+"y": 2710045.08
+},
+{
+"hotspot_id": "ADM-7",
+"region": "RBE1",
+"adm": "B12",
+"catchment": "RBE1-OF1",
+"area": "Al Shahama",
+"location": "روضة الريف – شارع الشهد",
+"criticality": "Very High",
+"x": 264840.49,
+"y": 2707376.49
+},
+{
+"hotspot_id": "ADM-85",
+"region": "RBE1",
+"adm": "B12",
+"catchment": "RBE1-OF1",
+"area": "Al Shahama",
+"location": "شارع الشيخ زايد بين مجمع جسور ياس و جسر المطار بالاتجاهين",
+"criticality": "Very High",
+"x": 260802.51,
+"y": 2709323.39
+},
+{
+"hotspot_id": "ADM-137",
+"region": "RBE1",
+"adm": "B12",
+"catchment": "RBE1-OF1",
+"area": "Al Shahama",
+"location": "شارع خليفة بن زايد - الريف",
+"criticality": "High",
+"x": 267065.25,
+"y": 2707256.11
+},
+{
+"hotspot_id": "ADM-150",
+"region": "RBE1",
+"adm": "B12",
+"catchment": "RBE1-OF1",
+"area": "Al Shahama",
+"location": "شارع سلطان بن زايد - الريف",
+"criticality": "Medium",
+"x": 263936.62,
+"y": 2708378.01
+},
+{
+"hotspot_id": "ADM-154",
+"region": "RBE1",
+"adm": "B12",
+"catchment": "RBE1-OF1",
+"area": "Al Shahama",
+"location": "مدينة الفلاح",
+"criticality": "Medium",
+"x": 270010.3,
+"y": 2703962.03
+},
+{
+"hotspot_id": "ADM-155",
+"region": "RBE1",
+"adm": "B12",
+"catchment": "RBE1-OF1",
+"area": "Al Shahama",
+"location": "مدينة الفلاح",
+"criticality": "Medium",
+"x": 270962.81,
+"y": 2704758.23
+},
+{
+"hotspot_id": "ADM-157",
+"region": "RBE1",
+"adm": "B12",
+"catchment": "RBE1-OF1",
+"area": "Al Shahama",
+"location": "مدينة الفلاح",
+"criticality": "Medium",
+"x": 270523.21,
+"y": 2707179.02
+},
+{
+"hotspot_id": "ADM-345",
+"region": "RBE1",
+"adm": "B12",
+"catchment": "RBE1-OF1",
+"area": "Al Shahama",
+"location": "الفلاح - 1E",
+"criticality": "Medium",
+"x": 270859.13,
+"y": 2704037.02
+},
+{
+"hotspot_id": "ADM-346",
+"region": "RBE1",
+"adm": "B12",
+"catchment": "RBE1-OF1",
+"area": "Al Shahama",
+"location": "الفلاح - 1E",
+"criticality": "Medium",
+"x": 271190.2,
+"y": 2703810.0
+},
+{
+"hotspot_id": "ADM-347",
+"region": "RBE1",
+"adm": "B12",
+"catchment": "RBE1-OF1",
+"area": "Al Shahama",
+"location": "الفلاح - 1E",
+"criticality": "Medium",
+"x": 270204.63,
+"y": 2704956.34
+},
+{
+"hotspot_id": "ADM-348",
+"region": "RBE1",
+"adm": "B12",
+"catchment": "RBE1-OF1",
+"area": "Al Shahama",
+"location": "الفلاح - 1D",
+"criticality": "Medium",
+"x": 270700.83,
+"y": 2705524.42
+},
+{
+"hotspot_id": "ADM-349",
+"region": "RBE1",
+"adm": "B12",
+"catchment": "RBE1-OF1",
+"area": "Al Shahama",
+"location": "الفلاح - 1C",
+"criticality": "Medium",
+"x": 270680.73,
+"y": 2706776.87
+},
+{
+"hotspot_id": "ADM-350",
+"region": "RBE1",
+"adm": "B12",
+"catchment": "RBE1-OF1",
+"area": "Al Shahama",
+"location": "الفلاح - 1B",
+"criticality": "Medium",
+"x": 268660.3,
+"y": 2706654.93
+},
+{
+"hotspot_id": "ADM-490",
+"region": "RBE1",
+"adm": "B12",
+"catchment": "RBE1-OF1",
+"area": "Al Shahama",
+"location": "شارع E12-  من مجمع ياس باتجاه دبي",
+"criticality": "Very High",
+"x": 260261.56,
+"y": 2710209.14
+},
+{
+"hotspot_id": "ADM-90",
+"region": "MBZ",
+"adm": "B9",
+"catchment": "MBZ",
+"area": "Zayed",
+"location": "شارع الخليج العربي المخرج المؤدي لشارع العين",
+"criticality": "Very High",
+"x": 249392.27,
+"y": 2699796.22
+},
+{
+"hotspot_id": "ADM-94",
+"region": "MBZ",
+"adm": "B9",
+"catchment": "MBZ",
+"area": "Zayed",
+"location": "Abu Dhabi–Al Ain Road, entrance to the service road before the Mazyad Mall Bridge, outbound direction.",
+"criticality": "Very High",
+"x": 250508.05,
+"y": 2699464.38
+},
+{
+"hotspot_id": "ADM-111",
+"region": "MBZ",
+"adm": "B9",
+"catchment": "MBZ",
+"area": "Zayed",
+"location": "مدينة زايد",
+"criticality": "Medium",
+"x": 252269.64,
+"y": 2698440.39
+},
+{
+"hotspot_id": "ADM-193",
+"region": "MBZ",
+"adm": "B9",
+"catchment": "MBZ",
+"area": "Zayed",
+"location": "قبل الجسر المؤدي لمحمد بن زايد",
+"criticality": "High",
+"x": 251591.01,
+"y": 2698182.73
+},
+{
+"hotspot_id": "ADM-221",
+"region": "MBZ",
+"adm": "B9",
+"catchment": "MBZ",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z9_01",
+"criticality": "High",
+"x": 250103.15,
+"y": 2697863.75
+},
+{
+"hotspot_id": "ADM-222",
+"region": "MBZ",
+"adm": "B9",
+"catchment": "MBZ",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z1",
+"criticality": "High",
+"x": 250416.16,
+"y": 2697769.54
+},
+{
+"hotspot_id": "ADM-223",
+"region": "MBZ",
+"adm": "B9",
+"catchment": "MBZ",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z9",
+"criticality": "High",
+"x": 250156.61,
+"y": 2696300.21
+},
+{
+"hotspot_id": "ADM-224",
+"region": "MBZ",
+"adm": "B9",
+"catchment": "MBZ",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z5",
+"criticality": "Medium",
+"x": 251990.04,
+"y": 2695492.06
+},
+{
+"hotspot_id": "ADM-225",
+"region": "MBZ",
+"adm": "B9",
+"catchment": "MBZ",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد - Z8",
+"criticality": "Medium",
+"x": 251712.88,
+"y": 2695319.63
+},
+{
+"hotspot_id": "ADM-486",
+"region": "MBZ",
+"adm": "B9",
+"catchment": "MBZ",
+"area": "Zayed",
+"location": "شارع E30- جسر المصفح - الفلتر باتجاه خليفة",
+"criticality": "High",
+"x": 248942.35,
+"y": 2699369.44
+},
+{
+"hotspot_id": "ADM-48",
+"region": "RD14",
+"adm": "B15",
+"catchment": "RD 14",
+"area": "Al Wathbah",
+"location": "بني ياس - شارع الشيخ محمد بن راشد",
+"criticality": "Medium",
+"x": 261972.65,
+"y": 2688207.96
+},
+{
+"hotspot_id": "ADM-49",
+"region": "RD14",
+"adm": "B15",
+"catchment": "RD 14",
+"area": "Al Wathbah",
+"location": "بني ياس - شارع الخويرة",
+"criticality": "Very High",
+"x": 259277.72,
+"y": 2689976.55
+},
+{
+"hotspot_id": "ADM-54",
+"region": "RD14",
+"adm": "B15",
+"catchment": "RD 14",
+"area": "Al Wathbah",
+"location": "بني ياس - شارع الجزائر",
+"criticality": "Medium",
+"x": 260945.25,
+"y": 2686780.57
+},
+{
+"hotspot_id": "ADM-144",
+"region": "RD14",
+"adm": "B15",
+"catchment": "RD 14",
+"area": "Al Wathbah",
+"location": "شارع بني ياس بالقرب من محطة البترول",
+"criticality": "High",
+"x": 259303.84,
+"y": 2689142.55
+},
+{
+"hotspot_id": "ADM-160",
+"region": "RD14",
+"adm": "B15",
+"catchment": "RD 14",
+"area": "Al Wathbah",
+"location": "طريق أبو ظبي - العين",
+"criticality": "Medium",
+"x": 261185.91,
+"y": 2687382.38
+},
+{
+"hotspot_id": "ADM-194",
+"region": "RD14",
+"adm": "B15",
+"catchment": "RD 14",
+"area": "Al Wathbah",
+"location": "بحيرة بني ياس",
+"criticality": "Very High",
+"x": 259218.17,
+"y": 2689848.57
+},
+{
+"hotspot_id": "ADM-195",
+"region": "RD14",
+"adm": "B15",
+"catchment": "RD 14",
+"area": "Al Wathbah",
+"location": "شارع الزود - بني ياس",
+"criticality": "High",
+"x": 258020.69,
+"y": 2690559.63
+},
+{
+"hotspot_id": "ADM-326",
+"region": "RD14",
+"adm": "B15",
+"catchment": "RD 14",
+"area": "Al Wathbah",
+"location": "بني ياس - EB6_01",
+"criticality": "Medium",
+"x": 260956.29,
+"y": 2690217.52
+},
+{
+"hotspot_id": "ADM-327",
+"region": "RD14",
+"adm": "B15",
+"catchment": "RD 14",
+"area": "Al Wathbah",
+"location": "بني ياس - EB7_B",
+"criticality": "Medium",
+"x": 260283.4,
+"y": 2689464.32
+},
+{
+"hotspot_id": "ADM-328",
+"region": "RD14",
+"adm": "B15",
+"catchment": "RD 14",
+"area": "Al Wathbah",
+"location": "بني ياس -EB10_A",
+"criticality": "Medium",
+"x": 261651.32,
+"y": 2688676.56
+},
+{
+"hotspot_id": "ADM-192",
+"region": "RB3",
+"adm": "B8",
+"catchment": "RB-3",
+"area": "Zayed",
+"location": "طريق الخليج العربي مقابل ملعب الكريكت",
+"criticality": "Very High",
+"x": 251372.46,
+"y": 2699864.98
+},
+{
+"hotspot_id": "ADM-201",
+"region": "RB3",
+"adm": "B8",
+"catchment": "RB-3",
+"area": "Zayed",
+"location": "مدينة خليفة",
+"criticality": "High",
+"x": 251060.88,
+"y": 2703422.49
+},
+{
+"hotspot_id": "ADM-202",
+"region": "RB3",
+"adm": "B8",
+"catchment": "RB-3",
+"area": "Zayed",
+"location": "مدينة خليفة",
+"criticality": "High",
+"x": 252030.93,
+"y": 2700238.32
+},
+{
+"hotspot_id": "ADM-204",
+"region": "RB3",
+"adm": "B8",
+"catchment": "RB-3",
+"area": "Zayed",
+"location": "مدينة خليفة",
+"criticality": "High",
+"x": 250066.3,
+"y": 2703659.99
+},
+{
+"hotspot_id": "ADM-270",
+"region": "RB3",
+"adm": "B8",
+"catchment": "RB-3",
+"area": "Zayed",
+"location": "مدينة خليفة - SW17 - وطني",
+"criticality": "Medium",
+"x": 251210.81,
+"y": 2702520.8
+},
+{
+"hotspot_id": "ADM-271",
+"region": "RB3",
+"adm": "B8",
+"catchment": "RB-3",
+"area": "Zayed",
+"location": "مدينة خليفة - SW17 - وطني",
+"criticality": "Medium",
+"x": 250873.1,
+"y": 2702360.55
+},
+{
+"hotspot_id": "ADM-272",
+"region": "RB3",
+"adm": "B8",
+"catchment": "RB-3",
+"area": "Zayed",
+"location": "مدينة خليفة - SW17 - وطني",
+"criticality": "High",
+"x": 250598.41,
+"y": 2702321.1
+},
+{
+"hotspot_id": "ADM-273",
+"region": "RB3",
+"adm": "B8",
+"catchment": "RB-3",
+"area": "Zayed",
+"location": "مدينة خليفة",
+"criticality": "Medium",
+"x": 250598.41,
+"y": 2702321.1
+},
+{
+"hotspot_id": "ADM-274",
+"region": "RB3",
+"adm": "B8",
+"catchment": "RB-3",
+"area": "Zayed",
+"location": "مدينة خليفة",
+"criticality": "Medium",
+"x": 250598.41,
+"y": 2702321.1
+},
+{
+"hotspot_id": "ADM-487",
+"region": "RB3",
+"adm": "B8",
+"catchment": "RB-3",
+"area": "Zayed",
+"location": "شارع الخليج العربي - مجمع الجسور باتجاه مدينة خليفة",
+"criticality": "Very High",
+"x": 250736.22,
+"y": 2699791.91
+},
+{
+"hotspot_id": "ADM-75",
+"region": "RDA",
+"adm": "A1",
+"catchment": "RD-A",
+"area": "Island",
+"location": "شارع اليزوة – الخالدية مقابل (سبينس- الكورنيش)",
+"criticality": "High",
+"x": 229790.56,
+"y": 2708564.22
+},
+{
+"hotspot_id": "ADM-76",
+"region": "RDA",
+"adm": "A1",
+"catchment": "RD-A",
+"area": "Island",
+"location": "شارع الكورنيش (مدخل بوابة قصر الامارات)",
+"criticality": "Very High",
+"x": 228223.57,
+"y": 2707503.89
+},
+{
+"hotspot_id": "ADM-161",
+"region": "RDA",
+"adm": "A1",
+"catchment": "RD-A",
+"area": "Island",
+"location": "خلف مدرسه الامام الغزالي- شارع مطر المهيري - غرب 16",
+"criticality": "Medium",
+"x": 230496.84,
+"y": 2707563.69
+},
+{
+"hotspot_id": "ADM-376",
+"region": "RDA",
+"adm": "A1",
+"catchment": "RD-A",
+"area": "Island",
+"location": "جوار نيشن تاور",
+"criticality": "High",
+"x": 229226.0,
+"y": 2708136.95
+},
+{
+"hotspot_id": "ADM-377",
+"region": "RDA",
+"adm": "A1",
+"catchment": "RD-A",
+"area": "Island",
+"location": "شارع الاواصر",
+"criticality": "High",
+"x": 229930.68,
+"y": 2708378.29
+},
+{
+"hotspot_id": "ADM-378",
+"region": "RDA",
+"adm": "A1",
+"catchment": "RD-A",
+"area": "Island",
+"location": "شارع الاواصر",
+"criticality": "High",
+"x": 230023.02,
+"y": 2708431.93
+},
+{
+"hotspot_id": "ADM-379",
+"region": "RDA",
+"adm": "A1",
+"catchment": "RD-A",
+"area": "Island",
+"location": "ابراج الساحل",
+"criticality": "High",
+"x": 229861.4,
+"y": 2708468.3
+},
+{
+"hotspot_id": "ADM-380",
+"region": "RDA",
+"adm": "A1",
+"catchment": "RD-A",
+"area": "Island",
+"location": "اسبنس الكورنيش",
+"criticality": "High",
+"x": 229809.62,
+"y": 2708413.88
+},
+{
+"hotspot_id": "ADM-382",
+"region": "RDA",
+"adm": "A1",
+"catchment": "RD-A",
+"area": "Island",
+"location": "خلف مدرسه سابس العالميه",
+"criticality": "High",
+"x": 230472.35,
+"y": 2708057.51
+},
+{
+"hotspot_id": "ADM-383",
+"region": "RDA",
+"adm": "A1",
+"catchment": "RD-A",
+"area": "Island",
+"location": "خلف مدرسه سابس العالميه",
+"criticality": "High",
+"x": 230431.36,
+"y": 2708036.13
+},
+{
+"hotspot_id": "ADM-74",
+"region": "RDF",
+"adm": "A2",
+"catchment": "RD-F",
+"area": "Island",
+"location": "تقاطع شارع الشيخ راشد بن سعيد مع تقاطع شارع الشيخة فاطمة بنت مبارك (مقابل مبنى دائرة الاشغال سابقا)",
+"criticality": "Very High",
+"x": 234046.01,
+"y": 2707940.59
+},
+{
+"hotspot_id": "ADM-78",
+"region": "RDF",
+"adm": "A2",
+"catchment": "RD-F",
+"area": "Island",
+"location": "مواقف سيارات مستشفي جلوبال كير",
+"criticality": "High",
+"x": 232978.88,
+"y": 2708212.75
+},
+{
+"hotspot_id": "ADM-164",
+"region": "RDF",
+"adm": "A2",
+"catchment": "RD-F",
+"area": "Island",
+"location": "شارع خليفة بن شخبوط - غرب 17-1- مواقف سيارات مدرسه هزاع بن زايد الاول",
+"criticality": "Medium",
+"x": 232134.24,
+"y": 2707796.88
+},
+{
+"hotspot_id": "ADM-165",
+"region": "RDF",
+"adm": "A2",
+"catchment": "RD-F",
+"area": "Island",
+"location": "تقاطع شارع الخليج العربي مع شارع الشيخ هزاع",
+"criticality": "High",
+"x": 231885.34,
+"y": 2707386.76
+},
+{
+"hotspot_id": "ADM-390",
+"region": "RDF",
+"adm": "A2",
+"catchment": "RD-F",
+"area": "Island",
+"location": "مجمع الكرامه",
+"criticality": "High",
+"x": 233689.95,
+"y": 2708140.09
+},
+{
+"hotspot_id": "ADM-395",
+"region": "RDF",
+"adm": "A2",
+"catchment": "RD-F",
+"area": "Island",
+"location": "تقاطع الشيخه فاطمه مع شارع الكرامه",
+"criticality": "High",
+"x": 233731.4,
+"y": 2707651.62
+},
+{
+"hotspot_id": "ADM-396",
+"region": "RDF",
+"adm": "A2",
+"catchment": "RD-F",
+"area": "Island",
+"location": "صيدليه المركز الامريكي جوار مجمع ليوا",
+"criticality": "Medium",
+"x": 233493.51,
+"y": 2707412.29
+},
+{
+"hotspot_id": "ADM-405",
+"region": "RDF",
+"adm": "A2",
+"catchment": "RD-F",
+"area": "Island",
+"location": "مسجد خالد بن الوليد منطقه البطين",
+"criticality": "Medium",
+"x": 231868.01,
+"y": 2706767.17
+},
+{
+"hotspot_id": "ADM-444",
+"region": "RDF",
+"adm": "A2",
+"catchment": "RD-F",
+"area": "Island",
+"location": "مجمع الكرامه",
+"criticality": "Medium",
+"x": 233689.95,
+"y": 2708140.09
+},
+{
+"hotspot_id": "ADM-445",
+"region": "RDF",
+"adm": "A2",
+"catchment": "RD-F",
+"area": "Island",
+"location": "مبني تدوير \" الاشغال سابقا \"",
+"criticality": "Very High",
+"x": 233897.03,
+"y": 2707825.81
+},
+{
+"hotspot_id": "ADM-446",
+"region": "RDF",
+"adm": "A2",
+"catchment": "RD-F",
+"area": "Island",
+"location": "شارع ماء سلوان مقابل صحه مستشفي خليفه",
+"criticality": "Medium",
+"x": 233301.4,
+"y": 2708513.24
+},
+{
+"hotspot_id": "ADM-447",
+"region": "RDF",
+"adm": "A2",
+"catchment": "RD-F",
+"area": "Island",
+"location": "مجمع الكرامه",
+"criticality": "Medium",
+"x": 233493.9,
+"y": 2707966.48
+},
+{
+"hotspot_id": "ADM-448",
+"region": "RDF",
+"adm": "A2",
+"catchment": "RD-F",
+"area": "Island",
+"location": "شارع الكرامه",
+"criticality": "Medium",
+"x": 233389.95,
+"y": 2707835.45
+},
+{
+"hotspot_id": "ADM-449",
+"region": "RDF",
+"adm": "A2",
+"catchment": "RD-F",
+"area": "Island",
+"location": "روضه ابو ظبي للاطفال",
+"criticality": "Medium",
+"x": 233130.7,
+"y": 2708073.14
+},
+{
+"hotspot_id": "ADM-79",
+"region": "RDC",
+"adm": "A3",
+"catchment": "RD-C",
+"area": "Island",
+"location": "شارع المطار مقابل قصر المنهل",
+"criticality": "High",
+"x": 232668.07,
+"y": 2709806.35
+},
+{
+"hotspot_id": "ADM-385",
+"region": "RDC",
+"adm": "A3",
+"catchment": "RD-C",
+"area": "Island",
+"location": "كليه ابو ظبي للاداره",
+"criticality": "High",
+"x": 231786.73,
+"y": 2710470.76
+},
+{
+"hotspot_id": "ADM-386",
+"region": "RDC",
+"adm": "A3",
+"catchment": "RD-C",
+"area": "Island",
+"location": "شارع المطار مدخل قصر الحصن",
+"criticality": "Medium",
+"x": 232230.12,
+"y": 2710318.18
+},
+{
+"hotspot_id": "ADM-387",
+"region": "RDC",
+"adm": "A3",
+"catchment": "RD-C",
+"area": "Island",
+"location": "صيدليه الملا منطقه الخالديه",
+"criticality": "Medium",
+"x": 232210.87,
+"y": 2709841.94
+},
+{
+"hotspot_id": "ADM-180",
+"region": "QAB1",
+"adm": "A4",
+"catchment": "Qasr Al Bahr-1",
+"area": "Island",
+"location": "منطقة المعمورة - بجانب مبنى دائرة البلديات والنقل",
+"criticality": "Very High",
+"x": 235794.02,
+"y": 2707833.93
+},
+{
+"hotspot_id": "ADM-73",
+"region": "RDI",
+"adm": "A5",
+"catchment": "RD-I",
+"area": "Island",
+"location": "المشرف / غرب52 / شارع احمد بن سعيد الرميثي",
+"criticality": "Medium",
+"x": 235923.89,
+"y": 2704974.41
+},
+{
+"hotspot_id": "ADM-77",
+"region": "RDI",
+"adm": "A5",
+"catchment": "RD-I",
+"area": "Island",
+"location": "شارع المطار اتجاه الخارج قبل تقاطع الشيخه فاطمه",
+"criticality": "High",
+"x": 234074.94,
+"y": 2708110.15
+},
+{
+"hotspot_id": "ADM-84",
+"region": "RDI",
+"adm": "A5",
+"catchment": "RD-I",
+"area": "Island",
+"location": "حوض E-25 - قريب من مبنى مبادلة",
+"criticality": "Medium",
+"x": 235879.16,
+"y": 2707191.09
+},
+{
+"hotspot_id": "ADM-179",
+"region": "RDI",
+"adm": "A5",
+"catchment": "RD-I",
+"area": "Island",
+"location": "شارع الشيخ راشد بن سعيد - تقاطع شارع الشيخ محمد بن خليفة- مقابل محمصه الامراء",
+"criticality": "High",
+"x": 234554.26,
+"y": 2707553.55
+},
+{
+"hotspot_id": "ADM-184",
+"region": "RDI",
+"adm": "A5",
+"catchment": "RD-I",
+"area": "Island",
+"location": "شارع الشيخ راشد بن سعيد - جسر الجوازات",
+"criticality": "High",
+"x": 235920.5,
+"y": 2705919.96
+},
+{
+"hotspot_id": "ADM-207",
+"region": "RDI",
+"adm": "A5",
+"catchment": "RD-I",
+"area": "Island",
+"location": "جسر دلما",
+"criticality": "Very High",
+"x": 234718.36,
+"y": 2708423.28
+},
+{
+"hotspot_id": "ADM-391",
+"region": "RDI",
+"adm": "A5",
+"catchment": "RD-I",
+"area": "Island",
+"location": "خلف فندق فلايجيو شارع المطار",
+"criticality": "Medium",
+"x": 233854.74,
+"y": 2708269.96
+},
+{
+"hotspot_id": "ADM-392",
+"region": "RDI",
+"adm": "A5",
+"catchment": "RD-I",
+"area": "Island",
+"location": "خلف فندق فلايجيو شارع المطار",
+"criticality": "High",
+"x": 233863.2,
+"y": 2708181.13
+},
+{
+"hotspot_id": "ADM-393",
+"region": "RDI",
+"adm": "A5",
+"catchment": "RD-I",
+"area": "Island",
+"location": "شارع الشيخه فاطمه اتجاه البطين تقاطع شارع المطار",
+"criticality": "High",
+"x": 234185.83,
+"y": 2708075.26
+},
+{
+"hotspot_id": "ADM-394",
+"region": "RDI",
+"adm": "A5",
+"catchment": "RD-I",
+"area": "Island",
+"location": "شارع المطار اتجاه الخارج قبل تقاطع الشيخه فاطمه",
+"criticality": "High",
+"x": 233985.11,
+"y": 2708189.9
+},
+{
+"hotspot_id": "ADM-403",
+"region": "RDI",
+"adm": "A5",
+"catchment": "RD-I",
+"area": "Island",
+"location": "جوار مبني الهويه والجنسيه 1",
+"criticality": "Medium",
+"x": 235368.7,
+"y": 2706246.24
+},
+{
+"hotspot_id": "ADM-450",
+"region": "RDI",
+"adm": "A5",
+"catchment": "RD-I",
+"area": "Island",
+"location": "مطعم المزراب الشعبي",
+"criticality": "Medium",
+"x": 235038.51,
+"y": 2707028.33
+},
+{
+"hotspot_id": "ADM-451",
+"region": "RDI",
+"adm": "A5",
+"catchment": "RD-I",
+"area": "Island",
+"location": "نادي الجزيره",
+"criticality": "Medium",
+"x": 235661.05,
+"y": 2706684.07
+},
+{
+"hotspot_id": "ADM-452",
+"region": "RDI",
+"adm": "A5",
+"catchment": "RD-I",
+"area": "Island",
+"location": "خلف جامعه خليفه",
+"criticality": "Medium",
+"x": 236296.82,
+"y": 2705962.76
+},
+{
+"hotspot_id": "ADM-82",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "مدارس التكنولوجيا التطبيقيه بمنطقه ال نهيان",
+"criticality": "Medium",
+"x": 234236.83,
+"y": 2708469.11
+},
+{
+"hotspot_id": "ADM-83",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "شارع الشيخة فاطمة بنت مبارك - مقابل مدرسة الامارات الوطنية",
+"criticality": "High",
+"x": 234950.99,
+"y": 2708703.97
+},
+{
+"hotspot_id": "ADM-168",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "جراند الامارات - شارع هزاع بن زايد تقاطع شارع الشيخ سلطلن بن زايد",
+"criticality": "High",
+"x": 233910.58,
+"y": 2709249.59
+},
+{
+"hotspot_id": "ADM-178",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "شارع الشيخ راشد بن سعيد - تقاطع شارع هزاع",
+"criticality": "High",
+"x": 233431.23,
+"y": 2708848.05
+},
+{
+"hotspot_id": "ADM-186",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "مدخل قصر البحر",
+"criticality": "Very High",
+"x": 235730.34,
+"y": 2709024.29
+},
+{
+"hotspot_id": "ADM-424",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "جوار مجمع طاقه 1",
+"criticality": "Medium",
+"x": 234341.51,
+"y": 2710399.89
+},
+{
+"hotspot_id": "ADM-427",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "مواقف شارع السلام محال تاجير السيارات 2",
+"criticality": "Medium",
+"x": 234676.96,
+"y": 2710437.86
+},
+{
+"hotspot_id": "ADM-428",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "مواقف حافلات مدرسه الشيخه فاطمه 1",
+"criticality": "Medium",
+"x": 234447.17,
+"y": 2710087.54
+},
+{
+"hotspot_id": "ADM-429",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "مواقف حافلات مدرسه الشيخه فاطمه 2",
+"criticality": "Medium",
+"x": 234417.8,
+"y": 2710143.51
+},
+{
+"hotspot_id": "ADM-430",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "جوار السفاره السريلانكيه",
+"criticality": "High",
+"x": 234943.39,
+"y": 2710044.89
+},
+{
+"hotspot_id": "ADM-431",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "خلف مسجد حمد خليفه الخلفان",
+"criticality": "High",
+"x": 234687.8,
+"y": 2709938.89
+},
+{
+"hotspot_id": "ADM-432",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "مواقف مستشفي برجيل شارع الدفاع",
+"criticality": "Medium",
+"x": 234612.62,
+"y": 2709718.64
+},
+{
+"hotspot_id": "ADM-438",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "تقاطع شارع المرور مع شارع الفلاح",
+"criticality": "Medium",
+"x": 233406.36,
+"y": 2709763.72
+},
+{
+"hotspot_id": "ADM-439",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "فندق النخيل شارع المرور",
+"criticality": "Medium",
+"x": 233586.35,
+"y": 2709627.29
+},
+{
+"hotspot_id": "ADM-440",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "خلف جراند الامارات شارع المرور",
+"criticality": "Medium",
+"x": 233678.49,
+"y": 2709137.85
+},
+{
+"hotspot_id": "ADM-441",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "جوار كنتاكي شارع المطار",
+"criticality": "Medium",
+"x": 233253.0,
+"y": 2709168.11
+},
+{
+"hotspot_id": "ADM-442",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "فندق ماريوت شارع المطار",
+"criticality": "Medium",
+"x": 233429.42,
+"y": 2708843.32
+},
+{
+"hotspot_id": "ADM-443",
+"region": "RDG",
+"adm": "A6",
+"catchment": "RD-G",
+"area": "Island",
+"location": "منطقه ال نهيان \" محلات الشوكلاته \"",
+"criticality": "Medium",
+"x": 234468.4,
+"y": 2709067.43
+},
+{
+"hotspot_id": "ADM-26",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "مدينة الرياض - شارع طوي القايمة",
+"criticality": "Medium",
+"x": 267477.74,
+"y": 2692833.9
+},
+{
+"hotspot_id": "ADM-27",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "مدينة الرياض - شارع الخير",
+"criticality": "High",
+"x": 272511.82,
+"y": 2694054.49
+},
+{
+"hotspot_id": "ADM-28",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "مدينة الرياض - شارع العصري بن حمودة الظاهري",
+"criticality": "Medium",
+"x": 271145.04,
+"y": 2692146.59
+},
+{
+"hotspot_id": "ADM-29",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "مدينة الرياض -شارع الرياض",
+"criticality": "Medium",
+"x": 273249.39,
+"y": 2692912.85
+},
+{
+"hotspot_id": "ADM-30",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "مدينة الرياض -شارع النهضة",
+"criticality": "Medium",
+"x": 267049.0,
+"y": 2692384.35
+},
+{
+"hotspot_id": "ADM-31",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "مدينة الرياض -شارع الميثاق",
+"criticality": "Medium",
+"x": 266635.76,
+"y": 2692768.36
+},
+{
+"hotspot_id": "ADM-32",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "مدينة الرياض - شارع سيح القطع",
+"criticality": "Medium",
+"x": 270253.43,
+"y": 2693347.02
+},
+{
+"hotspot_id": "ADM-33",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "مدينة الرياض - شارع الصنوبر",
+"criticality": "High",
+"x": 271965.44,
+"y": 2693882.97
+},
+{
+"hotspot_id": "ADM-34",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "شارع الشيخ محمد بن راشد",
+"criticality": "Very High",
+"x": 269643.95,
+"y": 2697434.64
+},
+{
+"hotspot_id": "ADM-40",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "مدينة الرياض -شارع الخير",
+"criticality": "High",
+"x": 271584.71,
+"y": 2691733.94
+},
+{
+"hotspot_id": "ADM-341",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "مدينة الرياض - RD26",
+"criticality": "Medium",
+"x": 274781.75,
+"y": 2692416.77
+},
+{
+"hotspot_id": "ADM-342",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "مدينة الرياض - RD32",
+"criticality": "Medium",
+"x": 271104.04,
+"y": 2692897.04
+},
+{
+"hotspot_id": "ADM-343",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "مدينة الرياض - RD11",
+"criticality": "Medium",
+"x": 270547.93,
+"y": 2695532.17
+},
+{
+"hotspot_id": "ADM-344",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "مدينة الرياض - RD7",
+"criticality": "Medium",
+"x": 272513.12,
+"y": 2697793.95
+},
+{
+"hotspot_id": "ADM-485",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "شارع الخير",
+"criticality": "High",
+"x": 267793.49,
+"y": 2689150.47
+},
+{
+"hotspot_id": "ADM-493",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "مدينة الرياض - شارع الخير",
+"criticality": "High",
+"x": 264233.46,
+"y": 2689338.1
+},
+{
+"hotspot_id": "ADM-496",
+"region": "ALR",
+"adm": "B16",
+"catchment": "Pond 1/2A/2B/3/4/A/B/c/D",
+"area": "Al Wathbah",
+"location": "مدينة الرياض - حوض 144",
+"criticality": "Medium",
+"x": 265641.16,
+"y": 2688071.73
+},
+{
+"hotspot_id": "ADM-9",
+"region": "ADMLINE",
+"adm": "库35",
+"catchment": "ADMLINE",
+"area": "Al Shahama",
+"location": "منطقة الفلاح 4",
+"criticality": "Medium",
+"x": 269229.77,
+"y": 2702454.01
+},
+{
+"hotspot_id": "ADM-10",
+"region": "ADMLINE",
+"adm": "库35",
+"catchment": "ADMLINE",
+"area": "Al Shahama",
+"location": "منطقة الفلاح 1",
+"criticality": "Medium",
+"x": 271580.46,
+"y": 2702731.78
+},
+{
+"hotspot_id": "ADM-132",
+"region": "ADMLINE",
+"adm": "库35",
+"catchment": "ADMLINE",
+"area": "Al Shahama",
+"location": "مدينة الفلاح",
+"criticality": "Medium",
+"x": 270491.73,
+"y": 2703519.63
+},
+{
+"hotspot_id": "ADM-139",
+"region": "ADMLINE",
+"adm": "库35",
+"catchment": "ADMLINE",
+"area": "Al Shahama",
+"location": "مدينة الفلاح",
+"criticality": "Medium",
+"x": 271124.86,
+"y": 2703236.25
+},
+{
+"hotspot_id": "ADM-150",
+"region": "ADMLINE",
+"adm": "库35",
+"catchment": "ADMLINE",
+"area": "Al Shahama",
+"location": "شارع سلطان بن زايد - الريف",
+"criticality": "Medium",
+"x": 263936.62,
+"y": 2708378.01
+},
+{
+"hotspot_id": "ADM-154",
+"region": "ADMLINE",
+"adm": "库35",
+"catchment": "ADMLINE",
+"area": "Al Shahama",
+"location": "مدينة الفلاح",
+"criticality": "Medium",
+"x": 270010.3,
+"y": 2703962.03
+},
+{
+"hotspot_id": "ADM-155",
+"region": "ADMLINE",
+"adm": "库35",
+"catchment": "ADMLINE",
+"area": "Al Shahama",
+"location": "مدينة الفلاح",
+"criticality": "Medium",
+"x": 270962.81,
+"y": 2704758.23
+},
+{
+"hotspot_id": "ADM-345",
+"region": "ADMLINE",
+"adm": "库35",
+"catchment": "ADMLINE",
+"area": "Al Shahama",
+"location": "الفلاح - 1E",
+"criticality": "Medium",
+"x": 270859.13,
+"y": 2704037.02
+},
+{
+"hotspot_id": "ADM-346",
+"region": "ADMLINE",
+"adm": "库35",
+"catchment": "ADMLINE",
+"area": "Al Shahama",
+"location": "الفلاح - 1E",
+"criticality": "Medium",
+"x": 271190.2,
+"y": 2703810.0
+},
+{
+"hotspot_id": "ADM-347",
+"region": "ADMLINE",
+"adm": "库35",
+"catchment": "ADMLINE",
+"area": "Al Shahama",
+"location": "الفلاح - 1E",
+"criticality": "Medium",
+"x": 270204.63,
+"y": 2704956.34
+},
+{
+"hotspot_id": "ADM-348",
+"region": "ADMLINE",
+"adm": "库35",
+"catchment": "ADMLINE",
+"area": "Al Shahama",
+"location": "الفلاح - 1D",
+"criticality": "Medium",
+"x": 270700.83,
+"y": 2705524.42
+},
+{
+"hotspot_id": "ADM-349",
+"region": "ADMLINE",
+"adm": "库35",
+"catchment": "ADMLINE",
+"area": "Al Shahama",
+"location": "الفلاح - 1C",
+"criticality": "Medium",
+"x": 270680.73,
+"y": 2706776.87
+},
+{
+"hotspot_id": "ADM-350",
+"region": "ADMLINE",
+"adm": "库35",
+"catchment": "ADMLINE",
+"area": "Al Shahama",
+"location": "الفلاح - 1B",
+"criticality": "Medium",
+"x": 268660.3,
+"y": 2706654.93
+},
+{
+"hotspot_id": "ADM-141",
+"region": "MUSSAFAH08",
+"adm": "库19",
+"catchment": "Mussafah_08",
+"area": "Mussafah",
+"location": "مصفح صناعية",
+"criticality": "High",
+"x": 245746.44,
+"y": 2695268.56
+},
+{
+"hotspot_id": "ADM-211",
+"region": "MUSSAFAH08",
+"adm": "库19",
+"catchment": "Mussafah_08",
+"area": "Mussafah",
+"location": "مصفح صناعية - قطاع MW3",
+"criticality": "Medium",
+"x": 243564.66,
+"y": 2696130.55
+},
+{
+"hotspot_id": "ADM-212",
+"region": "MUSSAFAH08",
+"adm": "库19",
+"catchment": "Mussafah_08",
+"area": "Mussafah",
+"location": "مصفح صناعية - قطاع MW3",
+"criticality": "Medium",
+"x": 243564.66,
+"y": 2696130.55
+},
+{
+"hotspot_id": "ADM-217",
+"region": "MUSSAFAH08",
+"adm": "库19",
+"catchment": "Mussafah_08",
+"area": "Mussafah",
+"location": "مصفح صناعية - قطاع M42",
+"criticality": "Medium",
+"x": 244110.68,
+"y": 2693771.09
+},
+{
+"hotspot_id": "ADM-218",
+"region": "MUSSAFAH08",
+"adm": "库19",
+"catchment": "Mussafah_08",
+"area": "Mussafah",
+"location": "مصفح صناعية - قطاع M43",
+"criticality": "Medium",
+"x": 244389.87,
+"y": 2694608.3
+},
+{
+"hotspot_id": "ADM-503",
+"region": "ICADCA123",
+"adm": "库32",
+"catchment": "ICAD-CA-1_2_3",
+"area": "Mussafah",
+"location": "ايكاد 3",
+"criticality": "Medium",
+"x": 245291.91,
+"y": 2689690.94
+},
+{
+"hotspot_id": "ADM-71",
+"region": "RDH",
+"adm": "库49",
+"catchment": "RD-H",
+"area": "Island",
+"location": "مواقف سيارات حديقه ام الامارات- المشرف / شارع الند ، غرب 24/2",
+"criticality": "Medium",
+"x": 234814.64,
+"y": 2706806.59
+},
+{
+"hotspot_id": "ADM-397",
+"region": "RDH",
+"adm": "库49",
+"catchment": "RD-H",
+"area": "Island",
+"location": "خلف المركز الامريكي",
+"criticality": "Medium",
+"x": 233640.58,
+"y": 2707143.49
+},
+{
+"hotspot_id": "ADM-398",
+"region": "RDH",
+"adm": "库49",
+"catchment": "RD-H",
+"area": "Island",
+"location": "خلف مركز القاضي الطبي",
+"criticality": "Medium",
+"x": 233136.5,
+"y": 2705712.18
+},
+{
+"hotspot_id": "ADM-399",
+"region": "RDH",
+"adm": "库49",
+"catchment": "RD-H",
+"area": "Island",
+"location": "دوار الفروسيه 1",
+"criticality": "Medium",
+"x": 233806.79,
+"y": 2705743.78
+},
+{
+"hotspot_id": "ADM-400",
+"region": "RDH",
+"adm": "库49",
+"catchment": "RD-H",
+"area": "Island",
+"location": "جوار مجمع حدائق المشرف",
+"criticality": "Medium",
+"x": 233706.62,
+"y": 2705812.18
+},
+{
+"hotspot_id": "ADM-401",
+"region": "RDH",
+"adm": "库49",
+"catchment": "RD-H",
+"area": "Island",
+"location": "دوار الفروسيه 2",
+"criticality": "Medium",
+"x": 233947.05,
+"y": 2706184.47
+},
+{
+"hotspot_id": "ADM-404",
+"region": "RDH",
+"adm": "库49",
+"catchment": "RD-H",
+"area": "Island",
+"location": "جوار مبني الهويه والجنسيه 2",
+"criticality": "High",
+"x": 235257.97,
+"y": 2706292.67
+},
+{
+"hotspot_id": "ADM-407",
+"region": "RDH",
+"adm": "库49",
+"catchment": "RD-H",
+"area": "Island",
+"location": "حديقه ام الامارات 2",
+"criticality": "High",
+"x": 234582.33,
+"y": 2707048.04
+},
+{
+"hotspot_id": "ADM-172",
+"region": "RDM",
+"adm": "库52",
+"catchment": "RD-M",
+"area": "Island",
+"location": "شارع الظفرة تقاطع شارع الخليج العربي- جوار دوار مجلس المشرف",
+"criticality": "High",
+"x": 237462.32,
+"y": 2703733.42
+},
+{
+"hotspot_id": "ADM-175",
+"region": "RDM",
+"adm": "库52",
+"catchment": "RD-M",
+"area": "Island",
+"location": "شارع الظفرة بين شارع راشد بن زايد وشارع الخليج العربي",
+"criticality": "High",
+"x": 237472.57,
+"y": 2704053.53
+},
+{
+"hotspot_id": "ADM-185",
+"region": "RDM",
+"adm": "库52",
+"catchment": "RD-M",
+"area": "Island",
+"location": "شارع سلطان بن زايد من تقاطغ شارع سلامة بن بطي الى شارع الظفرة- مقابل مطعم اليمن السعيد شارع المرور",
+"criticality": "High",
+"x": 237594.99,
+"y": 2705358.09
+},
+{
+"hotspot_id": "ADM-453",
+"region": "RDM",
+"adm": "库52",
+"catchment": "RD-M",
+"area": "Island",
+"location": "مسجد حمزه بن عبد المطلب",
+"criticality": "Medium",
+"x": 237034.75,
+"y": 2705815.9
+},
+{
+"hotspot_id": "ADM-454",
+"region": "RDM",
+"adm": "库52",
+"catchment": "RD-M",
+"area": "Island",
+"location": "حديقه قاف \" حديقه الملك حمد \"",
+"criticality": "Medium",
+"x": 237545.6,
+"y": 2704919.66
+},
+{
+"hotspot_id": "ADM-455",
+"region": "RDM",
+"adm": "库52",
+"catchment": "RD-M",
+"area": "Island",
+"location": "خياط البيت السعيد - شارع المرور",
+"criticality": "Medium",
+"x": 237773.31,
+"y": 2705159.24
+},
+{
+"hotspot_id": "ADM-456",
+"region": "RDM",
+"adm": "库52",
+"catchment": "RD-M",
+"area": "Island",
+"location": "مركز فحص المركبات - ادنوك شارع المرور",
+"criticality": "Medium",
+"x": 238092.93,
+"y": 2704887.27
+},
+{
+"hotspot_id": "ADM-457",
+"region": "RDM",
+"adm": "库52",
+"catchment": "RD-M",
+"area": "Island",
+"location": "كليه الشرطه",
+"criticality": "Medium",
+"x": 238351.26,
+"y": 2705137.37
+},
+{
+"hotspot_id": "ADM-458",
+"region": "RDM",
+"adm": "库52",
+"catchment": "RD-M",
+"area": "Island",
+"location": "خلف مسجد سيف بن حارب المنصوري",
+"criticality": "High",
+"x": 238272.39,
+"y": 2705260.76
+},
+{
+"hotspot_id": "ADM-462",
+"region": "RDM",
+"adm": "库52",
+"catchment": "RD-M",
+"area": "Island",
+"location": "شارع المدرسه",
+"criticality": "Medium",
+"x": 237334.02,
+"y": 2704458.12
+},
+{
+"hotspot_id": "ADM-463",
+"region": "RDM",
+"adm": "库52",
+"catchment": "RD-M",
+"area": "Island",
+"location": "مقابل اكادميه ابو ظبي للسباحه",
+"criticality": "Medium",
+"x": 237709.54,
+"y": 2703919.1
+},
+{
+"hotspot_id": "ADM-381",
+"region": "RDB",
+"adm": "库45",
+"catchment": "RD-B",
+"area": "Island",
+"location": "مواقف مجمع سلامه السكني الكورنيش",
+"criticality": "High",
+"x": 230111.62,
+"y": 2708818.17
+},
+{
+"hotspot_id": "ADM-384",
+"region": "RDB",
+"adm": "库45",
+"catchment": "RD-B",
+"area": "Island",
+"location": "مواقف مجمع سلامه السكني الكورنيش",
+"criticality": "High",
+"x": 230141.83,
+"y": 2708806.5
+},
+{
+"hotspot_id": "ADM-388",
+"region": "RDB",
+"adm": "库45",
+"catchment": "RD-B",
+"area": "Island",
+"location": "مدينه خليفه الطبيه",
+"criticality": "Medium",
+"x": 232811.04,
+"y": 2708866.18
+},
+{
+"hotspot_id": "ADM-389",
+"region": "RDB",
+"adm": "库45",
+"catchment": "RD-B",
+"area": "Island",
+"location": "مجلس المنهل",
+"criticality": "High",
+"x": 232270.6,
+"y": 2708721.33
+},
+{
+"hotspot_id": "ADM-21",
+"region": "BC",
+"adm": "库9",
+"catchment": "B_C",
+"area": "Zayed",
+"location": "مدخل مصفح القادم من شارع الخليج العربي",
+"criticality": "High",
+"x": 248338.13,
+"y": 2700112.56
+},
+{
+"hotspot_id": "ADM-104",
+"region": "BC",
+"adm": "库9",
+"catchment": "B_C",
+"area": "Zayed",
+"location": "منطقة ربدان",
+"criticality": "High",
+"x": 249228.79,
+"y": 2701059.93
+},
+{
+"hotspot_id": "ADM-107",
+"region": "BC",
+"adm": "库9",
+"catchment": "B_C",
+"area": "Zayed",
+"location": "مدينة شخبوط",
+"criticality": "Medium",
+"x": 248432.89,
+"y": 2701312.64
+},
+{
+"hotspot_id": "ADM-263",
+"region": "BC",
+"adm": "库9",
+"catchment": "B_C",
+"area": "Zayed",
+"location": "ربدان -  RB7",
+"criticality": "Medium",
+"x": 247996.85,
+"y": 2701547.43
+},
+{
+"hotspot_id": "ADM-486",
+"region": "BC",
+"adm": "库9",
+"catchment": "B_C",
+"area": "Zayed",
+"location": "شارع E30- جسر المصفح - الفلتر باتجاه خليفة",
+"criticality": "High",
+"x": 248942.35,
+"y": 2699369.44
+},
+{
+"hotspot_id": "ADM-177",
+"region": "RDP",
+"adm": "库57",
+"catchment": "RD-P",
+"area": "Island",
+"location": "مدخل منطقة روضة ابوظبي من شارع الشيخ راشد بن سعيد- قرب مطار البطين",
+"criticality": "High",
+"x": 243447.24,
+"y": 2702738.7
+},
+{
+"hotspot_id": "ADM-473",
+"region": "RDP",
+"adm": "库57",
+"catchment": "RD-P",
+"area": "Island",
+"location": "دوار مدينه زايد الرياضيه",
+"criticality": "Medium",
+"x": 242106.93,
+"y": 2703006.41
+},
+{
+"hotspot_id": "ADM-474",
+"region": "RDP",
+"adm": "库57",
+"catchment": "RD-P",
+"area": "Island",
+"location": "ملاعب منطقه الروضه \" غرب مطار البطين \"",
+"criticality": "Medium",
+"x": 242616.39,
+"y": 2703118.97
+},
+{
+"hotspot_id": "ADM-475",
+"region": "RDP",
+"adm": "库57",
+"catchment": "RD-P",
+"area": "Island",
+"location": "منطقه الروضه \" الابراج السكنيه \"",
+"criticality": "Medium",
+"x": 242915.65,
+"y": 2702836.42
+},
+{
+"hotspot_id": "ADM-476",
+"region": "RDP",
+"adm": "库57",
+"catchment": "RD-P",
+"area": "Island",
+"location": "حديقه نادي الضباط",
+"criticality": "Medium",
+"x": 243932.68,
+"y": 2701288.41
+},
+{
+"hotspot_id": "ADM-166",
+"region": "RDO",
+"adm": "库54",
+"catchment": "RD-O",
+"area": "Island",
+"location": "شارع الشيخ زايد بن سلطان تقاطع شارع ظفير  -النفق",
+"criticality": "High",
+"x": 240254.27,
+"y": 2705904.66
+},
+{
+"hotspot_id": "ADM-467",
+"region": "RDO",
+"adm": "库54",
+"catchment": "RD-O",
+"area": "Island",
+"location": "شارع الخرطوم - مدرسه الريم",
+"criticality": "Medium",
+"x": 239602.44,
+"y": 2704759.43
+},
+{
+"hotspot_id": "ADM-468",
+"region": "RDO",
+"adm": "库54",
+"catchment": "RD-O",
+"area": "Island",
+"location": "منطقه السعاده 1",
+"criticality": "Medium",
+"x": 240153.26,
+"y": 2704915.47
+},
+{
+"hotspot_id": "ADM-469",
+"region": "RDO",
+"adm": "库54",
+"catchment": "RD-O",
+"area": "Island",
+"location": "منطقه السعاده 2",
+"criticality": "Medium",
+"x": 239961.07,
+"y": 2705495.36
+},
+{
+"hotspot_id": "ADM-188",
+"region": "RDN",
+"adm": "库55",
+"catchment": "RD-N",
+"area": "Island",
+"location": "الشارع من أرض المعارض لدوار الجوية- شارع السفارات",
+"criticality": "High",
+"x": 240870.83,
+"y": 2703508.06
+},
+{
+"hotspot_id": "ADM-481",
+"region": "RDN",
+"adm": "库55",
+"catchment": "RD-N",
+"area": "Island",
+"location": "مقابل دائره القضاء - شارع النوفل",
+"criticality": "High",
+"x": 241091.25,
+"y": 2702958.6
+},
+{
+"hotspot_id": "ADM-170",
+"region": "RDD",
+"adm": "库41",
+"catchment": "RD-D",
+"area": "Island",
+"location": "مقابل فندق كرستال ابو ظبي- شرق 14 بالقرب من مركز مدينة زايد للتسوق",
+"criticality": "High",
+"x": 232799.78,
+"y": 2710451.06
+},
+{
+"hotspot_id": "ADM-171",
+"region": "RDD",
+"adm": "库41",
+"catchment": "RD-D",
+"area": "Island",
+"location": "شارع سعيد بن احمد العتيبة تقاطع شارع  زايد الأول",
+"criticality": "High",
+"x": 233451.03,
+"y": 2710916.47
+},
+{
+"hotspot_id": "ADM-433",
+"region": "RDD",
+"adm": "库41",
+"catchment": "RD-D",
+"area": "Island",
+"location": "جوار مدرسه الايمان الخاصه",
+"criticality": "Medium",
+"x": 233164.88,
+"y": 2710932.12
+},
+{
+"hotspot_id": "ADM-434",
+"region": "RDD",
+"adm": "库41",
+"catchment": "RD-D",
+"area": "Island",
+"location": "جوار مسجد عبد الرحيم خوري",
+"criticality": "Medium",
+"x": 233573.64,
+"y": 2710558.57
+},
+{
+"hotspot_id": "ADM-435",
+"region": "RDD",
+"adm": "库41",
+"catchment": "RD-D",
+"area": "Island",
+"location": "شارع المرور مقابل سوق الذهب",
+"criticality": "Medium",
+"x": 233114.82,
+"y": 2710434.3
+},
+{
+"hotspot_id": "ADM-436",
+"region": "RDD",
+"adm": "库41",
+"catchment": "RD-D",
+"area": "Island",
+"location": "شارع المرور مقابل سوق الذهب",
+"criticality": "Medium",
+"x": 233046.38,
+"y": 2710568.61
+},
+{
+"hotspot_id": "ADM-437",
+"region": "RDD",
+"adm": "库41",
+"catchment": "RD-D",
+"area": "Island",
+"location": "مواقف سوق الذهب",
+"criticality": "Medium",
+"x": 232880.76,
+"y": 2710394.43
+},
+{
+"hotspot_id": "ADM-176",
+"region": "RDK",
+"adm": "库51",
+"catchment": "RD-K",
+"area": "Island",
+"location": "شارع سلامة بن بطي بين شارع راشد بن زايد وشارع الخليج العربي",
+"criticality": "High",
+"x": 236724.2,
+"y": 2704730.78
+},
+{
+"hotspot_id": "ADM-461",
+"region": "RDK",
+"adm": "库51",
+"catchment": "RD-K",
+"area": "Island",
+"location": "شارع سلامه بنت بطيء",
+"criticality": "Medium",
+"x": 236729.13,
+"y": 2704668.96
+},
+{
+"hotspot_id": "ADM-415",
+"region": "OUTLET68",
+"adm": "库68",
+"catchment": "OUTLET",
+"area": "Island",
+"location": "خلف المركز الاجتماعي الهندي",
+"criticality": "High",
+"x": 234453.24,
+"y": 2713080.04
+},
+{
+"hotspot_id": "ADM-416",
+"region": "OUTLET68",
+"adm": "库68",
+"catchment": "OUTLET",
+"area": "Island",
+"location": "مواقف سيارات سوق السجاد",
+"criticality": "Medium",
+"x": 234864.63,
+"y": 2713382.58
+},
+{
+"hotspot_id": "ADM-417",
+"region": "OUTLET68",
+"adm": "库68",
+"catchment": "OUTLET",
+"area": "Island",
+"location": "مواقف سيارات سوق السجاد",
+"criticality": "High",
+"x": 234774.44,
+"y": 2713439.71
+},
+{
+"hotspot_id": "ADM-418",
+"region": "OUTLET68",
+"adm": "库68",
+"catchment": "OUTLET",
+"area": "Island",
+"location": "شارع خليفه بن زايد تقاطع شارع المينا",
+"criticality": "High",
+"x": 234758.0,
+"y": 2713107.51
+},
+{
+"hotspot_id": "ADM-169",
+"region": "RDY",
+"adm": "库42",
+"catchment": "RD-Y",
+"area": "Island",
+"location": "شارع سعيد بن احمد العتيبة تقاطع شارع الفلاح",
+"criticality": "High",
+"x": 234030.09,
+"y": 2710243.64
+},
+{
+"hotspot_id": "ADM-414",
+"region": "RDY",
+"adm": "库42",
+"catchment": "RD-Y",
+"area": "Island",
+"location": "مستشفي الكورنيش",
+"criticality": "High",
+"x": 233443.9,
+"y": 2712267.95
+},
+{
+"hotspot_id": "ADM-425",
+"region": "RDY",
+"adm": "库42",
+"catchment": "RD-Y",
+"area": "Island",
+"location": "جوار مجمع طاقه 2",
+"criticality": "Medium",
+"x": 234247.94,
+"y": 2710279.74
+},
+{
+"hotspot_id": "ADM-426",
+"region": "RDY",
+"adm": "库42",
+"catchment": "RD-Y",
+"area": "Island",
+"location": "مواقف شارع السلام محال تاجير السيارات 1",
+"criticality": "Medium",
+"x": 234628.36,
+"y": 2710549.62
+},
+{
+"hotspot_id": "ADM-112",
+"region": "BAJ34",
+"adm": "库5",
+"catchment": "BAJ3_4",
+"area": "Zayed",
+"location": "ساس النخل - مدينة زايد",
+"criticality": "High",
+"x": 246114.56,
+"y": 2702876.2
+},
+{
+"hotspot_id": "ADM-267",
+"region": "RD26A",
+"adm": "库34",
+"catchment": "RD 26a",
+"area": "Zayed",
+"location": "المخرج الى طريق دبي - من طريق أبو ظبي العين",
+"criticality": "High",
+"x": 247159.01,
+"y": 2702360.42
+},
+{
+"hotspot_id": "ADM-14",
+"region": "MUSSAFAH01",
+"adm": "库20",
+"catchment": "Mussafah_01",
+"area": "Mussafah",
+"location": "شارع سلطان بن محمد القبيسي - بعد الجسر المؤدي الى المصفح- الأول",
+"criticality": "High",
+"x": 248728.44,
+"y": 2697838.22
+},
+{
+"hotspot_id": "ADM-15",
+"region": "MUSSAFAH01",
+"adm": "库20",
+"catchment": "Mussafah_01",
+"area": "Mussafah",
+"location": "مدينة الامارات الانسانية",
+"criticality": "Medium",
+"x": 247725.68,
+"y": 2698437.25
+},
+{
+"hotspot_id": "ADM-17",
+"region": "MUSSAFAH01",
+"adm": "库20",
+"catchment": "Mussafah_01",
+"area": "Mussafah",
+"location": "Sector 2",
+"criticality": "Medium",
+"x": 248657.33,
+"y": 2698306.08
+},
+{
+"hotspot_id": "ADM-19",
+"region": "MUSSAFAH01",
+"adm": "库20",
+"catchment": "Mussafah_01",
+"area": "Mussafah",
+"location": "Sector 1",
+"criticality": "Medium",
+"x": 248223.41,
+"y": 2698466.67
+},
+{
+"hotspot_id": "ADM-20",
+"region": "MUSSAFAH01",
+"adm": "库20",
+"catchment": "Mussafah_01",
+"area": "Mussafah",
+"location": "Sector 1",
+"criticality": "Medium",
+"x": 248802.76,
+"y": 2698816.26
+},
+{
+"hotspot_id": "ADM-86",
+"region": "MUSSAFAH01",
+"adm": "库20",
+"catchment": "Mussafah_01",
+"area": "Mussafah",
+"location": "نفق الصناعية الاول باتجاه الداخل",
+"criticality": "Very High",
+"x": 248635.35,
+"y": 2697822.36
+},
+{
+"hotspot_id": "ADM-87",
+"region": "MUSSAFAH01",
+"adm": "库20",
+"catchment": "Mussafah_01",
+"area": "Mussafah",
+"location": "نفق الصناعية الثاني باتجاه الداخل",
+"criticality": "Very High",
+"x": 248648.06,
+"y": 2694830.71
+},
+{
+"hotspot_id": "ADM-209",
+"region": "MUSSAFAH01",
+"adm": "库20",
+"catchment": "Mussafah_01",
+"area": "Mussafah",
+"location": "مصفح صناعية - قطاع 3",
+"criticality": "Medium",
+"x": 247501.92,
+"y": 2698852.19
+},
+{
+"hotspot_id": "ADM-213",
+"region": "MUSSAFAH01",
+"adm": "库20",
+"catchment": "Mussafah_01",
+"area": "Mussafah",
+"location": "مصفح صناعية - قطاع M34",
+"criticality": "High",
+"x": 247622.64,
+"y": 2694827.1
+},
+{
+"hotspot_id": "ADM-219",
+"region": "MUSSAFAH01",
+"adm": "库20",
+"catchment": "Mussafah_01",
+"area": "Mussafah",
+"location": "مصفح صناعية - قطاع M32_02",
+"criticality": "Medium",
+"x": 247817.4,
+"y": 2696064.84
+},
+{
+"hotspot_id": "ADM-220",
+"region": "MUSSAFAH01",
+"adm": "库20",
+"catchment": "Mussafah_01",
+"area": "Mussafah",
+"location": "مصفح صناعية - قطاع  M24",
+"criticality": "High",
+"x": 248452.98,
+"y": 2696408.11
+},
+{
+"hotspot_id": "ADM-182",
+"region": "ALREEMISLAND",
+"adm": "库70",
+"catchment": "Al Reem Island",
+"area": "Island",
+"location": "دوار شارع الحريه - جزيره الريم",
+"criticality": "Medium",
+"x": 236958.7,
+"y": 2710061.97
+},
+{
+"hotspot_id": "ADM-16",
+"region": "MUSSAFAH06",
+"adm": "库15",
+"catchment": "Mussafah_06",
+"area": "Mussafah",
+"location": "Sector 17",
+"criticality": "Medium",
+"x": 244692.4,
+"y": 2697014.29
+},
+{
+"hotspot_id": "ADM-18",
+"region": "MUSSAFAH06",
+"adm": "库15",
+"catchment": "Mussafah_06",
+"area": "Mussafah",
+"location": "Sector 15",
+"criticality": "Medium",
+"x": 244645.5,
+"y": 2697909.74
+},
+{
+"hotspot_id": "ADM-210",
+"region": "MUSSAFAH06",
+"adm": "库15",
+"catchment": "Mussafah_06",
+"area": "Mussafah",
+"location": "مصفح صناعية - قطاع M19",
+"criticality": "Medium",
+"x": 244477.91,
+"y": 2697222.22
+},
+{
+"hotspot_id": "ADM-216",
+"region": "MUSSAFAH10",
+"adm": "库30",
+"catchment": "Mussafah_10",
+"area": "Mussafah",
+"location": "مصفح صناعية - ICAD I",
+"criticality": "Medium",
+"x": 244680.58,
+"y": 2692718.99
+},
+{
+"hotspot_id": "ADM-162",
+"region": "RDJ",
+"adm": "库50",
+"catchment": "RD-J",
+"area": "Island",
+"location": "شارع المطلع - شارع الخليج العربي - غرب 52",
+"criticality": "High",
+"x": 233712.19,
+"y": 2705138.3
+},
+{
+"hotspot_id": "ADM-402",
+"region": "RDJ",
+"adm": "库50",
+"catchment": "RD-J",
+"area": "Island",
+"location": "اسفل جسر شارع الخليج العربي",
+"criticality": "Medium",
+"x": 234034.68,
+"y": 2704919.26
+},
+{
+"hotspot_id": "ADM-173",
+"region": "RDE",
+"adm": "库43",
+"catchment": "RD-E",
+"area": "Island",
+"location": "شارع زايد بن سلطان بين تقاطع شاع زايد الأول وشارع محمد بن بطي ال حامد - مقابل مطعم قصر الهند",
+"criticality": "High",
+"x": 234131.89,
+"y": 2711309.96
+},
+{
+"hotspot_id": "ADM-412",
+"region": "RDE",
+"adm": "库43",
+"catchment": "RD-E",
+"area": "Island",
+"location": "فندق هلا ارجان- الزاهية",
+"criticality": "Medium",
+"x": 234195.62,
+"y": 2712331.23
+},
+{
+"hotspot_id": "ADM-413",
+"region": "RDE",
+"adm": "库43",
+"catchment": "RD-E",
+"area": "Island",
+"location": "مواقف سيارات خلف فندق نهال",
+"criticality": "Medium",
+"x": 233751.66,
+"y": 2711918.49
+},
+{
+"hotspot_id": "ADM-419",
+"region": "RDE",
+"adm": "库43",
+"catchment": "RD-E",
+"area": "Island",
+"location": "جسر الماريا شارع حمدان بن محمد",
+"criticality": "High",
+"x": 234631.77,
+"y": 2712334.04
+},
+{
+"hotspot_id": "ADM-420",
+"region": "RDE",
+"adm": "库43",
+"catchment": "RD-E",
+"area": "Island",
+"location": "شارع السلام قبل تقاطع شارع حمدان",
+"criticality": "Medium",
+"x": 233877.98,
+"y": 2711627.91
+},
+{
+"hotspot_id": "ADM-421",
+"region": "RDE",
+"adm": "库43",
+"catchment": "RD-E",
+"area": "Island",
+"location": "جوار بنك ابو ظبي الاول - شارع السلام",
+"criticality": "Medium",
+"x": 234275.75,
+"y": 2711210.25
+},
+{
+"hotspot_id": "ADM-422",
+"region": "RDE",
+"adm": "库43",
+"catchment": "RD-E",
+"area": "Island",
+"location": "شارع الريم جوار مطعم جاد",
+"criticality": "Medium",
+"x": 234545.93,
+"y": 2711016.7
+},
+{
+"hotspot_id": "ADM-423",
+"region": "RDE",
+"adm": "库43",
+"catchment": "RD-E",
+"area": "Island",
+"location": "جوار فندق جنه  شارع الفلاح",
+"criticality": "Medium",
+"x": 234786.76,
+"y": 2710879.13
+},
+{
+"hotspot_id": "ADM-459",
+"region": "RDL",
+"adm": "库53",
+"catchment": "RD-L",
+"area": "Island",
+"location": "الدفاع المدني - القبيسات",
+"criticality": "High",
+"x": 238253.81,
+"y": 2703720.52
+},
+{
+"hotspot_id": "ADM-460",
+"region": "RDL",
+"adm": "库53",
+"catchment": "RD-L",
+"area": "Island",
+"location": "مسجد السيد يوسف الهاشمي",
+"criticality": "Medium",
+"x": 237897.73,
+"y": 2703671.75
+},
+{
+"hotspot_id": "ADM-464",
+"region": "RDL",
+"adm": "库53",
+"catchment": "RD-L",
+"area": "Island",
+"location": "شارع الظفرة تقاطع شارع الخليج العربي-  دوار مجلس المشرف",
+"criticality": "Medium",
+"x": 237897.73,
+"y": 2703671.75
+},
+{
+"hotspot_id": "ADM-465",
+"region": "RDL",
+"adm": "库53",
+"catchment": "RD-L",
+"area": "Island",
+"location": "شرق 43",
+"criticality": "Medium",
+"x": 238253.81,
+"y": 2703720.52
+},
+{
+"hotspot_id": "ADM-466",
+"region": "RDL",
+"adm": "库53",
+"catchment": "RD-L",
+"area": "Island",
+"location": "جوار مسجد جبريل",
+"criticality": "Medium",
+"x": 238944.45,
+"y": 2703752.0
+},
+{
+"hotspot_id": "ADM-189",
+"region": "MUSSAFAH00",
+"adm": "库40",
+"catchment": "Mussafah_00",
+"area": "Mussafah",
+"location": "نفق المصفح الثاني باتجاه الخارج",
+"criticality": "Very High",
+"x": 248937.38,
+"y": 2694909.23
+},
+{
+"hotspot_id": "ADM-113",
+"region": "ADCG6",
+"adm": "库11",
+"catchment": "ADCG6",
+"area": "Zayed",
+"location": "ربدان - ساس النخل",
+"criticality": "Medium",
+"x": 246785.84,
+"y": 2699964.66
+},
+{
+"hotspot_id": "ADM-265",
+"region": "ADCG6",
+"adm": "库11",
+"catchment": "ADCG6",
+"area": "Zayed",
+"location": "ربدان -  RB28",
+"criticality": "Medium",
+"x": 246701.38,
+"y": 2700617.62
+},
+{
+"hotspot_id": "ADM-266",
+"region": "ADCG6",
+"adm": "库11",
+"catchment": "ADCG6",
+"area": "Zayed",
+"location": "ربدان -  RB28",
+"criticality": "High",
+"x": 246701.38,
+"y": 2700617.62
+},
+{
+"hotspot_id": "ADM-135",
+"region": "SHALIELA",
+"adm": "库23",
+"catchment": "Shaliela",
+"area": "Al Shahama",
+"location": "الباهية",
+"criticality": "Medium",
+"x": 268379.7,
+"y": 2725507.75
+},
+{
+"hotspot_id": "ADM-158",
+"region": "SHALIELA",
+"adm": "库23",
+"catchment": "Shaliela",
+"area": "Al Shahama",
+"location": "شارع مكتوم بن راشد باتجاه السمحة القديمة",
+"criticality": "High",
+"x": 274731.16,
+"y": 2732057.99
+},
+{
+"hotspot_id": "ADM-364",
+"region": "SHALIELA",
+"adm": "库23",
+"catchment": "Shaliela",
+"area": "Al Shahama",
+"location": "السمحة  - Al Samhah East",
+"criticality": "Medium",
+"x": 273346.42,
+"y": 2728507.08
+},
+{
+"hotspot_id": "ADM-365",
+"region": "SHALIELA",
+"adm": "库23",
+"catchment": "Shaliela",
+"area": "Al Shahama",
+"location": "السمحة  - Al Samhah East",
+"criticality": "Medium",
+"x": 273783.9,
+"y": 2729253.44
+},
+{
+"hotspot_id": "ADM-366",
+"region": "SHALIELA",
+"adm": "库23",
+"catchment": "Shaliela",
+"area": "Al Shahama",
+"location": "السمحة  -Al Samhah East Old",
+"criticality": "Medium",
+"x": 274754.92,
+"y": 2730434.38
+},
+{
+"hotspot_id": "ADM-367",
+"region": "SHALIELA",
+"adm": "库23",
+"catchment": "Shaliela",
+"area": "Al Shahama",
+"location": "السمحة  -Al Samhah East Old",
+"criticality": "Medium",
+"x": 274887.71,
+"y": 2731130.32
+},
+{
+"hotspot_id": "ADM-368",
+"region": "SHALIELA",
+"adm": "库23",
+"catchment": "Shaliela",
+"area": "Al Shahama",
+"location": "السمحة  -Samhah_V",
+"criticality": "Medium",
+"x": 272101.69,
+"y": 2730411.2
+},
+{
+"hotspot_id": "ADM-369",
+"region": "SHALIELA",
+"adm": "库23",
+"catchment": "Shaliela",
+"area": "Al Shahama",
+"location": "السمحة  -Samhah_T",
+"criticality": "Medium",
+"x": 273134.93,
+"y": 2730438.6
+},
+{
+"hotspot_id": "ADM-370",
+"region": "SHALIELA",
+"adm": "库23",
+"catchment": "Shaliela",
+"area": "Al Shahama",
+"location": "السمحة  -Al Samhah West Old_",
+"criticality": "Medium",
+"x": 274122.37,
+"y": 2732007.06
+},
+{
+"hotspot_id": "ADM-143",
+"region": "OLD1",
+"adm": "库1",
+"catchment": "OLD",
+"area": "Al Shahama",
+"location": "الرحبة",
+"criticality": "Medium",
+"x": 266607.56,
+"y": 2722226.94
+},
+{
+"hotspot_id": "ADM-358",
+"region": "OLD1",
+"adm": "库1",
+"catchment": "OLD",
+"area": "Al Shahama",
+"location": "الرحبة - Rahbah_A",
+"criticality": "Medium",
+"x": 265760.06,
+"y": 2718803.74
+},
+{
+"hotspot_id": "ADM-359",
+"region": "OLD1",
+"adm": "库1",
+"catchment": "OLD",
+"area": "Al Shahama",
+"location": "الرحبة - Rahbah_A",
+"criticality": "Medium",
+"x": 265629.84,
+"y": 2718894.58
+},
+{
+"hotspot_id": "ADM-360",
+"region": "OLD1",
+"adm": "库1",
+"catchment": "OLD",
+"area": "Al Shahama",
+"location": "الرحبة - Rahbah_A",
+"criticality": "Medium",
+"x": 265666.19,
+"y": 2719248.57
+},
+{
+"hotspot_id": "ADM-361",
+"region": "OLD1",
+"adm": "库1",
+"catchment": "OLD",
+"area": "Al Shahama",
+"location": "الرحبة - Rahbah_C",
+"criticality": "Medium",
+"x": 265771.14,
+"y": 2720066.82
+},
+{
+"hotspot_id": "ADM-362",
+"region": "OLD1",
+"adm": "库1",
+"catchment": "OLD",
+"area": "Al Shahama",
+"location": "الرحبة - Rahbah_G",
+"criticality": "Medium",
+"x": 267104.39,
+"y": 2722836.96
+},
+{
+"hotspot_id": "ADM-4",
+"region": "OLD2",
+"adm": "库1",
+"catchment": "OLD",
+"area": "Al Shahama",
+"location": "نفق الشهامة الجديدة المؤدي الى ديرفيلدز مول",
+"criticality": "Very High",
+"x": 265462.94,
+"y": 2715734.62
+},
+{
+"hotspot_id": "ADM-95",
+"region": "OLD2",
+"adm": "库1",
+"catchment": "OLD",
+"area": "Al Shahama",
+"location": "النفق المودي للشهامة للقادم من روضة الريف",
+"criticality": "Very High",
+"x": 266422.03,
+"y": 2716291.31
+},
+{
+"hotspot_id": "ADM-133",
+"region": "OLD2",
+"adm": "库1",
+"catchment": "OLD",
+"area": "Al Shahama",
+"location": "الشهامة",
+"criticality": "Medium",
+"x": 264091.2,
+"y": 2713745.07
+},
+{
+"hotspot_id": "ADM-190",
+"region": "OLD2",
+"adm": "库1",
+"catchment": "OLD",
+"area": "Al Shahama",
+"location": "الشهامة الجديدة",
+"criticality": "High",
+"x": 266177.24,
+"y": 2716319.03
+},
+{
+"hotspot_id": "ADM-355",
+"region": "OLD4",
+"adm": "库1",
+"catchment": "OLD",
+"area": "Al Shahama",
+"location": "الباهية - Al Bahyah New",
+"criticality": "Medium",
+"x": 259856.61,
+"y": 2716743.18
+},
+{
+"hotspot_id": "ADM-356",
+"region": "OLD4",
+"adm": "库1",
+"catchment": "OLD",
+"area": "Al Shahama",
+"location": "الباهية - Al Bahyah New",
+"criticality": "Medium",
+"x": 260607.82,
+"y": 2716807.85
+},
+{
+"hotspot_id": "ADM-354",
+"region": "OLD5",
+"adm": "库1",
+"catchment": "OLD",
+"area": "Al Shahama",
+"location": "الباهية - Al Shahamah Old",
+"criticality": "Medium",
+"x": 264946.41,
+"y": 2716224.4
+},
+{
+"hotspot_id": "ADM-357",
+"region": "OLD6",
+"adm": "库1",
+"catchment": "OLD",
+"area": "Al Shahama",
+"location": "الباهية - Al Shahamah Old",
+"criticality": "Medium",
+"x": 264997.07,
+"y": 2718029.8
+},
+{
+"hotspot_id": "ADM-174",
+"region": "OUTLET63",
+"adm": "库63",
+"catchment": "OUTLET",
+"area": "Island",
+"location": "منطقه المزون",
+"criticality": "High",
+"x": 239533.13,
+"y": 2702538.43
+},
+{
+"hotspot_id": "ADM-477",
+"region": "OUTLET63",
+"adm": "库63",
+"catchment": "OUTLET",
+"area": "Island",
+"location": "اكادميه الرياضه النسائيه",
+"criticality": "Medium",
+"x": 243380.36,
+"y": 2701054.67
+},
+{
+"hotspot_id": "ADM-478",
+"region": "OUTLET63",
+"adm": "库63",
+"catchment": "OUTLET",
+"area": "Island",
+"location": "مجمع هيلز ابو ظبي",
+"criticality": "Medium",
+"x": 242896.6,
+"y": 2701240.83
+},
+{
+"hotspot_id": "ADM-470",
+"region": "RDQ",
+"adm": "库60",
+"catchment": "RD-Q",
+"area": "Island",
+"location": "مجمع اوريكس",
+"criticality": "Medium",
+"x": 241226.68,
+"y": 2705350.04
+},
+{
+"hotspot_id": "ADM-471",
+"region": "RDQ",
+"adm": "库60",
+"catchment": "RD-Q",
+"area": "Island",
+"location": "محطه ادنوك - جوار مجمع الظبي",
+"criticality": "Medium",
+"x": 241652.68,
+"y": 2705342.19
+},
+{
+"hotspot_id": "ADM-472",
+"region": "RDQ",
+"adm": "库60",
+"catchment": "RD-Q",
+"area": "Island",
+"location": "مدخل قصر المينا مع شارع المروج",
+"criticality": "Medium",
+"x": 242388.22,
+"y": 2705062.67
+},
+{
+"hotspot_id": "ADM-22",
+"region": "MUSSAFAH03",
+"adm": "库12",
+"catchment": "Mussafah_03",
+"area": "Mussafah",
+"location": "Sector 9",
+"criticality": "Medium",
+"x": 245527.65,
+"y": 2697331.43
+},
+{
+"hotspot_id": "ADM-102",
+"region": "AA1A2",
+"adm": "库7",
+"catchment": "A-A1-A2",
+"area": "Zayed",
+"location": "مدينة خليفة",
+"criticality": "High",
+"x": 246694.71,
+"y": 2702443.48
+},
+{
+"hotspot_id": "ADM-103",
+"region": "AA1A2",
+"adm": "库7",
+"catchment": "A-A1-A2",
+"area": "Zayed",
+"location": "منطقة ربدان",
+"criticality": "Medium",
+"x": 247318.98,
+"y": 2702024.4
+},
+{
+"hotspot_id": "ADM-109",
+"region": "AA1A2",
+"adm": "库7",
+"catchment": "A-A1-A2",
+"area": "Zayed",
+"location": "مدينة محمد بن زايد",
+"criticality": "Medium",
+"x": 246735.65,
+"y": 2701612.55
+},
+{
+"hotspot_id": "ADM-123",
+"region": "AA1A2",
+"adm": "库7",
+"catchment": "A-A1-A2",
+"area": "Zayed",
+"location": "ربدان - شارع راشد بن جابر الهاملي",
+"criticality": "Medium",
+"x": 246124.22,
+"y": 2701978.56
+},
+{
+"hotspot_id": "ADM-127",
+"region": "AA1A2",
+"adm": "库7",
+"catchment": "A-A1-A2",
+"area": "Zayed",
+"location": "ربدان",
+"criticality": "Medium",
+"x": 246847.89,
+"y": 2701110.81
+},
+{
+"hotspot_id": "ADM-261",
+"region": "AA1A2",
+"adm": "库7",
+"catchment": "A-A1-A2",
+"area": "Zayed",
+"location": "ربدان -  RB1",
+"criticality": "Medium",
+"x": 245938.92,
+"y": 2702792.49
+},
+{
+"hotspot_id": "ADM-262",
+"region": "AA1A2",
+"adm": "库7",
+"catchment": "A-A1-A2",
+"area": "Zayed",
+"location": "ربدان -  RB2",
+"criticality": "Medium",
+"x": 245740.16,
+"y": 2702463.61
+},
+{
+"hotspot_id": "ADM-167",
+"region": "RDR",
+"adm": "库59",
+"catchment": "RD-R",
+"area": "Island",
+"location": "مناره المقطع - جوار جسر المقطع",
+"criticality": "High",
+"x": 244655.38,
+"y": 2703208.65
+},
+{
+"hotspot_id": "ADM-480",
+"region": "RDR",
+"adm": "库59",
+"catchment": "RD-R",
+"area": "Island",
+"location": "مواقف واحه الكرامه",
+"criticality": "Medium",
+"x": 244419.4,
+"y": 2701822.61
+},
+{
+"hotspot_id": "ADM-264",
+"region": "RD22BAJ2ADGC15",
+"adm": "库10",
+"catchment": "RD 22 BAJ 2 ADGC 15",
+"area": "Zayed",
+"location": "ربدان -  RB14",
+"criticality": "High",
+"x": 245238.25,
+"y": 2701087.36
+}
+]
+}

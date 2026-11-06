@@ -1,0 +1,99 @@
+# 排水智能体预设（DeepSeek Harness agent preset）。
+# 由 python -m swbrain.dsh_bridge --render 从 agent/dsh/presets/qa/ 渲染到 $DSH_HOME/.agent-presets/qa/：
+# __REPO__ / __PYTHON__ / __SWBRAIN_URL__ / __SKILLS_DIR__ 是渲染占位符。访问口令不渲染进来：
+# MCP 服务自己从 config.toml 读（见 swbrain/mcp_server.py 的 _key），口令不落在 out/ 下的任何文件里。
+#
+# 这是 AGENT 面的组合：只放这一个会话贡献给宿主注册表的东西——人设、工具、技能、压缩策略。
+# 模型路由、持久化、沙箱、审批都在宿主组合（web / sdk / headless 配置）里，不在这里。
+
+# ── 身份 ────────────────────────────────────────────────────────────────────
+- id: persona
+  name: '@deepseek-ai/dsh-persona'
+  config:
+    suffix: 当前工作目录 {{cwd}}（排水智能体仓库）。
+    prefix: |-
+      你是阿布扎比 DMT「会思考的排水系统」的数据质检智能体，由 {{model}} 驱动，运行在 DeepSeek Harness 上。
+
+      你是数据质检智能体。你的活是：一二维热点群计算要的客户数据与环境齐不齐（换台机器能不能复现、缺什么）、每个情景每一步做完没有；某个情景每个态的结果过没过质检——算完（帧数够）、一维连续性误差 < 2%、一二维交换对账差 < 0.2%、L2+suggested 比 L2+planned 变深的面积（应接近 0）。
+      只能通过 mcp__swbrain__* 工具（qa_data / qa_results）拿事实，不要编造数值与标准。
+      回答用用户的语言：逐项给「值 → 标准 → 过没过」，不合格的说明原因与下一步。
+
+- id: agent-instructions
+  name: '@deepseek-ai/dsh-agent-instructions'
+  config:
+    maxBytes: 65536
+
+# ── 排水系统本体：MCP 工具 ────────────────────────────────────────────────
+# swbrain.mcp_server 是薄桥，转发到正在运行的排水智能体 HTTP 服务（同源、同缓存）。
+# 首次问到某个情景要等它的调度上下文（预热没完时 40–110 s），所以超时放宽到 5 分钟。
+- id: mcp-swbrain
+  name: '@deepseek-ai/dsh-mcp-client'
+  config:
+    serverName: swbrain
+    transport: stdio
+    command: __PYTHON__
+    args: ['-m', 'swbrain.mcp_server']
+    cwd: __REPO__
+    env:
+      SWBRAIN_URL: __SWBRAIN_URL__
+      # 这个 MCP 服务代表哪个智能体：只把它名下的动作做成工具（多智能体，2026-10-02）
+      SWBRAIN_OWNER: qa
+      # 统一身份：每轮对话的委托凭据由服务写在这里（对话结束即删），MCP 每次调用前读，按发起对话的人判职能。
+      # 控制台对话走的是 sdk 补丁，登录用户由服务写；原生 Web UI 由 web_command 置 SWBRAIN_READONLY=1（那边分不出是谁在用）
+      SWBRAIN_DELEGATION_FILE: __DELEGATION_FILE__
+      PYTHONIOENCODING: utf-8
+      PYTHONUTF8: '1'
+    # 要比服务端最慢的一次冷算长，且不短于 MCP 桥的 HTTP 超时（SWBRAIN_TIMEOUT_S，缺省 600 s）：
+    # 原来 300 s，冷情景算到一半 dsh 先超时、再重试，服务端同一份算两遍（2026-09-30 实测一问 773 s）
+    toolCallTimeoutMs: 660000
+    failOnStartupError: false
+
+# ── 技能：领域玩法说明书随预设走 ─────────────────────────────────────────
+- id: skill-filesystem
+  name: '@deepseek-ai/dsh-skill-filesystem'
+  config:
+    includeDefaultRoots: false
+    customSkillDirs:
+      - __SKILLS_DIR__
+
+- id: tool-skill
+  name: '@deepseek-ai/dsh-tool-skill'
+
+# ── 只读地看仓库文档（docs/、README）──────────────────────────────────────
+- id: tool-fs
+  name: '@deepseek-ai/dsh-tool-fs'
+
+- id: tool-fs-search
+  name: '@deepseek-ai/dsh-tool-fs-search'
+  config:
+    sampleOverCapGlobResults: false
+
+# ── 与人的交互 ──────────────────────────────────────────────────────────────
+- id: tool-ask-user
+  name: '@deepseek-ai/dsh-tool-ask-user'
+
+- id: tool-todo
+  name: '@deepseek-ai/dsh-tool-todo'
+  config:
+    allowParallelInProgress: true
+
+# ── 上下文压缩（长对话）─────────────────────────────────────────────────────
+- id: compaction
+  name: cordis:group
+  group: true
+  isolate:
+    compaction: true
+    toolResultPruner: true
+  config:
+    - id: compaction-basic
+      name: '@deepseek-ai/dsh-compaction-basic'
+
+    - id: command-compact
+      name: '@deepseek-ai/dsh-command-compact'
+
+    - id: tool-result-pruner
+      name: '@deepseek-ai/dsh-compaction-tool-result-pruner'
+      config:
+        thresholdChars: 8192
+        headChars: 4096
+        tailChars: 1024

@@ -1,0 +1,8 @@
+# 试点范围。
+extents:
+  rda:
+    title: RD-A 试点范围 = AECOM 模型子汇水区并集外扩 200 m
+    from_source: aecom_rda
+    layer: 10+20%-1hr/Catchment.shp
+    crs: 32640          # shapefile 没写坐标系，坐标是 UTM 40N 米
+    buffer_m: 200

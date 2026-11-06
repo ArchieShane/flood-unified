@@ -1,0 +1,30 @@
+{
+ "region": "OLD3",
+ "domain_km2": 2.63,
+ "stations": [
+  {
+   "unitid": "SW_ABA_ABF2_PSS_49",
+   "ps_id": "ADM_RD-40",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::2x25",
+   "n_pumps": 2,
+   "q_each_lps": 25.0,
+   "q_src": "客户备注 2×25",
+   "parsons": [],
+   "wetwell_node": "262409_2716347",
+   "wetwell_dist_m": 18,
+   "well_depth_m": 8.25,
+   "on_m": 4.12,
+   "off_m": 0.83,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 262419.4,
+   "y": 2716361.9
+  }
+ ]
+}

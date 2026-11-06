@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 430" role="img" aria-label="地下调蓄箱涵 · 剖面示意" font-family="IBM Plex Sans, 'Noto Sans SC', sans-serif">
+  <defs>
+    <pattern id="soil" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#efe6d2"/><circle cx="3" cy="3" r="1" fill="#cdbb95"/><circle cx="8" cy="7" r="1" fill="#cdbb95"/></pattern>
+    <pattern id="conc" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#c9ced6"/><path d="M0 8L8 0" stroke="#aeb5bf" stroke-width="1"/></pattern>
+    <pattern id="silt" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#a78b5c"/><path d="M0 6L6 0" stroke="#8a7246" stroke-width="1"/></pattern>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 8 8"><path d="M0,0 L8,4 L0,8 z" fill="#1d4ed8"/></marker>
+    <marker id="dm" markerWidth="9" markerHeight="9" refX="4" refY="4" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 8 8"><path d="M0,4 L8,4 M4,0 L4,8" stroke="#334155" stroke-width="1.2"/></marker>
+  </defs>
+  <rect width="780" height="430" fill="#f8fafc"/>
+  <text x="20" y="28" font-size="17" font-weight="700" fill="#0f172a">地下调蓄箱涵 · 剖面示意</text>
+  <text x="760" y="28" font-size="12" text-anchor="end" fill="#7c3aed" font-weight="600">客户分级：L2 · CAPEX</text>
+  <!-- 土与地面 -->
+  <rect x="0" y="92" width="780" height="300" fill="url(#soil)"/>
+  <rect x="0" y="86" width="780" height="6" fill="#475569"/>
+  <text x="20" y="80" font-size="12" fill="#334155">地面 / 道路</text>
+  <!-- 来水井、下游井 -->
+  <rect x="62" y="92" width="44" height="232" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+  <text x="84" y="342" font-size="11.5" text-anchor="middle" fill="#334155">来水井</text>
+  <rect x="672" y="92" width="44" height="200" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+  <text x="694" y="310" font-size="11.5" text-anchor="middle" fill="#334155">下游井</text>
+  <path d="M0 242 H62" stroke="#64748b" stroke-width="10"/><path d="M0 242 H60" stroke="#93c5fd" stroke-width="5" marker-end="url(#ar)"/>
+  <text x="8" y="230" font-size="11" fill="#334155">既有管网</text>
+  <rect x="62" y="242" width="44" height="82" fill="#93c5fd" opacity=".75"/>
+  <!-- 箱体 -->
+  <rect x="190" y="120" width="400" height="232" fill="url(#conc)" stroke="#64748b" stroke-width="2"/>
+  <rect x="206" y="136" width="368" height="200" fill="#ffffff"/>
+  <rect x="206" y="162" width="368" height="174" fill="#60a5fa" opacity=".55"/>
+  <path d="M206 162 H574" stroke="#1d4ed8" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <rect x="206" y="326" width="368" height="10" fill="url(#silt)"/>
+  <text x="420" y="283" font-size="13" text-anchor="middle" fill="#1e3a8a" font-weight="600">雨峰时存水</text>
+  <text x="400" y="321" font-size="10.5" text-anchor="middle" fill="#5b4520">沉沙 5%</text>
+  <!-- 检修口 -->
+  <rect x="470" y="90" width="34" height="30" fill="#94a3b8" stroke="#64748b"/>
+  <text x="487" y="80" font-size="10.5" text-anchor="middle" fill="#334155">检修口</text>
+  <!-- 覆土 -->
+  <path d="M618 92 V120" stroke="#334155" stroke-width="1.2" marker-start="url(#dm)" marker-end="url(#dm)"/>
+  <text x="624" y="110" font-size="11" fill="#334155">覆土 ≥ 1.0 m</text>
+  <!-- 水深标注 -->
+  <path d="M222 326 V162" stroke="#1d4ed8" stroke-width="1.4" marker-start="url(#dm)" marker-end="url(#dm)"/>
+  <text x="230" y="253" font-size="12" fill="#1e3a8a" font-weight="600">可用水深 2.0 m</text>
+  <path d="M600 162 V136" stroke="#b45309" stroke-width="1.2" marker-start="url(#dm)" marker-end="url(#dm)"/>
+  <text x="606" y="153" font-size="11" fill="#b45309">超高 0.3 m</text>
+  <!-- 进水管 + 闸孔 -->
+  <path d="M106 262 H190" stroke="#64748b" stroke-width="10"/><path d="M106 262 H200" stroke="#93c5fd" stroke-width="5" marker-end="url(#ar)"/>
+  <rect x="178" y="248" width="10" height="28" fill="#b91c1c"/>
+  <text x="112" y="288" font-size="11.5" fill="#b91c1c" font-weight="600">进水闸孔</text>
+  <text x="112" y="303" font-size="10.5" fill="#7f1d1d">满 95% 关闸</text>
+  <text x="112" y="317" font-size="10.5" fill="#7f1d1d">水留在管网</text>
+  <!-- 应急溢流堰 -->
+  <path d="M206 144 H150 V212 H106" stroke="#64748b" stroke-width="7" fill="none"/>
+  <path d="M206 144 H152 V212 H112" stroke="#f59e0b" stroke-width="2.5" fill="none" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+  <rect x="206" y="138" width="6" height="14" fill="#f59e0b"/>
+  <text x="222" y="104" font-size="11.5" fill="#b45309" font-weight="600">应急溢流堰</text>
+  <text x="222" y="117" font-size="10.5" fill="#92400e">满到顶漫回来水井</text>
+  <!-- 排空泵 -->
+  <rect x="548" y="310" width="24" height="24" rx="12" fill="#0e7490" stroke="#083344"/>
+  <path d="M560 310 V180 H650 V242 H672" stroke="#64748b" stroke-width="6" fill="none"/>
+  <path d="M560 308 V180 H650 V242 H670" stroke="#22d3ee" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+  <text x="520" y="372" font-size="11.5" fill="#0e7490" font-weight="600" text-anchor="end">排空泵</text>
+  <text x="20" y="394" font-size="10.5" fill="#155e75">排空泵：雨后（第 3 h 起）且下游井水深 &lt; 0.5 m 才开，约 12 h 排空</text>
+  <text x="20" y="418" font-size="10.5" fill="#64748b">混凝土离线调蓄（手册 WA-726 第三版 §4.2 B）；建成区内不得设开敞塘（§4.2）。示意，不是施工图。</text>
+</svg>

@@ -1,0 +1,56 @@
+{
+ "region": "RDO",
+ "domain_km2": 3.27,
+ "stations": [
+  {
+   "unitid": "SW_AKE_AGA_PSS_7",
+   "ps_id": "7",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Underpass PS Cpcty::60x2",
+   "n_pumps": 60,
+   "q_each_lps": 2.0,
+   "q_src": "客户备注 60×2",
+   "parsons": [],
+   "wetwell_node": "240410_2705873",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 6.4,
+   "on_m": 3.2,
+   "off_m": 0.64,
+   "depth_note": "",
+   "discharge_node": null,
+   "discharge_dist_m": null,
+   "discharge_src": "未知：需要用户定",
+   "forcemain_m": null,
+   "forcemain_unitids": [],
+   "x": 240410.2,
+   "y": 2705873.4
+  },
+  {
+   "unitid": "SW_AKE_AGA_PSS_58",
+   "ps_id": "58",
+   "status": "Active",
+   "migration": "EXISTING",
+   "comment": "Cpcty::350 & 85x2",
+   "n_pumps": null,
+   "q_each_lps": null,
+   "q_src": "无数据：不建泵，列为局限",
+   "parsons": [],
+   "wetwell_node": "240502_2705898",
+   "wetwell_dist_m": 0,
+   "well_depth_m": 8.0,
+   "on_m": 4.0,
+   "off_m": 0.8,
+   "depth_note": "",
+   "discharge_node": "240507_2705928",
+   "discharge_dist_m": 0,
+   "discharge_src": "客户 GDB 压力管",
+   "forcemain_m": 31,
+   "forcemain_unitids": [
+    "SW_AKE_AGA_PI_148167"
+   ],
+   "x": 240502.0,
+   "y": 2705898.4
+  }
+ ]
+}
