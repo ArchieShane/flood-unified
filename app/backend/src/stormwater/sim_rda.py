@@ -155,6 +155,7 @@ def extract_hotspots(root: Path, base: Path, states: list[str]) -> Path:
         zones[st] = {"domain": _zone_stats(area, hmax, frames, t_h, np.ones(len(area), bool))}
     points = [{"id": f["properties"]["hotspot_id"], "district": f["properties"].get("area"),
                "location": f["properties"].get("location"),
+               "criticality": f["properties"].get("criticality"),
                "lat": round(f["geometry"]["coordinates"][1], 6), "lon": round(f["geometry"]["coordinates"][0], 6),
                "catchment_ha": {}, "stats": stats[f["properties"]["hotspot_id"]]} for f in feats]
     points.sort(key=lambda p: int(p["id"].split("-")[1]))

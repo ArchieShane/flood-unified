@@ -708,6 +708,14 @@ const hotState = computed(() => (hot.value?.states || []).includes(props.state) 
 const HOT_MANY = 100
 const HOT_CLASS_COLOR = { flooded: '#d9434b', shallow: '#e0a44e', no: '#868e96' }
 
+/** 关注积水点的等级（交付自带的 criticality）：药丸按等级着色；没有该字段的任务保持原来的橙色 */
+const CRIT_COLOR = { 'Very High': '#c92a2a', 'Very Important': '#c92a2a', High: '#e8590c', Important: '#e8590c', Medium: '#d9a400' }
+const critColor = c => CRIT_COLOR[c] || null
+const critLegend = computed(() => {
+  const seen = new Set((hot.value?.points || []).map(p => p.criticality).filter(c => c && CRIT_COLOR[c]))
+  return Object.keys(CRIT_COLOR).filter(k => seen.has(k)).map(k => ({ key: k, color: CRIT_COLOR[k] }))
+})
+
 function hotPopup(p) {
   const st = p.stats?.[hotState.value] || {}
   const n = (x, d = 2) => (x == null ? '—' : Number(x).toFixed(d))
@@ -729,7 +737,7 @@ function hotPopup(p) {
       `${nr.t_max_depth_h == null ? '' : `（${t('sim.hotspots.deepestAt')} T+${n(nr.t_max_depth_h, 2)} h）`}<br>` +
       `${fmtLatLon(p)}`
   }
-  return `<b>${esc(p.id)}</b> · ${esc(p.district || '')}<br>` +
+  return `<b>${esc(p.id)}</b> · ${esc(p.district || '')}${p.criticality ? ` · ${esc(p.criticality)}` : ''}<br>` +
     `<span style="opacity:.75">${esc(p.location || '')}</span><br>` +
     `${t('sim.hotspots.near')}：${n(st.near_200m?.max_depth_m)} m<br>` +
     `${t('sim.hotspots.a30')}：${n(c.area_ge_0_30_ha)} ha<br>` +
@@ -765,7 +773,7 @@ function drawHot() {
       ? L.circleMarker([p.lat, p.lon], { radius: 5, weight: 1.2, color: '#fff', fillColor: HOT_CLASS_COLOR[cls] || '#868e96', fillOpacity: 0.95 })
         .bindTooltip(esc(p.id.replace(/^[A-Z]{3}-/, '')), { direction: 'top', offset: [0, -4] })
       : L.marker([p.lat, p.lon], {
-        icon: L.divIcon({ className: 'rm-hot', html: `<span>${esc(p.id.replace(/^[A-Z]{3}-/, ''))}</span>`, iconSize: [34, 22] }),
+        icon: L.divIcon({ className: 'rm-hot', html: `<span${critColor(p.criticality) ? ` style="background:${critColor(p.criticality)}"` : ''}>${esc(p.id.replace(/^[A-Z]{3}-/, ''))}</span>`, iconSize: [34, 22] }),
         zIndexOffset: 3000,
       })
     m.bindPopup(() => hotPopup(p), { className: 'rm-pop', minWidth: 220, maxWidth: 300, offset: [0, -6] })
@@ -1062,6 +1070,10 @@ onBeforeUnmount(() => {
           <span class="sw" :style="{ background: r.color }" />{{ r.label }}<b v-if="r.n != null">{{ r.n }}</b>
         </div>
         <div v-if="pondLegend.note" class="note">{{ pondLegend.note }}</div>
+      </div>
+      <div v-if="hotOn && critLegend.length" class="rm-legend rm-legend-res">
+        <div class="cap">{{ t('sim.hotspots.critLegend') }}</div>
+        <div v-for="c in critLegend" :key="c.key" class="row"><span class="sw" :style="{ background: c.color }" />{{ c.key }}</div>
       </div>
       <div class="rm-legend">
         <div class="cap">{{ mode === 'max' ? t('sim.map.maxDepth') : t('sim.map.depth') }}（m）</div>

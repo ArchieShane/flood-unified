@@ -663,6 +663,7 @@ export default {
   hotspots: {
     title: '积水点',
     toggle: '关注积水点',
+    critLegend: '关注积水点等级',
     ledgerToggle: '台账全部积水点',
     ledgerTip: '该片区汇水区内台账（ADM）登记的全部积水点，灰点；交付统计的关注积水点另在「关注积水点」图层，不重复画。',
     catchToggle: '汇水区',

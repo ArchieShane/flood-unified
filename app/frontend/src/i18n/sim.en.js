@@ -662,6 +662,7 @@ export default {
   hotspots: {
     title: 'Hotspots',
     toggle: 'Watched hotspots',
+    critLegend: 'Hotspot criticality',
     ledgerToggle: 'All ledger hotspots',
     ledgerTip: 'All hotspots registered in the ledger (ADM) inside this region\'s catchment, shown as grey dots; the watched hotspots with delivered statistics are on the "Watched hotspots" layer and not drawn twice.',
     catchToggle: 'Catchments',
